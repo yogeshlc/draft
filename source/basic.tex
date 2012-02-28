@@ -246,28 +246,28 @@ variable, function, class type, enumeration type, or template.
 \pnum
 An expression is \defn{potentially evaluated} unless it is an
 unevaluated operand (Clause~\ref{expr}) or a subexpression thereof.
-The set of \defn{potential results} of an expression \tcode{e} is
-defined as follows:
+The \defn{set of potential results} of an expression \tcode{e} is
+defined as:
 
 \begin{itemize}
-\item If \tcode{e} is an
+\item if \tcode{e} is an
 \grammarterm{id-expression}~(\ref{expr.prim.general}), the set
-contains only \tcode{e}.
-\item If \tcode{e} is a class member access
-expression~(\ref{expr.ref}), the set contains the potential results of
-the object expression.
-\item If \tcode{e} is a pointer-to-member
+whose sole member is \tcode{e};
+\item if \tcode{e} is a class member access
+expression~(\ref{expr.ref}), the set of potential results of
+the object expression;
+\item if \tcode{e} is a pointer-to-member
 expression~(\ref{expr.mptr.oper}) whose second operand is a constant
-expression, the set contains the potential results of the object
-expression.
-\item If \tcode{e} has the form \tcode{(e1)}, the set contains the
-potential results of \tcode{e1}.
-\item If \tcode{e} is a glvalue conditional
-expression~(\ref{expr.cond}), the set is the union of the sets of
-potential results of the second and third operands.
-\item If \tcode{e} is a comma expression~(\ref{expr.comma}), the set
-contains the potential results of the right operand.
-\item Otherwise, the set is empty.
+expression, the set of potential results of the object
+expression;
+\item if \tcode{e} has the form \tcode{(e1)}, the set of
+potential results of \tcode{e1};
+\item if \tcode{e} is a glvalue conditional
+expression~(\ref{expr.cond}), the union of the sets of
+potential results of the second and third operands;
+\item if \tcode{e} is a comma expression~(\ref{expr.comma}), the set
+of potential results of the right operand;
+\item otherwise, the empty set.
 \end{itemize}
 
 \pnum
