@@ -125,7 +125,7 @@ does not have any ordering operators.
 \rSec1[cfenv]{The floating-point environment}
 \rSec2[cfenv.syn]{Header \tcode{<cfenv>} synopsis}
 \indexlibrary{\idxhdr{cfenv}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   // types
   typedef @\textit{object type}@  fenv_t;
@@ -146,7 +146,7 @@ namespace std {
   int fesetenv(const fenv_t *penv);
   int feupdateenv(const fenv_t *penv);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \indexlibrary{\idxcode{fenv_t}}%
@@ -174,7 +174,7 @@ namespace std {
 \indexlibrary{\idxcode{FE_UPWARD}}%
 \indexlibrary{\idxcode{FE_DFL_ENV}}%
 The header also defines the macros:
-\begin{codeblock}
+\begin{lstlisting}
   FE_ALL_EXCEPT
   FE_DIVBYZERO
   FE_INEXACT
@@ -188,7 +188,7 @@ The header also defines the macros:
   FE_UPWARD
 
   FE_DFL_ENV
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header defines all functions, types, and macros the same as
@@ -249,7 +249,7 @@ Moreover, if \tcode{a} is an expression of type \tcode{cv std::complex<T>*} and 
 \rSec2[complex.syn]{Header \tcode{<complex>} synopsis}
 
 \indexlibrary{\idxhdr{complex}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class T> class complex;
   template<> class complex<float>;
@@ -334,12 +334,12 @@ namespace std {
   template<class T> complex<T> tan  (const complex<T>&);
   template<class T> complex<T> tanh (const complex<T>&);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[complex]{Class template \tcode{complex}}
 
 \indexlibrary{\idxcode{complex}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class T>
   class complex {
@@ -369,7 +369,7 @@ namespace std {
     template<class X> complex<T>& operator/=(const complex<X>&);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -384,7 +384,7 @@ number.
 
 \rSec2[complex.special]{\tcode{complex} specializations}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> class complex<float> {
   public:
@@ -467,14 +467,14 @@ namespace std {
     template<class X> complex<long double>& operator/=(const complex<X>&);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[complex.members]{\tcode{complex} member functions}
 
 \indexlibrary{\idxcode{complex}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> constexpr complex(const T& re = T(), const T& im = T());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -489,9 +489,9 @@ Constructs an object of class
 
 \indexlibrary{\idxcode{real}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{real}}%
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr T real() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \returns The value of the real component.
@@ -499,9 +499,9 @@ constexpr T real() const;
 
 \indexlibrary{\idxcode{real}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{real}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void real(T val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \effects Assigns \tcode{val} to the real component.
@@ -509,9 +509,9 @@ void real(T val);
 
 \indexlibrary{\idxcode{imag}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{imag}}%
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr T imag() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \returns The value of the imaginary component.
@@ -519,9 +519,9 @@ constexpr T imag() const;
 
 \indexlibrary{\idxcode{imag}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{imag}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void imag(T val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \effects Assigns \tcode{val} to the imaginary component.
@@ -530,9 +530,9 @@ void imag(T val);
 \rSec2[complex.member.ops]{\tcode{complex} member operators}
 
 \indexlibrary{\idxcode{operator+=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator+=(const T& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -549,9 +549,9 @@ leaving the imaginary part unchanged.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator-=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator-=(const T& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -568,9 +568,9 @@ leaving the imaginary part unchanged.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator*=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator*=(const T& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -586,9 +586,9 @@ and stores the result in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator/=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator/=(const T& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -604,9 +604,9 @@ and stores the result in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator+=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator+=(const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -622,9 +622,9 @@ and stores the sum in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator-=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator-=(const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -640,9 +640,9 @@ and stores the difference in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator*=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator*=(const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -657,9 +657,9 @@ and stores the product in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator/=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 complex<T>& operator/=(const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -677,9 +677,9 @@ and stores the quotient in
 \rSec2[complex.ops]{\tcode{complex} non-member operations}
 
 \indexlibrary{\idxcode{operator+}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> operator+(const complex<T>& lhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -691,12 +691,12 @@ unary operator.
 \tcode{complex<T>(lhs)}.
 \end{itemdescr}
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T>
   complex<T> operator+(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> complex<T> operator+(const complex<T>& lhs, const T& rhs);
 template<class T> complex<T> operator+(const T& lhs, const complex<T>& rhs);
-\end{codeblock}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -705,9 +705,9 @@ template<class T> complex<T> operator+(const T& lhs, const complex<T>& rhs);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator-}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> operator-(const complex<T>& lhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -721,12 +721,12 @@ unary operator.
 
 \indexlibrary{\idxcode{operator-}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{operator-}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   complex<T> operator-(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> complex<T> operator-(const complex<T>& lhs, const T& rhs);
 template<class T> complex<T> operator-(const T& lhs, const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -735,12 +735,12 @@ template<class T> complex<T> operator-(const T& lhs, const complex<T>& rhs);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator*}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   complex<T> operator*(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> complex<T> operator*(const complex<T>& lhs, const T& rhs);
 template<class T> complex<T> operator*(const T& lhs, const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -750,12 +750,12 @@ template<class T> complex<T> operator*(const T& lhs, const complex<T>& rhs);
 
 \indexlibrary{\idxcode{operator/}!\idxcode{complex}}%
 \indexlibrary{\idxcode{complex}!\idxcode{operator/}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   complex<T> operator/(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> complex<T> operator/(const complex<T>& lhs, const T& rhs);
 template<class T> complex<T> operator/(const T& lhs, const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -764,12 +764,12 @@ template<class T> complex<T> operator/(const T& lhs, const complex<T>& rhs);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator==}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   bool constexpr operator==(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> constexpr bool operator==(const complex<T>& lhs, const T& rhs);
 template<class T> constexpr bool operator==(const T& lhs, const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -786,12 +786,12 @@ arguments.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator"!=}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   constexpr bool operator!=(const complex<T>& lhs, const complex<T>& rhs);
 template<class T> constexpr bool operator!=(const complex<T>& lhs, const T& rhs);
 template<class T> constexpr bool operator!=(const T& lhs, const complex<T>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -800,11 +800,11 @@ template<class T> constexpr bool operator!=(const T& lhs, const complex<T>& rhs)
 \end{itemdescr}
 
 \indexlibrary{operator>>@\tcode{operator\shr}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T, class charT, class traits>
 basic_istream<charT, traits>&
 operator>>(basic_istream<charT, traits>& is, complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -843,11 +843,11 @@ the same for each of the simpler extractions.
 \end{itemdescr}
 
 \indexlibrary{operator<<@\tcode{operator\shl}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T, class charT, class traits>
 basic_ostream<charT, traits>&
 operator<<(basic_ostream<charT, traits>& o, const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -855,7 +855,7 @@ operator<<(basic_ostream<charT, traits>& o, const complex<T>& x);
 inserts the complex number \tcode{x}
 onto the stream \tcode{o} as if it were implemented as follows:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, class charT, class traits>
 basic_ostream<charT, traits>&
 operator<<(basic_ostream<charT, traits>& o, const complex<T>& x) {
@@ -866,7 +866,7 @@ operator<<(basic_ostream<charT, traits>& o, const complex<T>& x) {
   s << '(' << x.real() << "," << x.imag() << ')';
   return o << s.str();
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \realnote In a locale in which comma is used as a decimal point character, the
@@ -880,9 +880,9 @@ complex numbers can be extracted unambiguously.
 \rSec2[complex.value.ops]{\tcode{complex} value operations}
 
 \indexlibrary{\idxcode{real}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> constexpr T real(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -891,9 +891,9 @@ template<class T> constexpr T real(const complex<T>& x);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{imag}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> constexpr T imag(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -902,9 +902,9 @@ template<class T> constexpr T imag(const complex<T>& x);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{abs}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> T abs(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -913,9 +913,9 @@ The magnitude of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{arg}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> T arg(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -924,9 +924,9 @@ The phase angle of \tcode{x}, or \tcode{atan2(imag(x), real(x))}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{norm}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> T norm(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -935,9 +935,9 @@ The squared magnitude of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{conj}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> conj(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -946,9 +946,9 @@ The complex conjugate of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{proj}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> proj(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -960,9 +960,9 @@ Behaves the same as the C function \tcode{cproj}, defined in 7.3.9.4.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{polar}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> polar(const T& rho, const T& theta = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -978,9 +978,9 @@ is \tcode{theta}.
 
 \indexlibrary{\idxcode{acos}!\idxcode{complex}}%
 \indexlibrary{\idxcode{cacos}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> acos(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -994,9 +994,9 @@ defined in 7.3.5.1.
 
 \indexlibrary{\idxcode{asin}!\idxcode{complex}}%
 \indexlibrary{\idxcode{casin}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> asin(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1010,9 +1010,9 @@ defined in 7.3.5.2.
 
 \indexlibrary{\idxcode{atan}!\idxcode{complex}}%
 \indexlibrary{\idxcode{catan}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> atan(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1026,9 +1026,9 @@ defined in 7.3.5.3.
 
 \indexlibrary{\idxcode{acosh}!\idxcode{complex}}%
 \indexlibrary{\idxcode{cacosh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> acosh(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1042,9 +1042,9 @@ defined in 7.3.6.1.
 
 \indexlibrary{\idxcode{asinh}!\idxcode{complex}}%
 \indexlibrary{\idxcode{casinh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> asinh(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1058,9 +1058,9 @@ defined in 7.3.6.2.
 
 \indexlibrary{\idxcode{atanh}!\idxcode{complex}}%
 \indexlibrary{\idxcode{catanh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> atanh(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1073,9 +1073,9 @@ defined in 7.3.6.3.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{cos}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> cos(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1084,9 +1084,9 @@ The complex cosine of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{cosh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> cosh(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1095,9 +1095,9 @@ The complex hyperbolic cosine of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{exp}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> exp(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1106,9 +1106,9 @@ The complex base e exponential of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{log}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> log(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1128,9 +1128,9 @@ is pi.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{log10}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> log10(const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1144,12 +1144,12 @@ The complex common (base 10) logarithm of \tcode{x}, defined as
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pow}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   complex<T> pow(const complex<T>& x, const complex<T>& y);
 template<class T> complex<T> pow  (const complex<T>& x, const T& y);
 template<class T> complex<T> pow  (const T& x, const complex<T>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1167,9 +1167,9 @@ is implementation-defined.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sin}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> sin  (const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1178,9 +1178,9 @@ The complex sine of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sinh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> sinh (const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1189,9 +1189,9 @@ The complex hyperbolic sine of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sqrt}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> sqrt (const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1207,9 +1207,9 @@ value returned lies on the positive imaginary axis.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{tan}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> tan  (const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1218,9 +1218,9 @@ The complex tangent of \tcode{x}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{tanh}!\idxcode{complex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> complex<T> tanh (const complex<T>& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1237,11 +1237,11 @@ The complex hyperbolic tangent of \tcode{x}.
 \indexlibrary{\idxcode{norm}}%
 \indexlibrary{\idxcode{real}}%
 The following function templates shall have additional overloads:
-\begin{codeblock}
+\begin{lstlisting}
 arg                   norm 
 conj                  proj
 imag                  real 
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \indextext{overloads!floating point}%
@@ -2009,9 +2009,9 @@ The requirements of a random number engine type
 shall be interpreted as follows
 with respect to a random number engine adaptor type.
 
-\begin{itemdecl}
+\begin{lstlisting}
 A::A();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -2019,9 +2019,9 @@ A::A();
  as if by its default constructor.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const A& a1, const A& a2);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns
@@ -2030,9 +2030,9 @@ bool operator==(const A& a1, const A& a2);
 \end{itemdescr}
 
 
-\begin{itemdecl}
+\begin{lstlisting}
 A::A(result_type s);  
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -2041,9 +2041,9 @@ A::A(result_type s);
 \end{itemdescr}
 
 
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Sseq> void A::A(Sseq& q);  
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -2051,27 +2051,27 @@ template<class Sseq> void A::A(Sseq& q);
  with \tcode{q}.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 void seed();  
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
  With \tcode{b} as the base engine, invokes \tcode{b.seed()}.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 void seed(result_type s);  
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
  With \tcode{b} as the base engine, invokes \tcode{b.seed(s)}.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Sseq> void seed(Sseq& q);  
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -2403,9 +2403,9 @@ with the identical name, type, and semantics.
 
 \pnum
 \tcode{P} shall have a declaration of the form
-\begin{codeblock}
+\begin{lstlisting}
 typedef  D  distribution_type;
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{requirements!random number distribution|)}%
 \indextext{random number distribution!requirements|)}%
@@ -2425,7 +2425,7 @@ typedef  D  distribution_type;
 \indexlibrary{\idxhdr{random}|(}%
 \indextext{random number generation!synopsis|(}
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <initializer_list>
 
 namespace std {
@@ -2559,7 +2559,7 @@ namespace std {
    class piecewise_linear_distribution;
 
 } // namespace std
-\end{codeblock}%
+\end{lstlisting}%
 \indextext{random number generation!synopsis|)}%
 \indexlibrary{\idxhdr{random}|)}
 
@@ -2621,17 +2621,17 @@ defined in this sub-clause~(\ref{rand.eng}) and in sub-clause~\ref{rand.adapt}:
 \begin{itemize}
 \item
 if the constructor
-\begin{codeblock}
+\begin{lstlisting}
 template <class Sseq> explicit X(Sseq& q);
-\end{codeblock}
+\end{lstlisting}
 is called with a type \tcode{Sseq} that does not qualify as a seed sequence, then this
 constructor shall not participate in overload resolution;
 
 \item
 if the member function
-\begin{codeblock}
+\begin{lstlisting}
 template <class Sseq> void seed(Sseq& q);
-\end{codeblock}
+\end{lstlisting}
 is called with a type \tcode{Sseq} that does not qualify as a seed sequence, then this
 function shall not participate in overload resolution.
 \end{itemize}
@@ -2667,7 +2667,7 @@ the generation algorithm%
 \indextext{generation algorithm!\idxcode{linear_congruential_engine}}
 is $ \mathsf{GA}(\state{x}{i}) = \state{x}{i+1} $.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class UIntType, UIntType a, UIntType c, UIntType m>
  class linear_congruential_engine
 {
@@ -2693,7 +2693,7 @@ public:
  result_type operator()();
  void discard(unsigned long long z);
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 If the template parameter
@@ -2722,9 +2722,9 @@ the value of \state{x}{i}.
 
 \indexlibrary{\idxcode{linear_congruential_engine}!constructor}%
 
-\begin{itemdecl}
+\begin{lstlisting}
 explicit linear_congruential_engine(result_type s = default_seed);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{linear_congruential_engine} object.
@@ -2735,9 +2735,9 @@ explicit linear_congruential_engine(result_type s = default_seed);
 
 \indexlibrary{\idxcode{linear_congruential_engine}!constructor}%
 
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Sseq> explicit linear_congruential_engine(Sseq& q);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{linear_congruential_engine} object.
@@ -2831,7 +2831,7 @@ The generation algorithm%
    Let $z_4 = z_3 \xor ( z_3 \rightshift \ell )$.
 \end{enumeratea}
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class UIntType, size_t w, size_t n, size_t m, size_t r,
           UIntType a, size_t u, UIntType d, size_t s,
           UIntType b, size_t t,
@@ -2870,7 +2870,7 @@ public:
  result_type operator()();
  void discard(unsigned long long z);
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The following relations shall hold:
@@ -2901,9 +2901,9 @@ in that order.
 
 \indexlibrary{\idxcode{mersenne_twister_engine}!constructor}%
 
-\begin{itemdecl}
+\begin{lstlisting}
 explicit mersenne_twister_engine(result_type value = default_seed);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{mersenne_twister_engine} object.
@@ -2925,9 +2925,9 @@ Sets $X_{-n}$ to $\tcode{value} \bmod 2^w$.
 
 \indexlibrary{\idxcode{mersenne_twister_engine}!constructor}%
 
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Sseq> explicit mersenne_twister_engine(Sseq& q);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{mersenne_twister_engine} object.
@@ -3012,7 +3012,7 @@ as a result
 of advancing the engine's state
 as described above.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class UIntType, size_t w, size_t s, size_t r>
  class subtract_with_carry_engine
 {
@@ -3038,7 +3038,7 @@ public:
  result_type operator()();
  void discard(unsigned long long z);
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The following relations shall hold:
@@ -3058,9 +3058,9 @@ in that order, followed by $c$.
 
 
 \indexlibrary{\idxcode{subtract_with_carry_engine}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit subtract_with_carry_engine(result_type value = default_seed);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{subtract_with_carry_engine} object.
@@ -3074,10 +3074,10 @@ explicit subtract_with_carry_engine(result_type value = default_seed);
  To set the values $X_k$,
  first construct \tcode{e}, a \tcode{linear_congruential_engine} object,
  as if by the following definition:
-\begin{codeblock}
+\begin{lstlisting}
 linear_congruential_engine<result_type,
                           40014u,0u,2147483563u> e(value == 0u ? default_seed : value);
-\end{codeblock}
+\end{lstlisting}
  Then, to set each $X_k$,
  obtain new values $ z_0, \ldots, z_{n-1} $
  from $n = \lceil w/32 \rceil $ successive invocations
@@ -3091,9 +3091,9 @@ linear_congruential_engine<result_type,
 
 
 \indexlibrary{\idxcode{subtract_with_carry_engine}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Sseq> explicit subtract_with_carry_engine(Sseq& q);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{subtract_with_carry_engine} object.
@@ -3205,7 +3205,7 @@ The generation algorithm%
 yields the value returned by the last invocation of \tcode{e()}
  while advancing \tcode{e}'s state as described above.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class Engine, size_t p, size_t r>
  class discard_block_engine
 {
@@ -3240,7 +3240,7 @@ private:
  Engine e;   // \expos
  int n;      // \expos
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The following relations shall hold:
@@ -3347,7 +3347,7 @@ uses the values produced
 while advancing the state as described above
 to yield a quantity $S$
 obtained as if by the following algorithm:
-\begin{codeblock}
+\begin{lstlisting}
 @$S$@ = 0;
 for (@$k$@ = @$0$@; @$k \neq n_0$@; @$k$@ += @$1$@)  {
  do @$u$@ = e() - e.min(); while (@$ u \ge y_0 $@);
@@ -3357,9 +3357,9 @@ for (@$k$@ = @$n_0$@; @$k \neq n$@; @$k$@ += @$1$@)  {
  do @$u$@ = e() - e.min(); while (@$ u \ge y_1 $@);
  @$S$@ = @$ 2^{w_0 + 1} \cdot S + u \bmod 2^{w_0 + 1} $@;
 }
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class Engine, size_t w, class UIntType>
 class independent_bits_engine
 {
@@ -3391,7 +3391,7 @@ public:
 private:
  Engine e;   // \expos
 };
-\end{codeblock}%
+\end{lstlisting}%
 
 \pnum
 The following relations shall hold:
@@ -3458,7 +3458,7 @@ The generation algorithm%
 yields the last value of \tcode{Y}
  produced while advancing \tcode{e}'s state as described above.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class Engine, size_t k>
  class shuffle_order_engine
 {
@@ -3493,7 +3493,7 @@ private:
  result_type Y;      // \expos
  result_type V[k];   // \expos
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The following relation shall hold:
@@ -3538,10 +3538,10 @@ with values returned by successive invocations of \tcode{e()}.%
 
 \indexlibrary{\idxcode{minstd_rand0}}%
 \indextext{engines with predefined parameters!\idxcode{minstd_rand0}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef linear_congruential_engine<uint_fast32_t, 16807, 0, 2147483647>
        minstd_rand0;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3553,10 +3553,10 @@ typedef linear_congruential_engine<uint_fast32_t, 16807, 0, 2147483647>
 
 \indexlibrary{\idxcode{minstd_rand}}%
 \indextext{engines with predefined parameters!\idxcode{minstd_rand}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef linear_congruential_engine<uint_fast32_t, 48271, 0, 2147483647>
        minstd_rand;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3568,11 +3568,11 @@ typedef linear_congruential_engine<uint_fast32_t, 48271, 0, 2147483647>
 
 \indexlibrary{\idxcode{mt19937}}%
 \indextext{engines with predefined parameters!\idxcode{mt19937}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef mersenne_twister_engine<uint_fast32_t,
        32,624,397,31,0x9908b0df,11,0xffffffff,7,0x9d2c5680,15,0xefc60000,18,1812433253>
        mt19937;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3584,7 +3584,7 @@ typedef mersenne_twister_engine<uint_fast32_t,
 
 \indexlibrary{\idxcode{mt19937_64}}%
 \indextext{engines with predefined parameters!\idxcode{mt19937_64}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef mersenne_twister_engine<uint_fast64_t,
        64,312,156,31,0xb5026f5aa96619e9,29,
        0x5555555555555555,17,
@@ -3592,7 +3592,7 @@ typedef mersenne_twister_engine<uint_fast64_t,
        0xfff7eee000000000,43,
        6364136223846793005>
        mt19937_64;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3604,10 +3604,10 @@ typedef mersenne_twister_engine<uint_fast64_t,
 
 \indexlibrary{\idxcode{ranlux24_base}}%
 \indextext{engines with predefined parameters!\idxcode{ranlux24_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef subtract_with_carry_engine<uint_fast32_t, 24, 10, 24>
        ranlux24_base;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3620,10 +3620,10 @@ typedef subtract_with_carry_engine<uint_fast32_t, 24, 10, 24>
 
 \indexlibrary{\idxcode{ranlux48_base}}%
 \indextext{engines with predefined parameters!\idxcode{ranlux48_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef subtract_with_carry_engine<uint_fast64_t, 48, 5, 12>
        ranlux48_base;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3636,10 +3636,10 @@ typedef subtract_with_carry_engine<uint_fast64_t, 48, 5, 12>
 
 \indexlibrary{\idxcode{ranlux24}}%
 \indextext{engines with predefined parameters!\idxcode{ranlux24}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef discard_block_engine<ranlux24_base, 223, 23>
        ranlux24;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3652,10 +3652,10 @@ typedef discard_block_engine<ranlux24_base, 223, 23>
 
 \indexlibrary{\idxcode{ranlux48}}%
 \indextext{engines with predefined parameters!\idxcode{ranlux48}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef discard_block_engine<ranlux48_base, 389, 11>
        ranlux48@
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3668,10 +3668,10 @@ typedef discard_block_engine<ranlux48_base, 389, 11>
 
 \indexlibrary{\idxcode{knuth_b}}%
 \indextext{engines with predefined parameters!\idxcode{knuth_b}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef shuffle_order_engine<minstd_rand0,256>
        knuth_b;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\required
@@ -3683,10 +3683,10 @@ typedef shuffle_order_engine<minstd_rand0,256>
 
 \indexlibrary{\idxcode{default_random_engine}}%
 \indextext{engines with predefined parameters!\idxcode{default_random_engine}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\textit{implementation-defined}@
        default_random_engine;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\note
@@ -3736,7 +3736,7 @@ If implementation limitations%
 prevent generating non-deterministic random numbers,
 the implementation may employ a random number engine.
 
-\begin{codeblock}
+\begin{lstlisting}
 class random_device
 {
 public:
@@ -3760,13 +3760,13 @@ public:
  random_device(const random_device& ) = delete;
  void operator=(const random_device& ) = delete;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{random_device}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit random_device(const string& token = @\textit{implementation-defined}@);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{random_device}
@@ -3785,9 +3785,9 @@ explicit random_device(const string& token = @\textit{implementation-defined}@);
 
 \indexlibrary{\idxcode{random_device}!\idxcode{entropy}}%
 \indexlibrary{\idxcode{entropy}!\idxcode{random_device}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double entropy() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns If the implementation employs a random number engine,
@@ -3806,9 +3806,9 @@ double entropy() const noexcept;
 
 \indexlibrary{\idxcode{random_device}!\idxcode{operator()}}%
 \indexlibrary{\idxcode{operator()}!\idxcode{random_device}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result_type operator()();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A non-deterministic random value,
@@ -3845,7 +3845,7 @@ result_type operator()();
  No function described in this section~\ref{rand.util.seedseq}
  throws an exception.
 
-\begin{codeblock}
+\begin{lstlisting}
 class seed_seq
 {
 public:
@@ -3875,13 +3875,13 @@ public:
 private:
  vector<result_type> v;   // \expos
 };
-\end{codeblock}%
+\end{lstlisting}%
 
 
 \indexlibrary{\idxcode{seed_seq}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 seed_seq();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{seed_seq} object
@@ -3890,10 +3890,10 @@ seed_seq();
 
 
 \indexlibrary{\idxcode{seed_seq}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
  seed_seq(initializer_list<T> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires \tcode{T} shall be an integer type.
@@ -3904,10 +3904,10 @@ template<class T>
 
 
 \indexlibrary{\idxcode{seed_seq}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   seed_seq(InputIterator begin, InputIterator end);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -3919,18 +3919,18 @@ template<class InputIterator>
 
 \pnum\effects Constructs a \tcode{seed_seq} object
  by the following algorithm:
-\begin{codeblock}
+\begin{lstlisting}
 for( InputIterator s = begin; s != end; ++s)
  v.push_back((*s)@$\bmod 2^{32}$@);
-\end{codeblock}%
+\end{lstlisting}%
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seed_seq}!\idxcode{generate}}%
 \indexlibrary{\idxcode{generate}!\idxcode{seed_seq}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void generate(RandomAccessIterator begin, RandomAccessIterator end);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires \tcode{RandomAccessIterator}
@@ -4017,9 +4017,9 @@ template<class RandomAccessIterator>
 
 \indexlibrary{\idxcode{seed_seq}!\idxcode{size}}%
 \indexlibrary{\idxcode{size}!\idxcode{seed_seq}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t size() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The number of 32-bit units
@@ -4031,10 +4031,10 @@ size_t size() const;
 
 \indexlibrary{\idxcode{seed_seq}!\idxcode{param}}%
 \indexlibrary{\idxcode{param}!\idxcode{seed_seq}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class OutputIterator>
   void param(OutputIterator dest) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4048,9 +4048,9 @@ template<class OutputIterator>
 \pnum\effects Copies the sequence of prepared 32-bit units
  to the given destination,
  as if by executing the following statement:
-\begin{codeblock}
+\begin{lstlisting}
 copy(v.begin(), v.end(), dest);
-\end{codeblock}%
+\end{lstlisting}%
 \end{itemdescr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4087,10 +4087,10 @@ copy(v.begin(), v.end(), dest);
 \exitnote
 
 \indexlibrary{\idxcode{generate_canonical}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RealType, size_t bits, class URNG>
  RealType generate_canonical(URNG& g);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\complexity Exactly
@@ -4200,7 +4200,7 @@ the constant discrete probability function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class uniform_int_distribution
 {
@@ -4228,13 +4228,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{uniform_int_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit uniform_int_distribution(IntType a = 0, IntType b = numeric_limits<IntType>::max());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4247,9 +4247,9 @@ explicit uniform_int_distribution(IntType a = 0, IntType b = numeric_limits<IntT
 
 \indexlibrary{\idxcode{uniform_int_distribution}!\idxcode{a}}%
 \indexlibrary{\idxcode{a}!\idxcode{uniform_int_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result_type a() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{a} parameter
@@ -4258,9 +4258,9 @@ result_type a() const;
 
 \indexlibrary{\idxcode{uniform_int_distribution}!\idxcode{b}}%
 \indexlibrary{\idxcode{b}!\idxcode{uniform_int_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result_type b() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{b} parameter
@@ -4287,7 +4287,7 @@ the constant probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class uniform_real_distribution
 {
@@ -4315,13 +4315,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{uniform_real_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit uniform_real_distribution(RealType a = 0.0, RealType b = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4336,9 +4336,9 @@ explicit uniform_real_distribution(RealType a = 0.0, RealType b = 1.0);
 
 \indexlibrary{\idxcode{uniform_real_distribution}!\idxcode{a}}%
 \indexlibrary{\idxcode{a}!\idxcode{uniform_real_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result_type a() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{a} parameter
@@ -4347,9 +4347,9 @@ result_type a() const;
 
 \indexlibrary{\idxcode{uniform_real_distribution}!\idxcode{b}}%
 \indexlibrary{\idxcode{b}!\idxcode{uniform_real_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result_type b() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{b} parameter
@@ -4392,7 +4392,7 @@ the discrete probability function
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 class bernoulli_distribution
 {
 public:
@@ -4418,13 +4418,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{bernoulli_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit bernoulli_distribution(double p = 0.5);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4437,9 +4437,9 @@ explicit bernoulli_distribution(double p = 0.5);
 
 \indexlibrary{\idxcode{bernoulli_distribution}!\idxcode{p}}%
 \indexlibrary{\idxcode{p}!\idxcode{bernoulli_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double p() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{p} parameter
@@ -4466,7 +4466,7 @@ the discrete probability function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class binomial_distribution
 {
@@ -4494,13 +4494,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{binomial_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit binomial_distribution(IntType t = 1, double p = 0.5);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4513,9 +4513,9 @@ explicit binomial_distribution(IntType t = 1, double p = 0.5);
 
 \indexlibrary{\idxcode{binomial_distribution}!\idxcode{t}}%
 \indexlibrary{\idxcode{t}!\idxcode{binomial_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 IntType t() const;
-\end{itemdecl}%
+\end{lstlisting}%
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{t} parameter
  with which the object was constructed.
@@ -4523,9 +4523,9 @@ IntType t() const;
 
 \indexlibrary{\idxcode{binomial_distribution}!\idxcode{p}}%
 \indexlibrary{\idxcode{p}!\idxcode{binomial_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double p() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{p} parameter
@@ -4552,7 +4552,7 @@ the discrete probability function
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class geometric_distribution
 {
@@ -4579,13 +4579,13 @@ public:
  result_type min() const;
  result_type max() const;
  };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{geometric_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit geometric_distribution(double p = 0.5);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4598,9 +4598,9 @@ explicit geometric_distribution(double p = 0.5);
 
 \indexlibrary{\idxcode{geometric_distribution}!\idxcode{p}}%
 \indexlibrary{\idxcode{p}!\idxcode{geometric_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double p() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{p} parameter
@@ -4628,7 +4628,7 @@ the discrete probability function
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class negative_binomial_distribution
 {
@@ -4656,13 +4656,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{negative_binomial_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit negative_binomial_distribution(IntType k = 1, double p = 0.5);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4676,9 +4676,9 @@ explicit negative_binomial_distribution(IntType k = 1, double p = 0.5);
 
 \indexlibrary{\idxcode{negative_binomial_distribution}!\idxcode{t}}%
 \indexlibrary{\idxcode{t}!\idxcode{negative_binomial_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 IntType k() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{k} parameter
@@ -4687,9 +4687,9 @@ IntType k() const;
 
 \indexlibrary{\idxcode{negative_binomial_distribution}!\idxcode{p}}%
 \indexlibrary{\idxcode{p}!\idxcode{negative_binomial_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double p() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{p} parameter
@@ -4735,7 +4735,7 @@ is also known as this distribution's \techterm{mean}%
 \indextext{\idxcode{poisson_distribution}!mean}%
 .
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class poisson_distribution
 {
@@ -4762,14 +4762,14 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 
 \indexlibrary{\idxcode{poisson_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit poisson_distribution(double mean = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4782,9 +4782,9 @@ explicit poisson_distribution(double mean = 1.0);
 
 \indexlibrary{\idxcode{poisson_distribution}!\idxcode{mean}}%
 \indexlibrary{\idxcode{mean}!\idxcode{poisson_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 double mean() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{mean} parameter
@@ -4811,7 +4811,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class exponential_distribution
 {
@@ -4838,13 +4838,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{exponential_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit exponential_distribution(RealType lambda = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4857,9 +4857,9 @@ explicit exponential_distribution(RealType lambda = 1.0);
 
 \indexlibrary{\idxcode{exponential_distribution}!\idxcode{lambda}}%
 \indexlibrary{\idxcode{lambda}!\idxcode{exponential_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType lambda() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{lambda} parameter
@@ -4889,7 +4889,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class gamma_distribution
 {
@@ -4917,13 +4917,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{gamma_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit gamma_distribution(RealType alpha = 1.0, RealType beta = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -4937,9 +4937,9 @@ explicit gamma_distribution(RealType alpha = 1.0, RealType beta = 1.0);
 
 \indexlibrary{\idxcode{gamma_distribution}!\idxcode{alpha}}%
 \indexlibrary{\idxcode{alpha}!\idxcode{gamma_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType alpha() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{alpha} parameter
@@ -4948,9 +4948,9 @@ RealType alpha() const;
 
 \indexlibrary{\idxcode{gamma_distribution}!\idxcode{beta}}%
 \indexlibrary{\idxcode{beta}!\idxcode{gamma_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType beta() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{beta} parameter
@@ -4979,7 +4979,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class weibull_distribution
 {
@@ -5007,12 +5007,12 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{weibull_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit weibull_distribution(RealType a = 1.0, RealType b = 1.0);
-\end{itemdecl}%
+\end{lstlisting}%
 
 \begin{itemdescr}
 \pnum\requires
@@ -5025,9 +5025,9 @@ explicit weibull_distribution(RealType a = 1.0, RealType b = 1.0);
 
 \indexlibrary{\idxcode{weibull_distribution}!\idxcode{a}}%
 \indexlibrary{\idxcode{a}!\idxcode{weibull_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType a() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{a} parameter
@@ -5036,9 +5036,9 @@ RealType a() const;
 
 \indexlibrary{\idxcode{weibull_distribution}!\idxcode{b}}%
 \indexlibrary{\idxcode{b}!\idxcode{weibull_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType b() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{b} parameter
@@ -5076,7 +5076,7 @@ the probability density function\footnote{The distribution corresponding to
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class extreme_value_distribution
 {
@@ -5104,13 +5104,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{extreme_value_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit extreme_value_distribution(RealType a = 0.0, RealType b = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5123,9 +5123,9 @@ explicit extreme_value_distribution(RealType a = 0.0, RealType b = 1.0);
 
 \indexlibrary{\idxcode{extreme_value_distribution}!\idxcode{a}}%
 \indexlibrary{\idxcode{a}!\idxcode{extreme_value_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType a() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{a} parameter
@@ -5134,9 +5134,9 @@ RealType a() const;
 
 \indexlibrary{\idxcode{extreme_value_distribution}!\idxcode{b}}%
 \indexlibrary{\idxcode{b}!\idxcode{extreme_value_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType b() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{b} parameter
@@ -5190,7 +5190,7 @@ and \techterm{standard deviation}%
 \indextext{\idxcode{normal_distribution}!standard deviation}%
 .
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class normal_distribution
 {
@@ -5218,13 +5218,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{normal_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit normal_distribution(RealType mean = 0.0, RealType stddev = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5237,9 +5237,9 @@ explicit normal_distribution(RealType mean = 0.0, RealType stddev = 1.0);
 
 \indexlibrary{\idxcode{normal_distribution}!\idxcode{mean}}%
 \indexlibrary{\idxcode{mean}!\idxcode{normal_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType mean() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{mean} parameter
@@ -5248,9 +5248,9 @@ RealType mean() const;
 
 \indexlibrary{\idxcode{normal_distribution}!\idxcode{stddev}}%
 \indexlibrary{\idxcode{stddev}!\idxcode{normal_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType stddev() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{stddev} parameter
@@ -5284,7 +5284,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class lognormal_distribution
 {
@@ -5312,13 +5312,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{lognormal_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit lognormal_distribution(RealType m = 0.0, RealType s = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5331,9 +5331,9 @@ explicit lognormal_distribution(RealType m = 0.0, RealType s = 1.0);
 
 \indexlibrary{\idxcode{lognormal_distribution}!\idxcode{m}}%
 \indexlibrary{\idxcode{m}!\idxcode{lognormal_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType m() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{m} parameter
@@ -5342,9 +5342,9 @@ RealType m() const;
 
 \indexlibrary{\idxcode{lognormal_distribution}!\idxcode{s}}%
 \indexlibrary{\idxcode{s}!\idxcode{lognormal_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType s() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{s} parameter
@@ -5373,7 +5373,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class chi_squared_distribution
 {
@@ -5400,13 +5400,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{chi_squared_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit chi_squared_distribution(RealType n = 1);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5419,9 +5419,9 @@ explicit chi_squared_distribution(RealType n = 1);
 
 \indexlibrary{\idxcode{chi_squared_distribution}!\idxcode{n}}%
 \indexlibrary{\idxcode{n}!\idxcode{chi_squared_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType n() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{n} parameter
@@ -5448,7 +5448,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class cauchy_distribution
 {
@@ -5476,13 +5476,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{cauchy_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit cauchy_distribution(RealType a = 0.0, RealType b = 1.0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5495,9 +5495,9 @@ explicit cauchy_distribution(RealType a = 0.0, RealType b = 1.0);
 
 \indexlibrary{\idxcode{cauchy_distribution}!\idxcode{a}}%
 \indexlibrary{\idxcode{a}!\idxcode{cauchy_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType a() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{a} parameter
@@ -5506,9 +5506,9 @@ RealType a() const;
 
 \indexlibrary{\idxcode{cauchy_distribution}!\idxcode{b}}%
 \indexlibrary{\idxcode{b}!\idxcode{cauchy_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType b() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{b} parameter
@@ -5543,7 +5543,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class fisher_f_distribution
 {
@@ -5571,13 +5571,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{fisher_f_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit fisher_f_distribution(RealType m = 1, RealType n = 1);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5590,9 +5590,9 @@ explicit fisher_f_distribution(RealType m = 1, RealType n = 1);
 
 \indexlibrary{\idxcode{fisher_f_distribution}!\idxcode{m}}%
 \indexlibrary{\idxcode{m}!\idxcode{fisher_f_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType m() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{m} parameter
@@ -5601,9 +5601,9 @@ RealType m() const;
 
 \indexlibrary{\idxcode{fisher_f_distribution}!\idxcode{n}}%
 \indexlibrary{\idxcode{n}!\idxcode{fisher_f_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType n() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{n} parameter
@@ -5635,7 +5635,7 @@ the probability density function%
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class student_t_distribution
 {
@@ -5662,13 +5662,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{student_t_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit student_t_distribution(RealType n = 1);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5680,9 +5680,9 @@ explicit student_t_distribution(RealType n = 1);
 
 \indexlibrary{\idxcode{student_t_distribution}!\idxcode{mean}}%
 \indexlibrary{\idxcode{mean}!\idxcode{student_t_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 RealType n() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The value of the \tcode{n} parameter
@@ -5737,7 +5737,7 @@ commonly known as the \techterm{weights}%
 Moreover, the following relation shall hold:
  $ 0 < S = w_0 + \cdots + w_{n-1} $.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class IntType = int>
  class discrete_distribution
 {
@@ -5769,12 +5769,12 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{discrete_distribution}!constructor}
-\begin{itemdecl}
+\begin{lstlisting}
 discrete_distribution();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{discrete_distribution} object
@@ -5787,10 +5787,10 @@ discrete_distribution();
 
 
 \indexlibrary{\idxcode{discrete_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   discrete_distribution(InputIterator firstW, InputIterator lastW);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5812,9 +5812,9 @@ template<class InputIterator>
 
 
 \indexlibrary{\idxcode{discrete_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 discrete_distribution(initializer_list<double> wl);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -5822,10 +5822,10 @@ discrete_distribution(initializer_list<double> wl);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{discrete_distribution}!constructor}
-\begin{itemdecl}
+\begin{lstlisting}
 template<class UnaryOperation>
   discrete_distribution(size_t nw, double xmin, double xmax, UnaryOperation fw);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -5855,9 +5855,9 @@ template<class UnaryOperation>
 
 \indexlibrary{\idxcode{discrete_distribution}!\idxcode{probabilities}}%
 \indexlibrary{\idxcode{probabilities}!\idxcode{discrete_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 vector<double> probabilities() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A \tcode{vector<double>}
@@ -5915,7 +5915,7 @@ commonly known as the \techterm{weights}%
 Moreover, the following relation shall hold:
  $ 0 < S = w_0 + \cdots + w_{n-1} $.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class piecewise_constant_distribution
 {
@@ -5950,13 +5950,13 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 piecewise_constant_distribution();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{piecewise_constant_distribution} object
@@ -5968,11 +5968,11 @@ piecewise_constant_distribution();
 
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIteratorB, class InputIteratorW>
  piecewise_constant_distribution(InputIteratorB firstB, InputIteratorB lastB,
                                  InputIteratorW firstW);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6002,10 +6002,10 @@ template<class InputIteratorB, class InputIteratorW>
 
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class UnaryOperation>
  piecewise_constant_distribution(initializer_list<RealType> bl, UnaryOperation fw);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6037,10 +6037,10 @@ template<class UnaryOperation>
 
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class UnaryOperation>
  piecewise_constant_distribution(size_t nw, RealType xmin, RealType xmax, UnaryOperation fw);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6066,9 +6066,9 @@ template<class UnaryOperation>
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!\idxcode{intervals}}%
 \indexlibrary{\idxcode{intervals}!\idxcode{piecewise_constant_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 vector<result_type> intervals() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A \tcode{vector<result_type>}
@@ -6079,9 +6079,9 @@ vector<result_type> intervals() const;
 
 \indexlibrary{\idxcode{piecewise_constant_distribution}!\idxcode{densities}}%
 \indexlibrary{\idxcode{densities}!\idxcode{piecewise_constant_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 vector<result_type> densities() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A \tcode{vector<result_type>}
@@ -6140,7 +6140,7 @@ Moreover, the following relation shall hold:
 \; \mbox{.}
 \]
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class RealType = double>
  class piecewise_linear_distribution
 {
@@ -6175,12 +6175,12 @@ public:
  result_type min() const;
  result_type max() const;
 };
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!constructor}
-\begin{itemdecl}
+\begin{lstlisting}
 piecewise_linear_distribution();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{piecewise_linear_distribution} object
@@ -6191,11 +6191,11 @@ piecewise_linear_distribution();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!constructor}
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIteratorB, class InputIteratorW>
  piecewise_linear_distribution(InputIteratorB firstB, InputIteratorB lastB,
                                InputIteratorW firstW);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6225,10 +6225,10 @@ template<class InputIteratorB, class InputIteratorW>
 
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class UnaryOperation>
  piecewise_linear_distribution(initializer_list<RealType> bl, UnaryOperation fw);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6260,10 +6260,10 @@ template<class UnaryOperation>
 
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class UnaryOperation>
  piecewise_linear_distribution(size_t nw, RealType xmin, RealType xmax, UnaryOperation fw);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires
@@ -6289,9 +6289,9 @@ template<class UnaryOperation>
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!\idxcode{intervals}}%
 \indexlibrary{\idxcode{intervals}!\idxcode{piecewise_linear_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 vector<result_type> intervals() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A \tcode{vector<result_type>}
@@ -6302,9 +6302,9 @@ vector<result_type> intervals() const;
 
 \indexlibrary{\idxcode{piecewise_linear_distribution}!\idxcode{densities}}%
 \indexlibrary{\idxcode{densities}!\idxcode{piecewise_linear_distribution}}%
-\begin{itemdecl}
+\begin{lstlisting}
 vector<result_type> densities() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns A \tcode{vector<result_type>}
@@ -6325,7 +6325,7 @@ vector<result_type> densities() const;
 
 \rSec2[valarray.syn]{Header \tcode{<valarray>} synopsis}
 \indexlibrary{\idxhdr{valarray}}%
-\begin{codeblock}
+\begin{lstlisting}
 #include <initializer_list>
 
 namespace std {
@@ -6444,7 +6444,7 @@ namespace std {
   template <class T> @\unspec{1}@ end(valarray<T>& v);
   template <class T> @\unspec{2}@ end(const valarray<T>& v);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header
@@ -6528,7 +6528,7 @@ Note that the exception is not mandated.
 \rSec3[template.valarray.overview]{Class template \tcode{valarray} overview}
 
 \indexlibrary{\idxcode{valarray}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class T> class valarray {
   public:
@@ -6617,7 +6617,7 @@ namespace std {
     void resize(size_t sz, T c = T());
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -6649,9 +6649,9 @@ as
 \rSec3[valarray.cons]{\tcode{valarray} constructors}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6670,9 +6670,9 @@ member function.}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit valarray(size_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6681,9 +6681,9 @@ The elements of the array are value-initialized~(\ref{dcl.init}).
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(const T&, size_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6693,9 +6693,9 @@ The elements of the array are initialized with the value of the first argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(const T*, size_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6715,9 +6715,9 @@ pointed to by the first argument, the behavior is undefined.%
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6732,9 +6732,9 @@ conceptually distinct.}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(valarray<T>&& v) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6748,9 +6748,9 @@ elements of the argument array.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(initializer_list<T> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6758,12 +6758,12 @@ valarray(initializer_list<T> il);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!\idxcode{constructor}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray(const slice_array<T>&);
 valarray(const gslice_array<T>&);
 valarray(const mask_array<T>&);
 valarray(const indirect_array<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6773,9 +6773,9 @@ to a
 \end{itemdescr}
 
 \indexlibrary{\idxcode{valarray}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~valarray();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6787,9 +6787,9 @@ an implementation may return all allocated memory.
 \rSec3[valarray.assign]{\tcode{valarray} assignment}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator=(const valarray<T>& v);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6806,9 +6806,9 @@ as if by calling \tcode{resize(v.size())}, before performing the assignment.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator=(valarray<T>&& v) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6821,9 +6821,9 @@ The value of \tcode{v} after the assignment is not specified.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray& operator=(initializer_list<T> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6835,9 +6835,9 @@ valarray& operator=(initializer_list<T> il);
 
 
 \indexlibrary{\idxcode{operator=}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator=(const T&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6848,12 +6848,12 @@ array to be assigned the value of the argument.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator=(const slice_array<T>&);
 valarray<T>& operator=(const gslice_array<T>&);
 valarray<T>& operator=(const mask_array<T>&);
 valarray<T>& operator=(const indirect_array<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6873,10 +6873,10 @@ the resulting behavior is undefined.
 \rSec3[valarray.access]{\tcode{valarray} element access}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const T&  operator[](size_t) const;
 T& operator[](size_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6968,71 +6968,71 @@ operators to allow selective replacement (slicing) of the controlled sequence.
 In each case the selected element(s) must exist.
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> operator[](slice slicearr) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object of class \tcode{valarray<T>} containing those
 elements of the controlled sequence designated by \tcode{slicearr}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const valarray<char> v0("abcdefghijklmnop", 16);
 // \tcode{v0[slice(2, 5, 3)]} returns \tcode{valarray<char>("cfilo", 5)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 slice_array<T> operator[](slice slicearr);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object that holds references to elements of the controlled
 sequence selected by \tcode{slicearr}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 valarray<char> v0("abcdefghijklmnop", 16);
 valarray<char> v1("ABCDE", 5);
 v0[slice(2, 5, 3)] = v1;
 // \tcode{v0 == valarray<char>("abAdeBghCjkDmnEp", 16);}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> operator[](const gslice& gslicearr) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object of class \tcode{valarray<T>} containing those
 elements of the controlled sequence designated by \tcode{gslicearr}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const valarray<char> v0("abcdefghijklmnop", 16);
 const size_t lv[] = { 2, 3 };
 const size_t dv[] = { 7, 2 };
 const valarray<size_t> len(lv, 2), str(dv, 2);
 // \tcode{v0[gslice(3, len, str)]} returns
 // \tcode{valarray<char>("dfhkmo", 6)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 gslice_array<T> operator[](const gslice& gslicearr);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object that holds references to elements of the controlled
 sequence selected by \tcode{gslicearr}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 valarray<char> v0("abcdefghijklmnop", 16);
 valarray<char> v1("ABCDE", 5);
 const size_t lv[] = { 2, 3 };
@@ -7040,83 +7040,83 @@ const size_t dv[] = { 7, 2 };
 const valarray<size_t> len(lv, 2), str(dv, 2);
 v0[gslice(3, len, str)] = v1;
 // \tcode{v0 == valarray<char>("abcAeBgCijDlEnFp", 16)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> operator[](const valarray<bool>& boolarr) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object of class \tcode{valarray<T>} containing those
 elements of the controlled sequence designated by \tcode{boolarr}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const valarray<char> v0("abcdefghijklmnop", 16);
 const bool vb[] = { false, false, true, true, false, true };
 // \tcode{v0[valarray<bool>(vb, 6)]} returns
 // \tcode{valarray<char>("cdf", 3)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 mask_array<T> operator[](const valarray<bool>& boolarr);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object that holds references to elements of the controlled
 sequence selected by \tcode{boolarr}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 valarray<char> v0("abcdefghijklmnop", 16);
 valarray<char> v1("ABC", 3);
 const bool vb[] = { false, false, true, true, false, true };
 v0[valarray<bool>(vb, 6)] = v1;
 // \tcode{v0 == valarray<char>("abABeCghijklmnop", 16)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> operator[](const valarray<size_t>& indarr) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object of class \tcode{valarray<T>} containing those
 elements of the controlled sequence designated by \tcode{indarr}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const valarray<char> v0("abcdefghijklmnop", 16);
 const size_t vi[] = { 7, 5, 2, 3, 8 };
 // \tcode{v0[valarray<size_t>(vi, 5)]} returns
 // \tcode{valarray<char>("hfcdi", 5)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 indirect_array<T> operator[](const valarray<size_t>& indarr);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns An object that holds references to elements of the controlled
 sequence selected by \tcode{indarr}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 valarray<char> v0("abcdefghijklmnop", 16);
 valarray<char> v1("ABCDE", 5);
 const size_t vi[] = { 7, 5, 2, 3, 8 };
 v0[valarray<size_t>(vi, 5)] = v1;
 // \tcode{v0 == valarray<char>("abCDeBgAEjklmnop", 16)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
@@ -7126,12 +7126,12 @@ v0[valarray<size_t>(vi, 5)] = v1;
 \indexlibrary{\idxcode{operator-}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator\~{}}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator"!}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> operator+() const;
 valarray<T> operator-() const;
 valarray<T> operator~() const;
 valarray<bool> operator!() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7160,7 +7160,7 @@ applying the indicated operator to the corresponding element of the array.
 \indexlibrary{\idxcode{operator"|=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator\shl=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator*= (const valarray<T>&);
 valarray<T>& operator/= (const valarray<T>&);
 valarray<T>& operator%= (const valarray<T>&);
@@ -7171,7 +7171,7 @@ valarray<T>& operator&= (const valarray<T>&);
 valarray<T>& operator|= (const valarray<T>&);
 valarray<T>& operator<<=(const valarray<T>&);
 valarray<T>& operator>>=(const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7217,7 +7217,7 @@ hand side, the resulting behavior is undefined.
 \indexlibrary{\idxcode{valarray}!\idxcode{operator\shl=}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator\shr=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T>& operator*= (const T&);
 valarray<T>& operator/= (const T&);
 valarray<T>& operator%= (const T&);
@@ -7228,7 +7228,7 @@ valarray<T>& operator&= (const T&);
 valarray<T>& operator|= (const T&);
 valarray<T>& operator<<=(const T&);
 valarray<T>& operator>>=(const T&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7253,9 +7253,9 @@ invalidate references or pointers to the elements of the array.
 
 \indexlibrary{\idxcode{swap}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(valarray& v) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7267,9 +7267,9 @@ void swap(valarray& v) noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{length}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t size() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7280,9 +7280,9 @@ size_t size() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sum}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 T sum() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 This function may only be instantiated for a type \tcode{T} to which
@@ -7304,9 +7304,9 @@ all other elements of the array in an unspecified order.%
 \end{itemdescr}
 
 \indexlibrary{\idxcode{min}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 T min() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7321,9 +7321,9 @@ lengths, the determination is made using
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 T max() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7338,9 +7338,9 @@ lengths, the determination is made using
 \end{itemdescr}
 
 \indexlibrary{\idxcode{shift}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> shift(int n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7369,9 +7369,9 @@ the first two elements of the result will be value-initialized~(\ref{dcl.init});
 of the first element of the argument; etc.
 \exitexample
 \indexlibrary{\idxcode{cshift}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> cshift(int n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 This function returns an object of class
@@ -7382,10 +7382,10 @@ that is a circular shift of \tcode{*this}. If element zero is taken as the leftm
 \end{itemdescr}
 
 \indexlibrary{\idxcode{apply}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 valarray<T> apply(T func(T)) const;
 valarray<T> apply(T func(const T&)) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7395,9 +7395,9 @@ the value returned by applying the argument function to the
 corresponding element of the array.
 
 \indexlibrary{\idxcode{resize}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void resize(size_t sz, T c = T());
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 This member function changes the length of the
@@ -7424,7 +7424,7 @@ Resizing invalidates all pointers and references to elements in the array.
 \indexlibrary{\idxcode{operator\shr}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator\&\&}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator"|"|}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> valarray<T> operator*
     (const valarray<T>&, const valarray<T>&);
 template<class T> valarray<T> operator/
@@ -7445,7 +7445,7 @@ template<class T> valarray<T> operator<<
     (const valarray<T>&, const valarray<T>&);
 template<class T> valarray<T> operator>>
     (const valarray<T>&, const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7486,7 +7486,7 @@ If the argument arrays do not have the same length, the behavior is undefined.%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator\shl}}%
 \indexlibrary{\idxcode{operator\shr}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator\shr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> valarray<T> operator* (const valarray<T>&, const T&);
 template<class T> valarray<T> operator* (const T&, const valarray<T>&);
 template<class T> valarray<T> operator/ (const valarray<T>&, const T&);
@@ -7507,7 +7507,7 @@ template<class T> valarray<T> operator<<(const valarray<T>&, const T&);
 template<class T> valarray<T> operator<<(const T&, const valarray<T>&);
 template<class T> valarray<T> operator>>(const valarray<T>&, const T&);
 template<class T> valarray<T> operator>>(const T&, const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7534,7 +7534,7 @@ corresponding element of the array argument and the non-array argument.
 \indexlibrary{\idxcode{operator>=}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator\&\&}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{operator"|"|}!\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> valarray<bool> operator==
     (const valarray<T>&, const valarray<T>&);
 template<class T> valarray<bool> operator!=
@@ -7551,7 +7551,7 @@ template<class T> valarray<bool> operator&&
     (const valarray<T>&, const valarray<T>&);
 template<class T> valarray<bool> operator||
     (const valarray<T>&, const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7589,7 +7589,7 @@ the behavior is undefined.%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator\&\&}}%
 \indexlibrary{\idxcode{operator"|"|}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{operator"|"|}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> valarray<bool> operator==(const valarray<T>&, const T&);
 template<class T> valarray<bool> operator==(const T&, const valarray<T>&);
 template<class T> valarray<bool> operator!=(const valarray<T>&, const T&);
@@ -7606,7 +7606,7 @@ template<class T> valarray<bool> operator&&(const valarray<T>&, const T&);
 template<class T> valarray<bool> operator&&(const T&, const valarray<T>&);
 template<class T> valarray<bool> operator||(const valarray<T>&, const T&);
 template<class T> valarray<bool> operator||(const T&, const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7641,7 +7641,7 @@ indicated operator to the corresponding element of the array and the non-array a
 \indexlibrary{\idxcode{sqrt}}%
 \indexlibrary{\idxcode{tan}}%
 \indexlibrary{\idxcode{tanh}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> valarray<T> abs  (const valarray<T>&);
 template<class T> valarray<T> acos (const valarray<T>&);
 template<class T> valarray<T> asin (const valarray<T>&);
@@ -7664,7 +7664,7 @@ template<class T> valarray<T> sinh (const valarray<T>&);
 template<class T> valarray<T> sqrt (const valarray<T>&);
 template<class T> valarray<T> tan  (const valarray<T>&);
 template<class T> valarray<T> tanh (const valarray<T>&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7678,9 +7678,9 @@ or which can be unambiguously implicitly converted to type \tcode{T}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class T> void swap(valarray<T>& x, valarray<T>& y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7693,7 +7693,7 @@ template <class T> void swap(valarray<T>& x, valarray<T>& y) noexcept;
 \rSec3[class.slice.overview]{Class \tcode{slice} overview}
 
 \indexlibrary{\idxcode{slice}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class slice {
   public:
@@ -7705,7 +7705,7 @@ namespace std {
     size_t stride() const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -7726,11 +7726,11 @@ August, 1988.}
 \rSec3[cons.slice]{\tcode{slice} constructors}
 
 \indexlibrary{\idxcode{slice}!\idxcode{slice}}%
-\begin{itemdecl}
+\begin{lstlisting}
 slice();
 slice(size_t start, size_t length, size_t stride);
 slice(const slice&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7750,11 +7750,11 @@ constructs a slice which selects elements 3, 5, 7, ... 17 from an array.
 \indexlibrary{\idxcode{start}!\idxcode{slice}}%
 \indexlibrary{\idxcode{size}!\idxcode{slice}}%
 \indexlibrary{\idxcode{stride}!\idxcode{slice}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t start() const;
 size_t size() const;
 size_t stride() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7770,7 +7770,7 @@ by a \tcode{slice} object.
 \rSec3[template.slice.array.overview]{Class template \tcode{slice_array} overview}
 
 \indexlibrary{\idxcode{slice_array}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class T> class slice_array {
   public:
@@ -7796,7 +7796,7 @@ namespace std {
     slice_array() = delete;       // as implied by declaring copy constructor above
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -7805,9 +7805,9 @@ template is a helper template used by the
 \tcode{slice}
 subscript operator
 
-\begin{codeblock}
+\begin{lstlisting}
 slice_array<T> valarray<T>::operator[](slice);
-\end{codeblock}
+\end{lstlisting}
 
 It has reference semantics to a subset of an array specified by a
 \tcode{slice}
@@ -7830,10 +7830,10 @@ are 1, 4, ..., 13.
 \rSec3[slice.arr.assign]{\tcode{slice_array} assignment}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{slice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const valarray<T>&) const;
 const slice_array& operator=(const slice_array&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7858,7 +7858,7 @@ object refers.
 \indexlibrary{\idxcode{operator"|=}!\idxcode{slice_array}}%
 \indexlibrary{\idxcode{operator\shl=}!\idxcode{slice_array}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{slice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator*= (const valarray<T>&) const;
 void operator/= (const valarray<T>&) const;
 void operator%= (const valarray<T>&) const;
@@ -7869,7 +7869,7 @@ void operator&= (const valarray<T>&) const;
 void operator|= (const valarray<T>&) const;
 void operator<<=(const valarray<T>&) const;
 void operator>>=(const valarray<T>&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7885,9 +7885,9 @@ object refers.
 \rSec3[slice.arr.fill]{\tcode{slice_array} fill function}
 
 \indexlibrary{\idxcode{fill}!\idxcode{slice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const T&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7904,7 +7904,7 @@ object refers.
 \rSec3[class.gslice.overview]{The \tcode{gslice} class overview}
 
 \indexlibrary{\idxcode{gslice}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class gslice {
   public:
@@ -7916,7 +7916,7 @@ namespace std {
     valarray<size_t> stride() const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 This class represents a generalized slice out of an array.
@@ -7948,11 +7948,11 @@ where the multidimensional indices $i_j$ range in value from
 The
 \tcode{gslice}
 specification
-\begin{codeblock}
+\begin{lstlisting}
 start  = 3
 length = {2, 4, 3}
 stride = {19, 4, 1}
-\end{codeblock}
+\end{lstlisting}
 yields the sequence of one-dimensional indices
 
 $$k = 3 + (0,1) \times 19 + (0,1,2,3) \times 4 + (0,1,2) \times 1$$
@@ -8016,12 +8016,12 @@ the resulting behavior is undefined.
 \rSec3[gslice.cons]{\tcode{gslice} constructors}
 
 \indexlibrary{\idxcode{gslice}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 gslice();
 gslice(size_t start, const valarray<size_t>& lengths,
          const valarray<size_t>& strides);
 gslice(const gslice&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8038,11 +8038,11 @@ in the previous section.
 \indexlibrary{\idxcode{start}!\idxcode{gslice}}%
 \indexlibrary{\idxcode{size}!\idxcode{gslice}}%
 \indexlibrary{\idxcode{stride}!\idxcode{gslice}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t           start()  const;
 valarray<size_t> size() const;
 valarray<size_t> stride() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8059,7 +8059,7 @@ are linear in the number of strides.
 \rSec3[template.gslice.array.overview]{Class template \tcode{gslice_array} overview}
 
 \indexlibrary{\idxcode{gslice_array}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class T> class gslice_array {
   public:
@@ -8085,7 +8085,7 @@ namespace std {
     gslice_array() = delete;      // as implied by declaring copy constructor above
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 This template is a helper template used by the
@@ -8094,9 +8094,9 @@ subscript operator
 
 \indexlibrary{\idxcode{gslice_array}}%
 \indexlibrary{\idxcode{valarray}}%
-\begin{itemdecl}
+\begin{lstlisting}
 gslice_array<T> valarray<T>::operator[](const gslice&);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8117,10 +8117,10 @@ generalized slice of the elements in
 \rSec3[gslice.array.assign]{\tcode{gslice_array} assignment}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{gslice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const valarray<T>&) const;
 const gslice_array& operator=(const gslice_array&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8144,7 +8144,7 @@ refers.
 \indexlibrary{\idxcode{operator"|=}!\idxcode{gslice_array}}%
 \indexlibrary{\idxcode{operator\shl=}!\idxcode{gslice_array}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{gslice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator*= (const valarray<T>&) const;
 void operator/= (const valarray<T>&) const;
 void operator%= (const valarray<T>&) const;
@@ -8155,7 +8155,7 @@ void operator&= (const valarray<T>&) const;
 void operator|= (const valarray<T>&) const;
 void operator<<=(const valarray<T>&) const;
 void operator>>=(const valarray<T>&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8171,9 +8171,9 @@ object refers.
 \rSec3[gslice.array.fill]{\tcode{gslice_array} fill function}
 
 \indexlibrary{\idxcode{fill}!\idxcode{gslice_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const T&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8190,7 +8190,7 @@ object refers.
 \rSec3[template.mask.array.overview]{Class template \tcode{mask_array} overview}
 
 \indexlibrary{\idxcode{mask_array}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class T> class mask_array {
   public:
@@ -8216,16 +8216,16 @@ namespace std {
     mask_array() = delete;        // as implied by declaring copy constructor above
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 This template is a helper template used by the mask subscript operator:
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{mask_array}}%
 \indexlibrary{\idxcode{mask_array}!\idxcode{operator[]}}%
-\begin{itemdecl}
+\begin{lstlisting}
 mask_array<T> valarray<T>::operator[](const valarray<bool>&).
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8247,10 +8247,10 @@ is
 \rSec3[mask.array.assign]{\tcode{mask_array} assignment}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{mask_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const valarray<T>&) const;
 const mask_array& operator=(const mask_array&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8272,7 +8272,7 @@ object to which it refers.
 \indexlibrary{\idxcode{operator"|=}!\idxcode{mask_array}}%
 \indexlibrary{\idxcode{operator\shl=}!\idxcode{mask_array}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{mask_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator*= (const valarray<T>&) const;
 void operator/= (const valarray<T>&) const;
 void operator%= (const valarray<T>&) const;
@@ -8283,7 +8283,7 @@ void operator&= (const valarray<T>&) const;
 void operator|= (const valarray<T>&) const;
 void operator<<=(const valarray<T>&) const;
 void operator>>=(const valarray<T>&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8297,9 +8297,9 @@ object to which the mask object refers.
 \rSec3[mask.array.fill]{\tcode{mask_array} fill function}
 
 \indexlibrary{\idxcode{fill}!\idxcode{mask_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const T&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8316,7 +8316,7 @@ object refers.
 \rSec3[template.indirect.array.overview]{Class template \tcode{indirect_array} overview}
 
 \indexlibrary{\idxcode{indirect_array}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class T> class indirect_array {
   public:
@@ -8342,16 +8342,16 @@ namespace std {
     indirect_array() = delete;        // as implied by declaring copy constructor above
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 This template is a helper template used by the indirect subscript operator
 
 \indexlibrary{\idxcode{operator[]}!\idxcode{indirect_array}}%
 \indexlibrary{\idxcode{indirect_array}!\idxcode{operator[]}}%
-\begin{itemdecl}
+\begin{lstlisting}
 indirect_array<T> valarray<T>::operator[](const valarray<size_t>&).
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8370,10 +8370,10 @@ whose indices appear in
 \rSec3[indirect.array.assign]{\tcode{indirect_array} assignment}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{indirect_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const valarray<T>&) const;
 const indirect_array& operator=(const indirect_array&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8392,12 +8392,12 @@ object to which it refers more than once, the behavior is undefined.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int addr[] = {2, 3, 1, 4, 4};
 valarray<size_t> indirect(addr, 5);
 valarray<double> a(0., 10), b(1., 5);
 a[indirect] = b;
-\end{codeblock}
+\end{lstlisting}
 results in undefined behavior since element 4 is specified twice in the
 indirection.
 \exitexample
@@ -8417,7 +8417,7 @@ indirection.
 \indexlibrary{\idxcode{operator"|=}!\idxcode{indirect_array}}%
 \indexlibrary{\idxcode{operator\shl=}!\idxcode{indirect_array}}%
 \indexlibrary{\idxcode{operator\shr=}!\idxcode{indirect_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator*= (const valarray<T>&) const;
 void operator/= (const valarray<T>&) const;
 void operator%= (const valarray<T>&) const;
@@ -8428,7 +8428,7 @@ void operator&= (const valarray<T>&) const;
 void operator|= (const valarray<T>&) const;
 void operator<<=(const valarray<T>&) const;
 void operator>>=(const valarray<T>&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8452,9 +8452,9 @@ the behavior is undefined.
 \rSec3[indirect.array.fill]{\tcode{indirect_array} fill function}
 
 \indexlibrary{\idxcode{fill}!\idxcode{indirect_array}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator=(const T&) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8486,10 +8486,10 @@ first.
 
 \indexlibrary{\idxcode{begin}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{begin}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class T> @\unspec{1}@ begin(valarray<T>& v);
 template <class T> @\unspec{2}@ begin(const valarray<T>& v);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8498,10 +8498,10 @@ template <class T> @\unspec{2}@ begin(const valarray<T>& v);
 
 \indexlibrary{\idxcode{end}!\idxcode{valarray}}%
 \indexlibrary{\idxcode{valarray}!\idxcode{end}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class T> @\unspec{1}@ end(valarray<T>& v);
 template <class T> @\unspec{2}@ end(const valarray<T>& v);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8514,7 +8514,7 @@ template <class T> @\unspec{2}@ end(const valarray<T>& v);
 \rSec2[numeric.ops.overview]{Header \tcode{<numeric>} synopsis}
 
 \indexlibrary{\idxhdr{numeric}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class InputIterator, class T>
     T accumulate(InputIterator first, InputIterator last, T init);
@@ -8557,7 +8557,7 @@ namespace std {
   template <class ForwardIterator, class T>
     void iota(ForwardIterator first, ForwardIterator last, T value);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The requirements on the types of algorithms' arguments that are
@@ -8567,13 +8567,13 @@ apply to the following algorithms.
 \rSec2[accumulate]{Accumulate}
 
 \indexlibrary{\idxcode{accumulate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class T>
   T accumulate(InputIterator first, InputIterator last, T init);
 template <class InputIterator, class T, class BinaryOperation>
   T accumulate(InputIterator first, InputIterator last, T init,
                BinaryOperation binary_op);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8609,7 +8609,7 @@ shall neither modify elements nor invalidate iterators or subranges.\footnote{Th
 \indexlibrary{\idxcode{inner_product}}%
 
 \indexlibrary{\idxcode{inner_product}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator1, class InputIterator2, class T>
   T inner_product(InputIterator1 first1, InputIterator1 last1,
                   InputIterator2 first2, T init);
@@ -8619,7 +8619,7 @@ template <class InputIterator1, class InputIterator2, class T,
                   InputIterator2 first2, T init,
                   BinaryOperation1 binary_op1,
                   BinaryOperation2 binary_op2);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8659,7 +8659,7 @@ shall neither modify elements nor invalidate iterators or subranges.\footnote{Th
 \rSec2[partial.sum]{Partial sum}
 
 \indexlibrary{\idxcode{partial_sum}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class OutputIterator>
   OutputIterator partial_sum(
     InputIterator first, InputIterator last,
@@ -8669,7 +8669,7 @@ template
     OutputIterator partial_sum(
       InputIterator first, InputIterator last,
       OutputIterator result, BinaryOperation binary_op);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8715,7 +8715,7 @@ may be equal to
 \rSec2[adjacent.difference]{Adjacent difference}
 
 \indexlibrary{\idxcode{adjacent_difference}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class OutputIterator>
   OutputIterator adjacent_difference(
     InputIterator first, InputIterator last,
@@ -8725,7 +8725,7 @@ template <class InputIterator, class OutputIterator, class BinaryOperation>
     InputIterator first, InputIterator last,
     OutputIterator result,
     BinaryOperation binary_op);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \effects For a non-empty range,
@@ -8771,10 +8771,10 @@ the binary operation.
 \rSec2[numeric.iota]{Iota}
 
 \indexlibrary{\idxcode{iota}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class ForwardIterator, class T>
   void iota(ForwardIterator first, ForwardIterator last, T value);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8966,12 +8966,12 @@ overloaded versions of these functions, with the same semantics.
 The added signatures are:
 \indexlibrary{\idxcode{abs}}%
 \indexlibrary{\idxcode{div}}%
-\begin{codeblock}
+\begin{lstlisting}
 long abs(long);                     // \tcode{labs()}
 long long abs(long long);           // \tcode{llabs()}
 ldiv_t div(long, long);             // \tcode{ldiv()}
 lldiv_t div(long long, long long);  // \tcode{lldiv()}
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 In addition to the
@@ -9046,7 +9046,7 @@ The added signatures are:
 \indexlibrary{\idxcode{tgamma}}%
 \indexlibrary{\idxcode{trunc}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 float abs(float);
 float acos(float);
 float acosh(float);
@@ -9164,7 +9164,7 @@ long double tan(long double);
 long double tanh(long double);
 long double tgamma(long double);
 long double trunc(long double);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The classification/comparison functions behave the same as the C macros with the
@@ -9184,7 +9184,7 @@ types, as follows:
 \indexlibrary{\idxcode{islessequal}}%
 \indexlibrary{\idxcode{islessgreater}}%
 \indexlibrary{\idxcode{isunordered}}%
-\begin{codeblock}
+\begin{lstlisting}
 int fpclassify(float x);
 bool isfinite(float x);
 bool isinf(float x);
@@ -9226,7 +9226,7 @@ bool isless(long double x, long double y);
 bool islessequal(long double x, long double y);
 bool islessgreater(long double x, long double y);
 bool isunordered(long double x, long double y);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Moreover, there shall be additional overloads sufficient to ensure:

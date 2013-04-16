@@ -184,7 +184,7 @@ character set (described in translation phase 1) is specified as implementation-
 an implementation is required to document how the basic source characters are
 represented in source files.}
 
-\begin{codeblock}
+\begin{lstlisting}
 a b c d e f g h i j k l m n o p q r s t u v w x y z
 
 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
@@ -192,7 +192,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 0 1 2 3 4 5 6 7 8 9
 
 _ { } [ ] # ( ) < > % : ; . ? * + - / ^ & | @$\sim$@ ! = , @\textbackslash@ " '
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The \grammarterm{universal-character-name} construct provides a way to name
@@ -270,15 +270,15 @@ Table~\ref{tab:trigraph.sequences}.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 ??=define arraycheck(a,b) a??(b??) ??!??! b??(a??)
-\end{codeblock}
+\end{lstlisting}
 
 becomes
 
-\begin{codeblock}
+\begin{lstlisting}
 #define arraycheck(a,b) a[b] || b[a]
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -357,10 +357,10 @@ would cause further lexical analysis to fail.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 #define R "x"
 const char* s = R"y";           // ill-formed raw string, not \tcode{"x" "y"}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1340,37 +1340,37 @@ shall consist of at most 16 characters.
 resulting execution \term{string-literal}. Assuming no
 whitespace at the beginning of lines in the following example, the assert will succeed:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char *p = R"(a\
 b
 c)";
 assert(std::strcmp(p, "a\\\nb\nc") == 0);
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
 \enterexample The raw string
 
-\begin{codeblock}
+\begin{lstlisting}
 R"a(
 )\
 a"
 )a"
-\end{codeblock}
+\end{lstlisting}
 
 is equivalent to \tcode{"\textbackslash n)\textbackslash \textbackslash \textbackslash na\textbackslash"\textbackslash n"}. The raw string
 
-\begin{codeblock}
+\begin{lstlisting}
 R"(??)"
-\end{codeblock}
+\end{lstlisting}
 
 is equivalent to \tcode{"\textbackslash?\textbackslash?"}. The raw string
 
-\begin{codeblock}
+\begin{lstlisting}
 R"#(
 )??="
 )#"
-\end{codeblock}
+\end{lstlisting}
 
 is equivalent to \tcode{"\textbackslash n)\textbackslash?\textbackslash?=\textbackslash"\textbackslash n"}. \exitexample
 
@@ -1472,9 +1472,9 @@ Means \\
 Characters in concatenated strings are kept distinct.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 "\xA" "B"
-\end{codeblock}
+\end{lstlisting}
 
 contains the two characters \tcode{'\textbackslash xA'} and \tcode{'B'}
 after concatenation (and not the single hexadecimal character
@@ -1610,25 +1610,25 @@ without its \grammarterm{ud-suffix}. If \term{S} contains a literal operator wit
 parameter type \tcode{unsigned long long}, the literal \term{L} is treated as a call of
 the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@\term{n}@ULL)
-\end{codeblock}
+\end{lstlisting}
 
 Otherwise, \term{S} shall contain a raw literal operator or a literal operator
 template~(\ref{over.literal}) but not both. If \term{S} contains a raw literal operator,
 the \term{literal} \term{L} is treated as a call of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@"\term{n}{"}@)
-\end{codeblock}
+\end{lstlisting}
 
 Otherwise (\term{S} contains a literal operator template), \term{L} is treated as a call
 of the form
 
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@<'@$c_1$@', '@$c_2$@', ... '@$c_k$@'>()
-\end{codeblock}
+\end{lstlisting}
 
 where \term{n} is the source character sequence $c_1c_2...c_k$. \enternote The sequence
 $c_1c_2...c_k$ can only contain characters from the basic source character set.
@@ -1640,24 +1640,24 @@ literal without its \grammarterm{ud-suffix}. If \term{S} contains a literal oper
 with parameter type \tcode{long double}, the literal \term{L} is treated as a call of
 the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@\term{f}@L)
-\end{codeblock}
+\end{lstlisting}
 
 Otherwise, \term{S} shall contain a raw literal operator or a literal operator
 template~(\ref{over.literal}) but not both. If \term{S} contains a raw literal operator,
 the \term{literal} \term{L} is treated as a call of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@"\term{f}{"}@)
-\end{codeblock}
+\end{lstlisting}
 
 Otherwise (\term{S} contains a literal operator template), \term{L} is treated as a call
 of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@<'@$c_1$@', '@$c_2$@', ... '@$c_k$@'>()
-\end{codeblock}
+\end{lstlisting}
 
 where \term{f} is the source character sequence $c_1c_2...c_k$. \enternote The sequence
 $c_1c_2...c_k$ can only contain characters from the basic source character set.
@@ -1671,9 +1671,9 @@ code units in \term{str} (i.e., its length excluding the terminating
 null character).
  The literal \term{L} is treated as a call of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@\term{str}{}@, @\term{len}{}@)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 If \term{L} is a \grammarterm{user-defined-character-literal}, let \term{ch} be the
@@ -1683,14 +1683,14 @@ the type of \term{ch} and the
 literal \term{L} is treated as a call
 of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 operator "" @\term{X}@(@\term{ch}{}@)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 long double operator "" _w(long double);
 std::string operator "" _w(const char16_t*, size_t);
 unsigned operator "" _w(const char*);
@@ -1700,7 +1700,7 @@ int main() {
   12_w;       // calls \tcode{operator "" _w("12")}
   "two"_w;    // error: no applicable literal operator
 }
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1716,12 +1716,12 @@ and that suffix is applied to the result of the concatenation.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int main() {
   L"A" "B" "C"_x; // OK: same as \tcode{L"ABC"_x}
   "P"_x "Q" "R"_y;// error: two different \grammarterm{ud-suffix}{es}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 
 \pnum

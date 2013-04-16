@@ -98,9 +98,9 @@ of the \grammarterm{init-declarator-list}.
 entity may appear at the start of the declaration and after the
 \grammarterm{declarator-id} for that declaration.
 \exitnote \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 [[noreturn]] void f [[noreturn]] (); // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 Except where otherwise specified, the meaning of an \grammarterm{attribute-declaration}
@@ -140,10 +140,10 @@ the program, or shall redeclare a name introduced by a previous
 declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum { };           // ill-formed
 typedef class { };  //  ill-formed
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -160,9 +160,9 @@ source character set~(\ref{lex.charset}) are not required to appear in
 the diagnostic message.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 static_assert(sizeof(long) >= 8, "64-bit code generation required for this library.");
-\end{codeblock}\exitexample
+\end{lstlisting}\exitexample
 
 \pnum
 An \grammarterm{empty-declaration} has no effect.
@@ -245,10 +245,10 @@ The sequence shall be self-consistent as
 described below.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef char* Pc;
 static Pc;                      // error: name missing
-\end{codeblock}
+\end{lstlisting}
 
 Here, the declaration \tcode{static} \tcode{Pc} is ill-formed because no
 name was specified for the static variable of type \tcode{Pc}. To get a
@@ -258,10 +258,10 @@ the \grammarterm{typedef-name} \tcode{Pc} is the name being (re)declared,
 rather than being part of the \grammarterm{decl-specifier} sequence. For
 another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(const Pc);               // \tcode{void f(char* const)} (not \tcode{const char*})
 void g(const int Pc);           // \tcode{void g(const int)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -275,10 +275,10 @@ by default imply \tcode{int}, a \grammarterm{type-name} appearing after one
 of those specifiers is treated as the name being (re)declared.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void h(unsigned Pc);            // \tcode{void h(unsigned int)}
 void k(unsigned int Pc);        // \tcode{void k(unsigned int)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -399,7 +399,7 @@ can have a different linkage, however.
 \enterexample
 \indextext{example!linkage consistency}%
 
-\begin{codeblock}
+\begin{lstlisting}
 static char* f();               // \tcode{f()} has internal linkage
 char* f()                       // \tcode{f()} still has internal linkage
   { /* ... */ }
@@ -431,7 +431,7 @@ static int c;                   // error: inconsistent linkage
 
 extern int d;                   // \tcode{d} has external linkage
 static int d;                   // error: inconsistent linkage
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -441,7 +441,7 @@ The name of a declared but undefined class can be used in an
 that do not require a complete class type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S;
 extern S a;
 extern S f();
@@ -451,7 +451,7 @@ void h() {
   g(a);                         // error: \tcode{S} is incomplete
   f();                          // error: \tcode{S} is incomplete
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -461,12 +461,12 @@ members~(\ref{class.mem}) and cannot be applied to names declared
 members.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   mutable const int* p;         // OK
   mutable int* const q;         // ill-formed
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -584,16 +584,16 @@ declaration~(\ref{class.name}) or enum declaration does.
 \indextext{example!\idxcode{typedef}}%
 after
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int MILES, *KLICKSP;
-\end{codeblock}
+\end{lstlisting}
 
 the constructions
 
-\begin{codeblock}
+\begin{lstlisting}
 MILES distance;
 extern KLICKSP metricp;
-\end{codeblock}
+\end{lstlisting}
 
 are all correct declarations; the type of \tcode{distance} is
 \tcode{int} and that of \tcode{metricp} is ``pointer to \tcode{int}.''
@@ -611,12 +611,12 @@ particular, it does not define a new type and it shall not appear in the
 \grammarterm{type-id}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 using handler_t = void (*)(int);
 extern handler_t ignore;
 extern void (*ignore)(int);         // redeclare \tcode{ignore}
 using cell = pair<void*, cell*>;    // ill-formed
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -627,12 +627,12 @@ redefine the name of any type declared in that scope to refer to the
 type to which it already refers.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef struct s { /* ... */ } s;
 typedef int I;
 typedef int I;
 typedef I I;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -642,13 +642,13 @@ also a \grammarterm{typedef-name} to refer to the type to which it already
 refers.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   typedef struct A { } A;       // OK
   typedef struct B B;           // OK
   typedef A A;                  // error
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -657,14 +657,14 @@ entity that can be referenced using an \grammarterm{elaborated-type-specifier},
 the entity can continue to be referenced by an
 \grammarterm{elaborated-type-specifier} or as an enumeration or class name
 in an enumeration or class definition respectively. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S;
 typedef struct S S;
 int main() {
   struct S* p;                  // OK
 }
 struct S { };                   // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -673,10 +673,10 @@ redefine the name of any type declared in that scope to refer to a
 different type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class complex { /* ... */ };
 typedef int complex;            // error: redefinition
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -686,10 +686,10 @@ declared in that scope and refers to a type other than the class or
 enumeration itself.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int complex;
 class complex @\tcode{\{ /* ... */ \}}@;   // error: redefinition
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -705,7 +705,7 @@ declaration~(\ref{class.dtor}), the program is ill-formed.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S();
   ~S();
@@ -715,7 +715,7 @@ typedef struct S T;
 
 S a = T();                      // OK
 struct T * p;                   // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -728,9 +728,9 @@ type (or enum type) is used to denote the class type (or enum type) for
 linkage purposes only~(\ref{basic.link}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef struct { } *ps, S;      // \tcode{S} is the class name for linkage purposes
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.friend]{The \tcode{friend} specifier}%
@@ -756,7 +756,7 @@ explicit specialization can differ from the template declaration with respect to
 \enternote
 Function parameters cannot be declared \tcode{constexpr}.\exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 constexpr int square(int x);    // OK: declaration
 constexpr int bufsz = 1024;     // OK: definition
 constexpr struct pixel {        // error: \tcode{pixel} is a type
@@ -778,7 +778,7 @@ int next(constexpr int x) {     // error: not for parameters
      return x + 1;
 } 
 extern constexpr int memsz;     // error: not a definition 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -826,7 +826,7 @@ do not define classes or enumerations,
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 constexpr int square(int x) 
   { return x * x; }             // OK
 constexpr long long_max() 
@@ -842,7 +842,7 @@ constexpr int g(int x, int n) { // error: body not just ``return expr''
   while (--n > 0) r *= x;
   return r;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -899,13 +899,13 @@ shall be a constant expression.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct Length { 
   explicit constexpr Length(int i = 0) : val(i) { }
 private: 
     int val; 
 }; 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -938,7 +938,7 @@ return type of the function as if by copy-initialization.
 
 Such substitution does not change the
 meaning. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 constexpr int f(void *) { return 0; }
 constexpr int f(...) { return 1; }
 constexpr int g1() { return f(0); }         // calls \tcode{f(void *)}
@@ -951,7 +951,7 @@ namespace N {
 }
 constexpr int c = 0;
 constexpr int g4() { return N::h(); }       // value is \tcode{5}, \tcode{c} is not looked up again after the substitution
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 For a \tcode{constexpr} function, if no function argument values exist such that the function
@@ -961,7 +961,7 @@ argument values exist such that after function invocation substitution, every co
 call and full-expression in the \grammarterm{mem-initializer}{s} would be a constant
 expression (including conversions), the program is ill-formed; no diagnostic required.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 constexpr int f(bool b)
   { return b ? throw 0 : 0; }               // OK
 constexpr int f() { return f(true); }       // ill-formed, no diagnostic required
@@ -977,7 +977,7 @@ struct D : B {
   constexpr D() : B(global) { }             // ill-formed, no diagnostic required
                                             // lvalue-to-rvalue conversion on non-constant \tcode{global}
 };
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1011,7 +1011,7 @@ of the function declarator of the declaration of such a member function.
 The class of
 which that function is a member shall be a literal
 type~(\ref{basic.types}). \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class debug_flag { 
 public: 
   explicit debug_flag(bool); 
@@ -1025,7 +1025,7 @@ constexpr int bar(int x, int y) // OK
 // ... 
 int bar(int x, int y)           // error: redefinition of \tcode{bar}
     { return x * 2 + 3 * y; } 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1043,13 +1043,13 @@ implicit conversion used in converting the initializer expressions and each cons
 used for the initialization shall be one of those allowed in a constant
 expression~(\ref{expr.const}).
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct pixel { 
   int x, y; 
 }; 
 constexpr pixel ur = { 1294, 1024 };// OK 
 constexpr pixel origin;             // error: initializer missing 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.type]{Type specifiers}%
@@ -1191,7 +1191,7 @@ can be modified, any attempt to modify a \tcode{const} object during its
 lifetime~(\ref{basic.life}) results in undefined behavior.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 const int ci = 3;               // cv-qualified (initialized as required)
 ci = 4;                         // ill-formed: attempt to modify \tcode{const}
 
@@ -1207,12 +1207,12 @@ ip = const_cast<int*>(cip);     // cast needed to convert \tcode{const int*} to 
 const int* ciq = new const int (3);     // initialized as required
 int* iq = const_cast<int*>(ciq);        // cast required
 *iq = 4;                                // undefined: modifies a \tcode{const} object
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For another example
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   mutable int i;
   int j;
@@ -1228,7 +1228,7 @@ y.x.j++;                        // ill-formed: \tcode{const}-qualified member mo
 Y* p = const_cast<Y*>(&y);      // cast away const-ness of \tcode{y}
 p->x.i = 99;                    // well-formed: \tcode{mutable} member can be modified
 p->x.j = 99;                    // undefined: modifies a \tcode{const} member
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1400,7 +1400,7 @@ The operand of the \tcode{decltype} specifier is an unevaluated
 operand (Clause~\ref{expr}).
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const int&& foo();
 int i;
 struct A { double x; };
@@ -1409,7 +1409,7 @@ decltype(foo()) x1 = 0;         // type is \tcode{const int\&\&}
 decltype(i) x2;                 // type is \tcode{int}
 decltype(a->x) x3;              // type is \tcode{double}
 decltype((a->x)) x4 = x3;       // type is \tcode{const double\&}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1423,7 +1423,7 @@ writing the expression is merely to refer to its type. In that sense, a
 so the usual reasons for requiring a complete type do not apply. In particular,
 it is not necessary to allocate storage for a temporary object or to enforce the
 semantic constraints associated with invoking the type's destructor. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A { ~A() = delete; };
 template<class T> auto h()
   -> A<T>;
@@ -1450,7 +1450,7 @@ void r() {
                                 // The return type is \tcode{A<int>}, so a temporary is introduced and its
                                 // destructor is used, so the program is ill-formed.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample\exitnote
 
 \rSec3[dcl.type.elab]{Elaborated type specifiers}%
@@ -1505,9 +1505,9 @@ the
 This implies that, within a class template with a template
 \grammarterm{type-parameter} \tcode{T}, the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 friend class T;
-\end{codeblock}
+\end{lstlisting}
 
 is ill-formed. However, the similar declaration \tcode{friend T;} is allowed~(\ref{class.friend}).
 \exitnote
@@ -1530,10 +1530,10 @@ used to refer to an enumeration~(\ref{dcl.enum}), the \tcode{union}
 (Clause~\ref{class}) declared using the \tcode{class} or \tcode{struct}
 \grammarterm{class-key}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum class E { a, b };
 enum E x = E::a;                // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[dcl.spec.auto]{\tcode{auto} specifier}%
@@ -1563,20 +1563,20 @@ shall be followed by one or more \grammarterm{init-declarator}{s}, each of which
 have a non-empty \grammarterm{initializer}. In an
 \grammarterm{initializer} of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 ( @\grammarterm{expression-list}@ )
-\end{codeblock}
+\end{lstlisting}
 
 the \grammarterm{expression-list} shall be a single
 \grammarterm{assignment-expression}.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 auto x = 5;                 // OK: \tcode{x} has type \tcode{int}
 const auto *v = &x, u = 6;  // OK: \tcode{v} has type \tcode{const int*}, \tcode{u} has type \tcode{const int}
 static auto y = 0.0;        // OK: \tcode{y} has type \tcode{double}
 auto int r;                 // error: auto is not a \grammarterm{storage-class-specifier}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1608,23 +1608,23 @@ deduction from a function call~(\ref{temp.deduct.call}), where \tcode{P} is a
 function template parameter type and the initializer for \tcode{d} is the
 corresponding argument. If the deduction fails, the declaration is ill-formed.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 auto x1 = { 1, 2 };         // \tcode{decltype(x1)} is \tcode{std::initializer_list<int>}
 auto x2 = { 1, 2.0 };       // error: cannot deduce element type
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const auto &i = expr;
-\end{codeblock}
+\end{lstlisting}
 
 The type of \tcode{i} is the deduced type of the parameter \tcode{u} in
 the call \tcode{f(expr)} of the following invented function template:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class U> void f(const U& u);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1636,10 +1636,10 @@ described above, and if the type that replaces the occurrence of
 ill-formed.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 auto x = 5, *y = &x;        // OK: \tcode{auto} is \tcode{int}
 auto a = 5, b = { 1, 2 };   // error: different types for \tcode{auto}
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{specifier|)}
 
@@ -1741,10 +1741,10 @@ by one.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum { a, b, c=0 };
 enum { d, e, f=e+2 };
-\end{codeblock}
+\end{lstlisting}
 
 defines \tcode{a}, \tcode{c}, and \tcode{d} to be zero, \tcode{b} and
 \tcode{e} to be \tcode{1}, and \tcode{f} to be \tcode{3}.
@@ -1856,12 +1856,12 @@ converted to an integer by integral promotion~(\ref{conv.prom}).
 \enterexample
 
 \indextext{example!enumeration}%
-\begin{codeblock}
+\begin{lstlisting}
   enum color { red, yellow, green=20, blue };
   color col = red;
   color* cp = &col;
   if (*cp == blue)              // ...
-\end{codeblock}
+\end{lstlisting}
 
 makes \tcode{color} a type describing various colors, and then declares
 \tcode{col} as an object of that type, and \tcode{cp} as a pointer to an
@@ -1872,23 +1872,23 @@ object of that type. The possible values of an object of type
 distinct types, objects of type \tcode{color} can be assigned only
 values of type \tcode{color}.
 
-\begin{codeblock}
+\begin{lstlisting}
 color c = 1;                    // error: type mismatch,
                                 // no conversion from \tcode{int} to \tcode{color}
 
 int i = yellow;                 // OK: \tcode{yellow} converted to integral value \tcode{1}
                                 // integral promotion
-\end{codeblock}
+\end{lstlisting}
 
 Note that this implicit \tcode{enum} to \tcode{int}
 conversion is not provided for a scoped enumeration:
 
-\begin{codeblock}
+\begin{lstlisting}
 enum class Col { red, yellow, green };
 int x = Col::red;               // error: no \tcode{Col} to \tcode{int} conversion
 Col y = Col::red;
 if (y) { }                      // error: no \tcode{Col} to \tcode{bool} conversion
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1901,7 +1901,7 @@ enumeration.
 These names obey the scope rules defined for all names
 in~(\ref{basic.scope}) and~(\ref{basic.lookup}).\enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum direction { left='l', right='r' }; 
 
 void g()  { 
@@ -1917,7 +1917,7 @@ void h()  {
   a = high;                     // error: high not in scope 
   a = altitude::low;            // OK 
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \indextext{member!enumerator}%
 An enumerator declared in class scope can be referred to using the class
@@ -1925,7 +1925,7 @@ member access operators (\tcode{::}, \tcode{.} (dot) and \tcode{->}
 (arrow)), see~\ref{expr.ref}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   enum direction { left='l', right='r' };
   int f(int i) { return i==left ? 0 : i==right ? 1 : 2; }
@@ -1939,7 +1939,7 @@ void g(X* p) {
   i = p->f(p->left);            // OK
   // ...
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[basic.namespace]{Namespaces}%
@@ -2033,7 +2033,7 @@ Because a \grammarterm{namespace-definition} contains
 follows that \grammarterm{namespace-definitions} can be nested.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace Outer {
   int i;
   namespace Inner {
@@ -2042,7 +2042,7 @@ namespace Outer {
     void g() { i++; }           // \tcode{Inner::i}
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2053,7 +2053,7 @@ redeclaration of a namespace member outside its original namespace
 redeclaration has the same enclosing namespaces as the original
 declaration.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 namespace Q {
   namespace V {
     void f();   // enclosing namespaces are the global namespace, \tcode{Q}, and \tcode{Q::V}
@@ -2065,7 +2065,7 @@ namespace Q {
   void V::C::m() { // enclosing namespaces are the global namespace, \tcode{Q}, and \tcode{Q::V}
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2126,7 +2126,7 @@ they are effectively qualified by a name unique to their translation
 unit and therefore can never be seen from any other translation unit.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace { int i; }            // \uniquens \tcode{::i}
 void f() { i++; }               // \uniquens \tcode{::i++}
 
@@ -2144,7 +2144,7 @@ void h() {
   A::i++;                       // \tcode{A::} \uniquens \tcode{::i}
   j++;                          // \tcode{A::} \uniquens \tcode{::j}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[namespace.memdef]{Namespace member definitions}%
@@ -2156,11 +2156,11 @@ templates~(\ref{temp.expl.spec})) of a namespace can be defined within
 that namespace.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace X {
   void f() { /* ... */ }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2172,7 +2172,7 @@ the definition appears after the point of declaration in a namespace
 that encloses the declaration's namespace.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace Q {
   namespace V {
     void f();
@@ -2187,7 +2187,7 @@ namespace Q {
 namespace R {
   void Q::V::g() { /* ... */ }  // error: \tcode{R} doesn't enclose \tcode{Q}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2214,7 +2214,7 @@ enclosing namespace and thus follow the usual lookup rules.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 // Assume \tcode{f} and \tcode{g} have not yet been declared.
 void h(int);
 template <class T> void f2(T);
@@ -2244,7 +2244,7 @@ void h() {
   A::X::f(x);                   // error: \tcode{f} is not a member of \tcode{A::X}
   A::X::Y::g();                 // error: \tcode{g} is not a member of \tcode{A::X::Y}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[namespace.alias]{Namespace alias}%
@@ -2290,12 +2290,12 @@ refers.
 \enterexample
 the following declarations are well-formed:
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace Company_with_very_long_name { /* ... */ }
 namespace CWVLN = Company_with_very_long_name;
 namespace CWVLN = Company_with_very_long_name;          // OK: duplicate
 namespace CWVLN = CWVLN;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2337,7 +2337,7 @@ Every \grammarterm{using-declaration} is a \grammarterm{declaration} and a
 \grammarterm{member-declaration} and so can be used in a class definition.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   void f(char);
   void g(char);
@@ -2350,7 +2350,7 @@ struct D : B {
   void f(int) { f('c'); }       // calls \tcode{B::f(char)}
   void g(int) { g('c'); }       // recursively calls \tcode{D::g(int)}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2363,7 +2363,7 @@ being defined; otherwise it introduces the set of declarations found by
 member name lookup~(\ref{class.member.lookup},~\ref{class.qual}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class C {
   int g();
 };
@@ -2374,7 +2374,7 @@ class D2 : public B {
   using B::x;                   // OK: \tcode{x} is a union member of base \tcode{B}
   using C::g;                   // error: \tcode{C} isn't a base of \tcode{D2}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2401,7 +2401,7 @@ operator of the derived class, as described below.
 A \grammarterm{using-declaration} shall not name a \grammarterm{template-id}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   template <class T> void f(T);
   template <class T> struct X { };
@@ -2410,7 +2410,7 @@ struct B : A {
   using A::f<double>;           // ill-formed
   using A::X<int>;              // ill-formed
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2424,7 +2424,7 @@ A \grammarterm{using-declaration} for a class member shall be a
 \grammarterm{member-declaration}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   int i;
   static int s;
@@ -2436,7 +2436,7 @@ void f() {
   using X::s;       // error: \tcode{X::s} is a class member
                     // and this is not a member declaration.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2446,7 +2446,7 @@ names~(\ref{namespace.qual}). In a \grammarterm{using-declaration}, a
 prefix \tcode{::} refers to the global namespace.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f();
 
 namespace A {
@@ -2463,7 +2463,7 @@ void h()
   X::f();           // calls \tcode{::f}
   X::g();           // calls \tcode{A::g}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2472,7 +2472,7 @@ therefore be used repeatedly where (and only where) multiple
 declarations are allowed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   int i;
 }
@@ -2495,7 +2495,7 @@ struct X : B {
   using B::i;
   using B::i;       // error: double member declaration
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2506,7 +2506,7 @@ the \grammarterm{using-declaration} are not considered when a use of the
 name is made.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   void f(int);
 }
@@ -2526,7 +2526,7 @@ void bar() {
                     // that is, for \tcode{A::f(int)} and \tcode{A::f(char)}.
   f('a');           // calls \tcode{f(char)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2545,7 +2545,7 @@ on declarations of the same name in the same declarative
 region~(\ref{basic.scope}) also apply to \grammarterm{using-declaration}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   int x;
 }
@@ -2573,7 +2573,7 @@ void func() {
   x = 99;           // assigns to \tcode{A::x}
   struct x x1;      // \tcode{x1} has class type \tcode{B::x}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2593,7 +2593,7 @@ introduced by such \grammarterm{using-declaration}{s}, the function call is
 ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace B {
   void f(int);
   void f(double);
@@ -2611,7 +2611,7 @@ void h() {
   f(1);             // error: ambiguous: \tcode{B::f(int)} or \tcode{C::f(int)}?
   void f(int);      // error: \tcode{f(int)} conflicts with \tcode{C::f(int)} and \tcode{B::f(int)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -2626,7 +2626,7 @@ class (rather than conflicting).
 \enternote For \grammarterm{using-declarations} that name a constructor, see~\ref{class.inhctor}. \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual void f(int);
   virtual void f(char);
@@ -2652,7 +2652,7 @@ void k(D* p)
   p->g(1);          // calls \tcode{B::g(int)}
   p->g('a');        // calls \tcode{D::g(char)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2682,7 +2682,7 @@ Because a \grammarterm{using-declaration} designates a base class member
 subobject), a \grammarterm{using-declaration} cannot be used to resolve
 inherited member ambiguities. For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { int x(); };
 struct B : A { };
 struct C : A {
@@ -2697,7 +2697,7 @@ struct D : B, C {
 int f(D* d) {
   return d->x();    // ambiguous: \tcode{B::x} or \tcode{C::x}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -2708,7 +2708,7 @@ create aliases; see~\ref{class.inhctor} for the pertinent accessibility rules.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
 private:
     void f(char);
@@ -2723,7 +2723,7 @@ class B : public A {
 public:
   using A::g;       // \tcode{B::g} is a public synonym for \tcode{A::g}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2768,7 +2768,7 @@ A \grammarterm{using-directive} does not add any members to the declarative
 region in which it appears.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   int i;
   namespace B {
@@ -2794,7 +2794,7 @@ namespace A {
 void f4() {
   i = 5;            // ill-formed; neither \tcode{i} is visible
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2807,7 +2807,7 @@ the first.
 \enternote For qualified lookup, see~\ref{namespace.qual}. \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace M {
   int i;
 }
@@ -2821,11 +2821,11 @@ void f() {
   using namespace N;
   i = 7;            // error: both \tcode{M::i} and \tcode{N::i} are visible
 }
-\end{codeblock}
+\end{lstlisting}
 
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   int i;
 }
@@ -2846,7 +2846,7 @@ namespace B {
     int n = j;      // \tcode{D::j} hides \tcode{B::j}
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2867,7 +2867,7 @@ In particular, the name of a variable, function or enumerator does not
 hide the name of a class or enumeration declared in a different
 namespace. For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   class X { };
   extern "C"   int g();
@@ -2886,7 +2886,7 @@ void f() {
   g();              // okay: name \tcode{g} refers to the same entity
   h();              // okay: overload resolution selects \tcode{A::h}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -2910,7 +2910,7 @@ considering the set of names found as a result of following
 \grammarterm{using-directive}{s}.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace D {
   int d1;
   void f(char);
@@ -2939,7 +2939,7 @@ void f() {
   f(1);             // error: ambiguous: \tcode{D::f(int)} or \tcode{E::f(int)}?
   f('a');           // OK: \tcode{D::f(char)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{using-directive|)}%
 \indextext{namespaces|)}
@@ -3019,12 +3019,12 @@ the C programming language,
 \tcode{"C"}, and linkage to \Cpp functions, \tcode{"C++"}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 complex sqrt(complex);          // \Cpp linkage by default
 extern "C" {
   double sqrt(double);          // C linkage
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3039,7 +3039,7 @@ external linkage, and variable names with external linkage declared
 within the \grammarterm{linkage-specification}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 extern "C" void f1(void(*pf)(int));
                                 // the name \tcode{f1} and its function type have C language
                                 // linkage; \tcode{pf} is a pointer to a C function
@@ -3076,7 +3076,7 @@ void f6() {
                                 // language linkage) gotten from
                                 // previous declaration.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \indextext{class!linkage~specification}%
 A C language linkage is ignored
@@ -3085,7 +3085,7 @@ the names of class members and the
 function type of class member functions.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 extern "C" typedef void FUNC_c();
 class C {
    void mf1(FUNC_c*);           // the name of the function \tcode{mf1} and the member
@@ -3107,7 +3107,7 @@ extern "C" {
                                 // C function
   };
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3151,7 +3151,7 @@ must not be defined in more
 than one namespace scope.\exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int x;
 namespace A {
   extern "C" int f();
@@ -3169,7 +3169,7 @@ namespace B {
 int A::f() { return 98; }           //definition for the function \tcode{f} with C language linkage
 extern "C" int h() { return 97; }   // definition for the function \tcode{h} with C language linkage
                                     // \tcode{A::h} and \tcode{::h} refer to the same function
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3182,7 +3182,7 @@ declared name and whether it is a definition. Such a declaration shall
 not specify a storage class.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 extern "C" double f();
 static double f();                  // error
 extern "C" int i;                   // declaration
@@ -3190,7 +3190,7 @@ extern "C" {
   int i;                            // definition
 }
 extern "C" static void g();         // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3330,7 +3330,7 @@ Two consecutive left square bracket tokens shall appear only when introducing an
 \grammarterm{attribute-specifier}. \enternote If two consecutive left square brackets appear
 where an \grammarterm{attribute-specifier} is not allowed, the program is ill-formed even
 if the brackets match an alternative grammar production. \exitnote \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int p[10];
 void f() {
   int x = 42, y[5];
@@ -3340,7 +3340,7 @@ void f() {
   y[[] { return 2; }()] = 2;    // error even though attributes are not allowed
                                 // in this context.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.align]{Alignment specifier}%
@@ -3410,14 +3410,14 @@ different \grammarterm{alignment-specifier}{s}
 in different translation units.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 // Translation unit \#1:
 struct S { int x; } s, p = &s;
 
 // Translation unit \#2:
 struct alignas(16) S;           // error: definition of \tcode{S} lacks alignment; no
 extern S* p;                    // diagnostic required
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3426,9 +3426,9 @@ of \tcode{A} and holding \tcode{N} elements of type \tcode{T} other than
 \tcode{char}, \tcode{signed char}, or \tcode{unsigned char}
 can be declared as:
 
-\begin{codeblock}
+\begin{lstlisting}
 alignas(T) alignas(A) T buffer[N];
-\end{codeblock}
+\end{lstlisting}
 Specifying \tcode{alignas(T)} ensures
 that the final requested alignment will not be weaker than \tcode{alignof(T)},
 and therefore the program will not be ill-formed.
@@ -3436,13 +3436,13 @@ and therefore the program will not be ill-formed.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 alignas(double) void f();                         // error: alignment applied to function
 alignas(double) unsigned char c[sizeof(double)];  // array of characters, suitably aligned for a \tcode{double}
 extern unsigned char c[sizeof(double)];           // no \tcode{alignas} necessary
 alignas(float)
   extern unsigned char c[sizeof(double)];         // error: different alignment in declaration
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.attr.noreturn]{Noreturn attribute}%
@@ -3466,7 +3466,7 @@ warning if a function marked \tcode{[[noreturn]]} might return. \exitnote
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 [[ noreturn ]] void f() {
   throw "error";        // OK
 }
@@ -3475,7 +3475,7 @@ warning if a function marked \tcode{[[noreturn]]} might return. \exitnote
   if (i > 0)
     throw "positive";
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.attr.depend]{Carries dependency attribute}%
@@ -3512,7 +3512,7 @@ program, but may result in generation of more efficient code. \exitnote
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 /* Translation unit A. */
 
 struct foo { int* a; int* b; };
@@ -3541,7 +3541,7 @@ void h(int i) {
   do_something_with(g(&c, p->a));
   do_something_with(g(p->a, &c));
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The \tcode{carries_dependency} attribute on function \tcode{f} means that the

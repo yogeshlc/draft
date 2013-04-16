@@ -169,10 +169,10 @@ are not subject to macro expansion unless otherwise stated.
 
 \enterexample In:
 
-\begin{codeblock}
+\begin{lstlisting}
 #define EMPTY
 EMPTY   #   include <file.h>
-\end{codeblock}
+\end{lstlisting}
 
 the sequence of preprocessing tokens on the second line is \textit{not}
 a preprocessing directive, because it does not begin with a \# at the start of
@@ -480,12 +480,12 @@ programmers should use the \tcode{< >} form for headers provided
 with the implementation, and the \tcode{" "} form for sources
 outside the control of the implementation. For instance:
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <stdio.h>
 #include <unistd.h>
 #include "usefullib.h"
 #include "myprog.h"
-\end{codeblock}
+\end{lstlisting}
 
 \exitnote
 
@@ -495,7 +495,7 @@ This illustrates macro-replaced
 \tcode{\#include}
 directives:
 
-\begin{codeblock}
+\begin{lstlisting}
 #if VERSION == 1
     #define INCFILE  "vers1.h"
 #elif VERSION == 2
@@ -504,7 +504,7 @@ directives:
     #define INCFILE  "versN.h"
 #endif
 #include INCFILE
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[cpp.replace]{Macro replacement}%
@@ -787,24 +787,24 @@ operators is unspecified.
 
 \enterexample In the following fragment:
 
-\begin{codeblock}
+\begin{lstlisting}
 #define hash_hash # ## #
 #define mkstr(a) # a
 #define in_between(a) mkstr(a)
 #define join(c, d) in_between(c hash_hash d)
 char p[] = join(x, y);          // equivalent to
                                 // char p[] = "x \#\# y";
-\end{codeblock}
+\end{lstlisting}
 
 The expansion produces, at various stages:
 
-\begin{codeblock}
+\begin{lstlisting}
 join(x, y)
 in_between(x hash_hash y)
 in_between(x ## y)
 mkstr(x ## y)
 "x ## y"
-\end{codeblock}
+\end{lstlisting}
 
 In other words, expanding \tcode{hash_hash} produces a new token,
 consisting of two adjacent sharp signs, but this new token is not the
@@ -870,10 +870,10 @@ a macro name.
 \enternote
 The simplest use of this facility is to define a ``manifest constant,''
 as in
-\begin{codeblock}
+\begin{lstlisting}
 #define TABSIZE 100
 int table[TABSIZE];
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -890,9 +890,9 @@ and generating more code than a function if invoked several times.
 It also cannot have its address taken,
 as it has none.
 
-\begin{codeblock}
+\begin{lstlisting}
 #define max(a, b) ((a) > (b) ? (a) : (b))
-\end{codeblock}
+\end{lstlisting}
 
 The parentheses ensure that the arguments and
 the resulting expression are bound properly.
@@ -901,7 +901,7 @@ the resulting expression are bound properly.
 To illustrate the rules for redefinition and reexamination,
 the sequence
 
-\begin{codeblock}
+\begin{lstlisting}
 #define x       3
 #define f(a)    f(x * (a))
 #undef  x
@@ -922,23 +922,23 @@ g(x+(3,4)-w) | h 5) & m
     (f)^m(m);
 p() i[q()] = { q(1), r(2,3), r(4,), r(,5), r(,) };
 char c[2][6] = { str(hello), str() };
-\end{codeblock}
+\end{lstlisting}
 
 results in
 
-\begin{codeblock}
+\begin{lstlisting}
 f(2 * (y+1)) + f(2 * (f(2 * (z[0])))) % f(2 * (0)) + t(1);
 f(2 * (2+(3,4)-0,1)) | f(2 * (@$\sim$@ 5)) & f(2 * (0,1))^m(0,1);
 int i[] = { 1, 23, 4, 5, };
 char c[2][6] = { "hello", "" };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 To illustrate the rules for creating character string literals
 and concatenating tokens,
 the sequence
 
-\begin{codeblock}
+\begin{lstlisting}
 #define str(s)      # s
 #define xstr(s)     str(s)
 #define debug(s, t) printf("x" # s "= %d, x" # t "= %s", @\textbackslash@
@@ -955,27 +955,27 @@ fputs(str(strncmp("abc@\textbackslash@0d", "abc", '@\textbackslash@4')  // this 
 #include xstr(INCFILE(2).h)
 glue(HIGH, LOW);
 xglue(HIGH, LOW)
-\end{codeblock}
+\end{lstlisting}
 
 results in
 
-\begin{codeblock}
+\begin{lstlisting}
 printf("x" "1" "= %d, x" "2" "= %s", x1, x2);
 fputs("strncmp(@\textbackslash@"abc@\textbackslash\textbackslash@0d@\textbackslash@", @\textbackslash@"abc@\textbackslash@", '@\textbackslash\textbackslash@4') == 0" ": @\atsign\textbackslash@n", s);
 #include "vers2.h"    @\textit{(after macro replacement, before file access)}@
 "hello";
 "hello" ", world"
-\end{codeblock}
+\end{lstlisting}
 
 or, after concatenation of the character string literals,
 
-\begin{codeblock}
+\begin{lstlisting}
 printf("x1= %d, x2= %s", x1, x2);
 fputs("strncmp(@\textbackslash@"abc@\textbackslash\textbackslash@0d@\textbackslash@", @\textbackslash@"abc@\textbackslash@", '@\textbackslash\textbackslash@4') == 0: @\atsign\textbackslash@n", s);
 #include "vers2.h"    @\textit{(after macro replacement, before file access)}@
 "hello";
 "hello, world"
-\end{codeblock}
+\end{lstlisting}
 
 Space around the
 \tcode{\#}
@@ -986,45 +986,45 @@ tokens in the macro definition is optional.
 \pnum
 To illustrate the rules for placemarker preprocessing tokens, the sequence
 
-\begin{codeblock}
+\begin{lstlisting}
 #define t(x,y,z) x ## y ## z
 int j[] = { t(1,2,3), t(,4,5), t(6,,7), t(8,9,),
   t(10,,), t(,11,), t(,,12), t(,,) };
-\end{codeblock}
+\end{lstlisting}
 
 results in
 
-\begin{codeblock}
+\begin{lstlisting}
 int j[] = { 123, 45, 67, 89,
   10, 11, 12, };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 To demonstrate the redefinition rules,
 the following sequence is valid.
 
-\begin{codeblock}
+\begin{lstlisting}
 #define OBJ_LIKE      (1-1)
 #define OBJ_LIKE      @\tcode{/* white space */ (1-1) /* other */}@
 #define FUNC_LIKE(a)   ( a )
 #define FUNC_LIKE( a )(     @\tcode{/* note the white space */ \textbackslash}@
                 a @\tcode{/* other stuff on this line}@
                   @\tcode{*/}@ )
-\end{codeblock}
+\end{lstlisting}
 
 But the following redefinitions are invalid:
 
-\begin{codeblock}
+\begin{lstlisting}
 #define OBJ_LIKE    (0)      // different token sequence
 #define OBJ_LIKE    (1 - 1)  // different white space
 #define FUNC_LIKE(b) ( a )   // different parameter usage
 #define FUNC_LIKE(b) ( b )   // different parameter spelling
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Finally, to show the variable argument list macro facilities:
 
-\begin{codeblock}
+\begin{lstlisting}
 #define debug(...) fprintf(stderr, @\mname{VA_ARGS}@)
 #define showlist(...) puts(#@\mname{VA_ARGS}@)
 #define report(test, ...) ((test) ? puts(#test) : printf(@\mname{VA_ARGS}@))
@@ -1032,17 +1032,17 @@ debug("Flag");
 debug("X = %d\n", x);
 showlist(The first, second, and third items.);
 report(x>y, "x is %d but y is %d", x, y);
-\end{codeblock}
+\end{lstlisting}
 
 results in
 
-\begin{codeblock}
+\begin{lstlisting}
 fprintf(stderr, "Flag");
 fprintf(stderr, "X = %d\n", x);
 puts("The first, second, and third items.");
 ((x>y) ? puts("x>y") : printf("x is %d but y is %d", x, y));
   
-\end{codeblock}
+\end{lstlisting}
 \exitnote%
 \indextext{macro!replacement|)}
 
@@ -1310,25 +1310,25 @@ tokens in the unary operator expression are removed.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 #pragma listing on "..\listing.dir"
-\end{codeblock}
+\end{lstlisting}
 
 can also be expressed as:
 
-\begin{codeblock}
+\begin{lstlisting}
 _Pragma ( "listing on \"..\\listing.dir\"" )
-\end{codeblock}
+\end{lstlisting}
 
 The latter form is processed in the same way whether it appears literally
 as shown, or results from macro replacement, as in:
 
-\begin{codeblock}
+\begin{lstlisting}
 #define LISTING(x) PRAGMA(listing on #x)
 #define PRAGMA(x) _Pragma(#x)
 
 LISTING( ..\listing.dir )
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample%
 \indextext{preprocessing directives|)}

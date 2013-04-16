@@ -172,10 +172,10 @@ The optional \grammarterm{attribute-specifier-seq} in a
 possible sequence of \grammarterm{abstract-declarator}{s}. \enternote This resolves the
 ambiguous binding of array and function declarators. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 auto f()->int(*)[4];  // function returning a pointer to array[4] of \tcode{int}
                       // not function returning array[4] of pointer to \tcode{int}
-\end{codeblock}
+\end{lstlisting}
 \exitexample \exitnote
 
 \rSec1[dcl.name]{Type names}
@@ -244,14 +244,14 @@ hypothetical identifier.
 
 \indextext{example!type~name}%
 \indextext{example!declarator}%
-\begin{codeblock}
+\begin{lstlisting}
 int                 // \tcode{int i}
 int *               // \tcode{int *pi}
 int *[3]            // \tcode{int *p[3]}
 int (*)[3]          // \tcode{int (*p3i)[3]}
 int *()             // \tcode{int *f()}
 int (*)(double)     // \tcode{int (*pf)(double)}
-\end{codeblock}
+\end{lstlisting}
 
 name respectively the types
 ``\tcode{int},''
@@ -296,7 +296,7 @@ by removing the redundant parentheses around the parameter name.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S(int);
 };
@@ -307,7 +307,7 @@ void foo(double a) {
   S y((int)a);      // object declaration
   S z = int(a);     // object declaration
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -325,7 +325,7 @@ in its syntactic context shall be considered a
 \pnum
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <cstddef>
 char *p;
 void *operator new(std::size_t, int);
@@ -334,39 +334,39 @@ void foo()  {
   new (int(*p)) int;            // new-placement expression
   new (int(*[x]));              // new type-id
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T>
 struct S {
   T *p;
 };
 S<int()> x;                     // type-id
 S<int(1)> y;                    // expression (ill-formed)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 void foo() {
   sizeof(int(1));               // expression
   sizeof(int());                // type-id (ill-formed)
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 void foo() {
   (int(1));                     // expression
   (int())1;                     // type-id (ill-formed)
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -393,7 +393,7 @@ rather than a
 \grammarterm{declarator-id}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class C { };
 void f(int(C)) { }              // \tcode{void f(int(*fp)(C c)) \{ \}}
                                 // not: \tcode{void f(int C)};
@@ -404,15 +404,15 @@ void foo() {
   f(1);                         // error: cannot convert \tcode{1} to function pointer
   f(g);                         // OK
 }
-\end{codeblock}
+\end{lstlisting}
 
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 class C { };
 void h(int *(C[10]));           // \tcode{void h(int *(*_fp)(C _parm[10]));}
                                 // not: \tcode{void h(int *C[10]);}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[dcl.meaning]{Meaning of declarators}%
@@ -487,9 +487,9 @@ and its
 \pnum
 Thus, a declaration of a particular identifier has the form
 
-\begin{codeblock}
+\begin{lstlisting}
 T D
-\end{codeblock}
+\end{lstlisting}
 
 where
 \tcode{T}
@@ -509,9 +509,9 @@ First, the
 determines a type.
 In a declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 T D
-\end{codeblock}
+\end{lstlisting}
 
 the
 \grammarterm{decl-specifier-seq}
@@ -521,9 +521,9 @@ determines the type
 \enterexample
 in the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 int unsigned i;
-\end{codeblock}
+\end{lstlisting}
 
 the type specifiers
 \tcode{int}
@@ -561,9 +561,9 @@ is the same as that of the contained
 \grammarterm{declarator-id}
 in the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 T D1
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{declaration!parentheses~in}%
 Parentheses do not alter the type of the embedded
@@ -606,10 +606,10 @@ Similarly, the optional \grammarterm{attribute-specifier-seq}~(\ref{dcl.attr.gra
 the declarations
 \indextext{example!\idxcode{const}}%
 \indextext{example!constant pointer}%
-\begin{codeblock}
+\begin{lstlisting}
 const int ci = 10, *pc = &ci, *const cpc = pc, **ppc;
 int i, *p, *const cp = &i;
-\end{codeblock}
+\end{lstlisting}
 
 declare
 \tcode{ci},
@@ -639,18 +639,18 @@ can be changed, and so can the object pointed to by
 Examples of
 some correct operations are
 
-\begin{codeblock}
+\begin{lstlisting}
 i = ci;
 *cp = ci;
 pc++;
 pc = cpc;
 pc = p;
 ppc = &pc;
-\end{codeblock}
+\end{lstlisting}
 
 Examples of ill-formed operations are
 
-\begin{codeblock}
+\begin{lstlisting}
 ci = 1;             // error
 ci++;               // error
 *pc = 2;            // error
@@ -658,17 +658,17 @@ cp = &ci;           // error
 cpc++;              // error
 p = pc;             // error
 ppc = &p;           // error
-\end{codeblock}
+\end{lstlisting}
 
 Each is unacceptable because it would either change the value of an object declared
 \tcode{const}
 or allow it to be changed through a cv-unqualified pointer later, for example:
 
-\begin{codeblock}
+\begin{lstlisting}
 *ppc = &ci;         // OK, but would make \tcode{p} point to \tcode{ci} ...
                     // ... because of previous error
 *p = 5;             // clobber \tcode{ci}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -713,10 +713,10 @@ of a template type argument (\ref{temp.arg}),
 in which case the cv-qualifiers are ignored.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int& A;
 const A aref = 3;   // ill-formed; lvalue reference to non-\tcode{const} initialized with rvalue
-\end{codeblock}
+\end{lstlisting}
 
 The type of
 \tcode{aref}
@@ -747,12 +747,12 @@ semantically equivalent and commonly referred to as references.
 \indextext{parameter!reference}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(double& a) { a += 3.14; }
 // ...
 double d = 0;
 f(d);
-\end{codeblock}
+\end{lstlisting}
 
 declares
 \tcode{a}
@@ -765,13 +765,13 @@ will add
 to
 \tcode{d}.
 
-\begin{codeblock}
+\begin{lstlisting}
 int v[20];
 // ...
 int& g(int i) { return v[i]; }
 // ...
 g(3) = 7;
-\end{codeblock}
+\end{lstlisting}
 
 declares the function
 \tcode{g()}
@@ -783,7 +783,7 @@ to the fourth element of the array
 \tcode{v}.
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct link {
   link* next;
 };
@@ -800,7 +800,7 @@ void k() {
    link* q = new link;
    h(q);
 }
-\end{codeblock}
+\end{lstlisting}
 
 declares
 \tcode{p}
@@ -850,7 +850,7 @@ is a reference to a type \tcode{T}, an attempt to create the type ``lvalue refer
 \tcode{TR}'' creates the type ``lvalue reference to \tcode{T}'', while an attempt to create
 the type ``rvalue reference to \cv\ \tcode{TR}'' creates the type \tcode{TR}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int i;
 typedef int& LRI;
 typedef int&& RRI;
@@ -864,7 +864,7 @@ RRI&& r5 = 5;                   // \tcode{r5} has the type \tcode{int\&\&}
 
 decltype(r2)& r6 = i;           // \tcode{r6} has the type \tcode{int\&}
 decltype(r2)&& r7 = i;          // \tcode{r7} has the type \tcode{int\&}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.mptr]{Pointers to members}%
@@ -902,7 +902,7 @@ pointer-to-member.
 \enterexample%
 \indextext{example!pointer~to~member}
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   void f(int);
   int a;
@@ -913,7 +913,7 @@ int X::* pmi = &X::a;
 void (X::* pmf)(int) = &X::f;
 double X::* pmd;
 char Y::* pmc;
-\end{codeblock}
+\end{lstlisting}
 
 declares
 \tcode{pmi},
@@ -954,14 +954,14 @@ and
 \tcode{pmf}
 can be used like this:
 
-\begin{codeblock}
+\begin{lstlisting}
 X obj;
 // ...
 obj.*pmi = 7;       // assign \tcode{7} to an integer
                     // member of \tcode{obj}
 (obj.*pmf)(7);      // call a function member of \tcode{obj}
                     // with the argument \tcode{7}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1068,11 +1068,11 @@ and similarly for
 The optional \grammarterm{attribute-specifier-seq} appertains to the array.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int A[5], AA[2][3];
 typedef const A CA;             // type is ``array of 5 const int''
 typedef const AA CAA;           // type is ``array of 2 array of 3 const int''
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 An
@@ -1125,9 +1125,9 @@ of a static data member of a class.
 \enterexample
 \indextext{example!subscripting}%
 \indextext{example!array}%
-\begin{codeblock}
+\begin{lstlisting}
 float fa[17], *afp[17];
-\end{codeblock}
+\end{lstlisting}
 
 declares an array of
 \tcode{float}
@@ -1138,9 +1138,9 @@ numbers.
 \indextext{declarator!multidimensional array}%
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 static int x3d[3][5][7];
-\end{codeblock}
+\end{lstlisting}
 
 declares a static three-dimensional array of integers,
 with rank $3 \times 5 \times 7$.
@@ -1156,7 +1156,7 @@ Any of the expressions
 \tcode{x3d[i][j]},
 \tcode{x3d[i][j][k]}
 can reasonably appear in an expression. Finally,
-\begin{codeblock}
+\begin{lstlisting}
 extern int x[10];
 struct S {
   static int y[10];
@@ -1169,7 +1169,7 @@ void f() {
   extern int x[];
   int i = sizeof(x);          // error: incomplete object type
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1237,9 +1237,9 @@ which itself is immediately converted into a pointer.
 \enterexample
 consider
 
-\begin{codeblock}
+\begin{lstlisting}
 int x[3][5];
-\end{codeblock}
+\end{lstlisting}
 
 Here
 \tcode{x}
@@ -1409,16 +1409,16 @@ is synonymous with
 \indextext{example!variable parameter~list}%
 the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 int printf(const char*, ...);
-\end{codeblock}
+\end{lstlisting}
 
 declares a function that can be called with varying numbers and types of arguments.
 
-\begin{codeblock}
+\begin{lstlisting}
 printf("hello world");
 printf("a=%d b=%d", a, b);
-\end{codeblock}
+\end{lstlisting}
 
 However, the first argument must be of a type
 that can be converted to a
@@ -1501,12 +1501,12 @@ In the latter case, the cv-qualifiers are ignored.
 cv-qualified type; there are no cv-qualified function types. \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef void F();
 struct S {
   const F f;        // OK: equivalent to: \tcode{void f();}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 The return type, the parameter-type-list, the \grammarterm{ref-qualifier}, and the
 \grammarterm{cv-qualifier-seq},
@@ -1523,9 +1523,9 @@ pointers to functions, references to functions, and pointers to member functions
 \indextext{example!function declaration}%
 the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 int fseek(FILE*, long, int);
-\end{codeblock}
+\end{lstlisting}
 
 declares a function taking three arguments of the specified types,
 and returning
@@ -1571,12 +1571,12 @@ A typedef of function type may be used to declare a function but shall not be
 used to define a function (\ref{dcl.fct.def}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef void F();
 F  fv;              // OK: equivalent to \tcode{void fv();}
 F  fv { }           // ill-formed
 void fv() { }       // OK: definition of \tcode{fv}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 A typedef of a function type whose declarator includes a
 \grammarterm{cv-qualifier-seq}
@@ -1586,14 +1586,14 @@ or to declare the top-level function type of another function typedef
 declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int FIC(int) const;
 FIC f;              // ill-formed: does not declare a member function
 struct S {
   FIC f;            // OK
 };
 FIC S::*pm = &S::f; // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1613,14 +1613,14 @@ its function declarator because that is the extent of its potential scope~(\ref{
 the declaration
 
 \indextext{example!declaration}%
-\begin{codeblock}
+\begin{lstlisting}
 int i,
     *pi,
     f(),
     *fpi(int),
     (*pif)(const char*, const char*),
     (*fpif(int))(int);
-\end{codeblock}
+\end{lstlisting}
 
 declares an integer
 \tcode{i},
@@ -1666,28 +1666,28 @@ the function
 \tcode{fpif}
 above could have been declared
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int  IFUNC(int);
 IFUNC*  fpif(int);
-\end{codeblock}
+\end{lstlisting}
 
 or
 
-\begin{codeblock}
+\begin{lstlisting}
 auto fpif(int)->int(*)(int);
-\end{codeblock}
+\end{lstlisting}
 
 A \grammarterm{trailing-return-type} is most useful for a type that would be more complicated to specify before the \grammarterm{declarator-id}:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, class U> auto add(T t, U u) -> decltype(t + u);
-\end{codeblock}
+\end{lstlisting}
 
 rather than
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, class U> decltype((*(T*)0) + (*(U*)0)) add(T t, U u);
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -1704,7 +1704,7 @@ template parameter pack; see~\ref{temp.param}. \exitnote
 A function parameter pack is a pack expansion~(\ref{temp.variadic}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<typename... T> void f(T (* ...t)(int, int));
 
 int add(int, int);
@@ -1713,7 +1713,7 @@ float subtract(int, int);
 void g() {
   f(add, subtract);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1744,17 +1744,17 @@ Default arguments will be used in calls where trailing arguments are missing.
 \enterexample
 the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 void point(int = 3, int = 4);
-\end{codeblock}
+\end{lstlisting}
 
 declares a function that can be called with zero, one, or two arguments of type
 \tcode{int}.
 It can be called in any of these ways:
 
-\begin{codeblock}
+\begin{lstlisting}
 point(1,2);  point(1);  point();
-\end{codeblock}
+\end{lstlisting}
 
 The last two calls are equivalent to
 \tcode{point(1,4)}
@@ -1806,7 +1806,7 @@ shall not be redefined by a later declaration (not even to the
 same value).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void g(int = 0, ...);           // OK, ellipsis is not a parameter so it can follow
                                 // a parameter with a default argument
 void f(int, int);
@@ -1827,7 +1827,7 @@ void m() {
 void n() {
   f(6);                         // OK, calls \tcode{f(6, 7)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 For a given inline function defined in different translation units,
 the accumulated sets of default arguments at the end of the
@@ -1858,7 +1858,7 @@ in the following code,
 will be called with the value
 \tcode{f(2)}:
 
-\begin{codeblock}
+\begin{lstlisting}
 int a = 1;
 int f(int);
 int g(int x = f(a));            // default argument: \tcode{f(::a)}
@@ -1870,7 +1870,7 @@ void h() {
   g();                          // \tcode{g(f(::a))}
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 In member function declarations,
@@ -1891,7 +1891,7 @@ shall be specified on the initial declaration of the member
 function within the class template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class C {
   void f(int i = 3);
   void g(int i, int j = 99);
@@ -1901,20 +1901,20 @@ void C::f(int i = 3) {          // error: default argument already
 }                               // specified in class scope
 void C::g(int i = 88, int j) {  // in this translation unit,
 }                               // \tcode{C::g} can be called with no argument
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 Local variables shall not be used in a default argument.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   int i;
   extern void g(int x = i);     //error
   // ...
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1923,11 +1923,11 @@ The keyword
 shall not be used in a default argument of a member function.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   void f(A* p = this) { }       // error
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1945,7 +1945,7 @@ Parameters of a function declared before a default argument
 are in scope and can hide namespace and class member names.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int a;
 int f(int a, int b = a);            // error: parameter \tcode{a}
                                     // used as default argument
@@ -1953,7 +1953,7 @@ typedef int I;
 int g(float I, int b = I(2));       // error: parameter \tcode{I} found
 int h(int a, int b = sizeof(a));    // error, parameter \tcode{a} used
                                     // in default argument
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 Similarly, a non-static member shall not be used in a default argument, even if it is not evaluated, unless it appears as
 the \grammarterm{id-expression} of a class member access expression (\ref{expr.ref}) or
@@ -1966,7 +1966,7 @@ non-static member
 \tcode{X::a}
 used as an initializer.
 
-\begin{codeblock}
+\begin{lstlisting}
 int b;
 class X {
   int a;
@@ -1975,7 +1975,7 @@ class X {
   int mem2(int i = b);          // OK;  use \tcode{X::b}
   static int b;
 };
-\end{codeblock}
+\end{lstlisting}
 
 The declaration of
 \tcode{X::mem2()}
@@ -1987,7 +1987,7 @@ A default argument is not part of the
 type of a function.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(int = 0);
 
 void h() {
@@ -1997,7 +1997,7 @@ void h() {
 
 int (*p1)(int) = &f;
 int (*p2)() = &f;               // error: type mismatch
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 When a declaration of a function is introduced by way of a
 \grammarterm{using-declaration}
@@ -2020,7 +2020,7 @@ An overriding function in a derived class does not
 acquire default arguments from the function it overrides.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   virtual void f(int a = 7);
 };
@@ -2033,7 +2033,7 @@ void m() {
   pa->f();          // OK, calls \tcode{pa->B::f(7)}
   pb->f();          // error: wrong number of arguments for \tcode{B::f()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{declaration!default argument|)}%
 \indextext{declarator!meaning~of|)}
@@ -2089,12 +2089,12 @@ A function shall be defined only in namespace or class scope.
 a simple example of a complete function definition is
 
 \indextext{example!function definition}%
-\begin{codeblock}
+\begin{lstlisting}
 int max(int a, int b, int c) {
   int m = (a > b) ? a : b;
   return (m > c) ? m : c;
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here
 \tcode{int}
@@ -2133,11 +2133,11 @@ Unused parameters need not be named.
 For example,
 
 \indextext{example!unnamed parameter}%
-\begin{codeblock}
+\begin{lstlisting}
 void print(int a, int) {
   std::printf("a = %d\n",a);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -2149,9 +2149,9 @@ storage duration that is implicitly defined (see~\ref{basic.scope.block}).
 The function-local predefined variable \tcode{__func__} is
 defined as if a definition of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 static const char __func__[] = "@\grammarterm{function-name}@";
-\end{codeblock}
+\end{lstlisting}
 
 had been provided, where \grammarterm{function-name} is an \impldef{string resulting
 from \tcode{__func__}} string. It is unspecified whether such a variable has an address
@@ -2161,13 +2161,13 @@ implementation~(\ref{global.names}). If a predefined variable is not
 odr-used~(\ref{basic.def.odr}), its string value need not be present in the program image.}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S() : s(__func__) { }             // OK
   const char *s;
 };
 void f(const char * s = __func__);  // error: \tcode{__func__} is undeclared
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.fct.def.default]{Explicitly-defaulted functions}%
@@ -2213,7 +2213,7 @@ as if it had been implicitly declared~(\ref{except.spec}).
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   constexpr S() = default;                  // ill-formed: implicit \tcode{S()} is not \tcode{constexpr}
   S(int a = 0) = default;                   // ill-formed: default argument
@@ -2224,7 +2224,7 @@ private:
   S(S&);                                    // OK: private copy constructor
 };
 S::S(S&) = default;                         // OK: defines copy constructor
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2248,7 +2248,7 @@ base.\exitnote
 \pnum
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct trivial {
   trivial() = default;
   trivial(const trivial&) = default;
@@ -2262,7 +2262,7 @@ struct nontrivial1 {
   nontrivial1();
 };
 nontrivial1::nontrivial1() = default;           // not first declaration
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[dcl.fct.def.delete]{Deleted definitions}%
@@ -2290,13 +2290,13 @@ function is selected by overload resolution. \exitnote
 \enterexample One can enforce non-default initialization and non-integral
 initialization with
 
-\begin{codeblock}
+\begin{lstlisting}
 struct onlydouble {
   onlydouble() = delete;              // OK, but redundant
   onlydouble(std::intmax_t) = delete;
   onlydouble(double);
 };
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -2304,21 +2304,21 @@ struct onlydouble {
 class in certain \tcode{new} expressions by using deleted definitions
 of a user-declared \tcode{operator new} for that class.
 
-\begin{codeblock}
+\begin{lstlisting}
 struct sometype {
   void *operator new(std::size_t) = delete;
   void *operator new[](std::size_t) = delete;
 };
 sometype *p = new sometype;     // error, deleted class \tcode{operator new}
 sometype *q = new sometype[3];  // error, deleted class \tcode{operator new[]}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample One can make a class uncopyable, i.e. move-only, by using deleted
 definitions of the copy constructor and copy assignment operator, and then
 providing defaulted definitions of the move constructor and move assignment operator.
 
-\begin{codeblock}
+\begin{lstlisting}
 struct moveonly {
   moveonly() = default;
   moveonly(const moveonly&) = delete;
@@ -2329,7 +2329,7 @@ struct moveonly {
 };
 moveonly *p;
 moveonly q(*p); // error, deleted copy constructor
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2339,12 +2339,12 @@ A deleted definition of a function shall be the first declaration of the functio
 for an explicit specialization of a function template, the first declaration of that
 specialization.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct sometype {
   sometype();
 };
 sometype::sometype() = delete;      // ill-formed; not first declaration
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{definition!function|)}
 
@@ -2403,12 +2403,12 @@ variables and functions,
 regardless of the variable's storage duration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(int);
 int a = 2;
 int b = f(a);
 int c(b);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2573,9 +2573,9 @@ Since
 is not permitted by the syntax for
 \grammarterm{initializer},
 
-\begin{codeblock}
+\begin{lstlisting}
 X a();
-\end{codeblock}
+\end{lstlisting}
 
 is not the declaration of an object of class
 \tcode{X},
@@ -2600,7 +2600,7 @@ see~\ref{basic.start.init}. \exitnote
 An initializer for a static member is in the scope of the member's class.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int a;
 
 struct X {
@@ -2610,7 +2610,7 @@ struct X {
 
 int X::a = 1;
 int X::b = a;       // \tcode{X::b = X::a}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2627,9 +2627,9 @@ parenthesized initializer shall be a single expression.
 \indextext{initialization!direct}%
 The initialization that occurs in the form
 
-\begin{codeblock}
+\begin{lstlisting}
 T x = a;
-\end{codeblock}
+\end{lstlisting}
 
 as well as in argument passing, function return,
 throwing an exception (\ref{except.throw}),
@@ -2642,10 +2642,10 @@ is called
 \pnum
 The initialization that occurs in the forms
 
-\begin{codeblock}
+\begin{lstlisting}
 T x(a);
 T x{a};
-\end{codeblock}
+\end{lstlisting}
 
 as well as in
 \tcode{new}
@@ -2753,11 +2753,11 @@ the cv-qualifiers
 \nonterminal{cv1}
 and \nonterminal{cv2}.
 
-\begin{codeblock}
+\begin{lstlisting}
 int a;
 const int b = a;
 int c = b;
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 \end{itemize}
 
@@ -2791,7 +2791,7 @@ for the members of the aggregate,
 in increasing subscript or member order.
 Each member is copy-initialized from the corresponding \grammarterm{initializer-clause}. If the \grammarterm{initializer-clause} is an expression and a narrowing conversion~(\ref{dcl.init.list}) is required to convert the expression, the program is ill-formed. \enternote If an \grammarterm{initializer-clause} is itself an initializer list, the member is list-initialized, which will result in a recursive application of the rules in this section if the member is an aggregate. \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int x;
   struct B {
@@ -2799,7 +2799,7 @@ struct A {
     int j;
   } b;
 } a = { 1, { 2, 3 } };
-\end{codeblock}
+\end{lstlisting}
 
 initializes
 \tcode{a.x}
@@ -2828,9 +2828,9 @@ shall be greater than zero, is defined as having
 elements (\ref{dcl.array}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int x[] = { 1, 3, 5 };
-\end{codeblock}
+\end{lstlisting}
 
 declares and initializes
 \tcode{x}
@@ -2849,7 +2849,7 @@ Static data members and anonymous bit-fields are not considered
 members of the class for purposes of aggregate initialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int i;
   static int s;
@@ -2857,7 +2857,7 @@ struct A {
   int :17;
   int k;
 } a = { 1, 2, 3 };
-\end{codeblock}
+\end{lstlisting}
 
 Here, the second initializer 2 initializes
 \tcode{a.j}
@@ -2874,9 +2874,9 @@ is ill-formed if the number of
 exceeds the number of members or elements to initialize.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 char cv[4] = { 'a', 's', 'd', 'f', 0 };     // error
-\end{codeblock}
+\end{lstlisting}
 
 is ill-formed.
 \exitexample
@@ -2890,10 +2890,10 @@ shall be
 initialized from an empty initializer list~(\ref{dcl.init.list}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S { int a; const char* b; int c; };
 S ss = { 1, "asdf" };
-\end{codeblock}
+\end{lstlisting}
 
 initializes
 \tcode{ss.a}
@@ -2917,7 +2917,7 @@ omitted from an \grammarterm{initializer-list} for an object of type
 members of \tcode{C} following \tcode{m} are also omitted.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S { } s;
 struct A {
   S s1;
@@ -2932,7 +2932,7 @@ struct A {
   s,        // Required initialization
   0
 };          // Initialization not required for \tcode{A::s3} because \tcode{A::i3} is also not initialized
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2948,9 +2948,9 @@ initialize the elements with the last (rightmost) index of the array
 varying the fastest (\ref{dcl.array}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int x[2][2] = { 3, 1, 4, 2 };
-\end{codeblock}
+\end{lstlisting}
 
 initializes
 \tcode{x[0][0]}
@@ -2968,11 +2968,11 @@ to
 \tcode{2}.
 On the other hand,
 
-\begin{codeblock}
+\begin{lstlisting}
 float y[4][3] = {
   { 1 }, { 2 }, { 3 }, { 4 }
 };
-\end{codeblock}
+\end{lstlisting}
 
 initializes the first column of
 \tcode{y}
@@ -3005,13 +3005,13 @@ are left to initialize the next member of the aggregate
 of which the current subaggregate is a member.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 float y[4][3] = {
   { 1, 3, 5 },
   { 2, 4, 6 },
   { 3, 5, 7 },
 };
-\end{codeblock}
+\end{lstlisting}
 
 is a completely-braced initialization:
 1, 3, and 5 initialize the first row of the array
@@ -3041,11 +3041,11 @@ has the same effect as the completely-braced
 \grammarterm{initializer-list}
 of the above example,
 
-\begin{codeblock}
+\begin{lstlisting}
 float y[4][3] = {
   1, 3, 5, 2, 4, 6, 3, 5, 7
 };
-\end{codeblock}
+\end{lstlisting}
 
 The initializer for
 \tcode{y}
@@ -3076,7 +3076,7 @@ required.\exitnote
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int i;
   operator int();
@@ -3087,7 +3087,7 @@ struct B {
 };
 A a;
 B b = { 4, a, a };
-\end{codeblock}
+\end{lstlisting}
 
 Braces are elided around the
 \grammarterm{initializer-clause}
@@ -3123,14 +3123,14 @@ the braces shall only contain an
 for the first non-static data member of the union.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 union u { int a; const char* b; };
 u a = { 1 };
 u b = a;
 u c = 1;                        // error
 u d = { 0, "asdf" };            // error
 u e = { "asdf" };               // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3169,9 +3169,9 @@ value of the string literal
 initialize the elements of the array.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 char msg[] = "Syntax error on line %s\n";
-\end{codeblock}
+\end{lstlisting}
 
 shows a character array whose members are initialized
 with a
@@ -3191,9 +3191,9 @@ is
 There shall not be more initializers than there are array elements.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 char cv[4] = "asdf";            // error
-\end{codeblock}
+\end{lstlisting}
 
 is ill-formed since there is no space for the implied trailing
 \tcode{'\textbackslash 0'}.
@@ -3218,7 +3218,7 @@ or by an object that can be converted into a
 \tcode{T}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int g(int);
 void f() {
   int i;
@@ -3232,7 +3232,7 @@ void f() {
   int (&ra)[3] = a;             // \tcode{ra} refers to the array \tcode{a}
   ra[1] = i;                    // modifies \tcode{a[1]}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3254,10 +3254,10 @@ specifier is explicitly used.
 \indextext{declaration!extern@\tcode{extern} reference}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int& r1;                        // error: initializer missing
 extern int& r2;                 // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3332,7 +3332,7 @@ direct bindings to lvalues are done.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 double d = 2.0;
 double& rd = d;                 // \tcode{rd} refers to \tcode{d}
 const double& rcd = d;          // \tcode{rcd} refers to \tcode{d}
@@ -3342,7 +3342,7 @@ struct B : A { operator int&(); } b;
 A& ra = b;                      // \tcode{ra} refers to \tcode{A} subobject in \tcode{b}
 const A& rca = b;               // \tcode{rca} refers to \tcode{A} subobject in \tcode{b}
 int& ir = B();                  // \tcode{ir} refers to the result of \tcode{B::operator int\&}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -3353,11 +3353,11 @@ shall be
 \tcode{const}), or the reference shall be an rvalue reference.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 double& rd2 = 2.0;              // error: not an lvalue and reference not \tcode{const}
 int  i = 2;
 double& rd3 = i;                // error: type mismatch and reference not \tcode{const}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \begin{itemize}
@@ -3384,7 +3384,7 @@ conversion sequence includes an lvalue-to-rvalue conversion, the program is ill-
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };
 struct B : A { } b;
 extern B f();
@@ -3400,7 +3400,7 @@ int&& rri = static_cast<int&&>(i2); // bound directly to \tcode{i2}
 B&& rrb = x;                        // bound directly to the result of \tcode{operator B}
 int&& rri2 = X();                   // error: lvalue-to-rvalue conversion applied to the
                                     // result of \tcode{operator int\&}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -3418,7 +3418,7 @@ shall be the same cv-qualification as, or greater cv-qualification than,
 If \tcode{T1} is reference-related to \tcode{T2} and the reference is an rvalue reference,
 the initializer expression shall not be an lvalue.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 const double& rcd2 = 2;         // \tcode{rcd2} refers to temporary with value \tcode{2.0}
 double&& rrd = 2;               // \tcode{rrd} refers to temporary with value \tcode{2.0}
 const volatile int cvi = 1;
@@ -3427,7 +3427,7 @@ double d2 = 1.0;
 double&& rrd2 = d2;             // error: copying lvalue of related type
 int i3 = 2;
 double&& rrd3 = i3;             // \tcode{rrd3} refers to temporary with value \tcode{2.0}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 \end{itemize}
@@ -3469,7 +3469,7 @@ List-initialization can be used
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int a = {1};
 std::complex<double> z{1,2};
 new std::vector<std::string>{"once", "upon", "a", "time"};  // 4 string elements
@@ -3478,7 +3478,7 @@ return { "Norah" };             // return list of one element
 int* e {};                      // initialization to zero / null pointer
 x = double{1};                  // explicitly construct a double 
 std::map<std::string,int> anim = { {"bear",4}, {"cassowary",2}, {"tiger",7} };
-\end{codeblock}
+\end{lstlisting}
 \exitexample \exitnote
 
 \pnum
@@ -3500,7 +3500,7 @@ List-initialization of an object or reference of type \tcode{T} is defined as fo
 performed~(\ref{dcl.init.aggr}).
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 double ad[] = { 1, 2.0 };           // OK
 int ai[] = { 1, 2.0 };              // error: narrowing
 
@@ -3511,7 +3511,7 @@ struct S2 {
 S2 s21 = { 1, 2, 3.0 };             // OK
 S2 s22 { 1.0, 2, 3 };               // error: narrowing
 S2 s23 { };                         // OK: default to 0,0,0
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Otherwise, if the initializer list has no elements and \tcode{T} is a class type with a
@@ -3529,7 +3529,7 @@ conversion (see below) is required to convert any of the arguments, the program 
 ill-formed.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S(std::initializer_list<double>); // \#1
   S(std::initializer_list<int>);    // \#2
@@ -3539,20 +3539,20 @@ struct S {
 S s1 = { 1.0, 2.0, 3.0 };           // invoke \#1
 S s2 = { 1, 2, 3 };                 // invoke \#2
 S s3 = { };                         // invoke \#3
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct Map {
   Map(std::initializer_list<std::pair<std::string,int>>);
 };
 Map ship = {{"Sophie",14}, {"Surprise",28}};
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   // no initializer-list constructors
   S(int, double, double);           // \#1
@@ -3562,7 +3562,7 @@ struct S {
 S s1 = { 1, 2, 3.0 };               // OK: invoke \#1
 S s2 { 1.0, 2, 3 };                 // error: narrowing
 S s3 { };                           // OK: invoke \#2
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Otherwise, if
@@ -3573,10 +3573,10 @@ from that element; if a narrowing conversion (see below) is required
 to convert the element to \tcode{T}, the program is ill-formed.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int x1 {2};                         // OK
 int x2 {2.0};                       // error: narrowing
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Otherwise, if \tcode{T} is a reference type, a prvalue temporary of the type
@@ -3585,7 +3585,7 @@ temporary. \enternote As usual, the binding will fail and the program is ill-for
 the reference type is an lvalue reference to a non-const type. \exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S(std::initializer_list<double>); // \#1
   S(const std::string&);            // \#2
@@ -3597,22 +3597,22 @@ S& r3 = { 1, 2, 3 };                // error: initializer is not an lvalue
 const int& i1 = { 1 };              // OK
 const int& i2 = { 1.1 };            // error: narrowing
 const int (&iar)[2] = { 1, 2 };     // OK: \tcode{iar} is bound to temporary array
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Otherwise, if the initializer list has no elements, the object is
 value-initialized.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int** pp {};                        // initialized to null pointer
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Otherwise, the program is ill-formed.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A { int i; int j; };
 A a1 { 1, 2 };                      // aggregate initialization 
 A a2 { 1.2 };                       // error: narrowing
@@ -3629,7 +3629,7 @@ C c2 = { 1.1, 2 };                  // error: narrowing
 
 int j { 1 };                        // initialize to 1
 int k { };                          // initialize to 0
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \end{itemize}
@@ -3652,19 +3652,19 @@ arguments of a call. \exitnote
 An object of type \tcode{std::initializer_list<E>} is constructed from
 an initializer list as if the implementation allocated a temporary array of $N$
 elements of type \tcode{const E}, where $N$ is the number of elements in the initializer list. Each element of that array is copy-initialized with the corresponding element of the initializer list, and the \tcode{std::initializer_list<E>} object is constructed to refer to that array. If a narrowing conversion is required to initialize any of the elements, the program is ill-formed.\enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X(std::initializer_list<double> v);
 };
 X x{ 1,2,3 };
-\end{codeblock}
+\end{lstlisting}
 
 The initialization will be implemented in a way roughly equivalent to this:
 
-\begin{codeblock}
+\begin{lstlisting}
 const double __a[3] = {double{1}, double{2}, double{3}};
 X x(std::initializer_list<double>(__a, __a+3));
-\end{codeblock}
+\end{lstlisting}
 
 assuming that the implementation can construct an \tcode{initializer_list} object with a pair of pointers. \exitexample
 
@@ -3675,7 +3675,7 @@ object~(\ref{class.temporary}), except that initializing an
 the array exactly like binding a reference to a temporary.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef std::complex<double> cmplx;
 std::vector<cmplx> v1 = { 1, 2, 3 };
 
@@ -3688,7 +3688,7 @@ struct A {
   std::initializer_list<int> i4;
   A() : i4{ 1, 2, 3 } {}  // creates an \tcode{A} with a dangling reference
 };
-\end{codeblock}
+\end{lstlisting}
 
 For \tcode{v1} and \tcode{v2}, the \tcode{initializer_list} object
 is a parameter in a function call, so the array created for
@@ -3731,7 +3731,7 @@ expression whose value after integral promotions will fit into the target type.
 \enternote As indicated above, such conversions are not allowed at the top level in
 list-initializations.\exitnote \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int x = 999;              // x is not a constant expression
 const int y = 999;
 const int z = 99;
@@ -3750,7 +3750,7 @@ float f2 { 7 };           // OK: 7 can be exactly represented as a float
 int f(int);
 int a[] =
   { 2, f(2), f(2.0) };    // OK: the double-to-int conversion is not at the top level
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{initialization!list-initialization|)}%
 \indextext{initialization|)}%

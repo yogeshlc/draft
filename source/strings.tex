@@ -196,9 +196,9 @@ is false for all values \tcode{c}.                                  &   constant
 The struct template
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 template<class charT> struct char_traits;
-\end{codeblock}
+\end{lstlisting}
 
 shall be provided in the header
 \tcode{<string>}
@@ -208,9 +208,9 @@ as a basis for explicit specializations.
 
 \indexlibrary{\idxcode{char_type}!\idxcode{char_traits}}%
 \indexlibrary{\idxcode{char_traits}!\idxcode{char_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef CHAR_T char_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -222,9 +222,9 @@ in the implementation of the library classes defined in~\ref{string.classes} and
 
 \indexlibrary{\idxcode{int_type}!\idxcode{char_traits}}%
 \indexlibrary{\idxcode{char_traits}!\idxcode{int_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef INT_T int_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -253,10 +253,10 @@ then some iostreams operations may give surprising results.}
 \indexlibrary{\idxcode{char_traits}!\idxcode{off_type}}%
 \indexlibrary{\idxcode{pos_type}!\idxcode{char_traits}}%
 \indexlibrary{\idxcode{char_traits}!\idxcode{pos_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\impdef@ off_type;
 typedef @\impdef@ pos_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -270,9 +270,9 @@ are described in~\ref{iostreams.limits.pos} and \ref{iostream.forward}.
 
 \indexlibrary{\idxcode{state_type}!\idxcode{char_traits}}%
 \indexlibrary{\idxcode{char_traits}!\idxcode{state_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef STATE_T state_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -287,14 +287,14 @@ shall meet the requirements of
 \rSec2[char.traits.specializations]{\tcode{char_traits} specializations}
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> struct char_traits<char>;
   template<> struct char_traits<char16_t>;
   template<> struct char_traits<char32_t>;
   template<> struct char_traits<wchar_t>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header
@@ -315,7 +315,7 @@ Clause~\ref{char.traits.require}.
 \rSec3[char.traits.specializations.char]{\tcode{struct char_traits<char>}}
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> struct char_traits<char> {
     typedef char        char_type;
@@ -343,7 +343,7 @@ namespace std {
     static constexpr int_type eof() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The defined types for
@@ -399,7 +399,7 @@ shall return
 \rSec3[char.traits.specializations.char16_t]{\tcode{struct char_traits<char16_t>}}
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> struct char_traits<char16_t> {
     typedef char16_t        char_type;
@@ -427,7 +427,7 @@ namespace std {
     static constexpr int_type eof() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The type
@@ -449,7 +449,7 @@ as a valid UTF-16 code unit.
 \rSec3[char.traits.specializations.char32_t]{\tcode{struct char_traits<char32_t>}}
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> struct char_traits<char32_t> {
     typedef char32_t        char_type;
@@ -477,7 +477,7 @@ namespace std {
     static constexpr int_type eof() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The type
@@ -499,7 +499,7 @@ code point.
 \rSec3[char.traits.specializations.wchar.t]{\tcode{struct char_traits<wchar_t>}}
 
 \indexlibrary{\idxcode{char_traits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> struct char_traits<wchar_t> {
     typedef wchar_t      char_type;
@@ -527,7 +527,7 @@ namespace std {
     static constexpr int_type eof() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The defined types for
@@ -596,7 +596,7 @@ and
 \synopsis{Header \tcode{<string>} synopsis}
 
 \indexlibrary{\idxhdr{string}}%
-\begin{codeblock}
+\begin{lstlisting}
 #include <initializer_list>
 
 namespace std {
@@ -798,7 +798,7 @@ namespace std {
   template <> struct hash<u32string>;
   template <> struct hash<wstring>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec1[basic.string]{Class template \tcode{basic_string}}
 
@@ -853,7 +853,7 @@ error is associated with exceptions of type
 \end{itemize}
 
 \indexlibrary{\idxcode{basic_string}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class charT, class traits = char_traits<charT>,
     class Allocator = allocator<charT> >
@@ -1066,7 +1066,7 @@ namespace std {
                 const charT* s, size_type n2) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[string.require]{\tcode{basic_string} general requirements}
 
@@ -1124,9 +1124,9 @@ and
 \rSec2[string.cons]{\tcode{basic_string} constructors and assignment operators}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_string(const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1143,10 +1143,10 @@ The postconditions of this function are indicated in Table~\ref{tab:strings.ctr.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(const basic_string& str);
 basic_string(basic_string&& str) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1169,11 +1169,11 @@ whose first element is pointed at by \tcode{str.data()} \\
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(const basic_string& str,
              size_type pos, size_type n = npos,
              const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1207,10 +1207,10 @@ of the string controlled by \tcode{str} beginning at position \tcode{pos}       
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(const charT* s, size_type n,
              const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1239,9 +1239,9 @@ is pointed at by \tcode{s}                                                      
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(const charT* s, const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1278,9 +1278,9 @@ Uses
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(size_type n, charT c, const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1307,11 +1307,11 @@ storing the initial value \tcode{c}                                             
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   basic_string(InputIterator begin, InputIterator end,
                const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1319,9 +1319,9 @@ template<class InputIterator>
 If \tcode{InputIterator} is an integral type,
 equivalent to
 
-\begin{codeblock}
+\begin{lstlisting}
 basic_string(static_cast<size_type>(begin), static_cast<value_type>(end), a)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Otherwise constructs a string from the values in the range [\tcode{begin}, \tcode{end}),
@@ -1331,9 +1331,9 @@ as indicated in the Sequence Requirements table
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(initializer_list<charT> il, const Allocator& a = Allocator());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1341,10 +1341,10 @@ basic_string(initializer_list<charT> il, const Allocator& a = Allocator());
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string(const basic_string& str, const Allocator& alloc);
 basic_string(basic_string&& str, const Allocator& alloc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1372,9 +1372,9 @@ element is pointed at by the original value of \tcode{str.data()}. \\
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator=(const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1409,9 +1409,9 @@ element is pointed at by \tcode{str.data()}                                     
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator=(basic_string&& str) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1448,9 +1448,9 @@ element was pointed at by \tcode{str.data()}                                    
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator=(const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1466,9 +1466,9 @@ Uses
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator=(charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1478,9 +1478,9 @@ basic_string& operator=(charT c);
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator=(initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1496,11 +1496,11 @@ basic_string& operator=(initializer_list<charT> il);
 \indexlibrary{\idxcode{begin}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{cbegin}}%
 \indexlibrary{\idxcode{cbegin}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator       begin() noexcept;
 const_iterator begin() const noexcept;
 const_iterator cbegin() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1512,11 +1512,11 @@ An iterator referring to the first character in the string.
 \indexlibrary{\idxcode{basic_string}!\idxcode{end}}%
 \indexlibrary{\idxcode{cend}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{cend}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator       end() noexcept;
 const_iterator end() const noexcept;
 const_iterator cend() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1528,11 +1528,11 @@ An iterator which is the past-the-end value.
 \indexlibrary{\idxcode{basic_string}!\idxcode{rbegin}}%
 \indexlibrary{\idxcode{crbegin}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{crbegin}}%
-\begin{itemdecl}
+\begin{lstlisting}
 reverse_iterator       rbegin() noexcept;
 const_reverse_iterator rbegin() const noexcept;
 const_reverse_iterator crbegin() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1545,11 +1545,11 @@ An iterator which is semantically equivalent to
 \indexlibrary{\idxcode{basic_string}!\idxcode{rend}}%
 \indexlibrary{\idxcode{crend}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{crend}}%
-\begin{itemdecl}
+\begin{lstlisting}
 reverse_iterator       rend() noexcept;
 const_reverse_iterator rend() const noexcept;
 const_reverse_iterator crend() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1562,9 +1562,9 @@ An iterator which is semantically equivalent to
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{size}}%
 \indexlibrary{\idxcode{size}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type size() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1577,9 +1577,9 @@ A count of the number of char-like objects currently in the string.
 
 \indexlibrary{\idxcode{length}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{length}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type length() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1589,9 +1589,9 @@ size_type length() const noexcept;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{max_size}}%
 \indexlibrary{\idxcode{max_size}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type max_size() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1604,9 +1604,9 @@ The size of the largest possible string.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{resize}}%
 \indexlibrary{\idxcode{resize}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void resize(size_type n, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1649,9 +1649,9 @@ and whose remaining elements are all initialized to \tcode{c}.
 
 \indexlibrary{\idxcode{resize}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{resize}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void resize(size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1661,9 +1661,9 @@ void resize(size_type n);
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{capacity}}%
 \indexlibrary{\idxcode{capacity}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type capacity() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1673,9 +1673,9 @@ The size of the allocated storage in the string.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{reserve}}%
 \indexlibrary{\idxcode{reserve}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void reserve(size_type res_arg=0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1716,9 +1716,9 @@ which may throw an appropriate exception.}
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{shrink_to_fit}}%
 \indexlibrary{\idxcode{shrink_to_fit}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void shrink_to_fit();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1729,25 +1729,25 @@ allow latitude for implementation-specific optimizations. \exitnote
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{clear}}%
 \indexlibrary{\idxcode{clear}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void clear() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \effects
 Behaves as if the function calls:
 
-\begin{codeblock}
+\begin{lstlisting}
 erase(begin(), end());
-\end{codeblock}
+\end{lstlisting}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{empty}}%
 \indexlibrary{\idxcode{empty}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool empty() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1759,10 +1759,10 @@ bool empty() const noexcept;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator[]}}%
 \indexlibrary{\idxcode{operator[]}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const_reference operator[](size_type pos) const;
 reference       operator[](size_type pos);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1783,10 +1783,10 @@ undefined behavior.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{at}}%
 \indexlibrary{\idxcode{at}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const_reference at(size_type pos) const;
 reference       at(size_type pos);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1806,10 +1806,10 @@ if
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{front}}%
 \indexlibrary{\idxcode{front}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT& front() const;
 charT& front();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1823,10 +1823,10 @@ Equivalent to \tcode{operator[](0)}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{back}}%
 \indexlibrary{\idxcode{back}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT& back() const;
 charT& back();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1844,10 +1844,10 @@ Equivalent to \tcode{operator[](size() - 1)}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+=}}%
 \indexlibrary{\idxcode{operator+=}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   operator+=(const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1860,9 +1860,9 @@ basic_string&
 
 \indexlibrary{\idxcode{operator+=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator+=(const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1875,9 +1875,9 @@ basic_string& operator+=(const charT* s);
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+=}}%
 \indexlibrary{\idxcode{operator+=}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator+=(charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1890,9 +1890,9 @@ basic_string& operator+=(charT c);
 
 \indexlibrary{\idxcode{operator+=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& operator+=(initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1907,10 +1907,10 @@ basic_string& operator+=(initializer_list<charT> il);
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   append(const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1923,10 +1923,10 @@ basic_string&
 
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   append(const basic_string& str, size_type pos, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1952,10 +1952,10 @@ of the string to append as the smaller of \tcode{n} and
 
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   append(const charT* s, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1979,9 +1979,9 @@ of \tcode{s}.
 
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& append(const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1998,9 +1998,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& append(size_type n, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2013,10 +2013,10 @@ basic_string& append(size_type n, charT c);
 
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   basic_string& append(InputIterator first, InputIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2032,9 +2032,9 @@ template<class InputIterator>
 
 \indexlibrary{\idxcode{append}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{append}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& append(initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2047,9 +2047,9 @@ basic_string& append(initializer_list<charT> il);
 
 \indexlibrary{\idxcode{push_back}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{push_back}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void push_back(charT c)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2062,9 +2062,9 @@ Equivalent to
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2077,9 +2077,9 @@ basic_string& assign(const basic_string& str);
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(basic_string&& str) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \effects The function replaces the string controlled by
@@ -2097,11 +2097,11 @@ string controlled by \tcode{str}.
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   assign(const basic_string& str, size_type pos,
          size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2128,9 +2128,9 @@ of the string to assign as the smaller of \tcode{n} and
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(const charT* s, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2150,9 +2150,9 @@ of length \tcode{n} whose elements are a copy of those pointed to by \tcode{s}.
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2169,9 +2169,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2183,9 +2183,9 @@ basic_string& assign(initializer_list<charT> il);
 
 
 \indexlibrary{\idxcode{length}!\tcode{char_traits}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& assign(size_type n, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2199,10 +2199,10 @@ basic_string& assign(size_type n, charT c);
 
 \indexlibrary{\idxcode{assign}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{assign}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   basic_string& assign(InputIterator first, InputIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2217,11 +2217,11 @@ template<class InputIterator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   insert(size_type pos1,
          const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2240,12 +2240,12 @@ basic_string&
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   insert(size_type pos1,
          const basic_string& str,
          size_type pos2, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2275,10 +2275,10 @@ of \tcode{n} and
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   insert(size_type pos, const charT* s, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2304,10 +2304,10 @@ string controlled by \tcode{*this}.
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   insert(size_type pos, const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2324,10 +2324,10 @@ basic_string&
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   insert(size_type pos, size_type n, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2340,9 +2340,9 @@ basic_string&
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator insert(const_iterator p, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2361,9 +2361,9 @@ An iterator which refers to the copy of the inserted character.
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator insert(const_iterator p, size_type n, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2382,10 +2382,10 @@ inserts \tcode{n} copies of \tcode{c} before the character referred to by \tcode
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   iterator insert(const_iterator p, InputIterator first, InputIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2407,9 +2407,9 @@ Equivalent to
 
 \indexlibrary{\idxcode{insert}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{insert}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator insert(const_iterator p, initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2424,9 +2424,9 @@ iterator insert(const_iterator p, initializer_list<charT> il);
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{erase}}%
 \indexlibrary{\idxcode{erase}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& erase(size_type pos = 0, size_type n = npos);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2465,9 +2465,9 @@ beginning at position
 
 \indexlibrary{\idxcode{erase}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{erase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator erase(const_iterator p);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2485,9 +2485,9 @@ is returned.
 
 \indexlibrary{\idxcode{erase}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{erase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iterator erase(const_iterator first, const_iterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2513,9 +2513,9 @@ is returned.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{pop_back}}%
 \indexlibrary{\idxcode{pop_back}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void pop_back();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2531,11 +2531,11 @@ Equivalent to \tcode{erase(size() - 1, 1)}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(size_type pos1, size_type n1,
           const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2554,12 +2554,12 @@ basic_string&
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(size_type pos1, size_type n1,
           const basic_string& str,
           size_type pos2, size_type n2);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2587,10 +2587,10 @@ as the smaller of \tcode{n2} and \tcode{str.size() - pos2} and calls
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(size_type pos1, size_type n1, const charT* s, size_type n2);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2620,10 +2620,10 @@ original string controlled by \tcode{*this} beginning at position
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(size_type pos, size_type n, const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2640,11 +2640,11 @@ basic_string&
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(size_type pos1, size_type n1,
           size_type n2, charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2657,9 +2657,9 @@ basic_string&
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& replace(const_iterator i1, const_iterator i2, const basic_string& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2677,10 +2677,10 @@ Calls \tcode{replace(i1 - begin(), i2 - i1, str)}.
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string&
   replace(const_iterator i1, const_iterator i2, const charT* s, size_type n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2697,9 +2697,9 @@ basic_string&
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& replace(const_iterator i1, const_iterator i2, const charT* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2717,10 +2717,10 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& replace(const_iterator i1, const_iterator i2, size_type n,
                       charT c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2736,11 +2736,11 @@ basic_string& replace(const_iterator i1, const_iterator i2, size_type n,
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator>
   basic_string& replace(const_iterator i1, const_iterator i2,
                         InputIterator j1, InputIterator j2);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2756,10 +2756,10 @@ template<class InputIterator>
 
 \indexlibrary{\idxcode{replace}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{replace}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string& replace(const_iterator i1, const_iterator i2,
                       initializer_list<charT> il);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2777,9 +2777,9 @@ basic_string& replace(const_iterator i1, const_iterator i2,
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{copy}}%
 \indexlibrary{\idxcode{copy}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type copy(charT* s, size_type n, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2817,9 +2817,9 @@ by \tcode{s}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_string& s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2843,10 +2843,10 @@ constant time.
 
 \indexlibrary{\idxcode{c_str}!\tcode{basic_string}}%
 \indexlibrary{\idxcode{data}!\tcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT* c_str() const noexcept;
 const charT* data() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2863,9 +2863,9 @@ The program shall not alter any of the values stored in the character array.
 
 \indexlibrary{\idxcode{get_allocator}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{get_allocator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 allocator_type get_allocator() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2880,10 +2880,10 @@ copy of the most recent replacement.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find}}%
 \indexlibrary{\idxcode{find}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find(const basic_string& str,
                size_type pos = 0) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2915,9 +2915,9 @@ Uses
 
 \indexlibrary{\idxcode{find}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find(const charT* s, size_type pos, size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2927,9 +2927,9 @@ size_type find(const charT* s, size_type pos, size_type n) const;
 
 \indexlibrary{\idxcode{find}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find(const charT* s, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2943,9 +2943,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find}}%
 \indexlibrary{\idxcode{find}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find(charT c, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2957,10 +2957,10 @@ size_type find(charT c, size_type pos = 0) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{rfind}}%
 \indexlibrary{\idxcode{rfind}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type rfind(const basic_string& str,
                 size_type pos = npos) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2993,9 +2993,9 @@ Uses
 
 \indexlibrary{\idxcode{rfind}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{rfind}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type rfind(const charT* s, size_type pos, size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3005,9 +3005,9 @@ size_type rfind(const charT* s, size_type pos, size_type n) const;
 
 \indexlibrary{\idxcode{rfind}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{rfind}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type rfind(const charT* s, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3021,9 +3021,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{rfind}}%
 \indexlibrary{\idxcode{rfind}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type rfind(charT c, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3035,11 +3035,11 @@ size_type rfind(charT c, size_type pos = npos) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_of}}%
 \indexlibrary{\idxcode{find_first_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_first_of(const basic_string& str,
                 size_type pos = 0) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3072,10 +3072,10 @@ Uses
 
 \indexlibrary{\idxcode{find_first_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_first_of(const charT* s, size_type pos, size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3085,9 +3085,9 @@ size_type
 
 \indexlibrary{\idxcode{find_first_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_first_of(const charT* s, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3101,9 +3101,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_of}}%
 \indexlibrary{\idxcode{find_first_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_first_of(charT c, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3115,11 +3115,11 @@ size_type find_first_of(charT c, size_type pos = 0) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_of}}%
 \indexlibrary{\idxcode{find_last_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_last_of(const basic_string& str,
                size_type pos = npos) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3152,9 +3152,9 @@ Uses
 
 \indexlibrary{\idxcode{find_last_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_of(const charT* s, size_type pos, size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3164,9 +3164,9 @@ size_type find_last_of(const charT* s, size_type pos, size_type n) const;
 
 \indexlibrary{\idxcode{find_last_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_of(const charT* s, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3180,9 +3180,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_of}}%
 \indexlibrary{\idxcode{find_last_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_of(charT c, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3194,11 +3194,11 @@ size_type find_last_of(charT c, size_type pos = npos) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_not_of}}%
 \indexlibrary{\idxcode{find_first_not_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_first_not_of(const basic_string& str,
                     size_type pos = 0) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3231,10 +3231,10 @@ Uses
 
 \indexlibrary{\idxcode{find_first_not_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_not_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_first_not_of(const charT* s, size_type pos, size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3244,9 +3244,9 @@ size_type
 
 \indexlibrary{\idxcode{find_first_not_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_not_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_first_not_of(const charT* s, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3260,9 +3260,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_first_not_of}}%
 \indexlibrary{\idxcode{find_first_not_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_first_not_of(charT c, size_type pos = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3274,11 +3274,11 @@ size_type find_first_not_of(charT c, size_type pos = 0) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_not_of}}%
 \indexlibrary{\idxcode{find_last_not_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type
   find_last_not_of(const basic_string& str,
                    size_type pos = npos) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3312,10 +3312,10 @@ Uses
 
 \indexlibrary{\idxcode{find_last_not_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_not_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_not_of(const charT* s, size_type pos,
                            size_type n) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3325,9 +3325,9 @@ size_type find_last_not_of(const charT* s, size_type pos,
 
 \indexlibrary{\idxcode{find_last_not_of}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_not_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_not_of(const charT* s, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3341,9 +3341,9 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{find_last_not_of}}%
 \indexlibrary{\idxcode{find_last_not_of}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_type find_last_not_of(charT c, size_type pos = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3355,9 +3355,9 @@ size_type find_last_not_of(charT c, size_type pos = npos) const;
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{substr}}%
 \indexlibrary{\idxcode{substr}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string substr(size_type pos = 0, size_type n = npos) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3384,9 +3384,9 @@ Determines the effective length \tcode{rlen} of the string to copy as the smalle
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(const basic_string& str) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3417,10 +3417,10 @@ Otherwise, returns a value as indicated in Table~\ref{tab:strings.compare}.
 
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(size_type pos1, size_type n1,
             const basic_string& str) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3429,11 +3429,11 @@ int compare(size_type pos1, size_type n1,
 
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(size_type pos1, size_type n1,
             const basic_string& str,
             size_type pos2, size_type n2 ) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3442,9 +3442,9 @@ int compare(size_type pos1, size_type n1,
 
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(const charT *s) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3454,10 +3454,10 @@ int compare(const charT *s) const;
 
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(size_type pos, size_type n1,
             const charT *s) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3466,10 +3466,10 @@ int compare(size_type pos, size_type n1,
 
 \indexlibrary{\idxcode{compare}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(size_type pos, size_type n1,
             const charT *s, size_type n2) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3484,12 +3484,12 @@ int compare(size_type pos, size_type n1,
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const basic_string<charT,traits,Allocator>& lhs,
               const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3499,12 +3499,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(basic_string<charT,traits,Allocator>&& lhs,
               const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3514,12 +3514,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const basic_string<charT,traits,Allocator>& lhs,
               basic_string<charT,traits,Allocator>&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3529,12 +3529,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(basic_string<charT,traits,Allocator>&& lhs,
               basic_string<charT,traits,Allocator>&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3546,12 +3546,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const charT* lhs,
               const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3566,12 +3566,12 @@ Uses
 
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const charT* lhs,
               basic_string<charT,traits,Allocator>&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3586,12 +3586,12 @@ Uses
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(charT lhs,
               const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3601,12 +3601,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(charT lhs,
               basic_string<charT,traits,Allocator>&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3616,12 +3616,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const basic_string<charT,traits,Allocator>& lhs,
               const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3636,12 +3636,12 @@ Uses
 
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(basic_string<charT,traits,Allocator>&& lhs,
               const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3656,12 +3656,12 @@ Uses
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(const basic_string<charT,traits,Allocator>& lhs,
               charT rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3671,12 +3671,12 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator+}}%
 \indexlibrary{\idxcode{operator+}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_string<charT,traits,Allocator>
     operator+(basic_string<charT,traits,Allocator>&& lhs,
               charT rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3688,11 +3688,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator==}}%
 \indexlibrary{\idxcode{operator==}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator==(const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3702,11 +3702,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator==}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator==(const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3716,11 +3716,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator==}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator==(const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3737,11 +3737,11 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator"!=}}%
 \indexlibrary{\idxcode{operator"!=}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator!=(const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3751,11 +3751,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator"!=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator"!=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator!=(const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3765,11 +3765,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator"!=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator"!=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator!=(const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3785,11 +3785,11 @@ elements of \tcode{charT}.
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<}}%
 \indexlibrary{\idxcode{operator<}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator< (const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3799,11 +3799,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator<}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator< (const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3813,11 +3813,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator<}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator< (const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3829,11 +3829,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator> (const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3843,11 +3843,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator> (const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3857,11 +3857,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator> (const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3873,11 +3873,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator<=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator<=(const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3887,11 +3887,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator<=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator<=(const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3901,11 +3901,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator<=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator<=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator<=(const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3917,11 +3917,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator>=(const basic_string<charT,traits,Allocator>& lhs,
                   const basic_string<charT,traits,Allocator>& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3931,11 +3931,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator>=(const charT* lhs,
                   const basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3945,11 +3945,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{operator>=}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator>=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   bool operator>=(const basic_string<charT,traits,Allocator>& lhs,
                   const charT* rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3961,11 +3961,11 @@ template<class charT, class traits, class Allocator>
 
 \indexlibrary{\idxcode{basic_string}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{basic_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   void swap(basic_string<charT,traits,Allocator>& lhs,
     basic_string<charT,traits,Allocator>& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3977,12 +3977,12 @@ Equivalent to \tcode{lhs.swap(rhs);}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator\shr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_istream<charT,traits>&
     operator>>(basic_istream<charT,traits>& is,
                basic_string<charT,traits,Allocator>& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4037,12 +4037,12 @@ which may throw
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_ostream<charT, traits>&
     operator<<(basic_ostream<charT, traits>& os,
                const basic_string<charT,traits,Allocator>& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4064,7 +4064,7 @@ then calls \tcode{os.\brk{}width(0)}.
 
 \indexlibrary{\idxcode{getline}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{getline}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_istream<charT,traits>&
     getline(basic_istream<charT,traits>& is,
@@ -4075,7 +4075,7 @@ template<class charT, class traits, class Allocator>
     getline(basic_istream<charT,traits>&& is,
             basic_string<charT,traits,Allocator>& str,
             charT delim);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4135,7 +4135,7 @@ which may throw
 
 \indexlibrary{\idxcode{getline}!\idxcode{basic_string}}%
 \indexlibrary{\idxcode{basic_string}!\idxcode{getline}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits, class Allocator>
   basic_istream<charT,traits>&
     getline(basic_istream<charT,traits>& is,
@@ -4144,7 +4144,7 @@ template<class charT, class traits, class Allocator>
   basic_istream<charT,traits>&
     getline(basic_istream<charT,traits>&& is,
             basic_string<charT,traits,Allocator>& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4159,13 +4159,13 @@ template<class charT, class traits, class Allocator>
 \indexlibrary{\idxcode{stoul}}%
 \indexlibrary{\idxcode{stoll}}%
 \indexlibrary{\idxcode{stoull}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int stoi(const string& str, size_t *idx = 0, int base = 10);
 long stol(const string& str, size_t *idx = 0, int base = 10);
 unsigned long stoul(const string& str, size_t *idx = 0, int base = 10);
 long long stoll(const string& str, size_t *idx = 0, int base = 10);
 unsigned long long stoull(const string& str, size_t *idx = 0, int base = 10);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4193,11 +4193,11 @@ for the return type.
 \indexlibrary{\idxcode{stof}}%
 \indexlibrary{\idxcode{stol}}%
 \indexlibrary{\idxcode{stold}}%
-\begin{itemdecl}
+\begin{lstlisting}
 float stof(const string& str, size_t *idx = 0);
 double stod(const string& str, size_t *idx = 0);
 long double stold(const string& str, size_t *idx = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4221,7 +4221,7 @@ values for the return type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{to_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string to_string(int val);
 string to_string(unsigned val);
 string to_string(long val);
@@ -4231,7 +4231,7 @@ string to_string(unsigned long long val);
 string to_string(float val);
 string to_string(double val);
 string to_string(long double val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4254,13 +4254,13 @@ character buffer of sufficient size.
 \indexlibrary{\idxcode{stoul}}%
 \indexlibrary{\idxcode{stoll}}%
 \indexlibrary{\idxcode{stoull}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int stoi(const wstring& str, size_t *idx = 0, int base = 10);
 long stol(const wstring& str, size_t *idx = 0, int base = 10);
 unsigned long stoul(const wstring& str, size_t *idx = 0, int base = 10);
 long long stoll(const wstring& str, size_t *idx = 0, int base = 10);
 unsigned long long stoull(const wstring& str, size_t *idx = 0, int base = 10);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4286,11 +4286,11 @@ for the return type.
 \indexlibrary{\idxcode{stof}}%
 \indexlibrary{\idxcode{stod}}%
 \indexlibrary{\idxcode{stold}}%
-\begin{itemdecl}
+\begin{lstlisting}
 float stof(const wstring& str, size_t *idx = 0);
 double stod(const wstring& str, size_t *idx = 0);
 long double stold(const wstring& str, size_t *idx = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4311,7 +4311,7 @@ conversion could be performed. Throws \tcode{out_of_range} if \tcode{wcstod} or
 \end{itemdescr}
 
 \indexlibrary{\idxcode{to_wstring}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wstring to_wstring(int val);
 wstring to_wstring(unsigned val);
 wstring to_wstring(long val);
@@ -4321,7 +4321,7 @@ wstring to_wstring(unsigned long long val);
 wstring to_wstring(float val);
 wstring to_wstring(double val);
 wstring to_wstring(long double val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4343,12 +4343,12 @@ internal character buffer of sufficient size \tcode{buffsz}.
 \rSec1[basic.string.hash]{Hash support}
 
 \indexlibrary{\idxcode{hash}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <> struct hash<string>;
 template <> struct hash<u16string>;
 template <> struct hash<u32string>;
 template <> struct hash<wstring>;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires the template specializations shall meet the requirements of class template
@@ -4398,10 +4398,10 @@ The function signature
 \tcode{strchr(const char*, int)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char* strchr(const char* s, int c);
       char* strchr(      char* s, int c);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4411,10 +4411,10 @@ The function signature
 \tcode{strpbrk(const char*, const char*)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char* strpbrk(const char* s1, const char* s2);
       char* strpbrk(      char* s1, const char* s2);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4424,10 +4424,10 @@ The function signature
 \tcode{strrchr(const char*, int)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char* strrchr(const char* s, int c);
       char* strrchr(      char* s, int c);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4437,10 +4437,10 @@ The function signature
 \tcode{strstr(const char*, const char*)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char* strstr(const char* s1, const char* s2);
       char* strstr(      char* s1, const char* s2);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4450,10 +4450,10 @@ The function signature
 \tcode{memchr(const void*, int, size_t)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const void* memchr(const void* s, int c, size_t n);
       void* memchr(      void* s, int c, size_t n);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4463,10 +4463,10 @@ The function signature
 \tcode{wcschr(const wchar_t*, wchar_t)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const wchar_t* wcschr(const wchar_t* s, wchar_t c);
       wchar_t* wcschr(      wchar_t* s, wchar_t c);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4476,10 +4476,10 @@ The function signature
 \tcode{wcspbrk(const wchar_t*, const wchar_t*)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const wchar_t* wcspbrk(const wchar_t* s1, const wchar_t* s2);
       wchar_t* wcspbrk(      wchar_t* s1, const wchar_t* s2);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4489,10 +4489,10 @@ The function signature
 \tcode{wcsrchr(const wchar_t*, wchar_t)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const wchar_t* wcsrchr(const wchar_t* s, wchar_t c);
       wchar_t* wcsrchr(      wchar_t* s, wchar_t c);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4502,10 +4502,10 @@ The function signature
 \tcode{wcsstr(const wchar_t*, const wchar_t*)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const wchar_t* wcsstr(const wchar_t* s1, const wchar_t* s2);
       wchar_t* wcsstr(      wchar_t* s1, const wchar_t* s2);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 
@@ -4515,10 +4515,10 @@ The function signature
 \tcode{wmemchr(const wwchar_t*, int, size_t)}
 shall be replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 const wchar_t* wmemchr(const wchar_t* s, wchar_t c, size_t n);
       wchar_t* wmemchr(      wchar_t* s, wchar_t c, size_t n);
-\end{codeblock}
+\end{lstlisting}
 
 both of which shall have the same behavior as the original declaration.
 

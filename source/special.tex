@@ -34,7 +34,7 @@ Programs may explicitly refer to implicitly-declared special member functions.
 a program may explicitly call, take the address of or form a pointer to member
 to an implicitly-declared special member function.
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };                   // implicitly declared \tcode{A::operator=}
 struct B : A {
   B& operator=(const B &);
@@ -43,7 +43,7 @@ B& B::operator=(const B& s) {
   this->A::operator=(s);        // well formed
   return *this;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -82,13 +82,13 @@ In such a declaration, optional parentheses around the constructor class name
 are ignored.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S();              // declares the constructor
 };
 
 S::S() { }          // defines the constructor
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -287,10 +287,10 @@ The syntax looks like an explicit call of the constructor.
 \enterexample
 \indextext{example!constructor}%
 
-\begin{codeblock}
+\begin{lstlisting}
 complex zz = complex(1,2.3);
 cprint( complex(7.8,1.2) );
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -319,7 +319,7 @@ the constructor's
 pointer, the value of the object or subobject thus obtained is unspecified.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct C;
 void no_opt(C*);
 
@@ -336,7 +336,7 @@ void no_opt(C* cptr) {
   cout << cobj.c * 100          // value of \tcode{cobj.c} is unspecified
        << '\n';
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.temporary]{Temporary objects}
@@ -373,7 +373,7 @@ so the foregoing does not apply to the prvalue of any such function call.
 
 \pnum
 \enterexample Consider the following code:
-\begin{codeblock}
+\begin{lstlisting}
 class X {
 public:
   X(int);
@@ -398,7 +398,7 @@ void h() {
   Y c = g(Y(3));
   a = f(a);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{class~object~copy|see{copy~constructor}}%
 \indextext{constructor!copy}%
@@ -484,11 +484,11 @@ persists until the completion of the full-expression containing the call.
 \item The lifetime of a temporary bound to the returned value in a function return statement~(\ref{stmt.return}) is not extended; the temporary is destroyed at the end of the full-expression in the return statement.
 
 \item A temporary bound to a reference in a \grammarterm{new-initializer}~(\ref{expr.new}) persists until the completion of the full-expression containing the \grammarterm{new-initializer}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S { int mi; const std::pair<int,int>& mp; };
 S a { 1, {2,3} };
 S* p = new S{ 1, {2,3} };   // Creates dangling reference
-\end{codeblock}
+\end{lstlisting}
 \exitexample \enternote This may introduce a dangling reference, and implementations are encouraged to issue a warning in such a case. \exitnote
 \end{itemize}
 
@@ -518,7 +518,7 @@ the temporary shall be destroyed after
 is destroyed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S();
   S(int);
@@ -528,7 +528,7 @@ struct S {
 S obj1;
 const S& cr = S(16)+S(23);
 S obj2;
-\end{codeblock}
+\end{lstlisting}
 
 the expression
 \tcode{S(16) + S(23)}
@@ -631,7 +631,7 @@ is implicitly applied to a single value.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   operator int();
 };
@@ -644,7 +644,7 @@ Y a;
 int b = a;          // error
                     // \tcode{a.operator X().operator int()} not tried
 int c = X(a);       // OK: \tcode{a.operator X().operator int()}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -656,7 +656,7 @@ Function overload resolution~(\ref{over.match.best}) selects the best
 conversion function to perform the conversion.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   operator int();
 };
@@ -670,7 +670,7 @@ void f(Y& a) {
                     // \tcode{X::operator int()} or \tcode{Y::operator char()}
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[class.conv.ctor]{Conversion by constructor}%
@@ -689,7 +689,7 @@ Such a constructor is called a
 \enterexample
 
 \indextext{Jessie}%
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
     X(int);
     X(const char*, int =0);
@@ -703,7 +703,7 @@ void f(X arg) {
   f(3);             // \tcode{f(X(3))}
   f({1, 2});        // \tcode{f(X(1,2))}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -715,7 +715,7 @@ will be used to perform default-initialization
 or value-initialization~(\ref{dcl.init}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct Z {
   explicit Z();
   explicit Z(int);
@@ -730,7 +730,7 @@ Z* p = new Z(1);                // OK: direct initialization syntax used
 Z a4 = (Z)1;                    // OK: explicit cast used
 Z a5 = static_cast<Z>(1);       // OK: explicit cast used
 Z a6 = { 3, 4 };                // error: no implicit conversion
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -785,7 +785,7 @@ be reached through a call to a virtual conversion function in a base class.}
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   operator int();
 };
@@ -795,7 +795,7 @@ void f(X a) {
   i = (int)a;
   i = a;
 }
-\end{codeblock}
+\end{lstlisting}
 
 In all three cases the value assigned will be converted by
 \tcode{X::operator int()}.
@@ -805,7 +805,7 @@ In all three cases the value assigned will be converted by
 A conversion function may be explicit~(\ref{dcl.fct.spec}), in which case it is only considered as a user-defined conversion for direct-initialization~(\ref{dcl.init}). Otherwise, user-defined conversions are not restricted to use in assignments and initializations.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Y { };
 struct Z {
   explicit operator Y() const;
@@ -823,7 +823,7 @@ void g(X a, X b) {
   if (a) {
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -841,11 +841,11 @@ This prevents ambiguities between the declarator operator * and its expression
 counterparts.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 &ac.operator int*i; // syntax error:
                     // parsed as: \tcode{\&(ac.operator int *)i}
                     // not as: \tcode{\&(ac.operator int)*i}
-\end{codeblock}
+\end{lstlisting}
 
 The \tcode{*} is the pointer declarator and not the multiplication operator.
 \exitexample
@@ -1096,7 +1096,7 @@ undefined behavior
 on a null pointer has no effect).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual ~B() { }
 };
@@ -1115,7 +1115,7 @@ void f() {
   B_ptr->B_alias::~B();         // calls \tcode{B}'s destructor
   B_ptr->B_alias::~B_alias();   // calls \tcode{B}'s destructor
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 An explicit destructor call must always be written using
@@ -1140,7 +1140,7 @@ facilities.
 For example,
 \indextext{example!explicit destructor~call}%
 
-\begin{codeblock}
+\begin{lstlisting}
 void* operator new(std::size_t, void* p) { return p; }
 struct X {
   X(int);
@@ -1154,7 +1154,7 @@ void g() {                      // rare, specialized use:
   f(p);
   p->X::~X();                   // cleanup
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -1176,11 +1176,11 @@ Allowing this makes it possible to write code without having to know if a
 destructor exists for a given type.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int I;
 I* p;
 p->I::~I();
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec1[class.free]{Free store}%
@@ -1196,7 +1196,7 @@ is a static member (even if not explicitly declared
 \pnum
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Arena;
 struct B {
   void* operator new(std::size_t, Arena*);
@@ -1210,7 +1210,7 @@ void foo(int i) {
   new D1[i];        // calls \tcode{::operator new[](std::size_t)}
   new D1;           // ill-formed: \tcode{::operator new(std::size_t)} hidden
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1277,7 +1277,7 @@ is a static member (even if not explicitly declared
 \indextext{example!\idxcode{delete}}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   void operator delete(void*);
   void operator delete[](void*, std::size_t);
@@ -1287,7 +1287,7 @@ class Y {
   void operator delete(void*, std::size_t);
   void operator delete[](void*);
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1307,7 +1307,7 @@ the class that is the dynamic type of the object,
 if the destructor is virtual, the effect is the same.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual ~B();
   void operator delete(void*, std::size_t);
@@ -1321,7 +1321,7 @@ void f() {
   B* bp = new D;
   delete bp;        //1: uses \tcode{D::operator delete(void*)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here, storage for the non-array object of class
 \tcode{D}
@@ -1338,7 +1338,7 @@ of a
 refers to an array of objects of class type.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual ~B();
   void operator delete[](void*, std::size_t);
@@ -1354,7 +1354,7 @@ void f(int i) {
   B* bp = new D[i];
   delete[] bp;      // undefined behavior
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -1426,7 +1426,7 @@ see~\ref{dcl.init}.
 \indextext{example!constructor~and initialization}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct complex {
   complex();
   complex(double);
@@ -1450,7 +1450,7 @@ complex f = 3;                  // construct \tcode{complex(3)} using
                                 // copy/move it into \tcode{f}
 complex g = { 1, 2 };           // initialize by a call of
                                 // \tcode{complex(double, double)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 \indextext{initialization!overloaded assignment~and}%
@@ -1465,9 +1465,9 @@ An object of class type can also be initialized by a
 \grammarterm{braced-init-list}. List-initialization semantics apply;
 see~\ref{dcl.init} and~\ref{dcl.init.list}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 complex v[6] = { 1, complex(1,2), complex(), 2 };
-\end{codeblock}
+\end{lstlisting}
 
 Here,
 \tcode{complex::complex(double)}
@@ -1486,13 +1486,13 @@ and
 \tcode{v[5]}.
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   int i;
   float f;
   complex c;
 } x = { 99, 88.8, 77.7 };
-\end{codeblock}
+\end{lstlisting}
 
 Here,
 \tcode{x.i}
@@ -1593,13 +1593,13 @@ A
 can initialize a base class using any \grammarterm{class-or-decltype} that denotes that base class type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { A(); };
   typedef A global_A;
   struct B { };
   struct C: public A, public B { C(); };
   C::C(): global_A() { }        // mem-initializer for base \tcode{A}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1611,12 +1611,12 @@ an inherited virtual base class, the
 is ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { A(); };
 struct B: public virtual A { };
 struct C: public A, public B { C(); };
 C::C(): A() { }                 // ill-formed: which \tcode{A}?
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1648,14 +1648,14 @@ Once the target constructor returns, the body of the delegating constructor
 is executed. If a constructor delegates to itself directly or indirectly,
 the program is ill-formed; no diagnostic is required. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct C {
   C( int ) { }                  // \#1: non-delegating constructor
   C(): C(42) { }                // \#2: delegates to \#1
   C( char c ) : C(42.0) { }     // \#3: ill-formed due to recursion with \#4
   C( double d ) : C('a') { }    // \#4: ill-formed due to recursion with \#3
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1672,7 +1672,7 @@ according to the initialization rules of~\ref{dcl.init} for direct-initializatio
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B1 { B1(int); /* ... */ };
 struct B2 { B2(int); /* ... */ };
 struct D : B1, B2 {
@@ -1684,7 +1684,7 @@ struct D : B1, B2 {
 D::D(int a) : B2(a+1), B1(a+2), c(a+3), b(a+4)
   { /* ... */ }
 D d(10);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 The initialization
 performed by each \grammarterm{mem-initializer}
@@ -1732,7 +1732,7 @@ given a value
 during execution of the \grammarterm{compound-statement} of the body of the constructor,
 the member has indeterminate value.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   A();
 };
@@ -1748,7 +1748,7 @@ struct C {
   int i;                  // OK: \tcode{i} has indeterminate value
   int j = 5;              // OK: \tcode{j} has the value \tcode{5}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1757,13 +1757,13 @@ and a \grammarterm{mem-initializer}, the initialization specified by the
 \grammarterm{mem-initializer} is performed, and the non-static data member's 
 \grammarterm{brace-or-equal-initializer} is ignored.
 \enterexample Given
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int i = /* some integer expression with side effects */ ;
   A(int arg) : i(arg) { }
   // ...
 };
-\end{codeblock}
+\end{lstlisting}
 
 the \tcode{A(int)} constructor will simply initialize \tcode{i} to the value of
 \tcode{arg}, and the
@@ -1811,7 +1811,7 @@ subobjects are destroyed in the reverse order of initialization.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct V {
   V();
   V(int);
@@ -1840,7 +1840,7 @@ V v(1);             // use \tcode{V(int)}
 A a(2);             // use \tcode{V(int)}
 B b(3);             // use \tcode{V()}
 C c(4);             // use \tcode{V()}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1855,7 +1855,7 @@ are evaluated in the scope of the constructor for which the
 is specified.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   int a;
   int b;
@@ -1865,7 +1865,7 @@ public:
   const int& r;
   X(int i): r(a), b(i), i(i), j(this->i) { }
 };
-\end{codeblock}
+\end{lstlisting}
 
 initializes
 \tcode{X::r}
@@ -1916,7 +1916,7 @@ before all the
 for base classes have completed, the result of the operation is undefined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
 public:
   A(int);
@@ -1943,7 +1943,7 @@ public:
                     // but base \tcode{C} not yet initialized
   i(f()) { }        // well-defined: bases are all initialized
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1965,13 +1965,13 @@ a pack expansion~(\ref{temp.variadic}) that initializes the base
 classes specified by a pack expansion in the \grammarterm{base-specifier-list}
 for the class. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class... Mixins>
 class X : public Mixins... {
 public:
   X(const Mixins&... mixins) : Mixins(mixins)... { }
 };
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample%
 \indextext{initialization!class~object|)}
@@ -1990,7 +1990,7 @@ any non-static member or base class of the object after the destructor finishes
 execution results in undefined behavior.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X { int i; };
 struct Y : X { Y(); };                  // non-trivial
 struct A { int a; };
@@ -2007,12 +2007,12 @@ B bobj;                                 // definition of \tcode{bobj}
 extern X xobj;
 int* p3 = &xobj.i;                      //OK, \tcode{X} is a trivial class
 X xobj;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct W { int j; };
 struct X : public virtual W { };
 struct Y {
@@ -2021,7 +2021,7 @@ struct Y {
   Y() : p(&x.j) {   // undefined, \tcode{x} is not yet constructed
     }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2051,7 +2051,7 @@ otherwise the computation of the pointer value (or accessing the member
 value) results in undefined behavior.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };
 struct B : virtual A { };
 struct C : B { };
@@ -2070,7 +2070,7 @@ struct E : C, D, X {
                     // \tcode{C/B/D/A} sublattice is fully constructed
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2096,7 +2096,7 @@ but not \tcode{x} or one of its base class subobjects, the behavior
 is undefined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct V {
   virtual void f();
   virtual void g();
@@ -2123,7 +2123,7 @@ B::B(V* v, A* a) {
   v->g();           // \tcode{v} is base of \tcode{B}, the call is well-defined, calls \tcode{B::g}
   a->f();           // undefined behavior, \tcode{a}'s type not a base of \tcode{B}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2182,7 +2182,7 @@ results in undefined behavior.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct V {
   virtual void f();
 };
@@ -2207,7 +2207,7 @@ B::B(V* v, A* a) {
   dynamic_cast<B*>(a);          // undefined behavior,
                                 // \tcode{a} has type \tcode{A*}, \tcode{A} not a base of \tcode{B}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{destruction|)}%
 \indextext{construction|)}
@@ -2250,7 +2250,7 @@ and
 \tcode{X::X(X\&,int=1)}
 are copy constructors.
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X(int);
   X(const X&, int = 1);
@@ -2258,7 +2258,7 @@ struct X {
 X a(1);             // calls \tcode{X(int);}
 X b(a, 0);          // calls \tcode{X(const X\&, int);}
 X c = b;            // calls \tcode{X(const X\&, int);}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2268,7 +2268,7 @@ first parameter is of type \tcode{X\&\&}, \tcode{const X\&\&},
 no other parameters or else all other parameters have default 
 arguments~(\ref{dcl.fct.default}).
 \enterexample \tcode{Y::Y(Y\&\&)} is a move constructor.
-\begin{codeblock}
+\begin{lstlisting}
 struct Y {
   Y(const Y&);
   Y(Y&&);
@@ -2276,7 +2276,7 @@ struct Y {
 extern Y f(int);
 Y d(f(1));          // calls \tcode{Y(Y\&\&)}
 Y e = d;            // calls \tcode{Y(const Y\&)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2284,14 +2284,14 @@ Y e = d;            // calls \tcode{Y(const Y\&)}
 All forms of copy/move constructor may be declared for a class.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X(const X&);
   X(X&);            // OK
   X(X&&);
   X(const X&&);     // OK, but possibly not sensible
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -2313,14 +2313,14 @@ cv-qualified)
 \tcode{X}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X();              // default constructor
   X(X&);            // copy constructor with a nonconst parameter
 };
 const X cx;
 X x = cx;           // error: \tcode{X::X(X\&)} cannot copy \tcode{cx} into \tcode{x}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -2334,7 +2334,7 @@ default arguments.
 A member function template is never instantiated to
 produce such a constructor signature.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   template<typename T> S(T);
   S();
@@ -2346,7 +2346,7 @@ void h() {
   S a(g);           // does not instantiate the member template to produce \tcode{S::S<S>(S)};
                     // uses the implicitly declared copy constructor
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2360,18 +2360,18 @@ The latter case is deprecated if the class has a user-declared copy assignment
 operator or a user-declared destructor.
 Thus, for the class definition
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X(const X&, int);
 };
-\end{codeblock}
+\end{lstlisting}
 
 a copy constructor is implicitly-declared.
 If the user-declared constructor is later defined as
 
-\begin{codeblock}
+\begin{lstlisting}
 X::X(const X& x, int i =0) { /* ... */ }
-\end{codeblock}
+\end{lstlisting}
 
 then any use of
 \tcode{X}'s
@@ -2383,9 +2383,9 @@ The implicitly-declared copy constructor for a class
 \tcode{X}
 will have the form
 
-\begin{codeblock}
+\begin{lstlisting}
 X::X(const X&)
-\end{codeblock}
+\end{lstlisting}
 
 if
 
@@ -2424,9 +2424,9 @@ lvalue; see~\ref{diff.special}.}
 
 Otherwise, the implicitly-declared copy constructor will have the form
 
-\begin{codeblock}
+\begin{lstlisting}
 X::X(X&)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \indextext{constructor!move!implicitly declared}%
@@ -2457,9 +2457,9 @@ a copy constructor. \exitnote
 
 \pnum
 The implicitly-declared move constructor for class \tcode{X} will have the form
-\begin{codeblock}
+\begin{lstlisting}
 X::X(X&&)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An implicitly-declared copy/move constructor is an
@@ -2622,7 +2622,7 @@ cannot be assigned to an object of type
 \tcode{X}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X();
   X& operator=(X&);
@@ -2632,7 +2632,7 @@ X x;
 void f() {
   x = cx;           // error: \tcode{X::operator=(X\&)} cannot assign \tcode{cx} into \tcode{x}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -2649,9 +2649,9 @@ The implicitly-declared copy assignment operator for a class
 \tcode{X}
 will have the form
 
-\begin{codeblock}
+\begin{lstlisting}
 X& X::operator=(const X&)
-\end{codeblock}
+\end{lstlisting}
 
 if
 
@@ -2693,9 +2693,9 @@ Otherwise, the implicitly-declared copy
 assignment operator
 will have the form
 
-\begin{codeblock}
+\begin{lstlisting}
 X& X::operator=(X&)
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 A user-declared move assignment operator \tcode{X::operator=} is
@@ -2730,31 +2730,31 @@ the move assignment operator would not be implicitly defined as deleted.
 \end{itemize}
 
 \enterexample The class definition
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   int a;
   S& operator=(const S&) = default;
 };
-\end{codeblock}
+\end{lstlisting}
 
 will not have a default move assignment operator implicitly declared because the
 copy assignment operator has been user-declared. The move assignment operator may
 be explicitly defaulted.
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   int a;
   S& operator=(const S&) = default;
   S& operator=(S&&) = default;
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 The implicitly-declared move assignment operator for a class \tcode{X} will have the form
-\begin{codeblock}
+\begin{lstlisting}
 X& X::operator=(X&&);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The implicitly-declared copy/move assignment operator for class
@@ -2904,12 +2904,12 @@ are assigned more than once by the implicitly-defined copy assignment
 operator.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct V { };
 struct A : virtual V { };
 struct B : virtual V { };
 struct C : B, A { };
-\end{codeblock}
+\end{lstlisting}
 
 It is unspecified whether the virtual base class subobject
 \tcode{V}
@@ -3005,7 +3005,7 @@ of constructors and destructors for the object declared by the
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Thing {
 public:
   Thing();
@@ -3019,7 +3019,7 @@ Thing f() {
 }
 
 Thing t2 = f();
-\end{codeblock}
+\end{lstlisting}
 
 Here the criteria for elision can be combined to
 eliminate two calls to the copy constructor of class
@@ -3057,7 +3057,7 @@ elision is not performed, and the selected constructor must be accessible even i
 the call is elided. \exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class Thing {
 public:
   Thing();
@@ -3075,7 +3075,7 @@ Thing f(bool b) {
 }
 
 Thing t2 = f(false);            // OK: \tcode{Thing(Thing\&\&)} used (or elided) to construct t2
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.inhctor]{Inheriting constructors}%
@@ -3127,7 +3127,7 @@ A constructor so declared has the same access as the corresponding constructor i
 
 \pnum \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B1 {
   B1(int);
 };
@@ -3143,7 +3143,7 @@ struct D1 : B1 {
 struct D2 : B2 {
   using B2::B2;
 };
-\end{codeblock}
+\end{lstlisting}
 
 The candidate set of inherited constructors in \tcode{D1} for \tcode{B1} is
 
@@ -3190,7 +3190,7 @@ implicitly-declared constructor introduced by the first \grammarterm{using-decla
 user-declared constructor and thus does not preclude another declaration of a constructor with the
 same signature by a subsequent \grammarterm{using-declaration}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B1 {
   B1(int);
 };
@@ -3209,7 +3209,7 @@ struct D2 : B1, B2 {
   using B2::B2;
   D2(int);          // OK: user declaration supersedes both implicit declarations
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample \exitnote
 
 \pnum
@@ -3230,7 +3230,7 @@ parameter and \tcode{T} is the declared type of \tcode{p}.
 \pnum
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B1 {
   B1(int) { }
 };
@@ -3261,7 +3261,7 @@ struct D : T {
   using T::T;       // declares all constructors from class T
   ~D() { std::clog << "Destroying wrapper" << std::endl; }
 };
-\end{codeblock}
+\end{lstlisting}
 
 Class template \tcode{D} wraps any class and forwards all of its constructors,
 while writing a message to the standard log whenever an object of class

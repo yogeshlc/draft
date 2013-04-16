@@ -35,12 +35,12 @@ This is needed for improved overloaded function argument type
 matching.
 For example:
 
-\begin{codeblock}
+\begin{lstlisting}
 int function( int i );
 int function( char c );
 
 function( 'x' );
-\end{codeblock}
+\end{lstlisting}
 
 It is preferable that this call match the second version of
 function rather than the first.
@@ -48,9 +48,9 @@ function rather than the first.
 Change to semantics of well-defined feature.
 ISO C programs which depend on
 
-\begin{codeblock}
+\begin{lstlisting}
 sizeof('x') == sizeof(int)
-\end{codeblock}
+\end{lstlisting}
 
 will not work the same as \Cpp programs.
 \difficulty
@@ -80,14 +80,14 @@ Change to semantics of well-defined feature.
 \difficulty
 Syntactic transformation. The fix is to add a cast:
 
-\begin{codeblock}
+\begin{lstlisting}
 char* p = "abc";                // valid in C, invalid in \Cpp
 void f(char*) {
   char* p = (char*)"abc";       // OK: cast added
   f(p);
   f((char*)"def");              // OK: cast added
 }
-\end{codeblock}
+\end{lstlisting}
 
 \howwide
 Programs that have a legitimate reason to treat string literals
@@ -99,10 +99,10 @@ as pointers to potentially modifiable memory are probably rare.
 \change \Cpp does not have ``tentative definitions'' as in C
 E.g., at file scope,
 
-\begin{codeblock}
+\begin{lstlisting}
 int i;
 int i;
-\end{codeblock}
+\end{lstlisting}
 
 is valid in C, invalid in \Cpp.
 This makes it impossible to define
@@ -110,13 +110,13 @@ mutually referential file-local static objects, if initializers are
 restricted to the syntactic forms of C.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X { int i; struct X *next; };
 
 static struct X a;
 static struct X b = { 0, &a };
 static struct X a = { 1, &b };
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 This avoids having different initialization rules for
@@ -200,13 +200,13 @@ Common.
 \ref{conv.ptr}
 \change Converting \tcode{void*} to a pointer-to-object type requires casting
 
-\begin{codeblock}
+\begin{lstlisting}
 char a[10];
 void *b=a;
 void foo() {
   char *c=b;
 }
-\end{codeblock}
+\end{lstlisting}
 
 ISO C will accept this usage of pointer to void being assigned
 to a pointer to object type.
@@ -222,9 +222,9 @@ The
 fix is to add a  cast.
 For example:
 
-\begin{codeblock}
+\begin{lstlisting}
 char *c = (char *) b;
-\end{codeblock}
+\end{lstlisting}
 
 \howwide
 This is fairly widely used but it is good
@@ -252,9 +252,9 @@ Common.
 \change Types must be declared in declarations, not in expressions
 In C, a sizeof expression or cast expression may create a new type.
 For example,
-\begin{codeblock}
+\begin{lstlisting}
 p = (void*)(struct x {int i;} *)0;
-\end{codeblock}
+\end{lstlisting}
 declares a new type, struct x .
 \rationale
 This prohibition helps to clarify the location of
@@ -281,10 +281,10 @@ Change to semantics of well-defined feature.  Some C
 expressions that implicitly rely on lvalue-to-rvalue
 conversions will yield different results.  For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 char arr[100];
 sizeof(0, arr)
-\end{codeblock}
+\end{lstlisting}
 
 yields
 \tcode{100}
@@ -351,11 +351,11 @@ In C, these specifiers are ignored when used on type declarations.
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 static struct S {               // valid C, invalid in \Cpp
   int i;
 };
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 Storage class specifiers don't have any meaning when associated
@@ -378,11 +378,11 @@ same name). In C, a typedef name and a struct tag name declared in the same scop
 can have the same name (because they have different name spaces)
 
 Example:
-\begin{codeblock}
+\begin{lstlisting}
 typedef struct name1 { /*...*/ } name1;         // valid C and \Cpp
 struct name { /*...*/ };
 typedef int name;               // valid C, invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 For ease of use, \Cpp doesn't require that a type name be prefixed
@@ -390,10 +390,10 @@ with the keywords \tcode{class}, \tcode{struct} or \tcode{union} when used in ob
 declarations or type casts.
 
 Example:
-\begin{codeblock}
+\begin{lstlisting}
 class name { /*...*/ };
 name i;                         // \tcode{i} has type \tcode{class name}
-\end{codeblock}
+\end{lstlisting}
 
 \effect
 Deletion of semantically well-defined feature.
@@ -429,12 +429,12 @@ left-hand column presents valid C;
 the right-hand column presents
 equivalent \Cpp :
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(const parm);            void f(const int parm);
 const n = 3;                   const int n = 3;
 main()                         int main()
     /* ... */                      /* ... */
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 In \Cpp, implicit int creates several opportunities for
@@ -456,11 +456,11 @@ Common.
 \change
 The keyword \tcode{auto} cannot be used as a storage class specifier.
 
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   auto int x;     // valid C, invalid C++
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rationale Allowing the use of \tcode{auto} to deduce the type
 of a variable from its initializer results in undesired interpretations of
@@ -474,10 +474,10 @@ of a variable from its initializer results in undesired interpretations of
 In C, objects of enumeration type can be assigned values of any integral type
 
 Example:
-\begin{codeblock}
+\begin{lstlisting}
 enum color { red, blue, green };
 enum color c = 1;               // valid C, invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 The type-safe nature of \Cpp.
@@ -495,12 +495,12 @@ Common.
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 enum e { A };
 sizeof(A) == sizeof(int)        // in C
 sizeof(A) == sizeof(e)          // in \Cpp
 /* @\textit{\textrm{and \tcode{sizeof(int)} is not necessarily equal to \tcode{sizeof(e)}}}@ */
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 In \Cpp, an enumeration is a distinct type.
@@ -523,10 +523,10 @@ In C, an empty parameter list means that the number and type of the function arg
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 int f();            // means   \tcode{int f(void)} in \Cpp
                     // \tcode{int f(} unknown \tcode{)} in C
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 This is to avoid erroneous function calls (i.e., function calls
@@ -549,10 +549,10 @@ Common.
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 void f( struct S { int a; } arg ) {}    // valid C, invalid \Cpp
 enum E { A, B, C } f() {}               // valid C, invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 When comparing types in different compilation units, \Cpp relies
@@ -589,9 +589,9 @@ the array is not large enough to contain the string-terminating \tcode{'\textbac
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 char array[4] = "abcd";         // valid C, invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 \rationale
 When these non-terminated arrays are manipulated by standard
 string routines, there is potential for major catastrophe.
@@ -615,14 +615,14 @@ object or function in an outer scope
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 int x[99];
 void f() {
   struct x { int a; };
   sizeof(x);  /* @\textit{\textrm{size of the array in C}}@ */
   /* @\textit{\textrm{size of the struct in \Cpp}}@ */
 }
-\end{codeblock}
+\end{lstlisting}
 \rationale
 This is one of the few incompatibilities between C and \Cpp that
 can be attributed to the new \Cpp name space definition where a
@@ -668,12 +668,12 @@ the name of the nested class belongs to the same scope as the name of the outerm
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   struct Y { /* ... */ } y;
 };
 struct Y yy;                    // valid C, invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 \rationale
 \Cpp classes have member functions which require that classes
 establish scopes.
@@ -693,12 +693,12 @@ struct, the struct tag could be declared in the scope of the
 enclosing struct, before the enclosing struct is defined.
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 struct Y;                       // \tcode{struct Y} and \tcode{struct X} are at the same scope
 struct X {
   struct Y { /* ... */ } y;
 };
-\end{codeblock}
+\end{lstlisting}
 
 All the definitions of C struct types enclosed in other struct
 definitions and accessed outside the scope of the enclosing
@@ -713,13 +713,13 @@ Seldom.
 
 Example:
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int I;
 struct S {
   I i;
   int I;                  // valid C, invalid \Cpp
 };
-\end{codeblock}
+\end{lstlisting}
 \rationale
 When classes become complicated, allowing such a redefinition
 after the type has been used can create confusion for \Cpp
@@ -742,13 +742,13 @@ implicitly-declared copy assignment operator
 cannot make a copy of a volatile lvalue.
 For example, the following is valid in ISO C:
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X { int i; };
 volatile struct X x1 = {0};
 struct X x2(x1);                // invalid \Cpp
 struct X x3;
 x3 = x1;                        // also invalid \Cpp
-\end{codeblock}
+\end{lstlisting}
 
 \rationale
 Several alternatives were debated at length.
@@ -820,10 +820,10 @@ this International Standard. Specifically, macros named \tcode{R}, \tcode{u8},
 not be expanded when adjacent to a string literal but will be interpreted as
 part of the string literal. For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 #define u8 "abc"
 const char *s = u8"def";        // Previously \tcode{"abcdef"}, now \tcode{"def"}
-\end{codeblock}
+\end{lstlisting}
 
 \ref{lex.pptoken}
 \change User-defined literal string support
@@ -832,10 +832,10 @@ const char *s = u8"def";        // Previously \tcode{"abcdef"}, now \tcode{"def"
 Valid \CppIII code may fail to compile or produce different results in
 this International Standard, as the following example illustrates.
 
-\begin{codeblock}
+\begin{lstlisting}
 #define _x "there"
 "hello"_x         // \#1
-\end{codeblock}
+\end{lstlisting}
 
 Previously, \#1 would have consisted of two separate preprocessing tokens and
 the macro \tcode{_x} would have been expanded. In this International Standard,
@@ -899,9 +899,9 @@ example, the following code is valid in \CppIII but invalid in this
 International Standard because \tcode{double} to \tcode{int} is a narrowing
 conversion:
 
-\begin{codeblock}
+\begin{lstlisting}
 int x[] = { 2.0 };
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[diff.cpp03.special]{Clause \ref{special}: special member functions}
 
@@ -948,11 +948,11 @@ For example, the following code is valid in \CppIII because ``\tcode{\shr}''
 is a right-shift operator, but invalid in this International Standard because
 ``\tcode{\shr}'' closes two templates.
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct X { };
 template <int N> struct Y { };
 X< Y< 1 >> 2 > > x;
-\end{codeblock}
+\end{lstlisting}
 
 \ref{temp.dep.candidate}
 \change Allow dependent calls of functions with internal linkage
@@ -1050,7 +1050,7 @@ operators may execute differently in this International Standard. For
 example, the following program should write \tcode{"custom deallocation"} twice,
 once for the single-object delete and once for the array delete.
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -1071,7 +1071,7 @@ int main() {
   delete [] a;                  // array delete
   return 0;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \ref{new.delete.single}
 \change \tcode{operator new} may throw exceptions other than
@@ -1272,7 +1272,7 @@ Valid \CppIII code that relies on \tcode{std::ios_base} flag types being
 represented as \tcode{std::bitset} or as an integer type may fail to compile
 with this International Standard. For example:
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <iostream>
 
 int main() {
@@ -1280,7 +1280,7 @@ int main() {
   std::cout.setf(flag);         // error: \tcode{setf} does not take argument of type \tcode{int}
   return 0;
 }
-\end{codeblock}
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \rSec1[diff.library]{C standard library}

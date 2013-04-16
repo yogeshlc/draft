@@ -181,7 +181,7 @@ union (or array of such types). A \term{POD class} is a
 class that is either a POD struct or a POD union.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct N {          // neither trivial nor standard-layout
   int i;
   int j;
@@ -204,7 +204,7 @@ struct POD {        // both trivial and standard-layout
   int i;
   int j;
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -230,36 +230,36 @@ definition shall not begin with a \grammarterm{decltype-specifier}.
 A class definition introduces a new type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X { int a; };
 struct Y { int a; };
 X a1;
 Y a2;
 int a3;
-\end{codeblock}
+\end{lstlisting}
 
 declares three variables of three different types. This implies that
 
-\begin{codeblock}
+\begin{lstlisting}
 a1 = a2;                        // error: \tcode{Y} assigned to \tcode{X}
 a1 = a3;                        // error: \tcode{int} assigned to \tcode{X}
-\end{codeblock}
+\end{lstlisting}
 
 are type mismatches, and that
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(X);
 int f(Y);
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{overloading}%
 declare an overloaded (Clause~\ref{over}) function \tcode{f()} and not
 simply a single function \tcode{f()} twice. For the same reason,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S { int a; };
 struct S { int a; };            // error, double definition
-\end{codeblock}
+\end{lstlisting}
 
 is ill-formed because it defines \tcode{S} twice.
 \exitexample
@@ -278,7 +278,7 @@ referred to only using an
 \grammarterm{elaborated-type-specifier}~(\ref{basic.lookup.elab}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct stat {
   // ...
 };
@@ -293,7 +293,7 @@ void f() {
                                 // to name \tcode{struct stat}
   stat(ps);                     // call \tcode{stat()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \indextext{class~name!elaborated}%
 \indextext{declaration!forward class}%
@@ -303,7 +303,7 @@ or a forward declaration of the identifier as a class name. It
 introduces the class name into the current scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct s { int a; };
 
 void g() {
@@ -313,14 +313,14 @@ void g() {
   struct s { char* p; };        // define local \tcode{struct s}
   struct s;                     // redeclaration, has no effect
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 Such declarations allow definition of classes that refer to each other.
 \indextext{example!friend}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Vector;
 
 class Matrix {
@@ -332,7 +332,7 @@ class Vector {
   // ...
   friend Vector operator*(const Matrix&, const Vector&);
 };
-\end{codeblock}
+\end{lstlisting}
 
 Declaration of \tcode{friend}s is described in~\ref{class.friend},
 operator functions in~\ref{over.oper}.
@@ -350,14 +350,14 @@ name is in scope the elaborated name will refer to it.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct s { int a; };
 
 void g(int s) {
   struct s* p = new struct s;   // global \tcode{s}
   p->a = s;                     // parameter \tcode{s}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -367,9 +367,9 @@ The declaration of a class name takes effect immediately after the
 \grammarterm{identifier} is seen in the class definition or
 \grammarterm{elaborated-type-specifier}. For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 class A * A;
-\end{codeblock}
+\end{lstlisting}
 
 first specifies \tcode{A} to be the name of a class and then redefines
 it as the name of a pointer to an object of that class. This means that
@@ -539,22 +539,22 @@ There are no special member function types or data member types.
 \enterexample
 A simple example of a class definition is
 
-\begin{codeblock}
+\begin{lstlisting}
 struct tnode {
   char tword[20];
   int count;
   tnode *left;
   tnode *right;
 };
-\end{codeblock}
+\end{lstlisting}
 
 which contains an array of twenty characters, an integer, and two
 pointers to objects of the same type. Once this definition has been
 given, the declaration
 
-\begin{codeblock}
+\begin{lstlisting}
 tnode s, *sp;
-\end{codeblock}
+\end{lstlisting}
 
 declares \tcode{s} to be a \tcode{tnode} and \tcode{sp} to be a pointer
 to a \tcode{tnode}. With these declarations, \tcode{sp->count} refers to
@@ -693,14 +693,14 @@ as described in~\ref{basic.lookup}.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   typedef int T;
   static T count;
   void f(T);
 };
 void X::f(T t = count) { }
-\end{codeblock}
+\end{lstlisting}
 
 The member function \tcode{f} of class \tcode{X} is defined in global
 scope; the notation \tcode{X::f} specifies that the function \tcode{f}
@@ -730,7 +730,7 @@ a function type. The resulting member function has exactly the same type
 as it would have if the function declarator were provided explicitly,
 see~\ref{dcl.fct}. For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef void fv(void);
 typedef void fvc(void) const;
 struct S {
@@ -741,7 +741,7 @@ struct S {
 fv  S::* pmfv1 = &S::memfunc1;
 fv  S::* pmfv2 = &S::memfunc2;
 fvc S::* pmfv3 = &S::memfunc3;
-\end{codeblock}
+\end{lstlisting}
 
 Also see~\ref{temp.arg}.
 \exitnote
@@ -795,7 +795,7 @@ an enumerator or a nested type of class \tcode{X} or of a base class of
 \indextext{example!member~function}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct tnode {
   char tword[20];
   int count;
@@ -817,7 +817,7 @@ void f(tnode n1, tnode n2) {
   n1.set("abc",&n2,0);
   n2.set("def",0,0);
 }
-\end{codeblock}
+\end{lstlisting}
 
 In the body of the member function \tcode{tnode::set}, the member names
 \tcode{tword}, \tcode{count}, \tcode{left}, and \tcode{right} refer to
@@ -841,12 +841,12 @@ member function declared \tcode{const} \tcode{volatile} is a
 \term{const volatile} member function.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   void g() const;
   void h() const volatile;
 };
-\end{codeblock}
+\end{lstlisting}
 
 \tcode{X::g} is a \tcode{const} member function and \tcode{X::h} is a
 \tcode{const} \tcode{volatile} member function.
@@ -884,7 +884,7 @@ is declared \tcode{const} \tcode{volatile}, the type of \tcode{this} is
 called is accessed through a \tcode{const} access path. \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct s {
   int a;
   int f() const;
@@ -893,7 +893,7 @@ struct s {
 };
 
 int s::f() const { return a; }
-\end{codeblock}
+\end{lstlisting}
 
 The \tcode{a++} in the body of \tcode{s::h} is ill-formed because it
 tries to modify (a part of) the object for which \tcode{s::h()} is
@@ -913,14 +913,14 @@ object-expression~(\ref{expr.ref}) only if the object-expression is as
 cv-qualified or less-cv-qualified than the member function.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void k(s& x, const s& y) {
   x.f();
   x.g();
   y.f();
   y.g();                        // error
 }
-\end{codeblock}
+\end{lstlisting}
 
 The call \tcode{y.g()} is ill-formed because \tcode{y} is \tcode{const}
 and \tcode{s::g()} is a non-\tcode{const} member function, that is,
@@ -956,7 +956,7 @@ referred to using the class member access syntax, in which case the
 object expression is evaluated.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct process {
   static void reschedule();
 };
@@ -966,7 +966,7 @@ void f() {
   process::reschedule();        // OK: no object necessary
   g().reschedule();             // \tcode{g()} is called
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -978,7 +978,7 @@ as if a \grammarterm{qualified-id} expression was used, with the
 the class scope from which the static member is referenced.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int g();
 struct X {
   static int g();
@@ -987,7 +987,7 @@ struct Y : X {
   static int i;
 };
 int Y::i = g();                 // equivalent to \tcode{Y::g();}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1063,7 +1063,7 @@ class~(\ref{basic.scope.class}).
 \indextext{example!static@\tcode{static} member}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class process {
   static process* run_chain;
   static process* running;
@@ -1071,7 +1071,7 @@ class process {
 
 process* process::running = get_main();
 process* process::run_chain = running;
-\end{codeblock}
+\end{lstlisting}
 
 The \tcode{static} data member \tcode{run_chain} of class
 \tcode{process} is defined in global scope; the notation
@@ -1172,13 +1172,13 @@ be implicitly deleted~(\ref{dcl.fct.def.delete}) for the union. \exitnote
 \pnum
 \enterexample Consider the following union:
 
-\begin{codeblock}
+\begin{lstlisting}
 union U {
   int i;
   float f;
   std::string s;
 };
-\end{codeblock}
+\end{lstlisting}
 
 Since \tcode{std::string}~(\ref{string.classes}) declares non-trivial versions of all of the special
 member functions, \tcode{U} will have an implicitly deleted default constructor,
@@ -1197,10 +1197,10 @@ destructor and \tcode{N} has a non-trivial constructor (for instance, if they de
 virtual functions), the active member of \tcode{u} can be safely switched from \tcode{m} to
 \tcode{n} using the destructor and placement new operator as follows:
 
-\begin{codeblock}
+\begin{lstlisting}
 u.m.~M();
 new (&u.n) N;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1225,13 +1225,13 @@ been defined in the scope in which the anonymous union is declared.
 \indextext{initialization!\idxcode{union}}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   union { int a; const char* p; };
   a = 1;
   p = "Jennifer";
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here \tcode{a} and \tcode{p} are used like ordinary (nonmember)
 variables, but since they are union members they have the same address.
@@ -1255,13 +1255,13 @@ function members.
 A union for which objects, pointers, or references are declared is not an anonymous union.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   union { int aa; char* p; } obj, *ptr = &obj;
   aa = 1;                         // error
   ptr->aa = 1;                    // OK
 }
-\end{codeblock}
+\end{lstlisting}
 
 The assignment to plain \tcode{aa} is ill-formed since the member name
 is not visible outside the union, and even if it were visible, it is not
@@ -1359,7 +1359,7 @@ the original enumerator value and the value of the bit-field shall
 compare equal.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum BOOL { FALSE=0, TRUE=1 };
 struct A {
   BOOL b:1;
@@ -1370,7 +1370,7 @@ void f() {
   if (a.b == TRUE)              // yields \tcode{true}
     { /* ... */ }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.nest]{Nested class declarations}%
@@ -1392,7 +1392,7 @@ members and non-static member functions.
 \indextext{example!nested~class}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int x;
 int y;
 
@@ -1415,7 +1415,7 @@ struct enclose {
 };
 
 inner* p = 0;                   // error: \tcode{inner} not in scope
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1424,7 +1424,7 @@ defined in a namespace scope enclosing the definition of their class.
 \indextext{example!nested~class definition}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct enclose {
   struct inner {
     static int x;
@@ -1435,7 +1435,7 @@ struct enclose {
 int enclose::inner::x = 1;
 
 void enclose::inner::f(int i) { /* ... */ }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1446,14 +1446,14 @@ enclosing the definition of class \tcode{X}.
 \indextext{example!nested~class forward~declaration}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class E {
   class I1;                     // forward declaration of nested class
   class I2;
   class I1 { };                 // definition of nested class
 };
 class E::I2 { };                // definition of nested class
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1481,7 +1481,7 @@ duration from an
 enclosing scope.
 \enterexample
 \indextext{example!local~class}%
-\begin{codeblock}
+\begin{lstlisting}
 int x;
 void f() {
   static int s ;
@@ -1500,7 +1500,7 @@ void f() {
 }
 
 local* p = 0;                   // error: \tcode{local} not in scope
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1534,7 +1534,7 @@ outside their class without qualification.
 \enterexample
 
 \indextext{example!nested type~name}%
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   typedef int I;
   class Y { /* ... */ };
@@ -1545,6 +1545,6 @@ I b;                            // error
 Y c;                            // error
 X::Y d;                         // OK
 X::I e;                         // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{class|)}

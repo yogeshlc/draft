@@ -146,18 +146,18 @@ selection-statement is a single statement and not a
 compound-statement containing the original substatement.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 if (x)
   int i;
-\end{codeblock}
+\end{lstlisting}
 
 can be equivalently rewritten as
 
-\begin{codeblock}
+\begin{lstlisting}
 if (x) {
   int i;
 }
-\end{codeblock}
+\end{lstlisting}
 
 Thus after the \tcode{if} statement, \tcode{i} is no longer in scope.
 \exitexample
@@ -183,14 +183,14 @@ substatement controlled by the condition, the declaration that
 re-declares the name is ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 if (int x = f()) {
   int x;            // ill-formed, redeclaration of \tcode{x}
 }
 else {
   int x;            // ill-formed, redeclaration of \tcode{x}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -267,9 +267,9 @@ promoted type of the switch condition.
 \indextext{label!\idxcode{default}}%
 There shall be at most one label of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 default :
-\end{codeblock}
+\end{lstlisting}
 
 within a \tcode{switch} statement.
 
@@ -356,18 +356,18 @@ not a \grammarterm{compound-statement,} it is as if it was rewritten to be
 a compound-statement containing the original statement.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 while (--x >= 0)
   int i;
-\end{codeblock}
+\end{lstlisting}
 
 can be equivalently rewritten as
 
-\begin{codeblock}
+\begin{lstlisting}
 while (--x >= 0) {
   int i;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Thus after the \tcode{while} statement, \tcode{i} is no longer in scope.
@@ -395,13 +395,13 @@ the variable that is declared extends from its point of
 declaration~(\ref{basic.scope.pdecl}) to the end of the \tcode{while}
 \grammarterm{}{statement}. A \tcode{while} statement of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 while (T t = x) @\grammarterm{statement}@
-\end{codeblock}
+\end{lstlisting}
 
 is equivalent to
 
-\begin{codeblock}
+\begin{lstlisting}
 label:
 {                   // start of condition scope
   T t = x;
@@ -410,13 +410,13 @@ label:
     goto label;
   }
 }                   // end of condition scope
-\end{codeblock}
+\end{lstlisting}
 
 The variable created in a condition is destroyed and created with each
 iteration of the loop.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int val;
   A(int i) : val(i) { }
@@ -428,7 +428,7 @@ while (A a = i) {
   // ...
   i = 0;
 }
-\end{codeblock}
+\end{lstlisting}
 
 In the while-loop, the constructor and destructor are each called twice,
 once for the condition that succeeds and once for the condition that
@@ -496,7 +496,7 @@ If the \grammarterm{for-init-statement} is a declaration, the scope of the
 name(s) declared extends to the end of the \grammarterm{for-statement}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int i = 42;
 int a[10];
 
@@ -504,7 +504,7 @@ for (int i = 0; i < 10; i++)
   a[i] = i;
 
 int j = i;          // \tcode{j = 42}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[stmt.ranged]{The range-based \tcode{for} statement}%
@@ -536,7 +536,7 @@ let \textit{range-init} be equivalent to the \grammarterm{braced-init-list}. In 
 range-based \tcode{for} statement
 is equivalent to
 
-\begin{codeblock}
+\begin{lstlisting}
 {
   auto && __range = range-init;
   for ( auto __begin = begin-expr,
@@ -547,7 +547,7 @@ is equivalent to
     @\textit{statement}@
   }
 }
-\end{codeblock}
+\end{lstlisting}
 
 where \tcode{__range}, \tcode{__begin}, and \tcode{__end} are variables defined for
 exposition only, and \tcode{_RangeT} is the type of the
@@ -574,11 +574,11 @@ name lookup, namespace \tcode{std} is an associated namespace.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int array[5] = { 1, 2, 3, 4, 5 };
 for (int& x : array)
   x *= 2;
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{statement!iteration|)}
 
@@ -658,34 +658,34 @@ smallest enclosing \grammarterm{iteration-statement}, that is, to the end
 of the loop. More precisely, in each of the statements
 
 \begin{minipage}{.30\hsize}
-\begin{codeblock}
+\begin{lstlisting}
 while (foo) {
   {
     // ...
   }
 contin: ;
 }
-\end{codeblock}
+\end{lstlisting}
 \end{minipage}
 \begin{minipage}{.30\hsize}
-\begin{codeblock}
+\begin{lstlisting}
 do {
   {
     // ...
   }
 contin: ;
 } while (foo);
-\end{codeblock}
+\end{lstlisting}
 \end{minipage}
 \begin{minipage}{.30\hsize}
-\begin{codeblock}
+\begin{lstlisting}
 for (;;) {
   {
     // ...
   }
 contin: ;
 }
-\end{codeblock}
+\end{lstlisting}
 \end{minipage}
 
 a \tcode{continue} not contained in an enclosed iteration statement is
@@ -720,11 +720,11 @@ considered as an rvalue for the purpose of overload resolution in
 selecting a constructor~(\ref{class.copy}).
 \exitnote A return statement with a \grammarterm{braced-init-list} initializes the object or reference to be returned from the function by copy-list-initialization~(\ref{dcl.init.list}) from the specified initializer list. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 std::pair<std::string,int> f(const char* p, int x) {
   return {p,x};
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 Flowing off the end of a function is equivalent to a \tcode{return} with
@@ -787,7 +787,7 @@ variable has scalar type, class type with a trivial default constructor and a tr
 \grammarterm{}{initializer}~(\ref{dcl.init}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   // ... 
   goto lx;          // ill-formed: jump into scope of \tcode{a}
@@ -800,7 +800,7 @@ lx:
                     // call for \tcode{a} followed by construction
                     // again immediately following label \tcode{ly}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -824,12 +824,12 @@ declaration. If control enters the declaration concurrently while the variable i
 the variable is being initialized, the behavior is undefined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int foo(int i) {
   static int s = foo(2*i);      // recursive call - undefined
   return i+1;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -859,7 +859,7 @@ to determine if it is an \grammarterm{expression-statement} or a
 assuming \tcode{T} is a
 \grammarterm{simple-type-specifier}~(\ref{dcl.type}),
 
-\begin{codeblock}
+\begin{lstlisting}
 T(a)->m = 7;        // expression-statement
 T(a)++;             // expression-statement
 T(a,5)<<c;          // expression-statement
@@ -868,7 +868,7 @@ T(*d)(int);         //  declaration
 T(e)[5];            //  declaration
 T(f) = { 1, 2 };    //  declaration
 T(*g)(double(3));   //  declaration
-\end{codeblock}
+\end{lstlisting}
 
 In the last example above, \tcode{g}, which is a pointer to \tcode{T},
 is initialized to \tcode{double(3)}. This is of course ill-formed for
@@ -879,7 +879,7 @@ semantic reasons, but that does not affect the syntactic analysis.
 The remaining cases are \grammarterm{}{declaration}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class T {
   // ...
 public:
@@ -893,7 +893,7 @@ T(c)=7;             //  declaration
 T(d),e,f=3;         //  declaration
 extern int h;
 T(g)(h,2);          //  declaration
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -913,7 +913,7 @@ declaration.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct T1 {
   T1 operator()(int x) { return T1(x); }
   int operator=(int x) { return x; }
@@ -933,6 +933,6 @@ void f() {
                                 // properly since it depends
                                 // on \tcode{T2} being a type-name
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{statement|)}

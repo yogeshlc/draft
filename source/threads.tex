@@ -163,9 +163,9 @@ of these requirements. \exitnote
 A type \tcode{L} meets the \tcode{BasicLockable} requirements if the following expressions are
 well-formed and have the specified semantics (\tcode{m} denotes a value of type \tcode{L}).
 
-\begin{itemdecl}
+\begin{lstlisting}
 m.lock()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -173,9 +173,9 @@ m.lock()
 is thrown then a lock shall not have been acquired for the current execution agent.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 m.unlock()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -194,9 +194,9 @@ A type \tcode{L} meets the \tcode{Lockable} requirements if it meets the \tcode{
 requirements and the following expressions are well-formed and have the specified semantics
 (\tcode{m} denotes a value of type \tcode{L}).
 
-\begin{itemdecl}
+\begin{lstlisting}
 m.try_lock()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -219,9 +219,9 @@ requirements and the following expressions are well-formed and have the specifie
 instantiation of \tcode{duration}~(\ref{time.duration}), and \tcode{abs_time} denotes a value
 of an instantiation of \tcode{time_point}~(\ref{time.point})).
 
-\begin{itemdecl}
+\begin{lstlisting}
 m.try_lock_for(rel_time)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -238,9 +238,9 @@ acquired for the current execution agent.
 \returns \tcode{true} if the lock was acquired, \tcode{false} otherwise.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 m.try_lock_until(abs_time)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -265,10 +265,10 @@ In several places in this Clause the operation
 such uses mean call the function \tcode{decay_copy(x)} and use the
 result, where \tcode{decay_copy} is defined as follows:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> typename decay<T>::type decay_copy(T&& v)
   { return std::forward<T>(v); }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec1[thread.threads]{Threads}
 
@@ -280,7 +280,7 @@ template <class T> typename decay<T>::type decay_copy(T&& v)
 \synopsis{Header \tcode{<thread>} synopsis}
 \indexlibrary{\idxhdr{thread}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class thread;
 
@@ -296,7 +296,7 @@ namespace std {
     void sleep_for(const chrono::duration<Rep, Period>& rel_time);
   }
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[thread.thread.class]{Class \tcode{thread}}
 
@@ -312,7 +312,7 @@ execution. \enternote A \tcode{thread} object does not represent a thread of exe
 default construction, after being moved from, or after a successful call to \tcode{detach} or
 \tcode{join}. \exitnote
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class thread {
   public:
@@ -341,11 +341,11 @@ namespace std {
     static unsigned hardware_concurrency() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[thread.thread.id]{Class \tcode{thread::id}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class thread::id {
   public:
@@ -367,7 +367,7 @@ namespace std {
   template <class T> struct hash;
   template <> struct hash<thread::id>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum An object of type \tcode{thread::id} provides a unique identifier for
 each thread of execution and a single distinct value for all \tcode{thread}
@@ -387,9 +387,9 @@ The library may reuse the value of a \tcode{thread::id} of a terminated thread t
 keys in associative containers. \exitnote
 
 \indexlibrary{\idxcode{thread::id}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 id() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs an object of type \tcode{id}.
@@ -399,9 +399,9 @@ id() noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator==}}%
 \indexlibrary{\idxcode{operator==}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{true} only if \tcode{x} and \tcode{y} represent the same
@@ -411,9 +411,9 @@ execution.
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator"!=}}%
 \indexlibrary{\idxcode{operator"!=}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!=(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{!(x == y)}
@@ -421,9 +421,9 @@ bool operator!=(thread::id x, thread::id y) noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator<}}%
 \indexlibrary{\idxcode{operator<}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator<(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -432,9 +432,9 @@ bool operator<(thread::id x, thread::id y) noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator<=}}%
 \indexlibrary{\idxcode{operator<=}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator<=(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -443,9 +443,9 @@ bool operator<=(thread::id x, thread::id y) noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator>}}%
 \indexlibrary{\idxcode{operator>}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator>(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{y < x}
@@ -453,9 +453,9 @@ bool operator>(thread::id x, thread::id y) noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator>=}}%
 \indexlibrary{\idxcode{operator>=}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator>=(thread::id x, thread::id y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{!(x < y)}
@@ -463,11 +463,11 @@ bool operator>=(thread::id x, thread::id y) noexcept;
 
 \indexlibrary{\idxcode{thread::id}!\idxcode{operator\shl}}%
 \indexlibrary{\idxcode{operator\shl}!\idxcode{thread::id}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits>
   basic_ostream<charT, traits>&
     operator<< (basic_ostream<charT, traits>&& out, thread::id id);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Inserts an unspecified text representation of \tcode{id} into
@@ -479,9 +479,9 @@ distinct text representations.
 \pnum\returns \tcode{out}
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 template <> struct hash<thread::id>;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires the template specialization shall meet the requirements of class template
@@ -491,9 +491,9 @@ template <> struct hash<thread::id>;
 \rSec3[thread.thread.constr]{\tcode{thread} constructors}
 
 \indexlibrary{\idxcode{thread}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 thread() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs a \tcode{thread} object that does not represent a thread of execution.
@@ -502,9 +502,9 @@ thread() noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{thread}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class F, class ...Args> explicit thread(F&& f, Args&&... args);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -543,9 +543,9 @@ threads in a process would be exceeded.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{thread}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 thread(thread&& x) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -561,9 +561,9 @@ value of \tcode{x.get_id()} prior to the start of construction.
 \rSec3[thread.thread.destr]{\tcode{thread} destructor}
 
 \indexlibrary{\idxcode{thread}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~thread();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -579,9 +579,9 @@ ensure that the destructor is never executed while the thread is still joinable.
 
 \indexlibrary{\idxcode{thread}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 thread& operator=(thread&& x) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -600,9 +600,9 @@ state of \tcode{x} to \tcode{*this} and sets \tcode{x} to a default constructed 
 
 \indexlibrary{\idxcode{thread}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(thread& x) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -611,9 +611,9 @@ void swap(thread& x) noexcept;
 
 \indexlibrary{\idxcode{thread}!\idxcode{joinable}}%
 \indexlibrary{\idxcode{joinable}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool joinable() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -622,9 +622,9 @@ bool joinable() const noexcept;
 
 \indexlibrary{\idxcode{thread}!\idxcode{join}}%
 \indexlibrary{\idxcode{join}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void join();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -660,9 +660,9 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{thread}!\idxcode{detach}}%
 \indexlibrary{\idxcode{detach}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void detach();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\precondition \tcode{joinable()} is \tcode{true}.
@@ -687,9 +687,9 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{thread}!\idxcode{get_id}}%
 \indexlibrary{\idxcode{get_id}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 id get_id() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -702,9 +702,9 @@ otherwise \tcode{this_thread::get_id()} for the thread of execution represented 
 
 \indexlibrary{\idxcode{thread}!\idxcode{hardware_concurrency}}%
 \indexlibrary{\idxcode{hardware_concurrency}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 unsigned hardware_concurrency() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -717,9 +717,9 @@ well defined an implementation should return 0.
 
 \indexlibrary{\idxcode{thread}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(thread& x, thread& y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects \tcode{x.swap(y)}
@@ -727,7 +727,7 @@ void swap(thread& x, thread& y) noexcept;
 
 \rSec2[thread.thread.this]{Namespace \tcode{this_thread}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   namespace this_thread {
     thread::id get_id() noexcept;
@@ -739,13 +739,13 @@ namespace std {
       void sleep_for(const chrono::duration<Rep, Period>& rel_time);
   }
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{this_thread}!\idxcode{get_id}}%
 \indexlibrary{\idxcode{get_id}!\idxcode{this_thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 thread::id this_thread::get_id() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -757,9 +757,9 @@ always have this id. The object returned shall not compare equal to a default co
 
 \indexlibrary{\idxcode{this_thread}!\idxcode{yield}}%
 \indexlibrary{\idxcode{yield}!\idxcode{this_thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void this_thread::yield() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -771,10 +771,10 @@ void this_thread::yield() noexcept;
 
 \indexlibrary{\idxcode{this_thread}!\idxcode{sleep_until}}%
 \indexlibrary{\idxcode{sleep_until}!\idxcode{this_thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   void sleep_until(const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -794,10 +794,10 @@ not throw exceptions. \exitnote
 
 \indexlibrary{\idxcode{this_thread}!\idxcode{sleep_for}}%
 \indexlibrary{\idxcode{sleep_for}!\idxcode{this_thread}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   void sleep_for(const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -824,7 +824,7 @@ programs~(\ref{intro.multithread}).
 \synopsis{Header \tcode{<mutex>} synopsis}
 \indexlibrary{\idxhdr{mutex}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class mutex;
   class recursive_mutex;
@@ -858,7 +858,7 @@ namespace std {
   template<class Callable, class ...Args>
     void call_once(once_flag& flag, Callable func, Args&&... args);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[thread.mutex.requirements]{Mutex requirements}
 
@@ -1010,7 +1010,7 @@ lock operations that obtain ownership on the same object.
 
 \rSec4[thread.mutex.class]{Class \tcode{mutex}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class mutex {
   public:
@@ -1028,7 +1028,7 @@ namespace std {
     native_handle_type native_handle();                // See~\ref{thread.req.native}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{mutex} provides a non-recursive mutex with exclusive ownership
@@ -1064,7 +1064,7 @@ a thread terminates while owning a \tcode{mutex} object.
 
 \rSec4[thread.mutex.recursive]{Class \tcode{recursive_mutex}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class recursive_mutex {
   public:
@@ -1082,7 +1082,7 @@ namespace std {
     native_handle_type native_handle();                // See~\ref{thread.req.native}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{recursive_mutex} provides a recursive mutex with exclusive ownership
@@ -1198,7 +1198,7 @@ this operation.
 
 \rSec4[thread.timedmutex.class]{Class \tcode{timed_mutex}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class timed_mutex {
   public:
@@ -1220,7 +1220,7 @@ namespace std {
     native_handle_type native_handle();                // See~\ref{thread.req.native}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{timed_mutex} provides a non-recursive mutex with exclusive ownership
@@ -1248,7 +1248,7 @@ The behavior of a program is undefined if:
 
 \rSec4[thread.timedmutex.recursive]{Class \tcode{recursive_timed_mutex}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class recursive_timed_mutex {
   public:
@@ -1270,7 +1270,7 @@ namespace std {
     native_handle_type native_handle();                // See~\ref{thread.req.native}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{recursive_timed_mutex} provides a recursive mutex with exclusive
@@ -1323,7 +1323,7 @@ unlocking the lockable object under both normal and exceptional circumstances. \
 Some lock constructors take tag types which describe what should be done with the lockable
 object during the lock's construction.
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   struct defer_lock_t  { };     // do not acquire ownership of the mutex
   struct try_to_lock_t { };     // try to acquire ownership of the mutex
@@ -1335,11 +1335,11 @@ namespace std {
   constexpr try_to_lock_t  try_to_lock { };
   constexpr adopt_lock_t   adopt_lock { };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[thread.lock.guard]{Class template \tcode{lock_guard}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class Mutex>
   class lock_guard {
@@ -1357,7 +1357,7 @@ namespace std {
     mutex_type& pm; // \expos
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An object of type \tcode{lock_guard} controls the ownership of a lockable object
@@ -1369,9 +1369,9 @@ object. The supplied \tcode{Mutex} type shall meet the \tcode{BasicLockable}
 requirements~(\ref{thread.req.lockable.basic}).
 
 \indexlibrary{\idxcode{lock_guard}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit lock_guard(mutex_type& m);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1386,9 +1386,9 @@ the mutex \tcode{m}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{lock_guard}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 lock_guard(mutex_type& m, adopt_lock_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1402,9 +1402,9 @@ lock_guard(mutex_type& m, adopt_lock_t);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{lock_guard}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~lock_guard();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects \tcode{pm.unlock()}
@@ -1412,7 +1412,7 @@ lock_guard(mutex_type& m, adopt_lock_t);
 
 \rSec3[thread.lock.unique]{Class template \tcode{unique_lock}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class Mutex>
   class unique_lock {
@@ -1465,7 +1465,7 @@ namespace std {
   template <class Mutex>
     void swap(unique_lock<Mutex>& x, unique_lock<Mutex>& y) noexcept;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An object of type \tcode{unique_lock} controls the ownership of a lockable
@@ -1490,9 +1490,9 @@ meets the \tcode{TimedLockable} requirements~(\ref{thread.req.lockable.timed}),
 \rSec4[thread.lock.unique.cons]{\tcode{unique_lock} constructors, destructor, and assignment}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1503,9 +1503,9 @@ unique_lock() noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit unique_lock(mutex_type& m);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1519,9 +1519,9 @@ explicit unique_lock(mutex_type& m);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock(mutex_type& m, defer_lock_t) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1532,9 +1532,9 @@ unique_lock(mutex_type& m, defer_lock_t) noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock(mutex_type& m, try_to_lock_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1552,9 +1552,9 @@ the value returned by the call to \tcode{m.try_lock()}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock(mutex_type& m, adopt_lock_t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1571,10 +1571,10 @@ unique_lock(mutex_type& m, adopt_lock_t);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   unique_lock(mutex_type& m, const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1591,10 +1591,10 @@ the value returned by the call to \tcode{m.try_lock_until(abs_time)}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   unique_lock(mutex_type& m, const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1609,9 +1609,9 @@ The supplied \tcode{Mutex} type shall meet the \tcode{TimedLockable} requirement
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_lock}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock(unique_lock&& u) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\postconditions \tcode{pm == u_p.pm} and \tcode{owns == u_p.owns} (where \tcode{u_p} is the state of \tcode{u} just prior to this construction),  \tcode{u.pm == 0} and \tcode{u.owns == false}.
@@ -1619,9 +1619,9 @@ unique_lock(unique_lock&& u) noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 unique_lock& operator=(unique_lock&& u) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects If \tcode{owns} calls \tcode{pm->unlock()}.
@@ -1634,9 +1634,9 @@ unique_lock& operator=(unique_lock&& u) noexcept;
 
 
 \indexlibrary{\idxcode{unique_lock}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~unique_lock();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects If \tcode{owns} calls \tcode{pm->unlock()}.
@@ -1646,9 +1646,9 @@ unique_lock& operator=(unique_lock&& u) noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{lock}}%
 \indexlibrary{\idxcode{lock}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void lock();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1668,9 +1668,9 @@ is \tcode{true}.
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{try_lock}}%
 \indexlibrary{\idxcode{try_lock}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool try_lock();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1696,10 +1696,10 @@ is \tcode{true}.
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{try_lock_until}}%
 \indexlibrary{\idxcode{try_lock_until}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1726,10 +1726,10 @@ error condition of \tcode{resource_deadlock_would_occur} if on entry \tcode{owns
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{try_lock_for}}%
 \indexlibrary{\idxcode{try_lock_for}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   bool try_lock_for(const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1754,9 +1754,9 @@ error condition of \tcode{resource_deadlock_would_occur} if on entry \tcode{owns
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{unlock}}%
 \indexlibrary{\idxcode{unlock}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void unlock();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects \tcode{pm->unlock()}
@@ -1776,9 +1776,9 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(unique_lock& u) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Swaps the data members of \tcode{*this} and \tcode{u}.
@@ -1786,9 +1786,9 @@ void swap(unique_lock& u) noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{release}}%
 \indexlibrary{\idxcode{release}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 mutex_type *release() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns The previous value of \tcode{pm}.
@@ -1798,10 +1798,10 @@ mutex_type *release() noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Mutex>
   void swap(unique_lock<Mutex>& x, unique_lock<Mutex>& y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects \tcode{x.swap(y)}
@@ -1811,9 +1811,9 @@ template <class Mutex>
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{owns_lock}}%
 \indexlibrary{\idxcode{owns_lock}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool owns_lock() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{owns}
@@ -1821,9 +1821,9 @@ bool owns_lock() const noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{operator bool}}%
 \indexlibrary{\idxcode{operator bool}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{owns}
@@ -1831,9 +1831,9 @@ explicit operator bool() const noexcept;
 
 \indexlibrary{\idxcode{unique_lock}!\idxcode{mutex}}%
 \indexlibrary{\idxcode{mutex}!\idxcode{unique_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 mutex_type *mutex() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\returns \tcode{pm}
@@ -1842,9 +1842,9 @@ mutex_type *mutex() const noexcept;
 \rSec2[thread.lock.algorithm]{Generic locking algorithms}
 
 \indexlibrary{\idxcode{try_lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class L1, class L2, class... L3> int try_lock(L1&, L2&, L3&...);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1866,9 +1866,9 @@ returned \tcode{false}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{lock}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class L1, class L2, class... L3> void lock(L1&, L2&, L3&...);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1896,9 +1896,9 @@ initialize data without causing a data race or deadlock.
 \rSec3[thread.once.onceflag]{Struct \tcode{once_flag}}
 
 \indexlibrary{\idxcode{once_flag}}%
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr once_flag() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Constructs an object of type \tcode{once_flag}.
@@ -1913,10 +1913,10 @@ called.
 \rSec3[thread.once.callonce]{Function \tcode{call_once}}
 
 \indexlibrary{\idxcode{call_once}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Callable, class ...Args>
   void call_once(once_flag& flag, Callable&& func, Args&&... args);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1959,7 +1959,7 @@ an exception is required~(\ref{thread.req.exception}), or any exception thrown b
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 // global flag, regular function
 void init();
 std::once_flag flag;
@@ -1985,7 +1985,7 @@ class information {
 public:
   void verify() { std::call_once(verified, &information::verifier, *this); }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
@@ -2026,7 +2026,7 @@ Condition variable construction and destruction need not be synchronized.
 \synopsis{Header \tcode{condition_variable} synopsis}
 \indexlibrary{\idxhdr{condition_variable}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class condition_variable;
   class condition_variable_any;
@@ -2035,12 +2035,12 @@ namespace std {
 
   enum class cv_status { no_timeout, timeout };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{\idxcode{notify_all_at_thread_exit}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void notify_all_at_thread_exit(condition_variable& cond, unique_lock<mutex> lk);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2058,10 +2058,10 @@ or \tcode{wait_until}) threads.
 internal storage and schedules \tcode{cond} to be notified when the current
 thread exits, after all objects of thread storage duration associated with
 the current thread have been destroyed. This notification shall be as if
-\begin{codeblock}
+\begin{lstlisting}
 lk.unlock();
 cond.notify_all();
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \sync The call to \tcode{notify_all_at_thread_exit} and the completion of the
@@ -2086,7 +2086,7 @@ is not released and reacquired prior to calling \tcode{notify_all_at_thread_exit
 
 \rSec2[thread.condition.condvar]{Class \tcode{condition_variable}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class condition_variable {
   public:
@@ -2122,15 +2122,15 @@ namespace std {
     native_handle_type native_handle();                // See~\ref{thread.req.native}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{condition_variable} shall be a standard-layout class (Clause~\ref{class}).
 
 \indexlibrary{\idxcode{condition_variable}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 condition_variable();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2148,9 +2148,9 @@ limitation prevents initialization.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{condition_variable}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~condition_variable();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2169,9 +2169,9 @@ using the overloads of \tcode{wait}, \tcode{wait_for}, or \tcode{wait_until} tha
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{notify_one}}%
 \indexlibrary{\idxcode{notify_one}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void notify_one() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those threads.
@@ -2179,9 +2179,9 @@ void notify_one() noexcept;
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{notify_all}}%
 \indexlibrary{\idxcode{notify_all}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void notify_all() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Unblocks all threads that are blocked waiting for \tcode{*this}.
@@ -2189,9 +2189,9 @@ void notify_all() noexcept;
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void wait(unique_lock<mutex>& lock);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2229,10 +2229,10 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Predicate>
   void wait(unique_lock<mutex>& lock, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2248,10 +2248,10 @@ arguments supplied by all concurrently waiting (via \tcode{wait},
 
 \pnum
 \effects
-\begin{codeblock}
+\begin{lstlisting}
 while (!pred())
   wait(lock);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \postcondition \tcode{lock.owns_lock()} is \tcode{true} and \tcode{lock.mutex()}
@@ -2270,11 +2270,11 @@ is locked by the calling thread.
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   cv_status wait_until(unique_lock<mutex>& lock,
                        const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2325,11 +2325,11 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   cv_status wait_for(unique_lock<mutex>& lock,
                      const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2345,9 +2345,9 @@ supplied by all concurrently waiting (via \tcode{wait}, \tcode{wait_for}, or
 \pnum
 \effects as if
 
-\begin{codeblock}
+\begin{lstlisting}
 return wait_until(lock, chrono::steady_clock::now() + rel_time);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns \tcode{cv_status::timeout} if
@@ -2371,12 +2371,12 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration, class Predicate>
   bool wait_until(unique_lock<mutex>& lock,
                   const chrono::time_point<Clock, Duration>& abs_time,
                   Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2391,12 +2391,12 @@ arguments supplied by all concurrently waiting (via \tcode{wait},
 \end{itemize}
 
 \pnum\effects
-\begin{codeblock}
+\begin{lstlisting}
 while (!pred())
   if (wait_until(lock, abs_time) == cv_status::timeout)
     return pred();
 return true;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns \tcode{pred()}
@@ -2422,12 +2422,12 @@ is locked by the calling thread.
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period, class Predicate>
   bool wait_for(unique_lock<mutex>& lock,
                 const chrono::duration<Rep, Period>& rel_time,
                 Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2446,9 +2446,9 @@ supplied by all concurrently waiting (via \tcode{wait}, \tcode{wait_for}, or
 \pnum
 \effects as if
 
-\begin{codeblock}
+\begin{lstlisting}
 return wait_until(lock, chrono::steady_clock::now() + rel_time, std::move(pred));
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \enternote There is no blocking if \tcode{pred()} is initially \tcode{true}, even if the
@@ -2486,7 +2486,7 @@ is used with \tcode{condition_variable_any}, the user must ensure that any
 necessary synchronization is in place with respect to the predicate associated
 with the \tcode{condition_variable_any} instance. \exitnote
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class condition_variable_any {
   public:
@@ -2515,12 +2515,12 @@ namespace std {
         Predicate pred);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{condition_variable_any}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 condition_variable_any();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2542,9 +2542,9 @@ privilege to perform the operation.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{condition_variable_any}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~condition_variable_any();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2563,9 +2563,9 @@ using the overloads of \tcode{wait}, \tcode{wait_for}, or \tcode{wait_until} tha
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{notify_one}}%
 \indexlibrary{\idxcode{notify_one}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void notify_one() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those threads.
@@ -2573,9 +2573,9 @@ void notify_one() noexcept;
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{notify_all}}%
 \indexlibrary{\idxcode{notify_all}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void notify_all() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Unblocks all threads that are blocked waiting for \tcode{*this}.
@@ -2583,10 +2583,10 @@ void notify_all() noexcept;
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock>
   void wait(Lock& lock);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2618,25 +2618,25 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock, class Predicate>
   void wait(Lock& lock, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
-\begin{codeblock}
+\begin{lstlisting}
 while (!pred())
   wait(lock);
-\end{codeblock}
+\end{lstlisting}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock, class Clock, class Duration>
   cv_status wait_until(Lock& lock, const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects
@@ -2678,18 +2678,18 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock, class Rep, class Period>
   cv_status wait_for(Lock& lock, const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \effects as if
 
-\begin{codeblock}
+\begin{lstlisting}
 return wait_until(lock, chrono::steady_clock::now() + rel_time);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns \tcode{cv_status::timeout} if
@@ -2712,20 +2712,20 @@ an exception is required~(\ref{thread.req.exception}).
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock, class Clock, class Duration, class Predicate>
   bool wait_until(Lock& lock, const chrono::time_point<Clock, Duration>& abs_time, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \effects
-\begin{codeblock}
+\begin{lstlisting}
 while (!pred())
   if (wait_until(lock, abs_time) == cv_status::timeout)
     return pred();
 return true;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns \tcode{pred()}
@@ -2737,18 +2737,18 @@ regardless of whether the timeout was triggered. \exitnote
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable_any}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Lock, class Rep, class Period, class Predicate>
   bool wait_for(Lock& lock, const chrono::duration<Rep, Period>& rel_time, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \effects as if
 
-\begin{codeblock}
+\begin{lstlisting}
 return wait_until(lock, chrono::steady_clock::now() + rel_time, std::move(pred));
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \enternote There is no blocking if \tcode{pred()} is initially \tcode{true}, even if the
@@ -2786,7 +2786,7 @@ single-threaded programs as well. \exitnote
 
 \synopsis{Header \tcode{<future>} synopsis}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   enum class future_errc {
     broken_promise = @\impdef@,
@@ -2850,7 +2850,7 @@ namespace std {
     future<typename result_of<typename decay<F>::type(typename decay<Args>::type...)>::type>
     async(launch policy, F&& f, Args&&... args);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The \tcode{enum} type \tcode{launch} is a bitmask type~(\ref{bitmask.types}) with
@@ -2867,9 +2867,9 @@ The enum values of \tcode{future_errc} are distinct and not zero.
 \rSec2[futures.errors]{Error handling}
 
 \indexlibrary{\idxcode{future_category}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& future_category() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2883,9 +2883,9 @@ virtual function shall return a pointer to the string \tcode{"future"}.
 
 \indexlibrary{\idxcode{make_error_code}!\idxcode{future_errc}}%
 \indexlibrary{\idxcode{future_errc}!\idxcode{make_error_code}}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_code make_error_code(future_errc e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2894,9 +2894,9 @@ error_code make_error_code(future_errc e) noexcept;
 
 \indexlibrary{\idxcode{make_error_condition}!\idxcode{future_errc}}%
 \indexlibrary{\idxcode{future_errc}!\idxcode{make_error_condition}}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition make_error_condition(future_errc e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2905,7 +2905,7 @@ error_condition make_error_condition(future_errc e) noexcept;
 
 \rSec2[futures.future_error]{Class \tcode{future_error}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class future_error : public logic_error {
   public:
@@ -2915,13 +2915,13 @@ namespace std {
     const char*       what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{future_error}!\idxcode{code}}%
 \indexlibrary{\idxcode{code}!\idxcode{future_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const error_code& code() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2930,9 +2930,9 @@ const error_code& code() const noexcept;
 
 \indexlibrary{\idxcode{future_error}!\idxcode{what}}%
 \indexlibrary{\idxcode{what}!\idxcode{future_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const char *what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3048,7 +3048,7 @@ must either use read-only operations or provide additional synchronization.
 
 \rSec2[futures.promise]{Class template \tcode{promise}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class R>
   class promise {
@@ -3082,7 +3082,7 @@ namespace std {
   template <class R, class Alloc>
     struct uses_allocator<promise<R>, Alloc>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The implementation shall provide the template \tcode{promise} and two specializations,
@@ -3096,11 +3096,11 @@ they acquire a single mutex associated with the promise object while updating th
 promise object.
 
 \indexlibrary{\idxcode{uses_allocator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class R, class Alloc>
   struct uses_allocator<promise<R>, Alloc>
     : true_type { };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3109,11 +3109,11 @@ template <class R, class Alloc>
 
 
 \indexlibrary{\idxcode{promise}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 promise();
 template <class Allocator>
   promise(allocator_arg_t, const Allocator& a);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3123,9 +3123,9 @@ state.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{promise}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 promise(promise&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3137,9 +3137,9 @@ of \tcode{rhs} (if any) to the newly-constructed object.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{promise}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~promise();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3149,9 +3149,9 @@ Abandons any shared state~(\ref{futures.state}).
 
 \indexlibrary{\idxcode{promise}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 promise& operator=(promise&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3165,9 +3165,9 @@ Abandons any shared state~(\ref{futures.state}) and then as if
 
 \indexlibrary{\idxcode{promise}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(promise& other) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3181,9 +3181,9 @@ prior to the call to \tcode{swap}. \tcode{other} has the shared state (if any) t
 
 \indexlibrary{\idxcode{promise}!\idxcode{get_future}}%
 \indexlibrary{\idxcode{get_future}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 future<R> get_future();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3208,12 +3208,12 @@ a \tcode{promise} with the same shared state as \tcode{*this}.
 
 \indexlibrary{\idxcode{promise}!\idxcode{set_value}}%
 \indexlibrary{\idxcode{set_value}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void promise::set_value(const R& r);
 void promise::set_value(R&& r);
 void promise<R&>::set_value(R& r);
 void promise<void>::set_value();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3241,9 +3241,9 @@ already has a stored value or exception.
 
 \indexlibrary{\idxcode{promise}!\idxcode{set_exception}}%
 \indexlibrary{\idxcode{set_exception}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void set_exception(exception_ptr p);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3266,12 +3266,12 @@ already has a stored value or exception.
 
 \indexlibrary{\idxcode{promise}!\idxcode{set_value_at_thread_exit}}%
 \indexlibrary{\idxcode{set_value_at_thread_exit}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void promise::set_value_at_thread_exit(const R& r);
 void promise::set_value_at_thread_exit(R&& r);
 void promise<R&>::set_value_at_thread_exit(R& r);
 void promise<void>::set_value_at_thread_exit();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3294,9 +3294,9 @@ already has a stored value or exception.
 
 \indexlibrary{\idxcode{promise}!\idxcode{set_exception_at_thread_exit}}%
 \indexlibrary{\idxcode{set_exception_at_thread_exit}!\idxcode{promise}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void promise::set_exception_at_thread_exit(exception_ptr p);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3319,10 +3319,10 @@ already has a stored value or exception.
 
 \indexlibrary{\idxcode{swap}!\idxcode{promise}}%
 \indexlibrary{\idxcode{promise}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class R>
   void swap(promise<R>& x, promise<R>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3358,7 +3358,7 @@ is undefined.
 \enternote Implementations are encouraged to detect this case and throw an object of type
 \tcode{future_error} with an error condition of \tcode{future_errc::no_state}. \exitnote
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class R>
   class future {
@@ -3384,7 +3384,7 @@ namespace std {
       future_status wait_until(const chrono::time_point<Clock, Duration>& abs_time) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The implementation shall provide the template \tcode{future} and two specializations,
@@ -3392,9 +3392,9 @@ The implementation shall provide the template \tcode{future} and two specializat
 value of the member function \tcode{get}, as set out in its description, below.
 
 \indexlibrary{\idxcode{future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 future() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3407,9 +3407,9 @@ shared state.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 future(future&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3427,9 +3427,9 @@ constructor invocation.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~future();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3445,9 +3445,9 @@ destroys \tcode{*this}.
 
 \indexlibrary{\idxcode{future}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 future& operator=(future&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3474,9 +3474,9 @@ assignment.
 
 \indexlibrary{\idxcode{future}!\idxcode{share}}%
 \indexlibrary{\idxcode{share}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future<R> share();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3488,11 +3488,11 @@ shared_future<R> share();
 
 \indexlibrary{\idxcode{future}!\idxcode{get}}%
 \indexlibrary{\idxcode{get}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 R future::get();
 R& future<R&>::get();
 void future<void>::get();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3526,9 +3526,9 @@ value stored in the shared state.
 
 \indexlibrary{\idxcode{future}!\idxcode{valid}}%
 \indexlibrary{\idxcode{valid}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool valid() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3537,9 +3537,9 @@ bool valid() const noexcept;
 
 \indexlibrary{\idxcode{future}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void wait() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3549,10 +3549,10 @@ blocks until the shared state is ready.
 
 \indexlibrary{\idxcode{future}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   future_status wait_for(const chrono::duration<Rep, Period>& rel_time) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3580,10 +3580,10 @@ specified by \tcode{rel_time} has expired.
 
 \indexlibrary{\idxcode{future}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   future_status wait_until(const chrono::time_point<Clock, Duration>& abs_time) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3636,7 +3636,7 @@ false} is undefined.
 \enternote Implementations are encouraged to detect this case and throw an object of type
 \tcode{future_error} with an error condition of \tcode{future_errc::no_state}. \exitnote
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class R>
   class shared_future {
@@ -3662,7 +3662,7 @@ namespace std {
       future_status wait_until(const chrono::time_point<Clock, Duration>& abs_time) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The implementation shall provide the template \tcode{shared_future} and two
@@ -3671,9 +3671,9 @@ differ only in the return type and return value of the member function \tcode{ge
 set out in its description, below.
 
 \indexlibrary{\idxcode{shared_future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3686,9 +3686,9 @@ shared state.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{shared_future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future(const shared_future& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3700,10 +3700,10 @@ shared state as \tcode{rhs} (if any).
 \end{itemdescr}
 
 \indexlibrary{\idxcode{shared_future}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future(future<R>&& rhs) noexcept;
 shared_future(shared_future&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3720,9 +3720,9 @@ the constructor invocation.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{shared_future}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~shared_future();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3738,9 +3738,9 @@ destroys \tcode{*this}.
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future& operator=(shared_future&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3767,9 +3767,9 @@ the assignment.
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 shared_future& operator=(const shared_future& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3790,11 +3790,11 @@ assigns the contents of \tcode{rhs} to \tcode{*this}. \enternote As a result,
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{get}}%
 \indexlibrary{\idxcode{get}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const R& shared_future::get() const;
 R& shared_future<R&>::get() const;
 void shared_future<void>::get() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3835,9 +3835,9 @@ shared state.
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{valid}}%
 \indexlibrary{\idxcode{valid}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool valid() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3846,9 +3846,9 @@ bool valid() const noexcept;
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{wait}}%
 \indexlibrary{\idxcode{wait}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void wait() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3858,10 +3858,10 @@ blocks until the shared state is ready.
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{wait_for}}%
 \indexlibrary{\idxcode{wait_for}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Rep, class Period>
   future_status wait_for(const chrono::duration<Rep, Period>& rel_time) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3890,10 +3890,10 @@ specified by \tcode{rel_time} has expired.
 
 \indexlibrary{\idxcode{shared_future}!\idxcode{wait_until}}%
 \indexlibrary{\idxcode{wait_until}!\idxcode{shared_future}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Clock, class Duration>
   future_status wait_until(const chrono::time_point<Clock, Duration>& abs_time) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3927,14 +3927,14 @@ in a new thread and provides the result of the function in a \tcode{future} obje
 it shares a shared state.
 
 \indexlibrary{\idxcode{async}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class F, class... Args>
   future<typename result_of<typename decay<F>::type(typename decay<Args>::type...)>::type>
   async(F&& f, Args&&... args);
 template <class F, class... Args>
   future<typename result_of<typename decay<F>::type(typename decay<Args>::type...)>::type>
   async(launch policy, F&& f, Args&&... args);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4055,7 +4055,7 @@ implementation is unable to start a new thread.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int work1(int value);
 int work2(int value);
 int work(int value) {
@@ -4063,7 +4063,7 @@ int work(int value) {
   int tmp = work1(value);
   return tmp + handle.get();    // \#1
 }
-\end{codeblock}
+\end{lstlisting}
 
 \enternote Line \#1 might not result in concurrency because
 the \tcode{async} call uses the default policy, which may use
@@ -4085,7 +4085,7 @@ When the \tcode{packaged_task} object is invoked, its stored task is invoked and
 result (whether normal or exceptional) stored in the shared state. Any futures that
 share the shared state will then be able to access the stored result.
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class> class packaged_task; // undefined
 
@@ -4125,14 +4125,14 @@ namespace std {
   template <class R, class Alloc>
     struct uses_allocator<packaged_task<R>, Alloc>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[futures.task.members]{\tcode{packaged_task} member functions}
 
 \indexlibrary{\idxcode{packaged_task}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 packaged_task() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4140,12 +4140,12 @@ packaged_task() noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{packaged_task}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class F>
   packaged_task(F&& f);
 template <class F, class Allocator>
   explicit packaged_task(allocator_arg_t, const Allocator& a, F&& f);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4167,9 +4167,9 @@ allocated.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{packaged_task}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 packaged_task(packaged_task&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4183,9 +4183,9 @@ shared state. Moves the stored task from \tcode{rhs} to \tcode{*this}.
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 packaged_task& operator=(packaged_task&& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4201,9 +4201,9 @@ releases any shared state~(\ref{futures.state}).
 \end{itemdescr}
 
 \indexlibrary{\idxcode{packaged_task}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~packaged_task();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4213,9 +4213,9 @@ Abandons any shared state.~(\ref{futures.state}).
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(packaged_task& other) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4231,9 +4231,9 @@ as \tcode{*this} prior to the call to \tcode{swap}.
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{valid}}%
 \indexlibrary{\idxcode{valid}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool valid() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4242,9 +4242,9 @@ bool valid() const noexcept;
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{get_future}}%
 \indexlibrary{\idxcode{get_future}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 future<R> get_future();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4264,9 +4264,9 @@ a \tcode{packaged_task} object with the same shared state as \tcode{*this}.
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{operator()}}%
 \indexlibrary{\idxcode{operator()}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator()(ArgTypes... args);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4309,9 +4309,9 @@ shared state. \exitnote
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{make_ready_at_thread_exit}}%
 \indexlibrary{\idxcode{make_ready_at_thread_exit}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void make_ready_at_thread_exit(ArgTypes... args);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4339,9 +4339,9 @@ stored task has already been invoked.
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{reset}}%
 \indexlibrary{\idxcode{reset}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void reset();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4365,10 +4365,10 @@ has no shared state.
 
 \indexlibrary{\idxcode{packaged_task}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{packaged_task}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class R, class... ArgTypes>
   void swap(packaged_task<R(ArgTypes...)>& x, packaged_task<R(ArgTypes...)>& y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4376,11 +4376,11 @@ template <class R, class... ArgTypes>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{uses_allocator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class R, class Alloc>
   struct uses_allocator<packaged_task<R>, Alloc>
     : true_type { };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum

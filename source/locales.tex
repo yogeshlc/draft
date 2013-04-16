@@ -25,7 +25,7 @@ from the ISO C library, as summarized in Table~\ref{tab:localization.lib.summary
 \rSec1[locale.syn]{Header \tcode{<locale>} synopsis}
 
 \indexlibrary{\idxhdr{locale}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   // \ref{locale}, locale:
   class locale;
@@ -95,7 +95,7 @@ namespace std {
   template <class charT> class messages;
   template <class charT> class messages_byname;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header
@@ -112,7 +112,7 @@ is an incomplete type that is defined in
 \rSec2[locale]{Class \tcode{locale}}
 
 \indexlibrary{\idxhdr{locale}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class locale {
   public:
@@ -155,7 +155,7 @@ namespace std {
     static const locale& classic();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Class
@@ -183,7 +183,7 @@ might be implemented as:\footnote{Note that in the call to
 the stream is implicitly converted to an
 \tcode{ostreambuf_iterator<charT,traits>}.}
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class charT, class traits>
 basic_ostream<charT,traits>&
 operator<< (basic_ostream<charT,traits>& s, Date d) {
@@ -197,7 +197,7 @@ operator<< (basic_ostream<charT,traits>& s, Date d) {
   }
   return s;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -283,9 +283,9 @@ implementations are not required to avoid data races on it~(\ref{res.on.data.rac
 
 \indexlibrary{\idxcode{locale}!\idxcode{category}}%
 \indexlibrary{\idxcode{category}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef int category;
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 \textit{Valid}
@@ -311,9 +311,9 @@ member bitmask constant
 \tcode{all}
 is defined such that the expression
 
-\begin{codeblock}
+\begin{lstlisting}
 (collate | ctype | monetary | numeric | time | messages | all) == all
-\end{codeblock}
+\end{lstlisting}
 
 is
 \tcode{true},
@@ -454,7 +454,7 @@ represents the set of all possible specializations on a bool parameter.
 
 \indexlibrary{\idxcode{locale}!\idxcode{facet}}%
 \indexlibrary{\idxcode{facet}!\idxcode{locale}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class locale::facet {
   protected:
@@ -464,7 +464,7 @@ namespace std {
     void operator=(const facet&) = delete;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Template parameters in this Clause which are required to be facets are those named
@@ -533,7 +533,7 @@ semantics itself by reference to other facets.
 
 \indexlibrary{\idxcode{locale}!\idxcode{id}}%
 \indexlibrary{\idxcode{id}!\idxcode{locale}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class locale::id {
   public:
@@ -542,7 +542,7 @@ namespace std {
     id(const id&) = delete;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class locale::id provides identification of a locale facet
@@ -565,9 +565,9 @@ This depends only on static storage being zero before constructors run~(\ref{bas
 \rSec3[locale.cons]{\tcode{locale} constructors and destructor}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -589,9 +589,9 @@ argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale(const locale& other) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -600,9 +600,9 @@ Constructs a locale which is a copy of \tcode{other}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit locale(const char* std_name);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -623,9 +623,9 @@ and any \impldef{locale names} values.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit locale(const string& std_name);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -633,9 +633,9 @@ explicit locale(const string& std_name);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale(const locale& other, const char* std_name, category);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -660,9 +660,9 @@ has a name.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale(const locale& other, const string& std_name, category cat);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -670,9 +670,9 @@ locale(const locale& other, const string& std_name, category cat);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Facet> locale(const locale& other, Facet* f);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -690,9 +690,9 @@ The resulting locale has no name.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale(const locale& other, const locale& one, category cats);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -710,9 +710,9 @@ have names.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{locale}}%
 \indexlibrary{\idxcode{locale}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const locale& operator=(const locale& other) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -725,9 +725,9 @@ Creates a copy of \tcode{other}, replacing the current value.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{locale}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~locale();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -738,9 +738,9 @@ A non-virtual destructor that throws no exceptions.
 
 \indexlibrary{\idxcode{locale}!\idxcode{combine}}%
 \indexlibrary{\idxcode{combine}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Facet> locale combine(const locale& other) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -771,9 +771,9 @@ The resulting locale has no name.
 
 \indexlibrary{\idxcode{locale}!\idxcode{name}}%
 \indexlibrary{\idxcode{name}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string<char> name() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -795,9 +795,9 @@ Details of the contents of the resulting string are otherwise implementation-def
 
 \indexlibrary{\idxcode{locale}!\idxcode{operators==}}%
 \indexlibrary{\idxcode{operators==}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const locale& other) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -811,9 +811,9 @@ otherwise.
 
 \indexlibrary{\idxcode{locale}!\idxcode{operator"!=}}%
 \indexlibrary{\idxcode{operator"!=}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!=(const locale& other) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -824,11 +824,11 @@ The result of the expression:
 
 \indexlibrary{\idxcode{locale}!\idxcode{operator()}}%
 \indexlibrary{\idxcode{operator()}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class Allocator>
   bool operator()(const basic_string<charT,traits,Allocator>& s1,
                   const basic_string<charT,traits,Allocator>& s2) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -848,10 +848,10 @@ itself) satisfies requirements for a comparator predicate template argument
 \returns
 The result of the following expression:
 
-\begin{codeblock}
+\begin{lstlisting}
 use_facet< collate<charT> >(*this).compare
   (s1.data(), s1.data()+s1.size(), s2.data(), s2.data()+s2.size()) < 0;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \enterexample
@@ -861,9 +861,9 @@ can be collated according to collation rules in locale
 \tcode{loc}
 simply by~(\ref{alg.sort}, \ref{vector}):
 
-\begin{codeblock}
+\begin{lstlisting}
 std::sort(v.begin(), v.end(), loc);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
@@ -871,9 +871,9 @@ std::sort(v.begin(), v.end(), loc);
 
 \indexlibrary{\idxcode{locale}!\idxcode{global}}%
 \indexlibrary{\idxcode{global}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 static locale global(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -886,9 +886,9 @@ Causes future calls to the constructor
 to return a copy of the argument.
 If the argument has a name, does
 
-\begin{codeblock}
+\begin{lstlisting}
 std::setlocale(LC_ALL, loc.name().c_str());
-\end{codeblock}
+\end{lstlisting}
 
 otherwise, the effect on the C locale, if any, is \impldef{effect on C locale of calling
 \tcode{locale::global}}.
@@ -907,9 +907,9 @@ The previous value of
 
 \indexlibrary{\idxcode{locale}!\idxcode{classic}}%
 \indexlibrary{\idxcode{classic}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 static const locale& classic();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -930,9 +930,9 @@ with time.
 
 \indexlibrary{\idxcode{locale}!\idxcode{use_facet}}%
 \indexlibrary{\idxcode{use_facet}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Facet> const Facet& use_facet(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -962,9 +962,9 @@ The reference returned remains valid at least as long as any copy of
 
 \indexlibrary{\idxcode{locale}!\idxcode{has_facet}}%
 \indexlibrary{\idxcode{has_facet}!\idxcode{locale}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Facet> bool has_facet(const locale& loc) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -988,7 +988,7 @@ True if the facet requested is present in \tcode{loc}; otherwise false.
 \indexlibrary{\idxcode{isalnum}}%
 \indexlibrary{\idxcode{isgraph}}%
 \indexlibrary{\idxcode{isblank}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT> bool isspace (charT c, const locale& loc);
 template <class charT> bool isprint (charT c, const locale& loc);
 template <class charT> bool iscntrl (charT c, const locale& loc);
@@ -1001,16 +1001,16 @@ template <class charT> bool isxdigit(charT c, const locale& loc);
 template <class charT> bool isalnum (charT c, const locale& loc);
 template <class charT> bool isgraph (charT c, const locale& loc);
 template <class charT> bool isblank (charT c, const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 Each of these functions
 \tcode{is\textbf{\textit{F}}}
 returns the result of the expression:
 
-\begin{codeblock}
+\begin{lstlisting}
 use_facet< ctype<charT> >(loc).is(ctype_base::@\textbf{\textit{F}}@, c)
-\end{codeblock}
+\end{lstlisting}
 
 where \textbf{\textit{F}} is the
 \tcode{ctype_base::mask}
@@ -1025,9 +1025,9 @@ facet and use it directly, or use the vector form of
 \rSec4[conversions.character]{Character conversions}
 
 \indexlibrary{\idxcode{toupper}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT> charT toupper(charT c, const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1036,9 +1036,9 @@ template <class charT> charT toupper(charT c, const locale& loc);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{tolower}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT> charT tolower(charT c, const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1057,18 +1057,18 @@ conversion facet \tcode{codecvt_utf8} to output to \tcode{cout} a UTF-8
 multibyte sequence corresponding to a wide string, but you don't want to
 alter the locale for \tcode{cout}, you can write something like:
 
-\begin{codeblock}
+\begin{lstlisting}
 wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
 std::string mbstring = myconv.to_bytes(L"Hello\n");
 std::cout << mbstring;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 \synopsis{Class template \tcode{wstring_convert} synopsis}
 
 \indexlibrary{\idxcode{wstring_convert}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
 template<class Codecvt, class Elem = wchar_t,
     class Wide_alloc = std::allocator<Elem>,
@@ -1105,7 +1105,7 @@ template<class Codecvt, class Elem = wchar_t,
     size_t cvtcount;                // \expos
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class template describes an object that controls conversions between wide
@@ -1134,9 +1134,9 @@ An object of this class template stores:
 
 \indexlibrary{\idxcode{byte_string}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{byte_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef std::basic_string<char, char_traits<char>, Byte_alloc> byte_string;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1146,9 +1146,9 @@ char_traits<char>, Byte_alloc>}
 
 \indexlibrary{\idxcode{converted}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{converted}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t converted() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1157,12 +1157,12 @@ size_t converted() const;
 
 \indexlibrary{\idxcode{from_bytes}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{from_bytes}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wide_string from_bytes(char byte);
 wide_string from_bytes(const char *ptr);
 wide_string from_bytes(const byte_string& str);
 wide_string from_bytes(const char *first, const char *last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1195,9 +1195,9 @@ Otherwise, the member function throws an object of class \tcode{std::range_error
 
 \indexlibrary{\idxcode{int_type}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{int_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef typename wide_string::traits_type::int_type int_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 The type shall be a synonym for \tcode{wide_string::traits_type::int_type}.
@@ -1205,9 +1205,9 @@ The type shall be a synonym for \tcode{wide_string::traits_type::int_type}.
 
 \indexlibrary{\idxcode{state}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{state}}%
-\begin{itemdecl}
+\begin{lstlisting}
 state_type state() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1216,9 +1216,9 @@ returns \tcode{cvtstate}.
 
 \indexlibrary{\idxcode{state_type}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{state_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef typename Codecvt::state_type state_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1227,12 +1227,12 @@ The type shall be a synonym for \tcode{Codecvt::state_type}.
 
 \indexlibrary{\idxcode{to_bytes}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{to_bytes}}%
-\begin{itemdecl}
+\begin{lstlisting}
 byte_string to_bytes(Elem wchar);
 byte_string to_bytes(const Elem *wptr);
 byte_string to_bytes(const wide_string& wstr);
 byte_string to_bytes(const Elem *first, const Elem *last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1265,9 +1265,9 @@ Otherwise, the member function shall throw an object of class \tcode{std::range_
 
 \indexlibrary{\idxcode{wide_string}!\idxcode{wstring_convert}}%
 \indexlibrary{\idxcode{wstring_convert}!\idxcode{wide_string}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef std::basic_string<Elem, char_traits<Elem>, Wide_alloc> wide_string;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1276,12 +1276,12 @@ char_traits<Elem>, Wide_alloc>}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wstring_convert}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 wstring_convert(Codecvt *pcvt = new Codecvt);
 wstring_convert(Codecvt *pcvt, state_type state);
 wstring_convert(const byte_string& byte_err,
     const wide_string& wide_err = wide_string());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1301,9 +1301,9 @@ in \tcode{byte_err_string}, and \tcode{wide_err} in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wstring_convert}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~wstring_convert();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1323,7 +1323,7 @@ without affecting any streams or locales.
 \synopsis{Class template \tcode{wbuffer_convert} synopsis}
 
 \indexlibrary{\idxcode{wbuffer_convert}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
 template<class Codecvt,
     class Elem = wchar_t,
@@ -1348,7 +1348,7 @@ template<class Codecvt,
     state_type cvtstate;            // \expos
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class template describes a stream buffer that controls the
@@ -1371,9 +1371,9 @@ An object of this class template stores:
 
 \indexlibrary{\idxcode{state}!\idxcode{wbuffer_convert}}%
 \indexlibrary{\idxcode{wbuffer_convert}!\idxcode{state}}%
-\begin{itemdecl}
+\begin{lstlisting}
 state_type state() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1382,9 +1382,9 @@ state_type state() const;
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{wbuffer_convert}}%
 \indexlibrary{\idxcode{wbuffer_convert}!\idxcode{rdbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 std::streambuf *rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1393,9 +1393,9 @@ std::streambuf *rdbuf() const;
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{wbuffer_convert}}%
 \indexlibrary{\idxcode{wbuffer_convert}!\idxcode{rdbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 std::streambuf *rdbuf(std::streambuf *bytebuf);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1407,9 +1407,9 @@ std::streambuf *rdbuf(std::streambuf *bytebuf);
 
 \indexlibrary{\idxcode{state_type}!\idxcode{wbuffer_convert}}%
 \indexlibrary{\idxcode{wbuffer_convert}!\idxcode{state_type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef typename Codecvt::state_type state_type;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1417,10 +1417,10 @@ The type shall be a synonym for \tcode{Codecvt::state_type}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wbuffer_convert}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 wbuffer_convert(std::streambuf *bytebuf = 0,
     Codecvt *pcvt = new Codecvt, state_type state = state_type());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1430,9 +1430,9 @@ to \tcode{pcvt}, and initializes \tcode{cvtstate} to \tcode{state}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wbuffer_convert}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~wbuffer_convert();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1493,7 +1493,7 @@ virtual function.
 \rSec2[category.ctype]{The \tcode{ctype} category}
 
 \indexlibrary{\idxcode{ctype_base}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ctype_base {
   public:
@@ -1514,7 +1514,7 @@ namespace std {
     static const mask graph = alnum | punct;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The type
@@ -1524,7 +1524,7 @@ is a bitmask type~(\ref{bitmask.types}).
 \rSec3[locale.ctype]{Class template \tcode{ctype}}
 
 \indexlibrary{\idxcode{ctype}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class ctype : public locale::facet, public ctype_base {
@@ -1573,7 +1573,7 @@ namespace std {
                                    char dfault, char* dest) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Class
@@ -1598,11 +1598,11 @@ to the implementation's native character set.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{is}}%
 \indexlibrary{\idxcode{is}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool         is(mask m, charT c) const;
 const charT* is(const charT* low, const charT* high,
                 mask* vec) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1614,10 +1614,10 @@ or
 
 \indexlibrary{\idxcode{ctype}!\idxcode{scan_is}}%
 \indexlibrary{\idxcode{scan_is}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT* scan_is(mask m,
                      const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1627,10 +1627,10 @@ const charT* scan_is(mask m,
 
 \indexlibrary{\idxcode{ctype}!\idxcode{scan_not}}%
 \indexlibrary{\idxcode{scan_not}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT* scan_not(mask m,
                       const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1640,10 +1640,10 @@ const charT* scan_not(mask m,
 
 \indexlibrary{\idxcode{ctype}!\idxcode{toupper}}%
 \indexlibrary{\idxcode{toupper}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT        toupper(charT) const;
 const charT* toupper(charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1655,10 +1655,10 @@ or
 
 \indexlibrary{\idxcode{ctype}!\idxcode{tolower}}%
 \indexlibrary{\idxcode{tolower}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT        tolower(charT c) const;
 const charT* tolower(charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1670,10 +1670,10 @@ or
 
 \indexlibrary{\idxcode{ctype}!\idxcode{widen}}%
 \indexlibrary{\idxcode{widen}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT       widen(char c) const;
 const char* widen(const char* low, const char* high, charT* to) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1685,11 +1685,11 @@ or
 
 \indexlibrary{\idxcode{ctype}!\idxcode{narrow}}%
 \indexlibrary{\idxcode{narrow}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char         narrow(charT c, char dfault) const;
 const charT* narrow(const charT* low, const charT*, char dfault,
                     char* to) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1703,11 +1703,11 @@ or
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_is}}%
 \indexlibrary{\idxcode{do_is}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool         do_is(mask m, charT c) const;
 const charT* do_is(const charT* low, const charT* high,
                    mask* vec) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1738,10 +1738,10 @@ The second form returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype_base}!\idxcode{do_scan_is}}%
 \indexlibrary{\idxcode{do_scan_is}!\idxcode{ctype_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT* do_scan_is(mask m,
                        const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1762,10 +1762,10 @@ otherwise, returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_scan_not}}%
 \indexlibrary{\idxcode{do_scan_not}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const charT* do_scan_not(mask m,
                         const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1786,10 +1786,10 @@ otherwise, returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_toupper}}%
 \indexlibrary{\idxcode{do_toupper}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT        do_toupper(charT c) const;
 const charT* do_toupper(charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1811,10 +1811,10 @@ The second form returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_tolower}}%
 \indexlibrary{\idxcode{do_tolower}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT        do_tolower(charT c) const;
 const charT* do_tolower(charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1836,11 +1836,11 @@ The second form returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_widen}}%
 \indexlibrary{\idxcode{do_widen}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT        do_widen(char c) const;
 const char*  do_widen(const char* low, const char* high,
                       charT* dest) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1885,11 +1885,11 @@ The second form returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype}!\idxcode{do_narrow}}%
 \indexlibrary{\idxcode{do_narrow}!\idxcode{ctype}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char         do_narrow(charT c, char dfault) const;
 const charT* do_narrow(const charT* low, const charT* high,
                        char dfault, char* dest) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1905,9 +1905,9 @@ value or values.
 For any character \tcode{c} in the basic source character set~(\ref{lex.charset})
 the transformation is such that
 
-\begin{codeblock}
+\begin{lstlisting}
 do_widen(do_narrow(c,0)) == c
-\end{codeblock}
+\end{lstlisting}
 
 For any named
 \tcode{ctype}
@@ -1917,9 +1917,9 @@ facet \tcode{ctc} however, and
 \tcode{ctype_base::mask}
 value \tcode{M},
 
-\begin{codeblock}
+\begin{lstlisting}
 (is(M,c) || !ctc.is(M, do_narrow(c,dfault)) )
-\end{codeblock}
+\end{lstlisting}
 
 is
 \tcode{true}
@@ -1949,7 +1949,7 @@ The second form returns \tcode{high}.
 \rSec3[locale.ctype.byname]{Class template \tcode{ctype_byname}}
 
 \indexlibrary{\idxcode{ctype_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class ctype_byname : public ctype<charT> {
@@ -1961,12 +1961,12 @@ namespace std {
    ~ctype_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[facet.ctype.special]{\tcode{ctype} specializations}
 
 \indexlibrary{\idxcode{ctype<char>}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <> class ctype<char>
     : public locale::facet, public ctype_base {
@@ -2017,7 +2017,7 @@ namespace std {
                                   char dfault, char* to) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 A specialization
@@ -2042,9 +2042,9 @@ is at least 256.
 \rSec4[facet.ctype.char.dtor]{\tcode{ctype<char>} destructor}
 
 \indexlibrary{\idxcode{ctype<char>}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~ctype();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2066,10 +2066,10 @@ implementation-specific value (possibly different for each
 such value \tcode{v}) without performing the array lookup.
 
 \indexlibrary{\idxcode{ctype<char>}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit ctype(const mask* tbl = 0, bool del = false,
                size_t refs = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2085,11 +2085,11 @@ Passes its \tcode{refs} argument to its base class constructor.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{is}}%
 \indexlibrary{\idxcode{is}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool        is(mask m, char c) const;
 const char* is(const char* low, const char* high,
                mask* vec) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2113,10 +2113,10 @@ the second form returns \tcode{high}.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{scan_is}}%
 \indexlibrary{\idxcode{scan_is}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const char* scan_is(mask m,
                     const char* low, const char* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2126,19 +2126,19 @@ The smallest
 in the range
 \range{low}{high}
 such that
-\begin{codeblock}
+\begin{lstlisting}
 table()[(unsigned char) *p] & m
-\end{codeblock}
+\end{lstlisting}
 is
 \tcode{true}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{scan_not}}%
 \indexlibrary{\idxcode{scan_not}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const char* scan_not(mask m,
                      const char* low, const char* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2148,19 +2148,19 @@ The smallest
 in the range
 \range{low}{high}
 such that
-\begin{codeblock}
+\begin{lstlisting}
 table()[(unsigned char) *p] & m
-\end{codeblock}
+\end{lstlisting}
 is
 \tcode{false}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{toupper}}%
 \indexlibrary{\idxcode{toupper}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char        toupper(char c) const;
 const char* toupper(char* low, const char* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2173,10 +2173,10 @@ respectively.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{tolower}}%
 \indexlibrary{\idxcode{tolower}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char        tolower(char c) const;
 const char* tolower(char* low, const char* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2189,11 +2189,11 @@ respectively.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{widen}}%
 \indexlibrary{\idxcode{widen}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char  widen(char c) const;
 const char* widen(const char* low, const char* high,
     char* to) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2207,11 +2207,11 @@ respectively.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{narrow}}%
 \indexlibrary{\idxcode{narrow}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char        narrow(char c, char dfault) const;
 const char* narrow(const char* low, const char* high,
                    char dfault, char* to) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2226,9 +2226,9 @@ respectively.
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{table}}%
 \indexlibrary{\idxcode{table}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const mask* table() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2241,9 +2241,9 @@ The first constructor argument, if it was non-zero, otherwise
 
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{classic_table}}%
 \indexlibrary{\idxcode{classic_table}!\idxcode{ctype<char>}}%
-\begin{itemdecl}
+\begin{lstlisting}
 static const mask* classic_table() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2263,7 +2263,7 @@ which represents the classifications of characters in the "C" locale.
 \indexlibrary{\idxcode{do_widen}!\idxcode{ctype<char>}}%
 \indexlibrary{\idxcode{ctype<char>}!\idxcode{do_narrow}}%
 \indexlibrary{\idxcode{do_narrow}!\idxcode{ctype<char>}}%
-\begin{codeblock}
+\begin{lstlisting}
 char        do_toupper(char) const;
 const char* do_toupper(char* low, const char* high) const;
 char        do_tolower(char) const;
@@ -2277,7 +2277,7 @@ virtual char        do_narrow(char c, char dfault) const;
 virtual const char* do_narrow(const char* low,
                               const char* high,
                               char dfault, char* to) const;
-\end{codeblock}
+\end{lstlisting}
 
 These functions are described identically as those members of the
 same name in the
@@ -2287,7 +2287,7 @@ class template~(\ref{locale.ctype.members}).
 \rSec3[locale.codecvt]{Class template \tcode{codecvt}}
 
 \indexlibrary{\idxcode{codecvt}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class codecvt_base {
   public:
@@ -2336,7 +2336,7 @@ namespace std {
     virtual int do_max_length() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2382,11 +2382,11 @@ members.
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{out}}%
 \indexlibrary{\idxcode{out}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result out(stateT& state,
   const internT* from, const internT* from_end, const internT*& from_next,
         externT* to, externT* to_end, externT*& to_next) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2396,10 +2396,10 @@ result out(stateT& state,
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{unshift}}%
 \indexlibrary{\idxcode{unshift}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result unshift(stateT& state,
         externT* to, externT* to_end, externT*& to_next) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2409,11 +2409,11 @@ result unshift(stateT& state,
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{in}}%
 \indexlibrary{\idxcode{in}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result in(stateT& state,
   const externT* from, const externT* from_end, const externT*& from_next,
         internT* to, internT* to_end, internT*& to_next) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2423,9 +2423,9 @@ result in(stateT& state,
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{encoding}}%
 \indexlibrary{\idxcode{encoding}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int encoding() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2435,9 +2435,9 @@ int encoding() const noexcept;
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{always_noconv}}%
 \indexlibrary{\idxcode{always_noconv}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool always_noconv() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2447,10 +2447,10 @@ bool always_noconv() const noexcept;
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{length}}%
 \indexlibrary{\idxcode{length}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int length(stateT& state, const externT* from, const externT* from_end,
            size_t max) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2460,9 +2460,9 @@ int length(stateT& state, const externT* from, const externT* from_end,
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{max_length}}%
 \indexlibrary{\idxcode{max_length}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int max_length() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2476,7 +2476,7 @@ int max_length() const noexcept;
 \indexlibrary{\idxcode{do_out}!\idxcode{codecvt}}%
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_in}}%
 \indexlibrary{\idxcode{do_in}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result do_out(stateT& state,
   const internT* from, const internT* from_end, const internT*& from_next,
   externT* to, externT* to_end, externT*& to_next) const;
@@ -2484,7 +2484,7 @@ result do_out(stateT& state,
 result do_in(stateT& state,
   const externT* from, const externT* from_end, const externT*& from_next,
         internT* to, internT* to_end, internT*& to_next) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2527,31 +2527,31 @@ A
 \tcode{codecvt}
 facet that is used by
 \tcode{basic_filebuf}~(\ref{file.streams}) shall have the property that if
-\begin{codeblock}
+\begin{lstlisting}
 do_out(state, from, from_end, from_next, to, to_end, to_next)
-\end{codeblock}
+\end{lstlisting}
 would return
 \tcode{ok},
 where
 \tcode{from != from_end},
 then
-\begin{codeblock}
+\begin{lstlisting}
 do_out(state, from, from + 1, from_next, to, to_end, to_next)
-\end{codeblock}
+\end{lstlisting}
 shall also return
 \tcode{ok},
 and that if
-\begin{codeblock}
+\begin{lstlisting}
 do_in(state, from, from_end, from_next, to, to_end, to_next)
-\end{codeblock}
+\end{lstlisting}
 would return
 \tcode{ok},
 where
 \tcode{to != to_end},
 then
-\begin{codeblock}
+\begin{lstlisting}
 do_in(state, from, from_end, from_next, to, to + 1, to_next)
-\end{codeblock}
+\end{lstlisting}
 shall also return
 \tcode{ok}.\footnote{Informally, this means that
 \tcode{basic_filebuf}
@@ -2602,10 +2602,10 @@ needed before another destination element can be produced.
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_unshift}}%
 \indexlibrary{\idxcode{do_unshift}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 result do_unshift(stateT& state,
   externT* to, externT* to_end, externT*& to_next) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2646,9 +2646,9 @@ to terminate a sequence given the value of \tcode{state}\\
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_encoding}}%
 \indexlibrary{\idxcode{do_encoding}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int do_encoding() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2664,9 +2664,9 @@ yield the final \tcode{internT} character.}
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_always_noconv}}%
 \indexlibrary{\idxcode{do_always_noconv}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool do_always_noconv() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2686,10 +2686,10 @@ returns
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_length}}%
 \indexlibrary{\idxcode{do_length}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int do_length(stateT& state, const externT* from, const externT* from_end,
               size_t max) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2729,9 +2729,9 @@ and
 
 \indexlibrary{\idxcode{codecvt}!\idxcode{do_max_length}}%
 \indexlibrary{\idxcode{do_max_length}!\idxcode{codecvt}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int do_max_length() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2752,7 +2752,7 @@ returns 1.
 \rSec3[locale.codecvt.byname]{Class template \tcode{codecvt_byname}}
 
 \indexlibrary{\idxcode{codecvt_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class internT, class externT, class stateT>
   class codecvt_byname : public codecvt<internT, externT, stateT> {
@@ -2763,7 +2763,7 @@ namespace std {
     ~codecvt_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[category.numeric]{The numeric category}
 
@@ -2817,7 +2817,7 @@ member functions for formatting and parsing numeric values~(\ref{istream.formatt
 \rSec3[locale.num.get]{Class template \tcode{num_get}}
 
 \indexlibrary{\idxcode{num_get}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class InputIterator = istreambuf_iterator<charT> >
   class num_get : public locale::facet {
@@ -2878,7 +2878,7 @@ namespace std {
                              ios_base::iostate& err, void*& v) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
  
 \pnum
 The facet
@@ -2889,7 +2889,7 @@ is used to parse numeric values from an input sequence such as an istream.
 
 \indexlibrary{\idxcode{num_get}!\idxcode{get}}%
 \indexlibrary{\idxcode{get}!\idxcode{num_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, bool& val) const;
 iter_type get(iter_type in, iter_type end, ios_base& str,
@@ -2912,7 +2912,7 @@ iter_type get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, long double& val) const;
 iter_type get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, void*& val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2924,7 +2924,7 @@ iter_type get(iter_type in, iter_type end, ios_base& str,
 
 \indexlibrary{\idxcode{num_get}!\idxcode{do_get}}%
 \indexlibrary{\idxcode{do_get}!\idxcode{num_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, long& val) const;
 iter_type do_get(iter_type in, iter_type end, ios_base& str,
@@ -2945,7 +2945,7 @@ iter_type do_get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, long double& val) const;
 iter_type do_get(iter_type in, iter_type end, ios_base& str,
   ios_base::iostate& err, void*& val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2985,12 +2985,12 @@ The details of the stages are presented below.
 \stage{1}
 The function initializes local variables via
 
-\begin{codeblock}
+\begin{lstlisting}
 fmtflags flags = str .flags();
 fmtflags basefield = (flags & ios_base::basefield);
 fmtflags uppercase = (flags & ios_base::uppercase);
 fmtflags boolalpha = (flags & ios_base::boolalpha);
-\end{codeblock}
+\end{lstlisting}
 
 For conversion to an integral type, the
 function determines the integral conversion specifier as indicated in
@@ -3042,7 +3042,7 @@ Otherwise a
 \tcode{charT}
 is taken from \tcode{in} and local variables are initialized as if by
 
-\begin{codeblock}
+\begin{lstlisting}
 char_type ct = *in ;
 char c = src[find(atoms, atoms + sizeof(src) - 1, ct) - atoms];
 if (ct ==  use_facet<numpunct<charT> >(loc).decimal_point())
@@ -3050,7 +3050,7 @@ c = '.';
 bool discard =
   ct == use_facet<numpunct<charT> >(loc).thousands_sep()
   && use_facet<numpunct<charT> >(loc).grouping().length() != 0;
-\end{codeblock}
+\end{lstlisting}
 
 where the values
 \tcode{src}
@@ -3058,11 +3058,11 @@ and
 \tcode{atoms}
 are defined as if by:
 
-\begin{codeblock}
+\begin{lstlisting}
 static const char src[] = "0123456789abcdefxABCDEFX+-";
 char_type atoms[sizeof(src)];
 use_facet<ctype<charT> >(loc).widen(src, src + sizeof(src), atoms);
-\end{codeblock}
+\end{lstlisting}
 
 for this value of
 \tcode{loc}.
@@ -3130,10 +3130,10 @@ is performed.
 
 \indexlibrary{\idxcode{do_get}!\idxcode{num_get}}%
 \indexlibrary{\idxcode{num_get}!\idxcode{do_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get(iter_type in, iter_type end, ios_base& str,
                  ios_base::iostate& err, bool& val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3223,7 +3223,7 @@ For empty targets \tcode{("")}, any input sequence yields
 \rSec3[locale.nm.put]{Class template \tcode{num_put}}
 
 \indexlibrary{\idxcode{num_put}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
   class num_put : public locale::facet {
@@ -3269,7 +3269,7 @@ namespace std {
                              const void* v) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The facet
@@ -3280,7 +3280,7 @@ is used to format numeric values to a character sequence such as an ostream.
 
 \indexlibrary{\idxcode{num_put}!\idxcode{put}}%
 \indexlibrary{\idxcode{put}!\idxcode{num_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type put(iter_type out, ios_base& str, char_type fill,
   bool val) const;
 iter_type put(iter_type out, ios_base& str, char_type fill,
@@ -3297,7 +3297,7 @@ iter_type put(iter_type out, ios_base& str, char_type fill,
   long double val) const;
 iter_type put(iter_type out, ios_base& str, char_type fill,
   const void* val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3309,7 +3309,7 @@ iter_type put(iter_type out, ios_base& str, char_type fill,
 
 \indexlibrary{\idxcode{num_put}!\idxcode{do_put}}%
 \indexlibrary{\idxcode{do_put}!\idxcode{num_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_put(iter_type out, ios_base& str, char_type fill,
   long val) const;
 iter_type do_put(iter_type out, ios_base& str, char_type fill,
@@ -3324,7 +3324,7 @@ iter_type do_put(iter_type out, ios_base& str, char_type fill,
   long double val) const;
 iter_type do_put(iter_type out, ios_base& str, char_type fill,
   const void* val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3334,9 +3334,9 @@ formatting \tcode{val} as desired.
 In the following description,
 a local variable initialized with
 
-\begin{codeblock}
+\begin{lstlisting}
 locale loc = str.getloc();
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The details of this operation occur in several stages:
@@ -3349,9 +3349,9 @@ determining the characters that would be printed by
 \tcode{printf}~(\ref{c.files})
 given this conversion specifier for
 
-\begin{codeblock}
+\begin{lstlisting}
 printf(spec, val )
-\end{codeblock}
+\end{lstlisting}
 
 assuming that the current locale is
 the \tcode{"C"} locale.
@@ -3384,14 +3384,14 @@ Detailed descriptions of each stage follow.
 The first action of stage 1 is to determine a conversion specifier.
 The tables that describe this determination use the following local variables
 
-\begin{codeblock}
+\begin{lstlisting}
 fmtflags flags = str.flags() ;
 fmtflags basefield =  (flags & (ios_base::basefield));
 fmtflags uppercase =  (flags & (ios_base::uppercase));
 fmtflags floatfield = (flags & (ios_base::floatfield));
 fmtflags showpos =    (flags & (ios_base::showpos));
 fmtflags showbase =   (flags & (ios_base::showbase));
-\end{codeblock}
+\end{lstlisting}
 
 All tables used in describing stage 1 are ordered.
 That is, the first line whose condition is true applies.
@@ -3482,9 +3482,9 @@ via
 \tcode{use_facet<ctype<charT> >(loc).widen( c )}
 
 A local variable \tcode{punct} is initialized via
-\begin{codeblock}
+\begin{lstlisting}
 const numpunct<charT>& punct = use_facet< numpunct<charT> >(str.getloc());
-\end{codeblock}
+\end{lstlisting}
  
 For arithmetic types,
 \tcode{punct.thousands_sep()}
@@ -3499,9 +3499,9 @@ Decimal point characters(.) are replaced by
 \stage{3}
 A local variable is initialized as
 
-\begin{codeblock}
+\begin{lstlisting}
 fmtflags adjustfield=   (flags & (ios_base::adjustfield));
-\end{codeblock}
+\end{lstlisting}
  
 The location of any padding\footnote{The conversion specification
 \tcode{\#o}
@@ -3542,18 +3542,18 @@ The sequence of
 \tcode{charT}'s
 at the end of stage 3 are output via
 
-\begin{codeblock}
+\begin{lstlisting}
 *out++ = c
-\end{codeblock}
+\end{lstlisting}
 \end{description}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{do_put}!\idxcode{num_put}}%
 \indexlibrary{\idxcode{num_put}!\idxcode{do_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_put(iter_type out, ios_base& str, char_type fill,
                  bool val) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3565,11 +3565,11 @@ returns
 otherwise obtains a string
 \tcode{s}
 as if by
-\begin{codeblock}
+\begin{lstlisting}
 string_type s =
   val ? use_facet<ctype<charT> >(loc).truename()
     : use_facet<ctype<charT> >(loc).falsename();
-\end{codeblock}
+\end{lstlisting}
 and then inserts each character
 \tcode{c}
 of
@@ -3587,7 +3587,7 @@ and returns
 \rSec3[locale.numpunct]{Class template \tcode{numpunct}}
 
 \indexlibrary{\idxcode{numpunct}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class numpunct : public locale::facet {
@@ -3614,7 +3614,7 @@ namespace std {
     virtual string_type  do_falsename()     const;      // for \tcode{bool}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \tcode{numpunct<>}
@@ -3646,21 +3646,21 @@ are the results of corresponding
 members.
 Integer values have the format:
 
-\begin{codeblock}
+\begin{lstlisting}
 integer   ::= [sign] units
 sign      ::= plusminus
 plusminus ::= '+' | '-'
 units     ::= digits [thousands-sep units]
 digits    ::= digit [digits]
-\end{codeblock}
+\end{lstlisting}
 
 and floating-point values have:
 
-\begin{codeblock}
+\begin{lstlisting}
 floatval ::= [sign] units [decimal-point [digits]] [e [sign] digits] |
              [sign]        decimal-point  digits   [e [sign] digits]
 e        ::= 'e' | 'E'
-\end{codeblock}
+\end{lstlisting}
 
 where the number of digits between
 \tcode{thousands-sep}s
@@ -3675,9 +3675,9 @@ is applied.
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{decimal_point}}%
 \indexlibrary{\idxcode{decimal_point}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type decimal_point() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3687,9 +3687,9 @@ char_type decimal_point() const;
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{thousands_sep}}%
 \indexlibrary{\idxcode{thousands_sep}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type thousands_sep() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3699,9 +3699,9 @@ char_type thousands_sep() const;
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{grouping}}%
 \indexlibrary{\idxcode{grouping}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string grouping()  const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3713,10 +3713,10 @@ string grouping()  const;
 \indexlibrary{\idxcode{truename}!\idxcode{numpunct}}%
 \indexlibrary{\idxcode{numpunct}!\idxcode{falsename}}%
 \indexlibrary{\idxcode{falsename}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type truename()  const;
 string_type falsename() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3731,9 +3731,9 @@ respectively.
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{do_decimal_point}}%
 \indexlibrary{\idxcode{do_decimal_point}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type do_decimal_point() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3744,9 +3744,9 @@ The required specializations return \tcode{'.'} or \tcode{L'.'}.
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{do_thousands_sep}}%
 \indexlibrary{\idxcode{do_thousands_sep}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type do_thousands_sep() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3757,9 +3757,9 @@ The required specializations return \tcode{','} or \tcode{L','}.
 
 \indexlibrary{\idxcode{numpunct}!\idxcode{do_grouping}}%
 \indexlibrary{\idxcode{do_grouping}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string do_grouping() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3790,10 +3790,10 @@ no grouping.
 \indexlibrary{\idxcode{do_truename}!\idxcode{numpunct}}%
 \indexlibrary{\idxcode{numpunct}!\idxcode{do_falsename}}%
 \indexlibrary{\idxcode{do_falsename}!\idxcode{numpunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type do_truename()  const;
 string_type do_falsename() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3812,7 +3812,7 @@ In the base class implementation these names are
 \rSec3[locale.numpunct.byname]{Class template \tcode{numpunct_byname}}
 
 \indexlibrary{\idxcode{numpunct_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class numpunct_byname : public numpunct<charT> {
@@ -3826,14 +3826,14 @@ namespace std {
    ~numpunct_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[category.collate]{The collate category}
 
 \rSec3[locale.collate]{Class template \tcode{collate}}
 
 \indexlibrary{\idxcode{collate}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class collate : public locale::facet {
@@ -3858,7 +3858,7 @@ namespace std {
     virtual long do_hash (const charT* low, const charT* high) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -3885,10 +3885,10 @@ in the range
 
 \indexlibrary{\idxcode{collate}!\idxcode{compare}}%
 \indexlibrary{\idxcode{compare}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int compare(const charT* low1, const charT* high1,
             const charT* low2, const charT* high2) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3898,9 +3898,9 @@ int compare(const charT* low1, const charT* high1,
 
 \indexlibrary{\idxcode{collate}!\idxcode{transform}}%
 \indexlibrary{\idxcode{transform}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type transform(const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3910,9 +3910,9 @@ string_type transform(const charT* low, const charT* high) const;
 
 \indexlibrary{\idxcode{collate}!\idxcode{hash}}%
 \indexlibrary{\idxcode{hash}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 long hash(const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3924,10 +3924,10 @@ long hash(const charT* low, const charT* high) const;
 
 \indexlibrary{\idxcode{collate}!\idxcode{do_compare}}%
 \indexlibrary{\idxcode{do_compare}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int do_compare(const charT* low1, const charT* high1,
                const charT* low2, const charT* high2) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3946,9 +3946,9 @@ a lexicographical comparison~(\ref{alg.lex.comparison}).
 
 \indexlibrary{\idxcode{collate}!\idxcode{do_transform}}%
 \indexlibrary{\idxcode{do_transform}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type do_transform(const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3965,9 +3965,9 @@ being compared to many other strings.}
 
 \indexlibrary{\idxcode{collate}!\idxcode{do_hash}}%
 \indexlibrary{\idxcode{do_hash}!\idxcode{collate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 long do_hash(const charT* low, const charT* high) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3987,7 +3987,7 @@ not compare equal should be very small, approaching
 \rSec3[locale.collate.byname]{Class template \tcode{collate_byname}}
 
 \indexlibrary{\idxcode{collate_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class collate_byname : public collate<charT> {
@@ -3999,7 +3999,7 @@ namespace std {
     ~collate_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[category.time]{The time category}
 
@@ -4028,7 +4028,7 @@ facet, to determine formatting details.
 \rSec3[locale.time.get]{Class template \tcode{time_get}}
 
 \indexlibrary{\idxcode{time_get}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class time_base {
   public:
@@ -4079,7 +4079,7 @@ namespace std {
                              ios_base::iostate& err, tm *t, char format, char modifier) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \tcode{time_get}
@@ -4114,9 +4114,9 @@ in \tcode{err}.
 
 \indexlibrary{\idxcode{time_get}!\idxcode{date_order}}%
 \indexlibrary{\idxcode{date_order}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 dateorder date_order() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4126,10 +4126,10 @@ dateorder date_order() const;
 
 \indexlibrary{\idxcode{time_get}!\idxcode{get_time}}%
 \indexlibrary{\idxcode{get_time}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get_time(iter_type s, iter_type end, ios_base& str,
                    ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4139,10 +4139,10 @@ iter_type get_time(iter_type s, iter_type end, ios_base& str,
 
 \indexlibrary{\idxcode{time_get}!\idxcode{get_date}}%
 \indexlibrary{\idxcode{get_date}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get_date(iter_type s, iter_type end, ios_base& str,
                    ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4154,12 +4154,12 @@ iter_type get_date(iter_type s, iter_type end, ios_base& str,
 \indexlibrary{\idxcode{get_weekday}!\idxcode{time_get}}%
 \indexlibrary{\idxcode{time_get}!\idxcode{get_monthname}}%
 \indexlibrary{\idxcode{get_monthname}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get_weekday(iter_type s, iter_type end, ios_base& str,
                       ios_base::iostate& err, tm* t) const;
 iter_type get_monthname(iter_type s, iter_type end, ios_base& str,
                         ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4171,10 +4171,10 @@ or
 
 \indexlibrary{\idxcode{time_get}!\idxcode{get_year}}%
 \indexlibrary{\idxcode{get_year}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get_year(iter_type s, iter_type end, ios_base& str,
                    ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4184,10 +4184,10 @@ iter_type get_year(iter_type s, iter_type end, ios_base& str,
 
 \indexlibrary{\idxcode{get}!\idxcode{time_get}}%
 \indexlibrary{\idxcode{time_get}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get(iter_type s, iter_type end, ios_base& f,
     ios_base::iostate& err, tm *t, char format, char modifier = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4196,10 +4196,10 @@ iter_type get(iter_type s, iter_type end, ios_base& f,
 
 \indexlibrary{\idxcode{get}!\idxcode{time_get}}%
 \indexlibrary{\idxcode{time_get}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get(iter_type s, iter_type end, ios_base& f,
     ios_base::iostate& err, tm *t, const char_type *fmt, const char_type *fmtend) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4264,9 +4264,9 @@ multi-character sequences are considered while doing so.
 
 \indexlibrary{\idxcode{time_get}!\idxcode{do_date_order}}%
 \indexlibrary{\idxcode{do_date_order}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 dateorder do_date_order() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4286,10 +4286,10 @@ contains other variable components (e.g., Julian day, week number, week day).
 
 \indexlibrary{\idxcode{time_get}!\idxcode{do_get_time}}%
 \indexlibrary{\idxcode{do_get_time}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get_time(iter_type s, iter_type end, ios_base& str,
                       ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4311,10 +4311,10 @@ as possibly part of a valid time.
 
 \indexlibrary{\idxcode{time_get}!\idxcode{do_get_date}}%
 \indexlibrary{\idxcode{do_get_date}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get_date(iter_type s, iter_type end, ios_base& str,
                       ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4351,12 +4351,12 @@ as possibly part of a valid date.
 \indexlibrary{\idxcode{do_get_weekday}!\idxcode{time_get}}%
 \indexlibrary{\idxcode{time_get}!\idxcode{do_get_monthname}}%
 \indexlibrary{\idxcode{do_get_monthname}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get_weekday(iter_type s, iter_type end, ios_base& str,
                          ios_base::iostate& err, tm* t) const;
 iter_type do_get_monthname(iter_type s, iter_type end, ios_base& str,
                            ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4378,10 +4378,10 @@ as part of a valid name.
 
 \indexlibrary{\idxcode{time_get}!\idxcode{do_get_year}}%
 \indexlibrary{\idxcode{do_get_year}!\idxcode{time_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get_year(iter_type s, iter_type end, ios_base& str,
                       ios_base::iostate& err, tm* t) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4404,10 +4404,10 @@ as part of a valid year identifier.
 
 \indexlibrary{\idxcode{do_get}!\idxcode{time_get}}%
 \indexlibrary{\idxcode{time_get}!\idxcode{do_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get(iter_type s, iter_type end, ios_base& f,
     ios_base::iostate& err, tm *t, char format, char modifier) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4455,7 +4455,7 @@ recognized as possibly part of a valid input sequence for the given
 \rSec3[locale.time.get.byname]{Class template \tcode{time_get_byname}}
 
 \indexlibrary{\idxcode{time_get_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class InputIterator = istreambuf_iterator<charT> >
   class time_get_byname : public time_get<charT, InputIterator> {
@@ -4469,12 +4469,12 @@ namespace std {
     ~time_get_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[locale.time.put]{Class template \tcode{time_put}}
 
 \indexlibrary{\idxcode{time_put}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
   class time_put : public locale::facet {
@@ -4498,18 +4498,18 @@ namespace std {
                              char format, char modifier) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec4[locale.time.put.members]{\tcode{time_put} members}
 
 \indexlibrary{\idxcode{time_put}!\idxcode{put}}%
 \indexlibrary{\idxcode{put}!\idxcode{time_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type put(iter_type s, ios_base& str, char_type fill, const tm* t,
               const charT* pattern, const charT* pat_end) const;
 iter_type put(iter_type s, ios_base& str, char_type fill, const tm* t,
               char format, char modifier = 0) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4572,10 +4572,10 @@ An iterator pointing immediately after the last character produced.
 
 \indexlibrary{\idxcode{time_put}!\idxcode{do_put}}%
 \indexlibrary{\idxcode{do_put}!\idxcode{time_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_put(iter_type s, ios_base&, char_type fill, const tm* t,
                  char format, char modifier) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4609,7 +4609,7 @@ default for this argument.
 \rSec3[locale.time.put.byname]{Class template \tcode{time_put_byname}}
 
 \indexlibrary{\idxcode{time_put_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
   class time_put_byname : public time_put<charT, OutputIterator>
@@ -4624,7 +4624,7 @@ namespace std {
     ~time_put_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[category.monetary]{The monetary category}
 
@@ -4655,7 +4655,7 @@ facets, to determine formatting details.
 \rSec3[locale.money.get]{Class template \tcode{money_get}}
 
 \indexlibrary{\idxcode{money_get}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT,
     class InputIterator = istreambuf_iterator<charT> >
@@ -4684,19 +4684,19 @@ namespace std {
                              ios_base::iostate& err, string_type& digits) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec4[locale.money.get.members]{\tcode{money_get} members}
 
 \indexlibrary{\idxcode{money_get}!\idxcode{get}}%
 \indexlibrary{\idxcode{get}!\idxcode{money_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type get(iter_type s, iter_type end, bool intl,
               ios_base& f, ios_base::iostate& err,
               long double& quant) const;
 iter_type get(s, iter_type end, bool intl, ios_base&f,
               ios_base::iostate& err, string_type& quant) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4708,14 +4708,14 @@ iter_type get(s, iter_type end, bool intl, ios_base&f,
 
 \indexlibrary{\idxcode{money_get}!\idxcode{do_get}}%
 \indexlibrary{\idxcode{do_get}!\idxcode{money_get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_get(iter_type s, iter_type end, bool intl,
                  ios_base& str, ios_base::iostate& err,
                  long double& units) const;
 iter_type do_get(iter_type s, iter_type end, bool intl,
                  ios_base& str, ios_base::iostate& err,
                  string_type& digits) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4854,12 +4854,12 @@ The value
 is produced as if by\footnote{The semantics here are different from
 \tcode{ct.narrow}.}
 
-\begin{codeblock}
+\begin{lstlisting}
 for (int i = 0; i < n; ++i)
   buf2[i] = src[find(atoms, atoms+sizeof(src), buf1[i]) - atoms];
 buf2[n] = 0;
 sscanf(buf2, "%Lf", &units);
-\end{codeblock}
+\end{lstlisting}
 
 where
 \tcode{n}
@@ -4872,11 +4872,11 @@ and
 \tcode{atoms}
 are defined as if by
 
-\begin{codeblock}
+\begin{lstlisting}
 static const char src[] = "0123456789-";
 charT atoms[sizeof(src)];
 ct.widen(src, src + sizeof(src) - 1, atoms);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns
@@ -4887,7 +4887,7 @@ as part of a valid monetary quantity.
 \rSec3[locale.money.put]{Class template \tcode{money_put}}
 
 \indexlibrary{\idxcode{money_put}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT,
     class OutputIterator = ostreambuf_iterator<charT> >
@@ -4914,18 +4914,18 @@ namespace std {
                              const string_type& digits) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec4[locale.money.put.members]{\tcode{money_put} members}
 
 \indexlibrary{\idxcode{money_put}!\idxcode{put}}%
 \indexlibrary{\idxcode{put}!\idxcode{money_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type put(iter_type s, bool intl, ios_base& f, char_type fill,
               long double quant) const;
 iter_type put(iter_type s, bool intl, ios_base& f, char_type fill,
               const string_type& quant) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4937,12 +4937,12 @@ iter_type put(iter_type s, bool intl, ios_base& f, char_type fill,
 
 \indexlibrary{\idxcode{money_put}!\idxcode{do_put}}%
 \indexlibrary{\idxcode{do_put}!\idxcode{money_put}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iter_type do_put(iter_type s, bool intl, ios_base& str,
                  char_type fill, long double units) const;
 iter_type do_put(iter_type s, bool intl, ios_base& str,
                  char_type fill, const string_type& digits) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4965,9 +4965,9 @@ The argument
 \tcode{units}
 is transformed into a sequence of wide characters as if by
 
-\begin{codeblock}
+\begin{lstlisting}
 ct.widen(buf1, buf1 + sprintf(buf1, "%.0Lf", units), buf2)
-\end{codeblock}
+\end{lstlisting}
 
 for character buffers
 \tcode{buf1}
@@ -5040,7 +5040,7 @@ An iterator pointing immediately after the last character produced.
 \rSec3[locale.moneypunct]{Class template \tcode{moneypunct}}
 
 \indexlibrary{\idxcode{moneypunct}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class money_base {
   public:
@@ -5082,7 +5082,7 @@ namespace std {
     virtual pattern      do_neg_format()    const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -5162,18 +5162,18 @@ appears, the absolute numeric monetary value is required.
 \pnum
 The format of the numeric monetary value is a decimal number:
 
-\begin{codeblock}
+\begin{lstlisting}
 value ::= units [ decimal-point [ digits ]] |
   decimal-point digits
-\end{codeblock}
+\end{lstlisting}
 
 if
 \tcode{frac_digits()}
 returns a positive value, or
 
-\begin{codeblock}
+\begin{lstlisting}
 value ::= units
-\end{codeblock}
+\end{lstlisting}
 
 otherwise.
 The symbol
@@ -5182,10 +5182,10 @@ indicates the character returned by
 \tcode{decimal_point()}.
 The other symbols are defined as follows:
 
-\begin{codeblock}
+\begin{lstlisting}
 units ::= digits [ thousands-sep units ]
 digits ::= adigit [ digits ]
-\end{codeblock}
+\end{lstlisting}
 
 In the syntax specification, the symbol
 \tcode{adigit}
@@ -5248,7 +5248,7 @@ defined identically as the member
 \indexlibrary{\idxcode{positive_sign}!\idxcode{moneypunct}}%
 \indexlibrary{\idxcode{moneypunct}!\idxcode{negative_sign}}%
 \indexlibrary{\idxcode{negative_sign}!\idxcode{moneypunct}}%
-\begin{codeblock}
+\begin{lstlisting}
 charT        decimal_point() const;
 charT        thousands_sep() const;
 string       grouping()      const;
@@ -5258,7 +5258,7 @@ string_type  negative_sign() const;
 int          frac_digits()   const;
 pattern      pos_format()    const;
 pattern      neg_format()    const;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Each of these functions \tcode{F}
@@ -5270,9 +5270,9 @@ virtual member function
 
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_decimal_point}}%
 \indexlibrary{\idxcode{do_decimal_point}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT do_decimal_point() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5285,9 +5285,9 @@ is greater than zero.\footnote{In common U.S. locales this is
 
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_thousands_sep}}%
 \indexlibrary{\idxcode{do_thousands_sep}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 charT do_thousands_sep() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5300,9 +5300,9 @@ specifies a digit grouping pattern.\footnote{In common U.S. locales this is
 
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_grouping}}%
 \indexlibrary{\idxcode{do_grouping}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string do_grouping() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5316,9 +5316,9 @@ the value is \tcode{"\textbackslash003"}
 
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_curr_symbol}}%
 \indexlibrary{\idxcode{do_curr_symbol}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type do_curr_symbol() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5333,10 +5333,10 @@ this is typically four characters long, usually three letters and a space.}
 \indexlibrary{\idxcode{do_positive_sign}!\idxcode{moneypunct}}%
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_negative_sign}}%
 \indexlibrary{\idxcode{do_negative_sign}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type do_positive_sign() const;
 string_type do_negative_sign() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5350,9 +5350,9 @@ returns the string to use to indicate a negative value.
 
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_frac_digits}}%
 \indexlibrary{\idxcode{do_frac_digits}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int do_frac_digits() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5365,10 +5365,10 @@ common U.S. locales, this is 2.}
 \indexlibrary{\idxcode{do_pos_format}!\idxcode{moneypunct}}%
 \indexlibrary{\idxcode{moneypunct}!\idxcode{do_neg_format}}%
 \indexlibrary{\idxcode{do_neg_format}!\idxcode{moneypunct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pattern do_pos_format() const;
 pattern do_neg_format() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5392,7 +5392,7 @@ for example, \tcode{"USD "}.}
 \rSec3[locale.moneypunct.byname]{Class template \tcode{moneypunct_byname}}
 
 \indexlibrary{\idxcode{moneypunct_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, bool Intl = false>
   class moneypunct_byname : public moneypunct<charT, Intl> {
@@ -5406,7 +5406,7 @@ namespace std {
     ~moneypunct_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[category.messages]{The message retrieval category}
 
@@ -5418,7 +5418,7 @@ implements retrieval of strings from message catalogs.
 \rSec3[locale.messages]{Class template \tcode{messages}}
 
 \indexlibrary{\idxcode{messages}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class messages_base {
   public:
@@ -5448,7 +5448,7 @@ namespace std {
     virtual void do_close(catalog) const;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Values of type
@@ -5464,9 +5464,9 @@ can be obtained only by calling member
 
 \indexlibrary{\idxcode{messages}!\idxcode{open}}%
 \indexlibrary{\idxcode{open}!\idxcode{messages}}%
-\begin{itemdecl}
+\begin{lstlisting}
 catalog open(const basic_string<char>& name, const locale& loc) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5476,10 +5476,10 @@ catalog open(const basic_string<char>& name, const locale& loc) const;
 
 \indexlibrary{\idxcode{messages}!\idxcode{get}}%
 \indexlibrary{\idxcode{get}!\idxcode{messages}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type get(catalog cat, int set, int msgid,
                 const string_type& dfault) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5489,9 +5489,9 @@ string_type get(catalog cat, int set, int msgid,
 
 \indexlibrary{\idxcode{messages}!\idxcode{close}}%
 \indexlibrary{\idxcode{close}!\idxcode{messages}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void  close(catalog cat) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5504,10 +5504,10 @@ Calls
 
 \indexlibrary{\idxcode{messages}!\idxcode{do_open}}%
 \indexlibrary{\idxcode{do_open}!\idxcode{messages}}%
-\begin{itemdecl}
+\begin{lstlisting}
 catalog do_open(const basic_string<char>& name,
                 const locale& loc) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5532,10 +5532,10 @@ messages, if needed.
 
 \indexlibrary{\idxcode{messages}!\idxcode{do_get}}%
 \indexlibrary{\idxcode{do_get}!\idxcode{messages}}%
-\begin{itemdecl}
+\begin{lstlisting}
 string_type do_get(catalog cat, int set, int msgid,
               const string_type& dfault) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5553,9 +5553,9 @@ such message can be found, returns \tcode{dfault}.
 
 \indexlibrary{\idxcode{message}!\idxcode{do_close}}%
 \indexlibrary{\idxcode{do_close}!\idxcode{message}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void do_close(catalog cat) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5576,7 +5576,7 @@ The limit on such resources, if any, is implementation-defined.
 \rSec3[locale.messages.byname]{Class template \tcode{messages_byname}}
 
 \indexlibrary{\idxcode{messages_byname}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT>
   class messages_byname : public messages<charT> {
@@ -5590,7 +5590,7 @@ namespace std {
     ~messages_byname();
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[facets.examples]{Program-defined facets}
 
@@ -5611,7 +5611,7 @@ The locale member function templates verify its type and storage class.
 \enterexample
 Traditional global localization is still easy:
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <iostream>
 #include <locale>
 int main(int argc, char** argv) {
@@ -5627,14 +5627,14 @@ int main(int argc, char** argv) {
 
   return MyObject(argc, argv).doit();
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 \enterexample
 Greater flexibility is possible:
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <iostream>
 #include <locale>
 int main() {
@@ -5645,7 +5645,7 @@ int main() {
   while (cin >> f) cout << f << endl;
   return (cin.fail() != 0);
 }
-\end{codeblock}
+\end{lstlisting}
 
 In a European locale, with input
 \tcode{3.456,78},
@@ -5661,7 +5661,7 @@ write a data file in a fixed format, regardless of a user's preference.
 \enterexample
 Here is an example of the use of locales in a library interface.
 
-\begin{codeblock}
+\begin{lstlisting}
 // file: \tcode{Date.h}
 #include <iosfwd>
 #include <string>
@@ -5675,7 +5675,7 @@ public:
 
 std::istream& operator>>(std::istream& s, Date& d);
 std::ostream& operator<<(std::ostream& s, Date d);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 This example illustrates two architectural uses of class
@@ -5696,7 +5696,7 @@ where a locale ``hitchhikes''
 on another object, in this case a stream, to the point where it
 is needed.
 
-\begin{codeblock}
+\begin{lstlisting}
 // file: \tcode{Date.C}
 #include "Date"                 // includes \tcode{<ctime>}
 #include <sstream>
@@ -5718,7 +5718,7 @@ std::istream& operator>>(std::istream& s, Date& d) {
   }
   return s;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5733,7 +5733,7 @@ which identifies your class interface as a new facet.
 \enterexample
 Classifying Japanese characters:
 
-\begin{codeblock}
+\begin{lstlisting}
 // file: \tcode{<jctype>}
 #include <locale>
 namespace My {
@@ -5764,7 +5764,7 @@ int main() {
     cout << "no it isn't!" << endl;
   return 0;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The new facet is used exactly like the built-in facets.
@@ -5779,7 +5779,7 @@ because it is reusing the
 \tcode{numpunct<charT>}
 facet interface:
 
-\begin{codeblock}
+\begin{lstlisting}
 // file: \tcode{my_bool.C}
 #include <iostream>
 #include <locale>
@@ -5805,7 +5805,7 @@ int main(int argc, char** argv) {
   cout << boolalpha << "Any arguments today? " << (argc > 1) << endl;
   return 0;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[locale.stdcvt]{Standard code conversion facets}
@@ -5817,7 +5817,7 @@ The header \tcode{<codecvt>} provides code conversion facets for various charact
 \synopsis{Header \tcode{<codecvt>} synopsis}
 
 \indexlibrary{\idxcode{codecvt}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   enum codecvt_mode {
     consume_header = 4,
@@ -5846,7 +5846,7 @@ namespace std {
     // \unspec
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For each of the three code conversion facets \tcode{codecvt_utf8}, \tcode{codecvt_utf16}, and \tcode{codecvt_utf8_utf16}:

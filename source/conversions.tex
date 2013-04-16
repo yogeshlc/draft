@@ -237,7 +237,7 @@ type \tcode{const} \tcode{T**} (that is, if line \tcode{\#1} below were
 allowed), a program could inadvertently modify a \tcode{const} object
 (as it is done on line \tcode{\#2}). For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 int main() {
   const char c = 'c';
   char* pc;
@@ -245,7 +245,7 @@ int main() {
   *pcc = &c;
   *pc = 'C';                    // \#2: modifies a \tcode{const} object
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote 
 
 

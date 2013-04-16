@@ -24,7 +24,7 @@ as summarized in Table~\ref{tab:algorithms.summary}.
 \synopsis{Header \tcode{<algorithm>} synopsis}
 \indexlibrary{\idxhdr{algorithm}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <initializer_list>
 
 namespace std {
@@ -530,7 +530,7 @@ namespace std {
     bool prev_permutation(BidirectionalIterator first,
                           BidirectionalIterator last, Compare comp);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 All of the algorithms are separated from the particular implementations of data structures and are
@@ -682,29 +682,29 @@ In these cases the semantics of
 \tcode{a+n}
 is the same as that of
 
-\begin{codeblock}
+\begin{lstlisting}
 X tmp = a;
 advance(tmp, n);
 return tmp;
-\end{codeblock}
+\end{lstlisting}
 
 and that of
 \tcode{b-a}
 is the same as of
 
-\begin{codeblock}
+\begin{lstlisting}
 return distance(a, b);
-\end{codeblock}
+\end{lstlisting}
 
 \rSec1[alg.nonmodifying]{Non-modifying sequence operations}
 
 \rSec2[alg.all_of]{All of}
 
 \indexlibrary{\idxcode{all_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class Predicate>
   bool all_of(InputIterator first, InputIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -719,10 +719,10 @@ template <class InputIterator, class Predicate>
 \rSec2[alg.any_of]{Any of}
 
 \indexlibrary{\idxcode{any_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class Predicate>
   bool any_of(InputIterator first, InputIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -737,10 +737,10 @@ if there is no iterator \tcode{i} in the range
 \rSec2[alg.none_of]{None of}
 
 \indexlibrary{\idxcode{none_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class Predicate>
   bool none_of(InputIterator first, InputIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -755,10 +755,10 @@ template <class InputIterator, class Predicate>
 \rSec2[alg.foreach]{For each}
 
 \indexlibrary{\idxcode{for_each}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class Function>
   Function for_each(InputIterator first, InputIterator last, Function f);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -801,7 +801,7 @@ If \tcode{f} returns a result, the result is ignored.
 \indexlibrary{\idxcode{find}}%
 \indexlibrary{\idxcode{find_if}}%
 \indexlibrary{\idxcode{find_if_not}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class T>
   InputIterator find(InputIterator first, InputIterator last,
                      const T& value);
@@ -812,7 +812,7 @@ template<class InputIterator, class Predicate>
 template<class InputIterator, class Predicate>
   InputIterator find_if_not(InputIterator first, InputIterator last,
                             Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -836,7 +836,7 @@ applications of the corresponding predicate.
 \rSec2[alg.find.end]{Find end}
 
 \indexlibrary{\idxcode{find_end}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator1, class ForwardIterator2>
   ForwardIterator1
     find_end(ForwardIterator1 first1, ForwardIterator1 last1,
@@ -848,7 +848,7 @@ template<class ForwardIterator1, class ForwardIterator2,
     find_end(ForwardIterator1 first1, ForwardIterator1 last1,
              ForwardIterator2 first2, ForwardIterator2 last2,
              BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -879,7 +879,7 @@ applications of the corresponding predicate.
 \rSec2[alg.find.first.of]{Find first}
 
 \indexlibrary{\idxcode{find_first_of}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class ForwardIterator>
   InputIterator
     find_first_of(InputIterator first1, InputIterator last1,
@@ -891,7 +891,7 @@ template<class InputIterator, class ForwardIterator,
     find_first_of(InputIterator first1, InputIterator last1,
                   ForwardIterator first2, ForwardIterator last2,
                   BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -923,14 +923,14 @@ applications of the corresponding predicate.
 \rSec2[alg.adjacent.find]{Adjacent find}
 
 \indexlibrary{\idxcode{adjacent_find}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last);
 
 template<class ForwardIterator, class BinaryPredicate>
   ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last,
                               BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -963,7 +963,7 @@ return value.
 
 \indexlibrary{\idxcode{count}}%
 \indexlibrary{\idxcode{count_if}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class T>
     typename iterator_traits<InputIterator>::difference_type
        count(InputIterator first, InputIterator last, const T& value);
@@ -971,7 +971,7 @@ template<class InputIterator, class T>
 template<class InputIterator, class Predicate>
     typename iterator_traits<InputIterator>::difference_type
       count_if(InputIterator first, InputIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -993,7 +993,7 @@ applications of the corresponding predicate.
 \rSec2[mismatch]{Mismatch}
 
 \indexlibrary{\idxcode{mismatch}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2>
   pair<InputIterator1, InputIterator2>
       mismatch(InputIterator1 first1, InputIterator1 last1,
@@ -1004,7 +1004,7 @@ template<class InputIterator1, class InputIterator2,
   pair<InputIterator1, InputIterator2>
       mismatch(InputIterator1 first1, InputIterator1 last1,
                InputIterator2 first2, BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1021,10 +1021,10 @@ is the first iterator
 in the range \range{first1}{last1}
 for which the following corresponding conditions hold:
 
-\begin{codeblock}
+\begin{lstlisting}
 !(*i == *(first2 + (i - first1)))
 pred(*i, *(first2 + (i - first1))) == false
-\end{codeblock}
+\end{lstlisting}
 
 Returns the pair \tcode{last1} and
 \tcode{first2 + (last1 - first1)}
@@ -1042,7 +1042,7 @@ applications of the corresponding predicate.
 \rSec2[alg.equal]{Equal}
 
 \indexlibrary{\idxcode{equal}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2>
   bool equal(InputIterator1 first1, InputIterator1 last1,
              InputIterator2 first2);
@@ -1051,7 +1051,7 @@ template<class InputIterator1, class InputIterator2,
           class BinaryPredicate>
   bool equal(InputIterator1 first1, InputIterator1 last1,
              InputIterator2 first2, BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1075,7 +1075,7 @@ applications of the corresponding predicate.
 \rSec2[alg.is_permutation]{Is permutation}
 
 \indexlibrary{\idxcode{is_permutation}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator1, class ForwardIterator2>
   bool is_permutation(ForwardIterator1 first1, ForwardIterator1 last1,
                       ForwardIterator2 first2);
@@ -1083,7 +1083,7 @@ template<class ForwardIterator1, class ForwardIterator2,
                  class BinaryPredicate>
   bool is_permutation(ForwardIterator1 first1, ForwardIterator1 last1,
                       ForwardIterator2 first2, BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1108,7 +1108,7 @@ worst \bigoh{N^2}, where $N$ has the value \tcode{distance(first1, last1)}.
 \rSec2[alg.search]{Search}
 
 \indexlibrary{\idxcode{search}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator1, class ForwardIterator2>
   ForwardIterator1
     search(ForwardIterator1 first1, ForwardIterator1 last1,
@@ -1120,7 +1120,7 @@ template<class ForwardIterator1, class ForwardIterator2,
     search(ForwardIterator1 first1, ForwardIterator1 last1,
            ForwardIterator2 first2, ForwardIterator2 last2,
            BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1151,7 +1151,7 @@ applications of the corresponding predicate.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{search_n}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class Size, class T>
   ForwardIterator
     search_n(ForwardIterator first, ForwardIterator last, Size count,
@@ -1162,7 +1162,7 @@ template<class ForwardIterator, class Size, class T,
   ForwardIterator
     search_n(ForwardIterator first, ForwardIterator last, Size count,
            const T& value, BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1201,11 +1201,11 @@ applications of the corresponding predicate.
 \rSec2[alg.copy]{Copy}
 
 \indexlibrary{\idxcode{copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator>
   OutputIterator copy(InputIterator first, InputIterator last,
                       OutputIterator result);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1222,11 +1222,11 @@ template<class InputIterator, class OutputIterator>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{copy_n}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class Size, class OutputIterator>
   OutputIterator copy_n(InputIterator first, Size n,
                         OutputIterator result);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1242,11 +1242,11 @@ $i < n$, performs \tcode{*(result + i) = *(first + i)}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{copy_n}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator, class Predicate>
   OutputIterator copy_if(InputIterator first, InputIterator last,
                          OutputIterator result, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1269,13 +1269,13 @@ for which \tcode{pred(*i)} is \tcode{true}.
 
 
 \indexlibrary{\idxcode{copy_backward}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator1, class BidirectionalIterator2>
   BidirectionalIterator2
     copy_backward(BidirectionalIterator1 first,
                   BidirectionalIterator1 last,
                   BidirectionalIterator2 result);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1315,11 +1315,11 @@ assignments.
 \rSec2[alg.move]{Move}
 
 \indexlibrary{move\tcode{move}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator>
   OutputIterator move(InputIterator first, InputIterator last,
                       OutputIterator result);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1351,13 +1351,13 @@ move assignments.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{move_backward}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator1, class BidirectionalIterator2>
   BidirectionalIterator2
     move_backward(BidirectionalIterator1 first,
                   BidirectionalIterator1 last,
                   BidirectionalIterator2 result);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1398,12 +1398,12 @@ assignments.
 \rSec2[alg.swap]{swap}
 
 \indexlibrary{\idxcode{swap_ranges}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator1, class ForwardIterator2>
   ForwardIterator2
     swap_ranges(ForwardIterator1 first1, ForwardIterator1 last1,
                 ForwardIterator2 first2);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1435,10 +1435,10 @@ swaps.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{iter_swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator1, class ForwardIterator2>
   void iter_swap(ForwardIterator1 a, ForwardIterator2 b);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1455,7 +1455,7 @@ swappable with~(\ref{swappable.requirements}) \tcode{*b}.
 \rSec2[alg.transform]{Transform}
 
 \indexlibrary{\idxcode{transform}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator,
          class UnaryOperation>
   OutputIterator
@@ -1468,7 +1468,7 @@ template<class InputIterator1, class InputIterator2,
     transform(InputIterator1 first1, InputIterator1 last1,
               InputIterator2 first2, OutputIterator result,
               BinaryOperation binary_op);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1517,7 +1517,7 @@ in case of binary transform.
 
 \indexlibrary{\idxcode{replace}}%
 \indexlibrary{\idxcode{replace_if}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   void replace(ForwardIterator first, ForwardIterator last,
                const T& old_value, const T& new_value);
@@ -1525,7 +1525,7 @@ template<class ForwardIterator, class T>
 template<class ForwardIterator, class Predicate, class T>
   void replace_if(ForwardIterator first, ForwardIterator last,
                   Predicate pred, const T& new_value);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1552,7 +1552,7 @@ applications of the corresponding predicate.
 
 \indexlibrary{\idxcode{replace_copy}}%
 \indexlibrary{\idxcode{replace_copy_if}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator, class T>
   OutputIterator
     replace_copy(InputIterator first, InputIterator last,
@@ -1564,7 +1564,7 @@ template<class InputIterator, class OutputIterator, class Predicate, class T>
     replace_copy_if(InputIterator first, InputIterator last,
                     OutputIterator result,
                     Predicate pred, const T& new_value);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1595,10 +1595,10 @@ or
 \tcode{*\brk(first + (i - result))}
 depending on whether the following corresponding conditions hold:
 
-\begin{codeblock}
+\begin{lstlisting}
 *(first + (i - result)) == old_value
 pred(*(first + (i - result))) != false
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \returns
@@ -1615,13 +1615,13 @@ applications of the corresponding predicate.
 
 \indexlibrary{\idxcode{fill}}%
 \indexlibrary{\idxcode{fill_n}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   void fill(ForwardIterator first, ForwardIterator last, const T& value);
 
 template<class OutputIterator, class Size, class T>
   OutputIterator fill_n(OutputIterator first, Size n, const T& value);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1654,14 +1654,14 @@ Exactly
 
 \indexlibrary{\idxcode{generate}}%
 \indexlibrary{\idxcode{generate_n}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class Generator>
   void generate(ForwardIterator first, ForwardIterator last,
                 Generator gen);
 
 template<class OutputIterator, class Size, class Generator>
   OutputIterator generate_n(OutputIterator first, Size n, Generator gen);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1695,7 +1695,7 @@ invocations of \tcode{gen} and assignments, respectively.
 
 \indexlibrary{\idxcode{remove}}%
 \indexlibrary{\idxcode{remove_if}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   ForwardIterator remove(ForwardIterator first, ForwardIterator last,
                          const T& value);
@@ -1703,7 +1703,7 @@ template<class ForwardIterator, class T>
 template<class ForwardIterator, class Predicate>
   ForwardIterator remove_if(ForwardIterator first, ForwardIterator last,
                             Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1744,7 +1744,7 @@ in that range.
 
 \indexlibrary{\idxcode{remove_copy}}%
 \indexlibrary{\idxcode{remove_copy_if}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator, class T>
   OutputIterator
     remove_copy(InputIterator first, InputIterator last,
@@ -1754,7 +1754,7 @@ template<class InputIterator, class OutputIterator, class Predicate>
   OutputIterator
     remove_copy_if(InputIterator first, InputIterator last,
                    OutputIterator result, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1792,14 +1792,14 @@ Stable.
 \rSec2[alg.unique]{Unique}
 
 \indexlibrary{\idxcode{unique}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator unique(ForwardIterator first, ForwardIterator last);
 
 template<class ForwardIterator, class BinaryPredicate>
   ForwardIterator unique(ForwardIterator first, ForwardIterator last,
                          BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1832,7 +1832,7 @@ applications of the corresponding predicate.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unique_copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class OutputIterator>
   OutputIterator
     unique_copy(InputIterator first, InputIterator last,
@@ -1843,7 +1843,7 @@ template<class InputIterator, class OutputIterator,
   OutputIterator
     unique_copy(InputIterator first, InputIterator last,
                 OutputIterator result, BinaryPredicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -1892,10 +1892,10 @@ applications of the corresponding predicate.
 \rSec2[alg.reverse]{Reverse}
 
 \indexlibrary{\idxcode{reverse}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator>
   void reverse(BidirectionalIterator first, BidirectionalIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1919,12 +1919,12 @@ swaps.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{reverse_copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator, class OutputIterator>
   OutputIterator
     reverse_copy(BidirectionalIterator first,
                  BidirectionalIterator last, OutputIterator result);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1961,11 +1961,11 @@ assignments.
 \rSec2[alg.rotate]{Rotate}
 
 \indexlibrary{\idxcode{rotate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator rotate(ForwardIterator first, ForwardIterator middle,
               ForwardIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2007,12 +2007,12 @@ swaps.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{rotate_copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class OutputIterator>
   OutputIterator
     rotate_copy(ForwardIterator first, ForwardIterator middle,
                 ForwardIterator last, OutputIterator result);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2050,7 +2050,7 @@ assignments.
 
 \indexlibrary{\idxcode{random_shuffle}}%
 \indexlibrary{\idxcode{shuffle}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void random_shuffle(RandomAccessIterator first,
                       RandomAccessIterator last);
@@ -2064,7 +2064,7 @@ template<class RandomAccessIterator, class UniformRandomNumberGenerator>
   void shuffle(RandomAccessIterator first,
                       RandomAccessIterator last,
                       UniformRandomNumberGenerator&& g);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2113,10 +2113,10 @@ In the third \tcode{shuffle} form of the function, the object \tcode{g} shall se
 \rSec2[alg.partitions]{Partitions}
 
 \indexlibrary{\idxcode{is_partitioned}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class Predicate>
   bool is_partitioned(InputIterator first, InputIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2132,12 +2132,12 @@ template <class InputIterator, class Predicate>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{partition}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class Predicate>
   ForwardIterator
     partition(ForwardIterator first,
               ForwardIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2158,12 +2158,12 @@ are done. Exactly \tcode{last - first} applications of the predicate are done.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{stable_partition}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator, class Predicate>
   BidirectionalIterator
     stable_partition(BidirectionalIterator first,
                      BidirectionalIterator last, Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2208,14 +2208,14 @@ applications of the predicate.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{partition_copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class InputIterator, class OutputIterator1,
           class OutputIterator2, class Predicate>
   pair<OutputIterator1, OutputIterator2>
   partition_copy(InputIterator first, InputIterator last,
                  OutputIterator1 out_true, OutputIterator2 out_false,
                  Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -2233,12 +2233,12 @@ template <class InputIterator, class OutputIterator1,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{partition_point}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class Predicate>
   ForwardIterator partition_point(ForwardIterator first,
                                   ForwardIterator last,
                                   Predicate pred);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -2381,14 +2381,14 @@ are considered equivalent if and only if
 \rSec3[sort]{\tcode{sort}}
 
 \indexlibrary{\idxcode{sort}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void sort(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void sort(RandomAccessIterator first, RandomAccessIterator last,
             Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2415,14 +2415,14 @@ comparisons.
 \rSec3[stable.sort]{\tcode{stable_sort}}
 
 \indexlibrary{\idxcode{stable_sort}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void stable_sort(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void stable_sort(RandomAccessIterator first, RandomAccessIterator last,
                    Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2454,7 +2454,7 @@ Stable.
 \rSec3[partial.sort]{\tcode{partial_sort}}
 
 \indexlibrary{\idxcode{partial_sort}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void partial_sort(RandomAccessIterator first,
                     RandomAccessIterator middle,
@@ -2465,7 +2465,7 @@ template<class RandomAccessIterator, class Compare>
                     RandomAccessIterator middle,
                     RandomAccessIterator last,
                     Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2500,7 +2500,7 @@ comparisons.
 \rSec3[partial.sort.copy]{\tcode{partial_sort_copy}}
 
 \indexlibrary{\idxcode{partial_sort_copy}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator, class RandomAccessIterator>
   RandomAccessIterator
     partial_sort_copy(InputIterator first, InputIterator last,
@@ -2514,7 +2514,7 @@ template<class InputIterator, class RandomAccessIterator,
                       RandomAccessIterator result_first,
                       RandomAccessIterator result_last,
                       Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2549,10 +2549,10 @@ comparisons.
 \rSec3[is.sorted]{\tcode{is_sorted}}
 
 \indexlibrary{\idxcode{is_sorted}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   bool is_sorted(ForwardIterator first, ForwardIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -2561,11 +2561,11 @@ template<class ForwardIterator>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_sorted}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class Compare>
   bool is_sorted(ForwardIterator first, ForwardIterator last,
     Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -2574,13 +2574,13 @@ template<class ForwardIterator, class Compare>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_sorted_until}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator is_sorted_until(ForwardIterator first, ForwardIterator last);
 template<class ForwardIterator, class Compare>
   ForwardIterator is_sorted_until(ForwardIterator first, ForwardIterator last,
     Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -2597,7 +2597,7 @@ range \range{first}{i} is sorted.
 \rSec2[alg.nth.element]{Nth element}
 
 \indexlibrary{\idxcode{nth_element}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void nth_element(RandomAccessIterator first, RandomAccessIterator nth,
                    RandomAccessIterator last);
@@ -2605,7 +2605,7 @@ template<class RandomAccessIterator>
 template<class RandomAccessIterator, class Compare>
   void nth_element(RandomAccessIterator first, RandomAccessIterator nth,
                    RandomAccessIterator last,  Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2658,7 +2658,7 @@ For non-random access iterators they execute a linear number of steps.
 \rSec3[lower.bound]{\tcode{lower_bound}}
 
 \indexlibrary{\idxcode{lower_bound}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   ForwardIterator
     lower_bound(ForwardIterator first, ForwardIterator last,
@@ -2668,7 +2668,7 @@ template<class ForwardIterator, class T, class Compare>
   ForwardIterator
     lower_bound(ForwardIterator first, ForwardIterator last,
                 const T& value, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2707,7 +2707,7 @@ comparisons.
 \rSec3[upper.bound]{\tcode{upper_bound}}
 
 \indexlibrary{\idxcode{upper_bound}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   ForwardIterator
     upper_bound(ForwardIterator first, ForwardIterator last,
@@ -2717,7 +2717,7 @@ template<class ForwardIterator, class T, class Compare>
   ForwardIterator
     upper_bound(ForwardIterator first, ForwardIterator last,
                 const T& value, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2756,7 +2756,7 @@ comparisons.
 \rSec3[equal.range]{\tcode{equal_range}}
 
 \indexlibrary{\idxcode{equal_range}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   pair<ForwardIterator, ForwardIterator>
     equal_range(ForwardIterator first,
@@ -2767,7 +2767,7 @@ template<class ForwardIterator, class T, class Compare>
     equal_range(ForwardIterator first,
                 ForwardIterator last, const T& value,
                 Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2798,15 +2798,15 @@ shall imply
 
 \pnum
 \returns
-\begin{codeblock}
+\begin{lstlisting}
 make_pair(lower_bound(first, last, value),
           upper_bound(first, last, value))
-\end{codeblock}
+\end{lstlisting}
 or
-\begin{codeblock}
+\begin{lstlisting}
 make_pair(lower_bound(first, last, value, comp),
           upper_bound(first, last, value, comp))
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \complexity
@@ -2818,7 +2818,7 @@ comparisons.
 \rSec3[binary.search]{\tcode{binary_search}}
 
 \indexlibrary{\idxcode{binary_search}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator, class T>
   bool binary_search(ForwardIterator first, ForwardIterator last,
                      const T& value);
@@ -2826,7 +2826,7 @@ template<class ForwardIterator, class T>
 template<class ForwardIterator, class T, class Compare>
   bool binary_search(ForwardIterator first, ForwardIterator last,
                      const T& value, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2877,7 +2877,7 @@ comparisons.
 \rSec2[alg.merge]{Merge}
 
 \indexlibrary{\idxcode{merge}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2,
          class OutputIterator>
   OutputIterator
@@ -2891,7 +2891,7 @@ template<class InputIterator1, class InputIterator2,
     merge(InputIterator1 first1, InputIterator1 last1,
           InputIterator2 first2, InputIterator2 last2,
           OutputIterator result, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2921,7 +2921,7 @@ Stable.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{inplace_merge}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator>
   void inplace_merge(BidirectionalIterator first,
                      BidirectionalIterator middle,
@@ -2931,7 +2931,7 @@ template<class BidirectionalIterator, class Compare>
   void inplace_merge(BidirectionalIterator first,
                      BidirectionalIterator middle,
                      BidirectionalIterator last, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3002,7 +3002,7 @@ to contain the minimum, and so on.
 \rSec3[includes]{\tcode{includes}}
 
 \indexlibrary{\idxcode{includes}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2>
   bool includes(InputIterator1 first1, InputIterator1 last1,
                 InputIterator2 first2, InputIterator2 last2);
@@ -3011,7 +3011,7 @@ template<class InputIterator1, class InputIterator2, class Compare>
   bool includes(InputIterator1 first1, InputIterator1 last1,
                 InputIterator2 first2, InputIterator2 last2,
                 Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3036,7 +3036,7 @@ comparisons.
 \rSec3[set.union]{\tcode{set_union}}
 
 \indexlibrary{\idxcode{set_union}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2,
          class OutputIterator>
   OutputIterator
@@ -3050,7 +3050,7 @@ template<class InputIterator1, class InputIterator2,
     set_union(InputIterator1 first1, InputIterator1 last1,
               InputIterator2 first2, InputIterator2 last2,
               OutputIterator result, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3083,7 +3083,7 @@ be copied to the output range, in order.
 \rSec3[set.intersection]{\tcode{set_intersection}}
 
 \indexlibrary{\idxcode{set_intersection}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2,
          class OutputIterator>
   OutputIterator
@@ -3097,7 +3097,7 @@ template<class InputIterator1, class InputIterator2,
     set_intersection(InputIterator1 first1, InputIterator1 last1,
                      InputIterator2 first2, InputIterator2 last2,
                      OutputIterator result, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3129,7 +3129,7 @@ to the output range, in order.
 \rSec3[set.difference]{\tcode{set_difference}}
 
 \indexlibrary{\idxcode{set_difference}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2,
          class OutputIterator>
   OutputIterator
@@ -3143,7 +3143,7 @@ template<class InputIterator1, class InputIterator2,
     set_difference(InputIterator1 first1, InputIterator1 last1,
                    InputIterator2 first2, InputIterator2 last2,
                    OutputIterator result, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3188,7 +3188,7 @@ shall be copied to the output range.
 \rSec3[set.symmetric.difference]{\tcode{set_symmetric_difference}}
 
 \indexlibrary{\idxcode{set_symmetric_difference}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2,
          class OutputIterator>
   OutputIterator
@@ -3202,7 +3202,7 @@ template<class InputIterator1, class InputIterator2,
     set_symmetric_difference(InputIterator1 first1, InputIterator1 last1,
                              InputIterator2 first2, InputIterator2 last2,
                              OutputIterator result, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3277,14 +3277,14 @@ turns a heap into a sorted sequence.
 \rSec3[push.heap]{\tcode{push_heap}}
 
 \indexlibrary{\idxcode{push_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void push_heap(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void push_heap(RandomAccessIterator first, RandomAccessIterator last,
                  Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3316,14 +3316,14 @@ comparisons.
 \rSec3[pop.heap]{\tcode{pop_heap}}
 
 \indexlibrary{\idxcode{pop_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void pop_heap(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void pop_heap(RandomAccessIterator first, RandomAccessIterator last,
                 Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3357,14 +3357,14 @@ comparisons.
 \rSec3[make.heap]{\tcode{make_heap}}
 
 \indexlibrary{\idxcode{make_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void make_heap(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void make_heap(RandomAccessIterator first, RandomAccessIterator last,
                  Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3389,14 +3389,14 @@ comparisons.
 \rSec3[sort.heap]{\tcode{sort_heap}}
 
 \indexlibrary{\idxcode{sort_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class RandomAccessIterator>
   void sort_heap(RandomAccessIterator first, RandomAccessIterator last);
 
 template<class RandomAccessIterator, class Compare>
   void sort_heap(RandomAccessIterator first, RandomAccessIterator last,
                  Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3423,10 +3423,10 @@ comparisons (where
 \rSec3[is.heap]{\tcode{is_heap}}
 
 \indexlibrary{\idxcode{is_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
   template<class RandomAccessIterator>
     bool is_heap(RandomAccessIterator first, RandomAccessIterator last);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -3435,10 +3435,10 @@ comparisons (where
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_heap}}%
-\begin{itemdecl}
+\begin{lstlisting}
   template<class RandomAccessIterator, class Compare>
     bool is_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -3447,13 +3447,13 @@ comparisons (where
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_heap_until}}%
-\begin{itemdecl}
+\begin{lstlisting}
   template<class RandomAccessIterator>
     RandomAccessIterator is_heap_until(RandomAccessIterator first, RandomAccessIterator last);
   template<class RandomAccessIterator, class Compare>
     RandomAccessIterator is_heap_until(RandomAccessIterator first, RandomAccessIterator last,
       Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -3471,11 +3471,11 @@ range \range{first}{i} is a heap.
 \rSec2[alg.min.max]{Minimum and maximum}
 
 \indexlibrary{\idxcode{min}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> const T& min(const T& a, const T& b);
 template<class T, class Compare>
   const T& min(const T& a, const T& b, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3495,12 +3495,12 @@ Returns the first argument when the arguments are equivalent.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{min}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   T min(initializer_list<T> t);
 template<class T, class Compare>
   T min(initializer_list<T> t, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3515,11 +3515,11 @@ template<class T, class Compare>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> const T& max(const T& a, const T& b);
 template<class T, class Compare>
   const T& max(const T& a, const T& b, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3539,12 +3539,12 @@ Returns the first argument when the arguments are equivalent.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   T max(initializer_list<T> t);
 template<class T, class Compare>
   T max(initializer_list<T> t, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3558,11 +3558,11 @@ template<class T, class Compare>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{minmax}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T> pair<const T&, const T&> minmax(const T& a, const T& b);
 template<class T, class Compare>
   pair<const T&, const T&> minmax(const T& a, const T& b, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -3589,12 +3589,12 @@ Exactly one comparison.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{minmax}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class T>
   pair<T, T> minmax(initializer_list<T> t);
 template<class T, class Compare>
   pair<T, T> minmax(initializer_list<T> t, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3614,14 +3614,14 @@ equivalent to the largest.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{min_element}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator min_element(ForwardIterator first, ForwardIterator last);
 
 template<class ForwardIterator, class Compare>
   ForwardIterator min_element(ForwardIterator first, ForwardIterator last,
                             Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3651,13 +3651,13 @@ applications of the corresponding comparisons.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max_element}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   ForwardIterator max_element(ForwardIterator first, ForwardIterator last);
 template<class ForwardIterator, class Compare>
   ForwardIterator max_element(ForwardIterator first, ForwardIterator last,
                             Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3687,14 +3687,14 @@ applications of the corresponding comparisons.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{minmax_element}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class ForwardIterator>
   pair<ForwardIterator, ForwardIterator>
     minmax_element(ForwardIterator first, ForwardIterator last);
 template<class ForwardIterator, class Compare>
   pair<ForwardIterator, ForwardIterator>
     minmax_element(ForwardIterator first, ForwardIterator last, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 
 \begin{itemdescr}
@@ -3714,7 +3714,7 @@ applications of the corresponding predicate, where $N$ is \tcode{distance(first,
 \rSec2[alg.lex.comparison]{Lexicographical comparison}
 
 \indexlibrary{\idxcode{lexicographical_compare}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class InputIterator1, class InputIterator2>
   bool
     lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
@@ -3725,7 +3725,7 @@ template<class InputIterator1, class InputIterator2, class Compare>
     lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
                             InputIterator2 first2, InputIterator2 last2,
                             Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3755,13 +3755,13 @@ Otherwise, the lexicographical comparison of the sequences yields the same
 result as the comparison of the first corresponding pair of
 elements that are not equivalent.
 
-\begin{codeblock}
+\begin{lstlisting}
 for ( ; first1 != last1 && first2 != last2 ; ++first1, ++first2) {
   if (*first1 < *first2) return true;
   if (*first2 < *first1) return false;
 }
 return first1 == last1 && first2 != last2;
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \remarks\ An empty sequence is lexicographically less than any non-empty sequence, but
@@ -3772,7 +3772,7 @@ not less than any empty sequence.
 \rSec2[alg.permutation.generators]{Permutation generators}
 
 \indexlibrary{\idxcode{next_permutation}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator>
   bool next_permutation(BidirectionalIterator first,
                         BidirectionalIterator last);
@@ -3780,7 +3780,7 @@ template<class BidirectionalIterator>
 template<class BidirectionalIterator, class Compare>
   bool next_permutation(BidirectionalIterator first,
                         BidirectionalIterator last, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3812,7 +3812,7 @@ swaps.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{prev_permutation}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class BidirectionalIterator>
   bool prev_permutation(BidirectionalIterator first,
                         BidirectionalIterator last);
@@ -3820,7 +3820,7 @@ template<class BidirectionalIterator>
 template<class BidirectionalIterator, class Compare>
   bool prev_permutation(BidirectionalIterator first,
                         BidirectionalIterator last, Compare comp);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3872,40 +3872,40 @@ with the following exceptions:
 \pnum
 The function signature:
 
-\begin{codeblock}
+\begin{lstlisting}
 bsearch(const void *, const void *, size_t, size_t,
   int (*)(const void *, const void *));
-\end{codeblock}
+\end{lstlisting}
 
 is replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 extern "C" void *bsearch(const void *key, const void *base,
                          size_t nmemb, size_t size,
                          int (*compar)(const void *, const void *));
 extern "C++" void *bsearch(const void *key, const void *base,
                            size_t nmemb, size_t size,
                            int (*compar)(const void *, const void *));
-\end{codeblock}
+\end{lstlisting}
 
 both of which have the same behavior as the original declaration.
 
 \pnum
 The function signature:
 
-\begin{codeblock}
+\begin{lstlisting}
 qsort(void *, size_t, size_t,
   int (*)(const void *, const void *));
-\end{codeblock}
+\end{lstlisting}
 
 is replaced by the two declarations:
 
-\begin{codeblock}
+\begin{lstlisting}
 extern "C" void qsort(void* base, size_t nmemb, size_t size,
                       int (*compar)(const void*, const void*));
 extern "C++" void qsort(void* base, size_t nmemb, size_t size,
                         int (*compar)(const void*, const void*));
-\end{codeblock}
+\end{lstlisting}
 
 both of which have the same behavior as the original declaration. The behavior is
 undefined unless the objects in the array pointed to by \tcode{base} are of trivial type.

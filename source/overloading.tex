@@ -30,13 +30,13 @@ is defined in~\ref{over.match}.
 \enterexample
 
 \indextext{overloading!example of}%
-\begin{codeblock}
+\begin{lstlisting}
 double abs(double);
 int abs(int);
 
 abs(1);             // calls \tcode{abs(int);}
 abs(1.0);           // calls \tcode{abs(double);}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[over.load]{Overloadable declarations}
@@ -93,7 +93,7 @@ the type of their implicit object parameter.
 \enterexample
 the following illustrates this distinction:
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   static void f();
   void f();                     // ill-formed
@@ -103,7 +103,7 @@ class X {
   void g() const;               // OK: no static \tcode{g}
   void g() const volatile;      // OK: no static \tcode{g}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item Member function declarations with the same name and the same
@@ -112,7 +112,7 @@ declarations with the same name, the same \grammarterm{parameter-type-list}, and
 the same template parameter lists cannot be overloaded if any of them, but not
 all, have a \grammarterm{ref-qualifier}~(\ref{dcl.fct}). \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Y {
   void h() &;
   void h() const &;             // OK
@@ -121,7 +121,7 @@ class Y {
   void i() const;               // ill-formed, prior declaration of \tcode{i}
                                 // has a ref-qualifier
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \end{itemize}
@@ -145,7 +145,7 @@ A
 is not a separate type, but only a synonym for another type~(\ref{dcl.typedef}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef int Int;
 
 void f(int i);
@@ -153,7 +153,7 @@ void f(Int i);                  // OK: redeclaration of \tcode{f(int)}
 void f(int i) @\tcode{\{ /* ... */ \}}@
 void f(Int i) @\tcode{\{ /* ... */ \}}@    // error: redefinition of \tcode{f(int)}
 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \indextext{\idxcode{enum}!overloading~and}%
@@ -162,12 +162,12 @@ distinguish
 overloaded function declarations.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 enum E { a };
 
 void f(int i) @\tcode{\{ /* ... */ \}}@
 void f(E i)   @\tcode{\{ /* ... */ \}}@
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -183,7 +183,7 @@ Only the second and subsequent array dimensions are significant in
 parameter types~(\ref{dcl.array}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(char*);
 int f(char[]);                  // same as \tcode{f(char*);}
 int f(char[7]);                 // same as \tcode{f(char*);}
@@ -193,7 +193,7 @@ int g(char(*)[10]);
 int g(char[5][10]);             // same as \tcode{g(char(*)[10]);}
 int g(char[7][10]);             // same as \tcode{g(char(*)[10]);}
 int g(char(*)[20]);             // different from \tcode{g(char(*)[10]);}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -202,12 +202,12 @@ and the other is a pointer to the same function type are equivalent.
 That is, the function type is adjusted to become a pointer to function type~(\ref{dcl.fct}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void h(int());
 void h(int (*)());              // redeclaration of \tcode{h(int())}
 void h(int x()) { }             // definition of \tcode{h(int())}
 void h(int (*x)()) { }          // ill-formed: redefinition of \tcode{h(int())}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -228,14 +228,14 @@ declared,
 defined, or called.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef const int cInt;
 
 int f (int);
 int f (const int);              // redeclaration of \tcode{f(int)}
 int f (int) @\tcode{\{ /* ... */ \}}@      // definition of \tcode{f(int)}
 int f (cInt) @\tcode{\{ /* ... */ \}}@     // error: redefinition of \tcode{f(int)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 Only the
@@ -284,7 +284,7 @@ are equivalent.
 \enterexample
 consider the following:
 
-\begin{codeblock}
+\begin{lstlisting}
 void f (int i, int j);
 void f (int i, int j = 99);     // OK: redeclaration of \tcode{f(int, int)}
 void f (int i = 88, int j);     // OK: redeclaration of \tcode{f(int, int)}
@@ -295,7 +295,7 @@ void prog () {
     f (1);                      // OK: call \tcode{f(int, int)}
     f ();                       // Error: \tcode{f(int, int)} or \tcode{f()}?
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 \end{itemize}
@@ -313,7 +313,7 @@ A function member of a derived class is
 in the same scope as a function member of the same name in a base class.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   int f(int);
 };
@@ -321,7 +321,7 @@ struct B {
 struct D : B {
   int f(const char*);
 };
-\end{codeblock}
+\end{lstlisting}
 
 \indextext{name hiding!function}%
 \indextext{name hiding!overloading versus}%
@@ -332,14 +332,14 @@ hides
 rather than overloading it.
 
 \indextext{Ben}%
-\begin{codeblock}
+\begin{lstlisting}
 void h(D* pd) {
   pd->f(1);                     // error:
                                 // \tcode{D::f(const char*)} hides \tcode{B::f(int)}
   pd->B::f(1);                  // OK
   pd->f("Ben");                 // OK, calls \tcode{D::f}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -347,7 +347,7 @@ A locally declared function is not in the same scope as a function in
 a containing scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(const char*);
 void g() {
   extern void f(int);
@@ -362,7 +362,7 @@ void caller () {
     callee(88, 99);             // error: only \tcode{callee(int)} in scope
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -372,7 +372,7 @@ Different versions of an overloaded member function can be given different
 access rules.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class buffer {
 private:
     char* p;
@@ -382,7 +382,7 @@ protected:
 public:
     buffer(int s) { p = new char[size = s]; }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[over.match]{Overload resolution}%
@@ -604,7 +604,7 @@ the best user-defined conversion~(\ref{over.match.best},
 \ref{over.best.ics}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class T {
 public:
   T();
@@ -615,7 +615,7 @@ public:
   C(int);
 };
 T a = 1;            // ill-formed: \tcode{T(C(1))} not tried
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -893,7 +893,7 @@ parameter.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f1(int);
 int f2(float);
 typedef int (*fp1)(int);
@@ -904,7 +904,7 @@ struct A {
 } a;
 int i = a(1);       // calls \tcode{f1} via pointer returned from
                     // conversion function
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{overloading!resolution!function call syntax|)}
 
@@ -931,7 +931,7 @@ have class or enumeration type~(\ref{expr.cond}).
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct String {
   String (const String&);
   String (const char*);
@@ -946,7 +946,7 @@ void f(void) {
                                 // user-defined types exist which
                                 // would perform the operation.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1076,7 +1076,7 @@ and~\ref{over.match.best}.\footnote{If the set of candidate functions is empty,
 overload resolution is unsuccessful.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   operator int();
 };
@@ -1085,7 +1085,7 @@ void m() {
   A a, b;
   a + b;            // \tcode{operator+(a,b)} chosen over \tcode{int(a) + int(b)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 % USA _136/_28 L6899 USA core-756/734/682 over.match.oper
@@ -1136,7 +1136,7 @@ the lookup
 rules for operator function names in a function call, as shown in the following
 example:
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };
 void operator + (A, A);
 
@@ -1151,7 +1151,7 @@ void B::f() {
   operator+ (a,a);              // error: global operator hidden by member
   a + a;                        // OK: calls global \tcode{operator+}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec3[over.match.ctor]{Initialization by constructor}%
@@ -1505,7 +1505,7 @@ from the return type of
 to the destination type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   A();
   operator int();
@@ -1516,7 +1516,7 @@ int i = a;                      // \tcode{a.operator int()} followed by no conve
                                 // a conversion to \tcode{int}
 float x = a;                    // ambiguous: both possibilities require conversions,
                                 // and neither is better than the other
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 or, if not that,
 
@@ -1583,7 +1583,7 @@ is better than all other functions.}.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void Fcn(const int*,  short);
 void Fcn(int*, int);
 
@@ -1603,7 +1603,7 @@ void f() {
                                 // \tcode{\&i} $\to$ \tcode{int*} is better than \tcode{\&i} $\to$ \tcode{const int*}
                                 // and \tcode{c} $\to$ \tcode{int} is better than \tcode{c} $\to$ \tcode{short}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1616,7 +1616,7 @@ refer to in the case of
 viable, the program is ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   extern "C" void f(int = 5);
 }
@@ -1631,7 +1631,7 @@ void use() {
   f(3);                         // OK, default argument was not used for viability
   f();                          // Error: found default argument twice
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[over.best.ics]{Implicit conversion sequences}%
@@ -1940,14 +1940,14 @@ type, in which case the implicit conversion sequence is a derived-to-base
 Conversion~(\ref{over.best.ics}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {};
 struct B : public A {} b;
 int f(A&);
 int f(B&);
 int i = f(b);                   // calls \tcode{f(B\&)}, an exact match, rather than
                                 // \tcode{f(A\&)}, a conversion
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 If the parameter binds directly to the result of
 applying a conversion function to the argument expression, the implicit
@@ -2018,7 +2018,7 @@ of the initializer list can be implicitly converted to \tcode{X}, the implicit
 conversion sequence is the worst conversion necessary to convert an element of
 the list to \tcode{X}. This conversion can be a user-defined conversion even in
 the context of a call to an initializer-list constructor. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f(std::initializer_list<int>);
 f( {1,2,3} );               // OK: \tcode{f(initializer_list<int>)} identity conversion
 f( {'a','b'} );             // OK: \tcode{f(initializer_list<int>)} integral promotion
@@ -2037,7 +2037,7 @@ g({ "foo", "bar" });        // OK, uses \#3
 typedef int IA[3];
 void h(const IA&);
 h({ 1, 2, 3 });             // OK: identity conversion
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2051,7 +2051,7 @@ the others, the implicit conversion sequence is the ambiguous conversion
 sequence. User-defined conversions are allowed for conversion of the initializer
 list elements to the constructor parameter types except as noted
 in~\ref{over.best.ics}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   A(std::initializer_list<int>);
 };
@@ -2079,7 +2079,7 @@ struct D {
 };
 void i(D);
 i({ {1,2}, {"bar"} });      // OK: \tcode{i(D(A(std::initializer_list<int>\{1,2\}),C(std::string("bar"))))}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2088,7 +2088,7 @@ the initializer list according to the rules for aggregate
 initialization~(\ref{dcl.init.aggr}), the implicit conversion sequence is a
 user-defined conversion sequence with the second standard conversion
 sequence an identity conversion. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int m1;
   double m2;
@@ -2097,14 +2097,14 @@ struct A {
 void f(A);
 f( {'a', 'b'} );            // OK: \tcode{f(A(int,double))} user-defined conversion 
 f( {1.0} );                 // error: narrowing
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 Otherwise, if the parameter is a reference, see~\ref{over.ics.ref}. \enternote
 The rules in this section will apply for initializing the underlying temporary
 for the reference. \exitnote \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int m1;
   double m2;
@@ -2116,7 +2116,7 @@ f( {1.0} );                 // error: narrowing
 
 void g(const double &);
 g({1});                     // same conversion as \tcode{int} to \tcode{double}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2125,19 +2125,19 @@ Otherwise, if the parameter type is not a class:
 \begin{itemize}
 \item if the initializer list has one element, the implicit conversion sequence
 is the one required to convert the element to the parameter type; \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f(int);
 f( {'a'} );                 // OK: same conversion as \tcode{char} to \tcode{int}
 f( {1.0} );                 // error: narrowing
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item if the initializer list has no elements, the implicit conversion sequence
 is the identity conversion. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f(int);
 f( { } );                   // OK: identity conversion 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 
@@ -2227,12 +2227,12 @@ is a proper subset of the cv-qualification signature of type
 \tcode{T2}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(const int *);
 int f(int *);
 int i;
 int j = f(&i);                  // calls \tcode{f(int*)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 or, if not that,
 
@@ -2243,7 +2243,7 @@ and \tcode{S1} binds an rvalue reference to an
 rvalue and \tcode{S2} binds an lvalue reference.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int i;
 int f1();
 int&& f2();
@@ -2266,7 +2266,7 @@ a << 1;                         // calls \tcode{A::operator\shl(int)}
 a << 'c';                       // calls \tcode{A::operator\shl(int)}
 A().p();                        // calls \tcode{A::p()\&\&}
 a.p();                          // calls \tcode{A::p()\&}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 or, if not that,
 
@@ -2274,12 +2274,12 @@ or, if not that,
 \tcode{S1} and \tcode{S2} are reference bindings~(\ref{dcl.init.ref}) and
 \tcode{S1} binds an lvalue reference to a function lvalue and \tcode{S2} binds
 an rvalue reference to a function lvalue. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int f(void(&)());               // \#1
 int f(void(&&)());              // \#2
 void g();
 int i1 = f(g);                  // calls \#1
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -2295,7 +2295,7 @@ refers is more cv-qualified than the type to which the reference initialized by
 refers.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int f(const int &);
 int f(int &);
 int g(const int &);
@@ -2313,7 +2313,7 @@ void g(const X& a, X b) {
   a.f();                        // calls \tcode{X::f() const}
   b.f();                        // calls \tcode{X::f()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 
@@ -2333,7 +2333,7 @@ the second standard conversion sequence of
 \tcode{U2}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   operator short();
 } a;
@@ -2341,7 +2341,7 @@ int f(int);
 int f(float);
 int i = f(a);                   // calls \tcode{f(int)}, because \tcode{short} $\to$ \tcode{int} is
                                 // better than \tcode{short} $\to$ \tcode{float}.
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -2409,7 +2409,7 @@ to
 \tcode{A*},
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {};
 struct B : public A {};
 struct C : public B {};
@@ -2417,7 +2417,7 @@ C *pc;
 int f(A *);
 int f(B *);
 int i = f(pc);                  // calls \tcode{f(B*)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -2598,7 +2598,7 @@ if any, there shall remain exactly one selected function.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int f(double);
 int f(int);
 int (*pfd)(double) = &f;        // selects \tcode{f(double)}
@@ -2609,7 +2609,7 @@ int (&rfd)(double) = f;         // selects \tcode{f(double)}
 void g() {
   (int (*)(int))&f;             // cast expression as selector
 }
-\end{codeblock}
+\end{lstlisting}
 
 The initialization of
 \tcode{pfe}
@@ -2620,7 +2620,7 @@ with type
 has been declared, and not because of any ambiguity.
 For another example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   int f(int);
   static int f(long);
@@ -2633,7 +2633,7 @@ int (X::*p4)(long) = &X::f;     // error: mismatch
 int (X::*p5)(int)  = &(X::f);   // error: wrong syntax for
                                 // pointer to member
 int    (*p6)(long) = &(X::f);   // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2661,13 +2661,13 @@ is a public base of
 \tcode{D},
 we have
 
-\begin{codeblock}
+\begin{lstlisting}
 D* f();
 B* (*p1)() = &f;                // error
 
 void g(D*);
 void (*p2)(B*) = &g;            // error
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec1[over.oper]{Overloaded operators}%
@@ -2723,9 +2723,9 @@ are formed from more than one token.
 \pnum
 Both the unary and binary forms of
 
-\begin{codeblock}
+\begin{lstlisting}
 +    -    *     &
-\end{codeblock}
+\end{lstlisting}
 
 can be overloaded.
 
@@ -2733,9 +2733,9 @@ can be overloaded.
 \indextext{restriction!operator~overloading}%
 The following operators cannot be overloaded:
 
-\begin{codeblock}
+\begin{lstlisting}
 .    .*   ::    ?:
-\end{codeblock}
+\end{lstlisting}
 
 nor can the preprocessing symbols
 \tcode{\#}
@@ -2752,10 +2752,10 @@ They can be explicitly called, however, using the
 as the name of the function in the function call syntax~(\ref{expr.call}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 complex z = a.operator+(b);     // \tcode{complex z = a+b;}
 void* p = operator new(sizeof(int)*n);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2904,7 +2904,7 @@ does not override
 virtual copy/move assignment operator.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual int operator= (int);
   virtual B& operator= (const B&);
@@ -2925,7 +2925,7 @@ void f() {
   dobj1 = dobj2;                // calls implicitly-declared
                                 // \tcode{D::operator=(const D\&)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -2998,7 +2998,7 @@ if
 exists and if the operator is selected as the best match function by
 the overload resolution mechanism~(\ref{over.match.best}).
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   Z operator[](std::initializer_list<int>);
 };
@@ -3006,7 +3006,7 @@ X x;
 x[{1,2,3}] = 7;           // OK: meaning \tcode{x.operator[](\{1,2,3\})}
 int a[10];
 a[{1,2,3}] = 7;           // error: built-in subscript operator
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[over.ref]{Class member access}
@@ -3076,7 +3076,7 @@ is
 \tcode{2}.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   X&   operator++();            // prefix \tcode{++a}
   X    operator++(int);         // postfix \tcode{a++}
@@ -3097,7 +3097,7 @@ void f(X a, Y b) {
   operator++(b);                // explicit call: like \tcode{++b;}
   operator++(b, 0);             // explicit call: like \tcode{b++;}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3134,7 +3134,7 @@ is a \term{literal operator template}.
 The declaration of a literal operator shall have a
 \grammarterm{parameter-declaration-clause} equivalent to one of the following:
 
-\begin{codeblock}
+\begin{lstlisting}
 const char*
 unsigned long long int
 long double
@@ -3146,7 +3146,7 @@ const char*, std::size_t
 const wchar_t*, std::size_t
 const char16_t*, std::size_t
 const char32_t*, std::size_t
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 A \term{raw literal operator} is a literal operator with a single parameter
@@ -3174,7 +3174,7 @@ taken, etc. \exitnote
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void operator "" _km(long double);                  // OK
 string operator "" _i18n(const char*, std::size_t); // OK
 template <char...> double operator "" _\u03C0();    // OK: UCN for lowercase pi
@@ -3184,7 +3184,7 @@ float operator " " B(const char*);                  // error: non-adjacent quote
 string operator "" 5X(const char*, std::size_t);    // error: invalid literal suffix identifier
 double operator "" _miles(double);                  // error: invalid \grammarterm{parameter-declaration-clause}
 template <char...> int operator "" j(const char*);  // error: invalid \grammarterm{parameter-declaration-clause}
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{overloading!operator|)}
 
@@ -3251,10 +3251,10 @@ is either
 or empty,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{VQ T}@& operator++(@\textit{VQ T}@&);
 @\textit{T}@ operator++(@\textit{VQ T}@&, int);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair
@@ -3271,10 +3271,10 @@ is either
 or empty,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{VQ T}@& operator--(@\textit{VQ T}@&);
 @\textit{T}@ operator--(@\textit{VQ T}@&, int);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair
@@ -3289,56 +3289,56 @@ is either
 or empty,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@*@\textit{VQ}@& operator++(@\textit{T}@*@\textit{VQ}@&);
 @\textit{T}@*@\textit{VQ}@& operator--(@\textit{T}@*@\textit{VQ}@&);
 @\textit{T}@*    operator++(@\textit{T}@*@\textit{VQ}@&, int);
 @\textit{T}@*    operator--(@\textit{T}@*@\textit{VQ}@&, int);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every cv-qualified or cv-unqualified object type
 \textit{T},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@&    operator*(@\textit{T}@*);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every function type
 \textit{T} that does not have cv-qualifiers or a \grammarterm{ref-qualifier},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@&    operator*(@\textit{T}@*);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every type \textit{T} there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@*    operator+(@\textit{T}@*);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every promoted arithmetic type
 \textit{T},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@ operator+(@\textit{T}@);
 @\textit{T}@ operator-(@\textit{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every promoted integral type
 \textit{T},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@ operator@$\sim$@(@\textit{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every quintuple
@@ -3362,9 +3362,9 @@ are
 \grammarterm{cv-qualifier-seq}{s},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{CV12 T}@& operator->*(@\textit{CV1 C1}@*, @\textit{CV2 T C2}@::*);
-\end{codeblock}
+\end{lstlisting}
 
 where
 \textit{CV12}
@@ -3380,7 +3380,7 @@ and
 \textit{R},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{LR}@      operator*(@\textit{L}@, @\textit{R}@);
 @\textit{LR}@      operator/(@\textit{L}@, @\textit{R}@);
 @\textit{LR}@      operator+(@\textit{L}@, @\textit{R}@);
@@ -3391,7 +3391,7 @@ bool    operator<=(@\textit{L}@, @\textit{R}@);
 bool    operator>=(@\textit{L}@, @\textit{R}@);
 bool    operator==(@\textit{L}@, @\textit{R}@);
 bool    operator!=(@\textit{L}@, @\textit{R}@);
-\end{codeblock}
+\end{lstlisting}
 
 where
 \textit{LR}
@@ -3405,13 +3405,13 @@ For every cv-qualified or cv-unqualified object type
 \textit{T}
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\textit{T}@*      operator+(@\textit{T}@*, std::ptrdiff_t);
 @\textit{T}@&      operator[](@\textit{T}@*, std::ptrdiff_t);
 @\textit{T}@*      operator-(@\textit{T}@*, std::ptrdiff_t);
 @\textit{T}@*      operator+(std::ptrdiff_t, @\textit{T}@*);
 @\textit{T}@&      operator[](std::ptrdiff_t, @\textit{T}@*);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every
@@ -3421,31 +3421,31 @@ where
 is a pointer to object type,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 std::ptrdiff_t   operator-(@\term{T}@, @\term{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every \term{T}, where \term{T} is an enumeration type, a pointer type, or
 \tcode{std::nullptr_t}, there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 bool    operator<(@\term{T}@, @\term{T}@);
 bool    operator>(@\term{T}@, @\term{T}@);
 bool    operator<=(@\term{T}@, @\term{T}@);
 bool    operator>=(@\term{T}@, @\term{T}@);
 bool    operator==(@\term{T}@, @\term{T}@);
 bool    operator!=(@\term{T}@, @\term{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pointer to member type \term{T} there exist candidate operator functions of
 the form
 
-\begin{codeblock}
+\begin{lstlisting}
 bool    operator==(@\term{T}@, @\term{T}@);
 bool    operator!=(@\term{T}@, @\term{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair of promoted integral types
@@ -3454,14 +3454,14 @@ and
 \term{R},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{LR}@      operator%(@\term{L}@, @\term{R}@);
 @\term{LR}@      operator&(@\term{L}@, @\term{R}@);
 @\term{LR}@      operator^(@\term{L}@, @\term{R}@);
 @\term{LR}@      operator|(@\term{L}@, @\term{R}@);
 @\term{L}@       operator<<(@\term{L}@, @\term{R}@);
 @\term{L}@       operator>>(@\term{L}@, @\term{R}@);
-\end{codeblock}
+\end{lstlisting}
 
 where
 \term{LR}
@@ -3487,21 +3487,21 @@ and
 is a promoted arithmetic type,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{VQ L}@&   operator=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator*=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator/=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator+=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator-=(@\term{VQ L}@&, @\term{R}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair (\term{T}, \term{VQ}), where \term{T} is any type and \term{VQ} is either
 \tcode{volatile} or empty, there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{T}@*@\term{VQ}@&   operator=(@\term{T}@*@\term{VQ}@&, @\term{T}@*);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair
@@ -3516,9 +3516,9 @@ is either
 or empty,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{VQ} \term{T}@&   operator=(@\term{VQ} \term{T}@&, @\term{T}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair
@@ -3533,10 +3533,10 @@ is either
 or empty,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{T}@*@\term{VQ}@&   operator+=(@\term{T}@*@\term{VQ}@&, std::ptrdiff_t);
 @\term{T}@*@\term{VQ}@&   operator-=(@\term{T}@*@\term{VQ}@&, std::ptrdiff_t);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every triple
@@ -3555,23 +3555,23 @@ and
 is a promoted integral type,
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{VQ L}@&   operator%=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator<<=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator>>=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator&=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator^=(@\term{VQ L}@&, @\term{R}@);
 @\term{VQ L}@&   operator|=(@\term{VQ L}@&, @\term{R}@);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 There also exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 bool    operator!(bool);
 bool    operator&&(bool, bool);
 bool    operator||(bool, bool);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 For every pair of promoted arithmetic types
@@ -3580,9 +3580,9 @@ and
 \term{R},
 there exist candidate operator functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{LR}@      operator?:(bool, @\term{L}@, @\term{R}@);
-\end{codeblock}
+\end{lstlisting}
 
 where
 \term{LR}
@@ -3606,7 +3606,7 @@ where
 is a pointer, pointer-to-member, or scoped enumeration type, there exist candidate operator
 functions of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{T}@       operator?:(bool, @\term{T}@, @\term{T}@);
-\end{codeblock}%
+\end{lstlisting}%
 \indextext{overloading|)}

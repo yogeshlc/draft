@@ -51,7 +51,7 @@ are
 by default.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   int a;            // \tcode{X::a} is private by default
 };
@@ -59,7 +59,7 @@ class X {
 struct S {
   int a;            // \tcode{S::a} is public by default
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -79,7 +79,7 @@ typedef name, only the accessibility of the typedef name itself is considered.
 The accessibility of the entity referred to by the typedef is not considered.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   class B { };
 public:
@@ -90,7 +90,7 @@ void f() {
   A::BB x;          // OK, typedef name \tcode{A::BB} is public
   A::B y;           // access error, \tcode{A::B} is private
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -117,7 +117,7 @@ the class appearing outside the class's \grammarterm{member-specification}{.}
 conversion functions, and destructors. \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   typedef int I;    // private member
   I f();
@@ -137,7 +137,7 @@ template<A::I> struct A::Q { };
 template<A::I> struct R { };
 
 struct D: A::B, A { };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Here, all the uses of
@@ -176,7 +176,7 @@ member functions of class templates is performed as described in~\ref{temp.inst}
 The names in a default \grammarterm{template-argument}~(\ref{temp.param})
 have their access checked in the context in which they appear rather than at any
 points of use of the default \grammarterm{template-argument}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class B { };
 template <class T> class C {
 protected:
@@ -187,7 +187,7 @@ template <class U, class V = typename U::TT>
 class D : public U { };
 
 D <C<B> >* d;       // access error, C::TT is protected
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.access.spec]{Access specifiers}%
@@ -210,21 +210,21 @@ until the end of the class or until another
 is encountered.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   int a;            // \tcode{X::a} is private by default: \tcode{class} used
 public:
   int b;            // \tcode{X::b} is public
   int c;            // \tcode{X::c} is public
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 Any number of access specifiers is allowed and no particular order is required.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   int a;            // \tcode{S::a} is public by default: \tcode{struct} used
 protected:
@@ -234,7 +234,7 @@ private:
 public:
   int d;            // \tcode{S::d} is public
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -247,7 +247,7 @@ the access specified at its redeclaration shall
 be the same as at its initial declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   class A;
   enum E : int;
@@ -255,7 +255,7 @@ private:
   class A { };        // error: cannot change access
   enum E: int { e0 }; // error: cannot change access
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -267,14 +267,14 @@ than the name of the base class in the scope in which it was declared.
 \exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class A { };
 class B : private A { };
 class C : public B {
   A *p;             // error: injected-class-name \tcode{A} is inaccessible
   ::A *q;           // OK
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.access.base]{Accessibility of base classes and base class members}%
@@ -334,7 +334,7 @@ defined with the \grammarterm{class-key}
 \tcode{class}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class B { /* ... */ };
 class D1 : private B { /* ... */ };
 class D2 : public B { /* ... */ };
@@ -344,7 +344,7 @@ struct D5 : private B { /* ... */ };
 struct D6 : B { /* ... */ };    // \tcode{B} public by default
 class D7 : protected B { /* ... */ };
 struct D8 : protected B { /* ... */ };
-\end{codeblock}
+\end{lstlisting}
 
 Here
 \tcode{B}
@@ -373,7 +373,7 @@ to an inaccessible base class might be ill-formed if an implicit conversion
 is used, but well-formed if an explicit cast is used.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 class B {
 public:
   int mi;                       // non-static member
@@ -396,7 +396,7 @@ void DD::f() {
   ::B* bp2 = (::B*)this;        // OK with cast
   bp2->mi = 3;                  // OK: access through a pointer to \tcode{B}.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -451,7 +451,7 @@ accessible at
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class B {
 public:
   int m;
@@ -469,7 +469,7 @@ class N: private S {
                     // base class of \tcode{N}.
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -560,7 +560,7 @@ when named in class
 \tcode{B}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class B;
 class A {
 private:
@@ -572,7 +572,7 @@ void f(B* p) {
   p->i = 1;         // OK: \tcode{B*} can be implicitly converted to \tcode{A*},
                     // and \tcode{f} has access to \tcode{i} in \tcode{A}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 
@@ -607,7 +607,7 @@ members and friends:
 \indextext{example!friend function}%
 \indextext{example!member~function}%
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   int a;
   friend void friend_set(X*, int);
@@ -623,7 +623,7 @@ void f() {
   friend_set(&obj,10);
   obj.member_set(10);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -633,7 +633,7 @@ protected members from the class granting friendship can be accessed in the
 \grammarterm{base-specifier}{s} and member declarations of the befriended
 class. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   class B { };
   friend class X;
@@ -645,11 +645,11 @@ struct X : A::B {   // OK: \tcode{A::B} accessible to friend
     A::B my;        // OK: \tcode{A::B} accessible to nested member of friend
   };
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   enum { a=100 };
   friend class Y;
@@ -662,15 +662,15 @@ class Y {
 class Z {
   int v[X::a];      // error: \tcode{X::a} is private
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 A class shall not be defined in a friend declaration. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   friend class B { }; // error: cannot define class in friend declaration
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -690,7 +690,7 @@ type specifier in a \tcode{friend} declaration designates a (possibly
 cv-qualified) class type, that class is declared as a friend; otherwise, the
 \tcode{friend} declaration is ignored. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class C;
 typedef C Ct;
 
@@ -710,7 +710,7 @@ template <typename T> class R {
 
 R<C> rc;            // \tcode{class C} is a friend of \tcode{R<C>}
 R<int> Ri;          // OK: \tcode{"friend int;"} is ignored
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -733,13 +733,13 @@ a class
 \indextext{member function!friend}%
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class Y {
   friend char* X::foo(int);
   friend X::X(char);            // constructors can be friends
   friend X::~X();               // destructors can be friends
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -749,12 +749,12 @@ class is a non-local class~(\ref{class.local}), the function name is unqualified
 and the function has namespace scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class M {
   friend void f() { }           // definition of global \tcode{f}, a friend of \tcode{M},
                                 // not the definition of a member function
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -790,7 +790,7 @@ portion of the class
 Friendship is neither inherited nor transitive.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   friend class B;
   int a;
@@ -813,7 +813,7 @@ class D : public B  {
                     // despite being derived from a friend
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -833,7 +833,7 @@ until a matching declaration is provided in the innermost enclosing
 nonclass scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X;
 void a();
 void f() {
@@ -850,7 +850,7 @@ void f() {
   X *px;            // OK, but \tcode{::X} is found
   Z *pz;            // error, no \tcode{Z} is found
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.protected]{Protected member access}
@@ -871,7 +871,7 @@ expression~(\ref{expr.ref}). In this case, the class of the object expression sh
 \tcode{C} or a class derived from \tcode{C}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class B {
 protected:
   int i;
@@ -914,7 +914,7 @@ void g(B* pb, D1* p1, D2* p2) {
   p1->i = 2;                    // ill-formed
   p2->i = 3;                    // ill-formed
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[class.access.virt]{Access to virtual functions}%
@@ -925,7 +925,7 @@ The access rules (Clause~\ref{class.access}) for a virtual function are determin
 and are not affected by the rules for a function that later overrides it.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class B {
 public:
   virtual int f();
@@ -945,7 +945,7 @@ void f() {
                                 // \tcode{D::f()} is invoked
   pd->f();                      // error: \tcode{D::f()} is private
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -965,14 +965,14 @@ If a name can be reached by several paths through a multiple inheritance
 graph, the access is that of the path that gives most access.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class W { public: void f(); };
 class A : private virtual W { };
 class B : public virtual W { };
 class C : public A, public B {
   void f() { W::f(); }          // OK
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Since
@@ -995,7 +995,7 @@ class; the usual access rules (Clause~\ref{class.access}) shall be obeyed.
 \enterexample
 \indextext{example!nested~class definition}%
 
-\begin{codeblock}
+\begin{lstlisting}
 class E {
   int x;
   class B { };
@@ -1012,6 +1012,6 @@ class E {
     return p->y;                // error: \tcode{I::y} is private
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{access control|)}

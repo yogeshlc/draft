@@ -256,7 +256,7 @@
 % Our usual abbreviation for 'listings'.  Comments are in 
 % italics.  Arbitrary TeX commands can be used if they're 
 % surrounded by @ signs.
-\lstnewenvironment{codeblock}
+\lstnewenvironment{lstlisting}
 {
  \lstset{escapechar=@}
  \renewcommand{\tcode}[1]{\textup{\CodeStylex{##1}}}
@@ -267,7 +267,7 @@
 {
 }
 
-% Permit use of '@' inside codeblock blocks (don't ask)
+% Permit use of '@' inside lstlisting blocks (don't ask)
 \makeatletter
 \newcommand{\atsign}{@}
 \makeatother
@@ -280,7 +280,7 @@
 
 %%--------------------------------------------------
 %% Library item descriptions
-\lstnewenvironment{itemdecl}
+\lstnewenvironment{lstlisting}
 {
  \lstset{escapechar=@,
  xleftmargin=0em,

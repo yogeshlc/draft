@@ -130,7 +130,7 @@ the namespace \tcode{std}.
 The following member names are in addition to names specified in
 Clause~\ref{input.output}:
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ios_base {
   public:
@@ -142,7 +142,7 @@ namespace std {
     // remainder unchanged
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The type \tcode{io_state} is a synonym for an integer type
@@ -184,7 +184,7 @@ An implementation may provide the following additional member function, which ha
 effect of calling
 \tcode{sbumpc()}~(\ref{streambuf.pub.get}):
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class charT, class traits = char_traits<charT> >
   class basic_streambuf {
@@ -193,13 +193,13 @@ namespace std {
     // remainder unchanged
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An implementation may provide the following member functions that overload signatures
 specified in Clause~\ref{input.output}:
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class charT, class traits> class basic_ios {
   public:
@@ -246,7 +246,7 @@ namespace std {
     // remainder unchanged
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The effects of these functions is to call the corresponding member function specified
@@ -263,7 +263,7 @@ character array objects and assist reading and writing such objects.
 \rSec2[depr.strstreambuf]{Class \tcode{strstreambuf}}
 
 \indexlibrary{\idxcode{strstreambuf}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class strstreambuf : public basic_streambuf<char> {
   public:
@@ -308,7 +308,7 @@ namespace std {
     void (*pfree)(void*);             // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -374,9 +374,9 @@ if \tcode{pend} is not a null pointer, or \tcode{gend}.
 \rSec3[depr.strstreambuf.cons]{\tcode{strstreambuf} constructors}
 
 \indexlibrary{\idxcode{strstreambuf}!\tcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit strstreambuf(streamsize alsize_arg = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -398,9 +398,9 @@ The postconditions of this function are indicated in Table~\ref{tab:future.strst
 \end{libtab2}
 
 \indexlibrary{\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstreambuf(void* (*palloc_arg)(size_t), void (*pfree_arg)(void*));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -423,13 +423,13 @@ The postconditions of this function are indicated in Table~\ref{tab:future.strst
 \end{itemdescr}
 
 \indextext{unspecified}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstreambuf(char* gnext_arg, streamsize n, char *pbeg_arg = 0);
 strstreambuf(signed char* gnext_arg, streamsize n,
              signed char *pbeg_arg = 0);
 strstreambuf(unsigned char* gnext_arg, streamsize n,
              unsigned char *pbeg_arg = 0);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -487,21 +487,21 @@ If \tcode{pbeg_arg} is a null pointer, the function executes:
 
 \indexlibrary{\idxcode{strstreambuf}!\idxcode{setg}}%
 \indexlibrary{\idxcode{setg}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 setg(gnext_arg, gnext_arg, gnext_arg + N);
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 Otherwise, the function executes:
 
-\begin{codeblock}
+\begin{lstlisting}
 setg(gnext_arg, gnext_arg, pbeg_arg);
 setp(pbeg_arg,  pbeg_arg + N);
 
 strstreambuf(const char* gnext_arg, streamsize n);
 strstreambuf(const signed char* gnext_arg, streamsize n);
 strstreambuf(const unsigned char* gnext_arg, streamsize n);
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \effects
@@ -511,9 +511,9 @@ except that the constructor also sets \tcode{constant} in \tcode{strmode}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{strstreambuf}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~strstreambuf();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -529,9 +529,9 @@ and
 \rSec3[depr.strstreambuf.members]{Member functions}
 
 \indexlibrary{\idxcode{freeze}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void freeze(bool freezefl = true);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -549,9 +549,9 @@ Otherwise, it clears \tcode{frozen} in \tcode{strmode}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char* str();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -566,9 +566,9 @@ The return value can be a null pointer.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pcount}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int pcount() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -583,9 +583,9 @@ pointer for the output sequence, \tcode{pnext} - \tcode{pbeg}.
 \rSec3[depr.strstreambuf.virtuals]{\tcode{strstreambuf} overridden virtual functions}
 
 \indexlibrary{\idxcode{overflow}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type overflow(int_type c = EOF);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -661,9 +661,9 @@ the function cannot extend the array (reallocate it with greater length) to make
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pbackfail}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type pbackfail(int_type c = EOF);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -720,9 +720,9 @@ positions available as a result of any call.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{underflow}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type underflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -761,9 +761,9 @@ result of any call.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekoff}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekoff(off_type off, seekdir way, openmode which = in | out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -828,10 +828,10 @@ the return value is
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekpos}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekpos(pos_type sp, ios_base::openmode which
                   = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -882,9 +882,9 @@ the return value is
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setbuf}!\idxcode{strstreambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streambuf<char>* setbuf(char* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -898,7 +898,7 @@ has no effect.%
 \rSec2[depr.istrstream]{Class \tcode{istrstream}}
 
 \indexlibrary{\idxcode{istrstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class istrstream : public basic_istream<char> {
   public:
@@ -914,7 +914,7 @@ namespace std {
     strstreambuf sb;  // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -933,10 +933,10 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[depr.istrstream.cons]{\tcode{istrstream} constructors}
 
 \indexlibrary{\idxcode{istrstream}!\idxcode{istrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit istrstream(const char* s);
 explicit istrstream(char* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -952,9 +952,9 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{istrstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 istrstream(const char* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -972,9 +972,9 @@ and initializing \tcode{sb} with
 \rSec3[depr.istrstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{istrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstreambuf* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -983,9 +983,9 @@ strstreambuf* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{istrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char* str();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -996,7 +996,7 @@ char* str();
 \rSec2[depr.ostrstream]{Class \tcode{ostrstream}}
 
 \indexlibrary{\idxcode{ostrstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ostrstream : public basic_ostream<char> {
   public:
@@ -1012,7 +1012,7 @@ namespace std {
     strstreambuf sb;  // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -1032,9 +1032,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[depr.ostrstream.cons]{\tcode{ostrstream} constructors}
 
 \indexlibrary{\idxcode{ostrstream}!\idxcode{ostrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
     ostrstream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1048,9 +1048,9 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ostrstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ostrstream(char* s, int n, ios_base::openmode mode = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1089,9 +1089,9 @@ is declared in
 \rSec3[depr.ostrstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{ostrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstreambuf* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1100,9 +1100,9 @@ strstreambuf* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{freeze}!\idxcode{ostrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void freeze(bool freezefl = true);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1112,9 +1112,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{ostrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char* str();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1123,9 +1123,9 @@ char* str();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pcount}!\idxcode{ostrstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int pcount() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1136,7 +1136,7 @@ int pcount() const;
 \rSec2[depr.strstream]{Class \tcode{strstream}}
 
 \indexlibrary{\idxcode{strstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class strstream
     : public basic_iostream<char> {
@@ -1163,7 +1163,7 @@ namespace std {
   strstreambuf sb;  // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -1184,9 +1184,9 @@ object.
 \rSec3[depr.strstream.cons]{\tcode{strstream} constructors}
 
 \indexlibrary{\idxcode{strstream}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1198,10 +1198,10 @@ initializing the base class with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{strstream}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstream(char* s, int n,
           ios_base::openmode mode = ios_base::in|ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1233,9 +1233,9 @@ The constructor is
 \rSec3[depr.strstream.dest]{\tcode{strstream} destructor}
 
 \indexlibrary{\idxcode{strstream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~strstream()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1245,9 +1245,9 @@ Destroys an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 strstreambuf* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1258,9 +1258,9 @@ strstreambuf* rdbuf() const;
 \rSec3[depr.strstream.oper]{\tcode{strstream} operations}
 
 \indexlibrary{\idxcode{freeze}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void freeze(bool freezefl = true);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1270,9 +1270,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char* str();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1281,9 +1281,9 @@ char* str();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pcount}!\idxcode{strstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int pcount() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1300,7 +1300,7 @@ The class templates \tcode{unary_function} and \tcode{binary_function} are depre
 A program shall not declare specializations of these templates.
 
 \indexlibrary{\idxcode{unary_function}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class Arg, class Result>
   struct unary_function {
@@ -1308,10 +1308,10 @@ namespace std {
     typedef Result result_type;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{binary_function}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class Arg1, class Arg2, class Result>
   struct binary_function {
@@ -1320,7 +1320,7 @@ namespace std {
     typedef Result result_type;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[depr.adaptors]{Function adaptors}
 
@@ -1336,14 +1336,14 @@ To allow pointers to (unary and binary) functions to work with function adaptors
 the library provides:
 
 \indexlibrary{\idxcode{pointer_to_unary_function}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Arg, class Result>
 class pointer_to_unary_function : public unary_function<Arg, Result> {
 public:
   explicit pointer_to_unary_function(Result (*f)(Arg));
   Result operator()(Arg x) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1351,10 +1351,10 @@ public:
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ptr_fun}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Arg, class Result>
   pointer_to_unary_function<Arg, Result> ptr_fun(Result (*f)(Arg));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1363,7 +1363,7 @@ template <class Arg, class Result>
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pointer_to_binary_function}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Arg1, class Arg2, class Result>
 class pointer_to_binary_function :
   public binary_function<Arg1,Arg2,Result> {
@@ -1371,7 +1371,7 @@ public:
   explicit pointer_to_binary_function(Result (*f)(Arg1, Arg2));
   Result operator()(Arg1 x, Arg2 y) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1379,11 +1379,11 @@ public:
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ptr_fun}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Arg1, class Arg2, class Result>
   pointer_to_binary_function<Arg1,Arg2,Result>
     ptr_fun(Result (*f)(Arg1, Arg2));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1392,11 +1392,11 @@ template <class Arg1, class Arg2, class Result>
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int compare(const char*, const char*);
 replace_if(v.begin(), v.end(),
   not1(bind2nd(ptr_fun(compare), "abc")), "def");
-\end{codeblock}
+\end{lstlisting}
 
 replaces each \tcode{abc} with \tcode{def} in sequence \tcode{v}.
 \exitexample
@@ -1410,14 +1410,14 @@ members as those provided for pointers to functions
 in~\ref{depr.function.pointer.adaptors}.
 
 \indexlibrary{\idxcode{mem_fun_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T> class mem_fun_t
         : public unary_function<T*, S> {
 public:
   explicit mem_fun_t(S (T::*p)());
   S operator()(T* p) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1426,14 +1426,14 @@ argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun1_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T, class A> class mem_fun1_t
       : public binary_function<T*, A, S> {
 public:
   explicit mem_fun1_t(S (T::*p)(A));
   S operator()(T* p, A x) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1442,12 +1442,12 @@ a pointer argument and an additional argument of the appropriate type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class S, class T> mem_fun_t<S,T>
    mem_fun(S (T::*f)());
 template<class S, class T, class A> mem_fun1_t<S,T,A>
    mem_fun(S (T::*f)(A));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1457,14 +1457,14 @@ called given a pointer to an \tcode{X} followed by the argument required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun_ref_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T> class mem_fun_ref_t
       : public unary_function<T, S> {
 public:
   explicit mem_fun_ref_t(S (T::*p)());
   S operator()(T& p) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1473,14 +1473,14 @@ a reference argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun1_ref_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T, class A> class mem_fun1_ref_t
       : public binary_function<T, A, S> {
 public:
   explicit mem_fun1_ref_t(S (T::*p)(A));
   S operator()(T& p, A x) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1489,12 +1489,12 @@ given a reference argument and an additional argument of the appropriate type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun_ref}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class S, class T> mem_fun_ref_t<S,T>
    mem_fun_ref(S (T::*f)());
 template<class S, class T, class A> mem_fun1_ref_t<S,T,A>
    mem_fun_ref(S (T::*f)(A));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1504,14 +1504,14 @@ required for \tcode{f} (if any).
 \end{itemdescr}
 
 \indexlibrary{\idxcode{const_mem_fun_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T> class const_mem_fun_t
       : public unary_function<const T*, S> {
 public:
   explicit const_mem_fun_t(S (T::*p)() const);
   S operator()(const T* p) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1520,14 +1520,14 @@ given a pointer argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{const_mem_fun1_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T, class A> class const_mem_fun1_t
       : public binary_function<const T*, A, S> {
 public:
   explicit const_mem_fun1_t(S (T::*p)(A) const);
   S operator()(const T* p, A x) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1536,12 +1536,12 @@ given a pointer argument and an additional argument of the appropriate type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class S, class T> const_mem_fun_t<S,T>
    mem_fun(S (T::*f)() const);
 template<class S, class T, class A> const_mem_fun1_t<S,T,A>
    mem_fun(S (T::*f)(A) const);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1551,14 +1551,14 @@ called given a pointer to an \tcode{X} followed by the argument required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{const_mem_fun_ref_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T> class const_mem_fun_ref_t
       : public unary_function<T, S> {
 public:
   explicit const_mem_fun_ref_t(S (T::*p)() const);
   S operator()(const T& p) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1567,14 +1567,14 @@ given a reference argument.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{const_mem_fun1_ref_t}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class S, class T, class A> class const_mem_fun1_ref_t
       : public binary_function<T, A, S> {
 public:
   explicit const_mem_fun1_ref_t(S (T::*p)(A) const);
   S operator()(const T& p, A x) const;
 };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1584,12 +1584,12 @@ type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{mem_fun_ref}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class S, class T> const_mem_fun_ref_t<S,T>
    mem_fun_ref(S (T::*f)() const);
 template<class S, class T, class A> const_mem_fun1_ref_t<S,T,A>
     mem_fun_ref(S (T::*f)(A) const);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1609,7 +1609,7 @@ solution.\exitnote
 \rSec2[depr.lib.binder.1st]{Class template \tcode{binder1st}}
 
 \indexlibrary{\idxcode{binder1st}}%
-\begin{itemdecl}
+\begin{lstlisting}
   template <class Fn>
   class binder1st
     : public unary_function<typename Fn::second_argument_type,
@@ -1625,7 +1625,7 @@ solution.\exitnote
     typename Fn::result_type
       operator()(typename Fn::second_argument_type& x) const;
   };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1639,10 +1639,10 @@ with \tcode{y}.
 \rSec2[depr.lib.bind.1st]{\tcode{bind1st}}
 
 \indexlibrary{\idxcode{bind1st}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Fn, class T>
   binder1st<Fn> bind1st(const Fn& fn, const T& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1653,7 +1653,7 @@ template <class Fn, class T>
 \rSec2[depr.lib.binder.2nd]{Class template \tcode{binder2nd}}
 
 \indexlibrary{\idxcode{binder2nd}}%
-\begin{itemdecl}
+\begin{lstlisting}
   template <class Fn>
   class binder2nd
     : public unary_function<typename Fn::first_argument_type,
@@ -1669,7 +1669,7 @@ template <class Fn, class T>
     typename Fn::result_type
       operator()(typename Fn::first_argument_type& x) const;
   };
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1683,10 +1683,10 @@ with \tcode{y}.
 \rSec2[depr.lib.bind.2nd]{\tcode{bind2nd}}
 
 \indexlibrary{\idxcode{bind2nd}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class Fn, class T>
   binder2nd<Fn> bind2nd(const Fn& op, const T& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1695,15 +1695,15 @@ template <class Fn, class T>
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 find_if(v.begin(), v.end(), bind2nd(greater<int>(), 5));
-\end{codeblock}
+\end{lstlisting}
 
 finds the first integer in vector \tcode{v} greater than 5;
 
-\begin{codeblock}
+\begin{lstlisting}
 find_if(v.begin(), v.end(), bind1st(greater<int>(), 5));
-\end{codeblock}
+\end{lstlisting}
 
 finds the first integer in \tcode{v} less than 5.
 \exitexample
@@ -1734,7 +1734,7 @@ The template holds a reference to an \tcode{auto_ptr}. It
 is used by the \tcode{auto_ptr} conversions to allow \tcode{auto_ptr} objects
 to be passed to and returned from functions.
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class Y> struct auto_ptr_ref;   // \expos
 
@@ -1770,7 +1770,7 @@ namespace std {
     typedef void element_type;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class template \tcode{auto_ptr} provides a semantics of strict ownership. An \tcode{auto_ptr}
@@ -1788,9 +1788,9 @@ Instances of \tcode{auto_ptr} meet the requirements of \tcode{MoveConstructible}
 \rSec3[auto.ptr.cons]{\tcode{auto_ptr} constructors}
 
 \indexlibrary{\idxcode{auto_ptr}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit auto_ptr(X* p =0) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1799,9 +1799,9 @@ explicit auto_ptr(X* p =0) throw();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{auto_ptr}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 auto_ptr(auto_ptr& a) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1814,9 +1814,9 @@ Calls \tcode{a.release()}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{auto_ptr}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Y> auto_ptr(auto_ptr<Y>& a) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1833,9 +1833,9 @@ Calls \tcode{a.release()}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 auto_ptr& operator=(auto_ptr& a) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1853,9 +1853,9 @@ The expression \tcode{delete get()} is well formed.
 
 \indexlibrary{\idxcode{auto_ptr}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Y> auto_ptr& operator=(auto_ptr<Y>& a) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1873,9 +1873,9 @@ template<class Y> auto_ptr& operator=(auto_ptr<Y>& a) throw();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{auto_ptr}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~auto_ptr() throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1890,9 +1890,9 @@ The expression \tcode{delete get()} is well formed.
 \rSec3[auto.ptr.members]{\tcode{auto_ptr} members}
 
 \indexlibrary{\idxcode{operator*}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 X& operator*() const throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1905,9 +1905,9 @@ X& operator*() const throw();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator->}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 X* operator->() const throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1916,9 +1916,9 @@ X* operator->() const throw();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{get}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 X* get() const throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1927,9 +1927,9 @@ The pointer \tcode{*this} holds.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{release}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 X* release() throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1942,9 +1942,9 @@ X* release() throw();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{reset}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void reset(X* p=0) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1959,9 +1959,9 @@ If \tcode{get() != p} then \tcode{delete get()}.
 \rSec3[auto.ptr.conv]{\tcode{auto_ptr} conversions}
 
 \indexlibrary{\idxcode{auto_ptr}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 auto_ptr(auto_ptr_ref<X> r) throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1975,9 +1975,9 @@ Calls \tcode{p.release()} for the \tcode{auto_ptr} \tcode{p} that \tcode{r} hold
 
 \indexlibrary{\idxcode{auto_ptr}!\idxcode{auto_ptr_ref}}%
 \indexlibrary{\idxcode{auto_ptr_ref}!\idxcode{auto_ptr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Y> operator auto_ptr_ref<Y>() throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1987,9 +1987,9 @@ An \tcode{auto_ptr_ref<Y>} that holds \tcode{*this}.
 
 \indexlibrary{\idxcode{auto_ptr_ref}!\idxcode{operator auto_ptr}}%
 \indexlibrary{\idxcode{operator auto_ptr}!\idxcode{auto_ptr_ref}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class Y> operator auto_ptr<Y>() throw();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2003,9 +2003,9 @@ An \tcode{auto_ptr<Y>} that holds the pointer returned from \tcode{release()}.
 
 \indexlibrary{\idxcode{auto_ptr_ref}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{auto_ptr_ref}}%
-\begin{itemdecl}
+\begin{lstlisting}
 auto_ptr& operator=(auto_ptr_ref<X> r) throw()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2023,9 +2023,9 @@ that \tcode{r} holds a reference to.
 \rSec2[unexpected.handler]{Type \tcode{unexpected_handler}}
 
 \indexlibrary{\idxcode{unexpected_handler}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef void (*unexpected_handler)();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2053,9 +2053,9 @@ The implementation's default \tcode{unexpected_handler} calls
 \rSec2[set.unexpected]{\tcode{set_unexpected}}
 
 \indexlibrary{\idxcode{set_unexpected}}%
-\begin{itemdecl}
+\begin{lstlisting}
 unexpected_handler set_unexpected(unexpected_handler f) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2074,9 +2074,9 @@ The previous \tcode{unexpected_handler}.
 
 \rSec2[get.unexpected]{\tcode{get_unexpected}}
 
-\begin{itemdecl}
+\begin{lstlisting}
 unexpected_handler get_unexpected() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2087,9 +2087,9 @@ unexpected_handler get_unexpected() noexcept;
 \rSec2[unexpected]{\tcode{unexpected}}
 
 \indexlibrary{\idxcode{unexpected}}%
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void unexpected();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum

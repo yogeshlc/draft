@@ -505,7 +505,7 @@ width. \exitnote
 \pnum
 \enterexample A structure declared as
 
-\begin{codeblock}
+\begin{lstlisting}
 struct {
   char a;
   int b:5,
@@ -514,7 +514,7 @@ struct {
   d:8;
   struct {int ee:8;} e;
 }
-\end{codeblock}
+\end{lstlisting}
 
 contains four separate memory locations: The field \tcode{a} and bit-fields
 \tcode{d} and \tcode{e.ee} are each separate memory locations, and can be
@@ -605,11 +605,11 @@ not store an object at all if the program cannot observe the
 difference~(\ref{intro.execution}).}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 static const char test1 = 'x';
 static const char test2 = 'x';
 const bool b = &test1 != &test2;      // always true
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -744,15 +744,15 @@ mathematical rules only where the operators really are associative or
 commutative.\footnote{Overloaded operators are never assumed to be associative or
 commutative. }
 For example, in the following fragment
-\begin{codeblock}
+\begin{lstlisting}
 int a, b;
 /*...*/
 a = a + 32760 + b + 5;
-\end{codeblock}
+\end{lstlisting}
 the expression statement behaves exactly the same as
-\begin{codeblock}
+\begin{lstlisting}
 a = (((a + 32760) + b) + 5);
-\end{codeblock}
+\end{lstlisting}
 due to the associativity and precedence of these operators. Thus, the
 result of the sum \tcode{(a + 32760)} is next added to \tcode{b}, and
 that result is then added to 5 which results in the value assigned to
@@ -760,20 +760,20 @@ that result is then added to 5 which results in the value assigned to
 which the range of values representable by an \tcode{int} is
 \crange{-32768}{+32767}, the implementation cannot rewrite this
 expression as
-\begin{codeblock}
+\begin{lstlisting}
 a = ((a + b) + 32765);
-\end{codeblock}
+\end{lstlisting}
 since if the values for \tcode{a} and \tcode{b} were, respectively,
 -32754 and -15, the sum \tcode{a + b} would produce an exception while
 the original expression would not; nor can the expression be rewritten
 either as
-\begin{codeblock}
+\begin{lstlisting}
 a = ((a + 32765) + b);
-\end{codeblock}
+\end{lstlisting}
 or
-\begin{codeblock}
+\begin{lstlisting}
 a = (a + (b + 32765));
-\end{codeblock}
+\end{lstlisting}
 since the values for \tcode{a} and \tcode{b} might have been,
 respectively, 4 and -8 or -17 and 12. However on a machine in which
 overflows do not produce an exception and in which the results of
@@ -801,7 +801,7 @@ expression appears are also considered to be part of the
 full-expression.
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S(int i): I(i) { }
   int& v() { return I; }
@@ -818,7 +818,7 @@ void f() {
                     // temporary is deleted at end of full-expression
   { }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -890,7 +890,7 @@ undefined.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(int, int);
 void g(int i, int* v) {
   i = v[i++];         // the behavior is undefined
@@ -901,7 +901,7 @@ void g(int i, int* v) {
 
   f(i = -1, i = -1);  // the behavior is undefined
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 When calling a function (whether or not the function is inline), every

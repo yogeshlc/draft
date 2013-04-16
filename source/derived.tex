@@ -109,23 +109,23 @@ The \grammarterm{base-specifier-list} specifies the type of the
 object of the derived class type.
 \enterexample
 \indextext{example!derived~class}%
-\begin{codeblock}
+\begin{lstlisting}
 struct Base {
   int a, b, c;
 };
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 struct Derived : Base {
   int b;
 };
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 struct Derived2 : Derived {
   int c;
 };
-\end{codeblock}
+\end{lstlisting}
 
 Here, an object of class \tcode{Derived2} will have a subobject of class
 \tcode{Derived} which in turn will have a subobject of class
@@ -185,12 +185,12 @@ A class can be derived from any number of base classes.
 The use of more than one direct base class is often called multiple inheritance.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class A { /* ... */ };
 class B { /* ... */ };
 class C { /* ... */ };
 class D : public A, public B, public C { /* ... */ };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -215,18 +215,18 @@ class. However, the static members, enumerations and types can be
 unambiguously referred to.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class X { /* ... */ };
 class Y : public X, public X { /* ... */ };             // ill-formed
 
-\end{codeblock}
-\begin{codeblock}
+\end{lstlisting}
+\begin{lstlisting}
 class L { public: int next;  /* ... */ };
 class A : public L { /* ... */ };
 class B : public L { /* ... */ };
 class C : public A, public B { void f(); /* ... */ };   // well-formed
 class D : public A, public L { void f(); /* ... */ };   // well-formed
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -258,21 +258,21 @@ shown below.
 In such lattices, explicit qualification can be used to specify which
 subobject is meant. The body of function \tcode{C::f} could refer to the
 member \tcode{next} of each \tcode{L} subobject:
-\begin{codeblock}
+\begin{lstlisting}
 void C::f() { A::next = B::next; }      // well-formed
-\end{codeblock}
+\end{lstlisting}
 Without the \tcode{A::} or \tcode{B::} qualifiers, the definition of
 \tcode{C::f} above would be ill-formed because of
 ambiguity~(\ref{class.member.lookup}).
 
 \pnum
 For another example,
-\begin{codeblock}
+\begin{lstlisting}
 class V { /* ... */ };
 class A : virtual public V { /* ... */ };
 class B : virtual public V { /* ... */ };
 class C : public A, public B { /* ... */ };
-\end{codeblock}
+\end{lstlisting}
 for an object \tcode{c} of class type \tcode{C}, a single subobject of
 type \tcode{V} is shared by every base subobject of \tcode{c} that has a
 \tcode{virtual} base class of type \tcode{V}. Given the class \tcode{C}
@@ -291,13 +291,13 @@ class \tcode{V}, as shown below.
 \pnum
 A class can have both virtual and non-virtual base classes of a given
 type.
-\begin{codeblock}
+\begin{lstlisting}
 class B { /* ... */ };
 class X : virtual public B { /* ... */ };
 class Y : virtual public B { /* ... */ };
 class Z : public B { /* ... */ };
 class AA : public X, public Y, public Z { /* ... */ };
-\end{codeblock}
+\end{lstlisting}
 For an object of class \tcode{AA}, all \tcode{virtual} occurrences of
 base class \tcode{B} in the class lattice of \tcode{AA} correspond to a
 single \tcode{B} subobject within the object of type \tcode{AA}, and
@@ -401,7 +401,7 @@ declarations and the union of the subobject sets.
 The result of name lookup for \tcode{f} in \tcode{C} is the declaration
 set of $S(f,C)$. If it is an invalid set, the program is ill-formed.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A { int x; };                    // S(x,A) = \{ \{ \tcode{A::x} \}, \{ \tcode{A} \} \}
 struct B { float x; };                  // S(x,B) = \{ \{ \tcode{B::x} \}, \{ \tcode{B} \} \}
 struct C: public A, public B { };       // S(x,C) = \{ invalid, \{ \tcode{A} in \tcode{C}, \tcode{B} in \tcode{C} \} \}
@@ -412,7 +412,7 @@ int main() {
   F f;
   f.x = 0;                              // OK, lookup finds \tcode{E::x}
 }
-\end{codeblock}
+\end{lstlisting}
 
 $S(x,F)$ is unambiguous because the \tcode{A} and \tcode{B} base
 subobjects of \tcode{D} are also base subobjects of \tcode{E}, so
@@ -429,23 +429,23 @@ control.
 \indextext{overloading!resolution!scoping ambiguity}%
 Ambiguities can often be resolved by qualifying a name with its class name.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int f();
 };
 
-\end{codeblock}
-\begin{codeblock}
+\end{lstlisting}
+\begin{lstlisting}
 struct B {
   int f();
 };
 
-\end{codeblock}
-\begin{codeblock}
+\end{lstlisting}
+\begin{lstlisting}
 struct C : A, B {
   int f() { return A::f() + B::f(); }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -456,7 +456,7 @@ base class subobject of type \tcode{T}. Two base class subobjects share
 the non-static member subobjects of their common virtual base classes.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct V {
   int v;
 };
@@ -475,7 +475,7 @@ void f(D* pd) {
   int i = pd->e;    // OK: only one \tcode{e} (enumerator)
   pd->a++;          // error, ambiguous: two \tcode{a}{s} in \tcode{D}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -488,7 +488,7 @@ non-virtual base classes is an ambiguity; in that case there is no
 unique instance of the name that hides all the others.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct V { int f();  int x; };
 struct W { int g();  int y; };
 struct B : virtual V, W {
@@ -498,7 +498,7 @@ struct B : virtual V, W {
 struct C : virtual V, W { };
 
 struct D : B, C { void glorp(); };
-\end{codeblock}
+\end{lstlisting}
 
 \begin{importgraphic}
 {Name lookup}
@@ -512,14 +512,14 @@ The names declared in \tcode{V} and the left-hand instance of \tcode{W}
 are hidden by those in \tcode{B}, but the names declared in the
 right-hand instance of \tcode{W} are not hidden at all.
 \exitnote
-\begin{codeblock}
+\begin{lstlisting}
 void D::glorp() {
   x++;              // OK: \tcode{B::x} hides \tcode{V::x}
   f();              // OK: \tcode{B::f()} hides \tcode{V::f()}
   y++;              // error: \tcode{B::y} and \tcode{C}'s \tcode{W::y}
   g();              // error: \tcode{B::g()} and \tcode{C}'s \tcode{W::g()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \indextext{ambiguity!class conversion}%
 
@@ -530,7 +530,7 @@ of a
 derived class to a pointer or reference to one of its base classes shall
 unambiguously refer to a unique object representing the base class.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct V { };
 struct A { };
 struct B : A, virtual V { };
@@ -543,7 +543,7 @@ void g() {
   A* pa = &d;       // error, ambiguous: \tcode{C}'s \tcode{A} or \tcode{B}'s \tcode{A}?
   V* pv = &d;       // OK: only one \tcode{V} subobject
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -552,7 +552,7 @@ Even if the result of name lookup is unambiguous, use of a name found in
 multiple subobjects might still be
 ambiguous~(\ref{conv.mem},~\ref{expr.ref}, \ref{class.access.base}).\exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct B1 {
   void f();
   static void f(int);
@@ -575,7 +575,7 @@ struct D: I1, I2, B2 {
     int D::* mpD = &D::i;       // Ambiguous conversion
   }
 };
-\end{codeblock}\exitexample
+\end{lstlisting}\exitexample
 
 \rSec1[class.virtual]{Virtual functions}%
 \indextext{virtual~function|(}%
@@ -609,7 +609,7 @@ base class subobject (if any) declares or inherits another member function that 
 \tcode{vf}. In a derived class, if a virtual member function of a base class subobject
 has more than one final overrider the program is ill-formed.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   virtual void f();
 };
@@ -625,24 +625,24 @@ void foo() {
   c.f();              // calls \tcode{B::f}, the final overrider
   c.C::f();           // calls \tcode{A::f} because of the using-declaration
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A { virtual void f(); };
 struct B : A { };
 struct C : A { void f(); };
 struct D : B, C { };  // OK: \tcode{A::f} and \tcode{C::f} are the final overriders
                       // for the \tcode{B} and \tcode{C} subobjects, respectively
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 \enternote
 A virtual member function does not have to be visible to be overridden,
 for example,
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual void f();
 };
@@ -652,7 +652,7 @@ struct D : B {
 struct D2 : D {
   void f();
 };
-\end{codeblock}
+\end{lstlisting}
 the function \tcode{f(int)} in class \tcode{D} hides the virtual
 function \tcode{f()} in its base class \tcode{B}; \tcode{D::f(int)} is
 not a virtual function. However, \tcode{f()} declared in class
@@ -666,7 +666,7 @@ class \tcode{D2}.
 If a virtual function \tcode{f} in some class \tcode{B} is marked with the
 \grammarterm{virt-specifier} \tcode{final} and in a class \tcode{D} derived from \tcode{B}
 a function \tcode{D::f} overrides \tcode{B::f}, the program is ill-formed. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual void f() const final;
 };
@@ -674,13 +674,13 @@ struct B {
 struct D : B {
   void f() const;     // error: \tcode{D::f} attempts to override \tcode{final} \tcode{B::f}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 If a virtual function is marked with the \grammarterm{virt-specifier} \tcode{override} and
 does not override a member function of a base class, the program is ill-formed. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual void f(int);
 };
@@ -689,7 +689,7 @@ struct D : B {
   virtual void f(long) override;  // error: wrong signature overriding \tcode{B::f}
   virtual void f(int) override;   // OK
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -730,7 +730,7 @@ the type returned by the (statically chosen) overridden
 function~(\ref{expr.call}).
 \enterexample
 \indextext{example!virtual~function}%
-\begin{codeblock}
+\begin{lstlisting}
 class B { };
 class D : private B { friend class Derived; };
 struct Base {
@@ -770,7 +770,7 @@ void g() {
                                 // convert the result to \tcode{B*}
   dp->vf2();                    // ill-formed: argument mismatch
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -804,7 +804,7 @@ required~(\ref{basic.def.odr}).
 \enterexample
 here are some uses of virtual functions with multiple base classes:
 \indextext{example!virtual~function}%
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   virtual void f();
 };
@@ -829,7 +829,7 @@ void foo() {
   ap->f();                      // calls \tcode{D::B1::f}
   dp->f();                      // ill-formed: ambiguous
 }
-\end{codeblock}
+\end{lstlisting}
 In class \tcode{D} above there are two occurrences of class \tcode{A}
 and hence two occurrences of the virtual member function \tcode{A::f}.
 The final overrider of \tcode{B1::A::f} is \tcode{B1::f} and the final
@@ -838,7 +838,7 @@ overrider of \tcode{B2::A::f} is \tcode{B2::f}.
 \pnum
 The following example shows a function that does not have a unique final
 overrider:
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   virtual void f();
 };
@@ -857,7 +857,7 @@ struct Error : VB1, VB2 {       // ill-formed
 struct Okay : VB1, VB2 {
   void f();
 };
-\end{codeblock}
+\end{lstlisting}
 Both \tcode{VB1::f} and \tcode{VB2::f} override \tcode{A::f} but there
 is no overrider of both of them in class \tcode{Error}. This example is
 therefore ill-formed. Class \tcode{Okay} is well formed, however,
@@ -865,7 +865,7 @@ because \tcode{Okay::f} is a final overrider.
 
 \pnum
 The following example uses the well-formed classes from above.
-\begin{codeblock}
+\begin{lstlisting}
 struct VB1a : virtual A {       // does not declare \tcode{f}
 };
 
@@ -876,7 +876,7 @@ void foe() {
   VB1a*  vb1ap = new Da;
   vb1ap->f();                   // calls \tcode{VB2::f}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -885,12 +885,12 @@ void foe() {
 Explicit qualification with the scope operator~(\ref{expr.prim})
 suppresses the virtual call mechanism.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class B { public: virtual void f(); };
 class D : public B { public: void f(); };
 
 void D::f() { /* ... */ B::f(); }
-\end{codeblock}
+\end{lstlisting}
 
 Here, the function call in
 \tcode{D::f}
@@ -935,7 +935,7 @@ with~(\ref{class.dtor}), the \grammarterm{qualified-id}
 syntax~(\ref{expr.prim}).
 \enterexample
 \indextext{example!pure virtual~function}%
-\begin{codeblock}
+\begin{lstlisting}
 class point { /* ... */ };
 class shape {                   // abstract class
   point center;
@@ -945,18 +945,18 @@ public:
   virtual void rotate(int) = 0; // pure virtual
   virtual void draw() = 0;      // pure virtual
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 A function declaration cannot provide both a \grammarterm{pure-specifier}
 and a definition
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct C {
   virtual void f() = 0 { };     // ill-formed
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -965,13 +965,13 @@ An abstract class shall not be used as a parameter type, as a function
 return type, or as the type of an explicit conversion. Pointers and
 references to an abstract class can be declared.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 shape x;                        // error: object of abstract class
 shape* p;                       // OK
 shape f();                      // error
 void g(shape);                  // error
 shape& h(shape&);               // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -979,26 +979,26 @@ shape& h(shape&);               // OK
 A class is abstract if it contains or inherits at least one pure virtual
 function for which the final overrider is pure virtual.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class ab_circle : public shape {
   int radius;
 public:
   void rotate(int) { }
   // \tcode{ab_circle::draw()} is a pure virtual
 };
-\end{codeblock}
+\end{lstlisting}
 
 Since \tcode{shape::draw()} is a pure virtual function
 \tcode{ab_circle::draw()} is a pure virtual by default. The alternative
 declaration,
-\begin{codeblock}
+\begin{lstlisting}
 class circle : public shape {
   int radius;
 public:
   void rotate(int) { }
   void draw();                  // a definition is required somewhere
 };
-\end{codeblock}
+\end{lstlisting}
 would make class \tcode{circle} nonabstract and a definition of
 \tcode{circle::draw()} must be provided.
 \exitexample

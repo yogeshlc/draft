@@ -105,7 +105,7 @@ xvalues; rvalue references to functions are treated as lvalues whether named or 
 \exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   int m;
 };
@@ -114,7 +114,7 @@ A&& f();
 
 A a;
 A&& ar = static_cast<A&&>(a);
-\end{codeblock}
+\end{lstlisting}
 
 The expressions \tcode{f()}, \tcode{f().m}, \tcode{static_cast<A\&\&>(a)}, and \tcode{a + a}
 are xvalues. The expression \tcode{ar} is an lvalue.
@@ -298,14 +298,14 @@ type for purposes of class member access~(\ref{expr.ref}) outside the member
 function body. \enternote only class members declared prior to the declaration
 are visible. \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   char g();
   template<class T> auto f(T t) -> decltype(t + g())
     { return t + g(); }
 };
 template auto A::f(int t) -> decltype(t + g());
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -318,7 +318,7 @@ in the \grammarterm{member-declarator}.
 \pnum
 The expression \tcode{this} shall not appear in any other context.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class Outer {
   int a[sizeof(*this)];               // error: not inside a member function
   unsigned int sz = sizeof(*this);    // OK: in \grammarterm{brace-or-equal-initializer}
@@ -331,7 +331,7 @@ class Outer {
     };
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -471,13 +471,13 @@ that class, or
 and it appears in an unevaluated operand.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   int m;
 };
 int i = sizeof(S::m);           // OK
 int j = sizeof(S::m + 42);      // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 
@@ -488,7 +488,7 @@ int j = sizeof(S::m + 42);      // OK
 Lambda expressions provide a concise way to create simple function objects.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <algorithm>
 #include <cmath>
 void abssort(float *x, unsigned N) {
@@ -497,7 +497,7 @@ void abssort(float *x, unsigned N) {
       return std::abs(a) < std::abs(b);
     });
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \begin{bnf}
@@ -598,11 +598,11 @@ and function-to-pointer conversion~(\ref{conv.func});
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 auto x1 = [](int i){ return i; }; // OK: return type is \tcode{int}
 auto x2 = []{ return { 1, 2 }; }; // error: the return type is \tcode{void} (a
                                   // \grammarterm{braced-init-list} is not an expression)
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -639,7 +639,7 @@ referring to non-static class members into class member access expressions using
 \tcode{(*this)}~(\ref{class.mfct.non-static}), the \grammarterm{compound-statement} is
 considered in the context of the \grammarterm{lambda-expression}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S1 {
   int x, y;
   int operator()(int);
@@ -650,7 +650,7 @@ struct S1 {
     };
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -662,7 +662,7 @@ not contain \tcode{this} and each identifier it contains shall be preceded by
 \tcode{\&}. An identifier or \tcode{this} shall not appear more than once in a
 \grammarterm{lambda-capture}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S2 { void f(int i); };
 void S2::f(int i) {
   [&, i]{ };    // OK
@@ -670,7 +670,7 @@ void S2::f(int i) {
   [=, this]{ }; // error: \tcode{this} when \tcode{=} is the default
   [i, i]{ };    // error: \tcode{i} repeated
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -712,7 +712,7 @@ entity shall be captured by the \grammarterm{lambda-expression}. If a
 \grammarterm{lambda-expression} captures an entity and that entity is not defined or
 captured in the immediately enclosing lambda expression or function, the program is
 ill-formed. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f1(int i) {
   int const N = 20;
   auto m1 = [=]{
@@ -742,14 +742,14 @@ void f1(int i) {
     }
   };
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 A \grammarterm{lambda-expression} appearing in a default argument shall not
 implicitly or explicitly capture any entity. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f2() {
   int i = 1;
   void g1(int = ([i]{ return i; })());        // ill-formed
@@ -758,7 +758,7 @@ void f2() {
   void g4(int = ([=]{ return 0; })());        // OK
   void g5(int = ([]{ return sizeof i; })());  // OK
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -794,7 +794,7 @@ entity captured by \tcode{m1}.
 \end{itemize}
 \enterexample the nested lambda expressions and invocations below will output
 \tcode{123234}.
-\begin{codeblock}
+\begin{lstlisting}
 int a = 1, b = 1, c = 1;
 auto m1 = [a, &b, &c]() mutable {
   auto m2 = [a, b, &c]() mutable {
@@ -807,7 +807,7 @@ auto m1 = [a, &b, &c]() mutable {
 a = 2; b = 2; c = 2;
 m1();
 std::cout << a << b << c;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 
@@ -823,7 +823,7 @@ If \tcode{this} is captured, each odr-use of \tcode{this} is
 transformed into an access to the corresponding unnamed data member of the closure type,
 cast~(\ref{expr.cast}) to the type of \tcode{this}. \enternote The cast ensures that the
 transformed expression is a prvalue. \exitnote \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f(const int*);
 void g() {
   const int N = 10;
@@ -833,7 +833,7 @@ void g() {
                             // corresponding member of the closure type
   };
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -843,7 +843,7 @@ duration is treated as if \tcode{x} were transformed into an access to a corresp
 data member of the closure type that would have been declared if \tcode{x} were an odr-use of
 the denoted entity. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f3() {
   float x, &r = x;
   [=] {                     // \tcode{x} and \tcode{r} are not captured (appearance in a \tcode{decltype} operand is not an odr-use)
@@ -854,7 +854,7 @@ void f3() {
     decltype((r)) r2 = y2;  // \tcode{r2} has type \tcode{float const\&}
   };
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -889,13 +889,13 @@ after the lifetime of the entity has ended is likely to result in undefined beha
 \pnum
 A \grammarterm{capture} followed by an ellipsis is a pack expansion~(\ref{temp.variadic}).
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class... Args>
 void f(Args... args) {
   auto lm = [&, args...] { return g(args...); };
   lm();
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{expression!lambda|)}%
 \indextext{expression!primary|)}
@@ -1499,13 +1499,13 @@ cv-qualification than \cvqual{cv1} or if \tcode{B} is an inaccessible or
 ambiguous base class of \tcode{D}.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B { };
 struct D : B { };
 void foo(D* dp) {
   B*  bp = dynamic_cast<B*>(dp);    // equivalent to \tcode{B* bp = dp;}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 
 \pnum
@@ -1549,7 +1549,7 @@ handler~(\ref{except.handle}) of type \tcode{std::bad_cast}~(\ref{bad.cast}).
 \indexlibrary{\idxcode{bad_cast}}%
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 class A { virtual void f(); };
 class B { virtual void g(); };
 class D : public virtual A, private B { };
@@ -1574,7 +1574,7 @@ void h() {
   E*  ep  = (E*)ap;                 // ill-formed: cast from virtual base
   E*  ep1 = dynamic_cast<E*>(ap);   // succeeds
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 \enternote
 \ref{class.cdtor} describes the behavior of a \tcode{dynamic_cast}
@@ -1646,7 +1646,7 @@ to a \tcode{std::type_info} object representing the cv-unqualified
 type.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 class D @\tcode{\{ /* ... */ \}}@;
 D d1;
 const D d2;
@@ -1655,7 +1655,7 @@ typeid(d1) == typeid(d2);       // yields \tcode{true}
 typeid(D)  == typeid(const D);  // yields \tcode{true}
 typeid(D)  == typeid(d2);       // yields \tcode{true}
 typeid(D)  == typeid(const D&); // yields \tcode{true}
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 
 \pnum
@@ -1703,14 +1703,14 @@ of type \tcode{D}, the result refers to the enclosing object of type
 \tcode{D}. Otherwise, the behavior is undefined.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B { };
 struct D : public B { };
 D d;
 B &br = d;
 
 static_cast<D&>(br);            // produces lvalue to the original \tcode{d} object
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 
 \pnum
@@ -1766,14 +1766,14 @@ conversion, can be performed explicitly using \tcode{static_cast}. A
 program is ill-formed if it uses \tcode{static_cast} to perform the
 inverse of an ill-formed standard conversion sequence.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct B { };
 struct D : private B { };
 void f() {
   static_cast<D*>((B*)0);               // Error: B is a private base of D.
   static_cast<int B::*>((int D::*)0);   // Error: B is a private base of D.
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1859,11 +1859,11 @@ destination type. A value of type pointer to object converted to
 different cv-qualification, shall have its original value.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 T* p1 = new T;
 const T* p2 = static_cast<const T*>(static_cast<void*>(p1));
 bool b = p1 == p2;  // \tcode{b} will have the value \tcode{true}.
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[expr.reinterpret.cast]{Reinterpret cast}
@@ -2266,11 +2266,11 @@ object of type ``\cv\ \tcode{T}'' is ``pointer to \cv\ \tcode{T}'', with the sam
 cv-qualification. \exitnote
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { int i; };
 struct B : A { };
 ... &B::i ...       // has type \tcode{int A::*}
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 \enternote 
 a pointer to member formed from a \tcode{mutable} non-static data
@@ -2449,12 +2449,12 @@ provided for the parameter pack \grammarterm{identifier}.
 A \tcode{sizeof...} expression is a pack expansion~(\ref{temp.variadic}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class... Types>
 struct count {
   static const std::size_t value = sizeof...(Types);
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2561,15 +2561,15 @@ the \nonterminal{new-expression}, then the allocated type is the type
 deduced for the variable \tcode{x} in the invented
 declaration~(\ref{dcl.spec.auto}):
 
-\begin{codeblock}
+\begin{lstlisting}
 T x(e);
-\end{codeblock}
+\end{lstlisting}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 new auto(1);                    // allocated type is \tcode{int}
 auto x = new auto('a');         // allocated type is \tcode{char}, \tcode{x} is of type \tcode{char*}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2581,9 +2581,9 @@ this prevents ambiguities between the declarator operators \tcode{\&}, \tcode{\&
 \exitnote 
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 new int * i;                    // syntax error: parsed as \tcode{(new int*) i}, not as \tcode{(new int)*i}
-\end{codeblock}
+\end{lstlisting}
 The \tcode{*} is the pointer declarator and not the multiplication
 operator.
 \exitexample 
@@ -2595,23 +2595,23 @@ parentheses in a \grammarterm{new-type-id} of a \grammarterm{new-expression}
 can have surprising effects.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 new int(*[10])();               // error
-\end{codeblock}
+\end{lstlisting}
 
 is ill-formed because the binding is
 
-\begin{codeblock}
+\begin{lstlisting}
 (new int) (*[10])();            // error
-\end{codeblock}
+\end{lstlisting}
 
 Instead, the explicitly parenthesized version of the \tcode{new}
 operator can be used to create objects of compound
 types~(\ref{basic.compound}):
 
-\begin{codeblock}
+\begin{lstlisting}
 new (int (*[10])());
-\end{codeblock}
+\end{lstlisting}
 
 allocates an array of \tcode{10} pointers to functions (taking no
 argument and returning \tcode{int}.
@@ -2868,7 +2868,7 @@ selected as a match for the allocation function, the program is
 ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S { 
   // Placement allocation function:
   static void* operator new(std::size_t, std::size_t); 
@@ -2879,7 +2879,7 @@ struct S {
 
 S* p = new (0) S;   // ill-formed: non-placement deallocation function matches 
                     // placement allocation function 
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -3159,7 +3159,7 @@ conversion can be interpreted in more than one way as a
 ill-formed.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };
 struct I1 : A { };
 struct I2 : A { };
@@ -3167,7 +3167,7 @@ struct D : I1, I2 { };
 A *foo( D *p ) {
   return (A*)( p ); // ill-formed \tcode{static_cast} interpretation
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 
 \pnum
@@ -3238,7 +3238,7 @@ it is not possible to use a pointer to member that refers to a
 \tcode{mutable} member to modify a \tcode{const} class object. For
 example,
 
-\begin{codeblock}
+\begin{lstlisting}
 struct S {
   S() : i(0) { }
   mutable int i;
@@ -3249,7 +3249,7 @@ const S cs;
 int S::* pm = &S::i;            // \tcode{pm} refers to \tcode{mutable} member \tcode{S::i}
 cs.*pm = 88;                    // ill-formed: \tcode{cs} is a \tcode{const} object
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote 
 
 \pnum
@@ -3259,9 +3259,9 @@ result can be used only as the operand for the function call operator
 \tcode{()}.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 (ptr_to_obj->*ptr_to_mfct)(10);
-\end{codeblock}
+\end{lstlisting}
 
 calls the member function denoted by \tcode{ptr_to_mfct} for the object
 pointed to by \tcode{ptr_to_obj}.
@@ -3556,7 +3556,7 @@ object pointer can be compared to a pointer to (possibly cv-qualified)
 \exitnote 
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 void *p;
 const int *q;
 int **pi;
@@ -3565,7 +3565,7 @@ void ct() {
   p <= q;           // Both converted to \tcode{const void*} before comparison
   pi <= pci;        // Both converted to \tcode{const int *const *} before comparison
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 \indextext{comparison!pointer}%
 \indextext{comparison!pointer~to function}%
@@ -3676,7 +3676,7 @@ indirection with a hypothetical object of the associated
 class type were performed.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   int f();
 };
@@ -3690,7 +3690,7 @@ int (R::*pr)() = pb;
 int (D::*pdl)() = pl;
 int (D::*pdr)() = pr;
 bool x = (pdl == pdr);          // \tcode{false}
-\end{codeblock}
+\end{lstlisting}
 \exitexample 
 
 \pnum
@@ -4068,14 +4068,14 @@ the initializer list is passed as the argument to the operator function.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 complex<double> z;
 z = { 1,2 };              // meaning \tcode{z.operator=(\{1,2\})}
 z += { 1, 2 };            // meaning \tcode{z.operator+=(\{1,2\})}
 int a, b;
 a = b = { 1 };            // meaning \tcode{a=b=1;}
 a = { 1 } = b;            // syntax error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[expr.comma]{Comma operator}%
@@ -4119,9 +4119,9 @@ initializers~(\ref{dcl.init}) \exitexample the comma operator as
 described in Clause~\ref{expr} can appear only in parentheses.
 \enterexample 
 
-\begin{codeblock}
+\begin{lstlisting}
 f(a, (t=3, t+2), c);
-\end{codeblock}
+\end{lstlisting}
 
 has three arguments, the second of which has the value
 \tcode{5}.
@@ -4177,7 +4177,7 @@ an invocation of a \tcode{constexpr} function with arguments that, when
 substituted by function invocation substitution~(\ref{dcl.constexpr}),
 do not
 produce a core constant expression; \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 constexpr const int* addr(const int& ir) { return &ir; }  // OK
 static const int x = 5;
 constexpr const int* xp = addr(x);  // OK: \tcode{(const int*)\&(const int\&)x} is an
@@ -4185,7 +4185,7 @@ constexpr const int* xp = addr(x);  // OK: \tcode{(const int*)\&(const int\&)x} 
 constexpr const int* tp = addr(5);  // error, initializer for \tcode{constexpr} variable not a constant
                                     // expression; \tcode{(const int*)\&(const int\&)5} is not a constant
                                     // expression because it takes the address of a temporary
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -4194,7 +4194,7 @@ by function invocation substitution~(\ref{dcl.constexpr}), do not
 produce all core constant
 expressions for the constructor calls and full-expressions in the
 \grammarterm{mem-initializer}{s} (including conversions); \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int x;                              // not constant
 struct A {
   constexpr A(bool b) : m(b?42:x) { }
@@ -4204,7 +4204,7 @@ constexpr int v = A(true).m;        // OK: constructor call initializes
                                     // \tcode{m} with the value \tcode{42} after substitution
 constexpr int w = A(false).m;       // error: initializer for \tcode{m} is
                                     // \tcode{x}, which is non-constant
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -4351,13 +4351,13 @@ execution.\footnote{Nonetheless, implementations are encouraged to provide consi
 irrespective of whether the evaluation was actually performed during translation or during program
 execution.} \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 bool f() {
     char array[1 + int(1 + 0.2 - 0.1 - 0.1)];  // Must be evaluated during translation
     int size = 1 + int(1 + 0.2 - 0.1 - 0.1);   // May be evaluated at runtime
     return sizeof(array) == size;
 }
-\end{codeblock}
+\end{lstlisting}
 It is unspecified whether the value of \tcode{f()} will be \tcode{true} or \tcode{false}.
 \exitexample \exitnote
 
@@ -4367,7 +4367,7 @@ integral constant expression is required, then that expression is
 contextually implicitly converted (Clause~\ref{conv}) to an integral or unscoped
 enumeration type 
 and the selected conversion function shall be \tcode{constexpr}. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A { 
   constexpr A(int i) : val(i) { } 
   constexpr operator int() { return val; } 
@@ -4379,6 +4379,6 @@ template<int> struct X { };
 constexpr A a = 42; 
 X<a> x;             // OK: unique conversion to \tcode{int}
 int ary[a];         // error: ambiguous conversion 
-\end{codeblock}
+\end{lstlisting}
 \exitexample%
 \indextext{expression|)}

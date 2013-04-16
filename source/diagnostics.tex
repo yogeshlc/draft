@@ -59,7 +59,7 @@ These exceptions are related by inheritance.
 \indexlibrary{\idxcode{range_error}}%
 \indexlibrary{\idxcode{overflow_error}}%
 \indexlibrary{\idxcode{underflow_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class logic_error;
     class domain_error;
@@ -71,12 +71,12 @@ namespace std {
     class overflow_error;
     class underflow_error;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[logic.error]{Class \tcode{logic_error}}
 
 \indexlibrary{\idxcode{logic_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class logic_error : public exception {
   public:
@@ -84,7 +84,7 @@ namespace std {
     explicit logic_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -95,9 +95,9 @@ the program executes, such as violations of logical preconditions or class
 invariants.
 
 \indexlibrary{\idxcode{logic_error}!\tcode{logic_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 logic_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -111,9 +111,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{logic_error}!\tcode{logic_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 logic_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -129,7 +129,7 @@ Constructs an object of class
 \rSec2[domain.error]{Class \tcode{domain_error}}
 
 \indexlibrary{\idxcode{domain_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class domain_error : public logic_error {
   public:
@@ -137,7 +137,7 @@ namespace std {
     explicit domain_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -146,9 +146,9 @@ defines the type of objects thrown as
 exceptions by the implementation to report domain errors.
 
 \indexlibrary{\idxcode{domain_error}!\tcode{domain_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 domain_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -162,9 +162,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{domain_error}!\tcode{domain_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 domain_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -180,7 +180,7 @@ Constructs an object of class
 \rSec2[invalid.argument]{Class \tcode{invalid_argument}}
 
 \indexlibrary{\idxcode{invalid_argument}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class invalid_argument : public logic_error {
   public:
@@ -188,7 +188,7 @@ namespace std {
     explicit invalid_argument(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -196,9 +196,9 @@ The class
 defines the type of objects thrown as exceptions to report an invalid argument.
 
 \indexlibrary{\idxcode{invalid_argument}!\tcode{invalid_argument}}%
-\begin{itemdecl}
+\begin{lstlisting}
 invalid_argument(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -212,9 +212,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{invalid_argument}!\tcode{invalid_argument}}%
-\begin{itemdecl}
+\begin{lstlisting}
 invalid_argument(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -230,7 +230,7 @@ Constructs an object of class
 \rSec2[length.error]{Class \tcode{length_error}}
 
 \indexlibrary{\idxcode{length_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class length_error : public logic_error {
   public:
@@ -238,7 +238,7 @@ namespace std {
     explicit length_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -248,9 +248,9 @@ to report an attempt to produce
 an object whose length exceeds its maximum allowable size.
 
 \indexlibrary{\idxcode{length_error}!\tcode{length_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 length_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -264,9 +264,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{length_error}!\tcode{length_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 length_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -282,7 +282,7 @@ Constructs an object of class
 \rSec2[out.of.range]{Class \tcode{out_of_range}}
 
 \indexlibrary{\idxcode{out_of_range}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class out_of_range : public logic_error {
   public:
@@ -290,7 +290,7 @@ namespace std {
     explicit out_of_range(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -300,9 +300,9 @@ argument value not in its expected range.
 \indextext{argument}
 
 \indexlibrary{\idxcode{out_of_range}!\tcode{out_of_range}}%
-\begin{itemdecl}
+\begin{lstlisting}
 out_of_range(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -316,9 +316,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{out_of_range}!\tcode{out_of_range}}%
-\begin{itemdecl}
+\begin{lstlisting}
 out_of_range(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -334,7 +334,7 @@ Constructs an object of class
 \rSec2[runtime.error]{Class \tcode{runtime_error}}
 
 \indexlibrary{\idxcode{runtime_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class runtime_error : public exception {
   public:
@@ -342,7 +342,7 @@ namespace std {
     explicit runtime_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -351,9 +351,9 @@ defines the type of objects thrown as exceptions to report errors presumably det
 when the program executes.
 
 \indexlibrary{\idxcode{runtime_error}!\tcode{runtime_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 runtime_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -367,9 +367,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{runtime_error}!\tcode{runtime_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 runtime_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -385,7 +385,7 @@ Constructs an object of class
 \rSec2[range.error]{Class \tcode{range_error}}
 
 \indexlibrary{\idxcode{range_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class range_error : public runtime_error {
   public:
@@ -393,7 +393,7 @@ namespace std {
     explicit range_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -402,9 +402,9 @@ defines the type of objects thrown as exceptions to report range errors
 in internal computations.
 
 \indexlibrary{\idxcode{range_error}!\tcode{range_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 range_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -418,9 +418,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{range_error}!\tcode{range_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 range_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -436,7 +436,7 @@ Constructs an object of class
 \rSec2[overflow.error]{Class \tcode{overflow_error}}
 
 \indexlibrary{\idxcode{overflow_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class overflow_error : public runtime_error {
   public:
@@ -444,7 +444,7 @@ namespace std {
     explicit overflow_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -452,9 +452,9 @@ The class
 defines the type of objects thrown as exceptions to report an arithmetic overflow error.
 
 \indexlibrary{\idxcode{overflow_error}!\tcode{overflow_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 overflow_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -468,9 +468,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{overflow_error}!\tcode{overflow_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 overflow_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -486,7 +486,7 @@ Constructs an object of class
 \rSec2[underflow.error]{Class \tcode{underflow_error}}
 
 \indexlibrary{\idxcode{overflow_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class underflow_error : public runtime_error {
   public:
@@ -494,7 +494,7 @@ namespace std {
     explicit underflow_error(const char* what_arg);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -502,9 +502,9 @@ The class
 defines the type of objects thrown as exceptions to report an arithmetic underflow error.
 
 \indexlibrary{\idxcode{underflow_error}!\tcode{underflow_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 underflow_error(const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -518,9 +518,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{underflow_error}!\tcode{underflow_error}}%
-\begin{itemdecl}
+\begin{lstlisting}
 underflow_error(const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -680,7 +680,7 @@ libraries unchanged.
 \indexlibrary{\idxcode{errc}}%
 \indexlibrary{\idxcode{make_error_code}}%
 \indexlibrary{\idxcode{make_error_condition}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class error_category;
   const error_category& generic_category() noexcept;
@@ -796,7 +796,7 @@ namespace std {
   template <class T> struct hash;
   template <> struct hash<error_code>;
 }  // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \pnum The value of each \tcode{enum errc} constant shall be the same as
 the value of the \tcode{<cerrno>} macro shown in the above synopsis. Whether
@@ -829,7 +829,7 @@ such type. \exitnote
 \indexlibrary{\idxcode{error_category}}%
 \indexlibrary{\idxcode{generic_category}}%
 \indexlibrary{\idxcode{system_category}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class error_category {
   public:
@@ -851,15 +851,15 @@ namespace std {
   const error_category& system_category() noexcept;
 
 }   // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[syserr.errcat.virtuals]{Class \tcode{error_category} virtual members}
 
 \indexlibrary{\idxcode{name}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{name}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* name() const noexcept = 0;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -868,9 +868,9 @@ virtual const char* name() const noexcept = 0;
 
 \indexlibrary{\idxcode{default_error_condition}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{default_error_condition}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual error_condition default_error_condition(int ev) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -880,9 +880,9 @@ virtual error_condition default_error_condition(int ev) const noexcept;
 
 \indexlibrary{\idxcode{equivalent}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{equivalent}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual bool equivalent(int code, const error_condition& condition) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -891,9 +891,9 @@ virtual bool equivalent(int code, const error_condition& condition) const noexce
 
 \indexlibrary{\idxcode{equivalent}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{equivalent}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual bool equivalent(const error_code& code, int condition) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -902,9 +902,9 @@ virtual bool equivalent(const error_code& code, int condition) const noexcept;
 
 \indexlibrary{\idxcode{message}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{message}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual string message(int ev) const = 0;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -915,9 +915,9 @@ virtual string message(int ev) const = 0;
 
 \indexlibrary{\idxcode{operator==}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{operator==}}
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const error_category& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -926,9 +926,9 @@ bool operator==(const error_category& rhs) const noexcept;
 
 \indexlibrary{\idxcode{operator"!=}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{operator"!=}}
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!=(const error_category& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -937,9 +937,9 @@ bool operator!=(const error_category& rhs) const noexcept;
 
 \indexlibrary{\idxcode{operator<}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{operator<}}
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator<(const error_category& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -952,9 +952,9 @@ bool operator<(const error_category& rhs) const noexcept;
 
 \indexlibrary{\idxcode{name}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{name}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char *name() const noexcept = 0;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -963,9 +963,9 @@ virtual const char *name() const noexcept = 0;
 
 \indexlibrary{\idxcode{default_error_condition}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{default_error_condition}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual error_condition default_error_condition(int ev) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -974,9 +974,9 @@ virtual error_condition default_error_condition(int ev) const noexcept;
 
 \indexlibrary{\idxcode{equivalent}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{equivalent}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual bool equivalent(int code, const error_condition& condition) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -985,9 +985,9 @@ virtual bool equivalent(int code, const error_condition& condition) const noexce
 
 \indexlibrary{\idxcode{equivalent}!\idxcode{error_category}}
 \indexlibrary{\idxcode{error_category}!\idxcode{equivalent}}
-\begin{itemdecl}
+\begin{lstlisting}
 virtual bool equivalent(const error_code& code, int condition) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -997,9 +997,9 @@ virtual bool equivalent(const error_code& code, int condition) const noexcept;
 \rSec3[syserr.errcat.objects]{Error category objects}
 
 \indexlibrary{\idxcode{generic_category}}
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& generic_category() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1011,9 +1011,9 @@ All calls to this function shall return references to the same object.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{system_category}}
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& system_category() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1046,7 +1046,7 @@ application program interfaces. \enternote Class \tcode{error_code} is an
 adjunct to error reporting by exception. \exitnote
 
 \indexlibrary{\idxcode{error_code}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class error_code {
   public:
@@ -1082,15 +1082,15 @@ namespace std {
     basic_ostream<charT,traits>&
       operator<<(basic_ostream<charT,traits>& os, const error_code& ec);
 }   // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[syserr.errcode.constructors]{Class \tcode{error_code} constructors}
 
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
-\begin{itemdecl}
+\begin{lstlisting}
 error_code() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1102,9 +1102,9 @@ error_code() noexcept;
 
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
-\begin{itemdecl}
+\begin{lstlisting}
 error_code(int val, const error_category& cat) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1116,10 +1116,10 @@ error_code(int val, const error_category& cat) noexcept;
 
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{error_code}}
-\begin{itemdecl}
+\begin{lstlisting}
 template <class ErrorCodeEnum>
   error_code(ErrorCodeEnum e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1137,9 +1137,9 @@ template <class ErrorCodeEnum>
 
 \indexlibrary{\idxcode{assign}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{assign}}
-\begin{itemdecl}
+\begin{lstlisting}
 void assign(int val, const error_category& cat) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1148,10 +1148,10 @@ void assign(int val, const error_category& cat) noexcept;
 
 \indexlibrary{\idxcode{operator=}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{operator=}}
-\begin{itemdecl}
+\begin{lstlisting}
 template <class ErrorCodeEnum>
     error_code& operator=(ErrorCodeEnum e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1167,9 +1167,9 @@ template <class ErrorCodeEnum>
 
 \indexlibrary{\idxcode{clear}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{clear}}
-\begin{itemdecl}
+\begin{lstlisting}
 void clear() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1181,9 +1181,9 @@ void clear() noexcept;
 
 \indexlibrary{\idxcode{value}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{value}}
-\begin{itemdecl}
+\begin{lstlisting}
 int value() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1192,9 +1192,9 @@ int value() const noexcept;
 
 \indexlibrary{\idxcode{category}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{category}}
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& category() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1203,9 +1203,9 @@ const error_category& category() const noexcept;
 
 \indexlibrary{\idxcode{default_error_condition}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{default_error_condition}}
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition default_error_condition() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1214,9 +1214,9 @@ error_condition default_error_condition() const noexcept;
 
 \indexlibrary{\idxcode{message}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{message}}
-\begin{itemdecl}
+\begin{lstlisting}
 string message() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1225,9 +1225,9 @@ string message() const;
 
 \indexlibrary{\idxcode{operator bool}!\idxcode{error_code}}
 \indexlibrary{\idxcode{error_code}!\idxcode{operator bool}}
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1237,9 +1237,9 @@ explicit operator bool() const noexcept;
 \rSec3[syserr.errcode.nonmembers]{Class \tcode{error_code} non-member functions}
 
 \indexlibrary{\idxcode{make_error_code}}
-\begin{itemdecl}
+\begin{lstlisting}
 error_code make_error_code(errc e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1248,9 +1248,9 @@ error_code make_error_code(errc e) noexcept;
 
 \indexlibrary{\idxcode{operator<}!\idxcode{error_code}}%
 \indexlibrary{\idxcode{error_code}!\idxcode{operator<}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator<(const error_code& lhs, const error_code& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1259,11 +1259,11 @@ bool operator<(const error_code& lhs, const error_code& rhs) noexcept;
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{error_code}}%
 \indexlibrary{\idxcode{error_code}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits>
   basic_ostream<charT,traits>&
     operator<<(basic_ostream<charT,traits>& os, const error_code& ec);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1281,7 +1281,7 @@ error conditions. \enternote \tcode{error_condition} values are portable abstrac
 while \tcode{error_code} values~(\ref{syserr.errcode}) are implementation specific. \exitnote
 
 \indexlibrary{\idxcode{error_code}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class error_condition {
   public:
@@ -1311,14 +1311,14 @@ namespace std {
   // \ref{syserr.errcondition.nonmembers} non-member functions:
   bool operator<(const error_condition& lhs, const error_condition& rhs) noexcept;
 } // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[syserr.errcondition.constructors]{Class \tcode{error_condition} constructors}
 
 \indexlibrary{\idxcode{error_condition}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1329,9 +1329,9 @@ error_condition() noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{error_condition}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition(int val, const error_category& cat) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1342,10 +1342,10 @@ error_condition(int val, const error_category& cat) noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{error_condition}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class ErrorConditionEnum>
   error_condition(ErrorConditionEnum e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1364,9 +1364,9 @@ template <class ErrorConditionEnum>
 
 \indexlibrary{\idxcode{assign}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{assign}}
-\begin{itemdecl}
+\begin{lstlisting}
 void assign(int val, const error_category& cat) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1375,10 +1375,10 @@ void assign(int val, const error_category& cat) noexcept;
 
 \indexlibrary{\idxcode{operator=}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator=}}
-\begin{itemdecl}
+\begin{lstlisting}
 template <class ErrorConditionEnum>
     error_condition& operator=(ErrorConditionEnum e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1394,9 +1394,9 @@ template <class ErrorConditionEnum>
 
 \indexlibrary{\idxcode{clear}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{clear}}
-\begin{itemdecl}
+\begin{lstlisting}
 void clear() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \postconditions \tcode{value() == 0} and \tcode{category() == generic_category()}.
@@ -1406,9 +1406,9 @@ void clear() noexcept;
 
 \indexlibrary{\idxcode{value}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{value}}
-\begin{itemdecl}
+\begin{lstlisting}
 int value() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1417,9 +1417,9 @@ int value() const noexcept;
 
 \indexlibrary{\idxcode{category}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{category}}
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& category() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1428,9 +1428,9 @@ const error_category& category() const noexcept;
 
 \indexlibrary{\idxcode{message}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{message}}
-\begin{itemdecl}
+\begin{lstlisting}
 string message() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1439,9 +1439,9 @@ string message() const;
 
 \indexlibrary{\idxcode{operator bool}!\idxcode{error_condition}}
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator bool}}
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1451,9 +1451,9 @@ explicit operator bool() const noexcept;
 \rSec3[syserr.errcondition.nonmembers]{Class \tcode{error_condition} non-member functions}
 
 \indexlibrary{\idxcode{make_error_condition}}
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition make_error_condition(errc e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \returns \tcode{error_condition(static_cast<int>(e), generic_category())}.
@@ -1461,9 +1461,9 @@ error_condition make_error_condition(errc e) noexcept;
 
 \indexlibrary{\idxcode{operator<}!\idxcode{error_condition}}%
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator<}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator<(const error_condition& lhs, const error_condition& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1475,9 +1475,9 @@ lhs.value() < rhs.value()}.
 
 \indexlibrary{\idxcode{operator==}!\idxcode{error_code}}%
 \indexlibrary{\idxcode{error_code}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const error_code& lhs, const error_code& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1488,9 +1488,9 @@ bool operator==(const error_code& lhs, const error_code& rhs) noexcept;
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator==}}%
 \indexlibrary{\idxcode{operator==}!\idxcode{error_code}}%
 \indexlibrary{\idxcode{error_code}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const error_code& lhs, const error_condition& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1502,9 +1502,9 @@ rhs.value())}.
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator==}}%
 \indexlibrary{\idxcode{operator==}!\idxcode{error_code}}%
 \indexlibrary{\idxcode{error_code}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const error_condition& lhs, const error_code& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1513,9 +1513,9 @@ bool operator==(const error_condition& lhs, const error_code& rhs) noexcept;
 
 \indexlibrary{\idxcode{operator==}!\idxcode{error_condition}}%
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator==}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const error_condition& lhs, const error_condition& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1526,12 +1526,12 @@ bool operator==(const error_condition& lhs, const error_condition& rhs) noexcept
 \indexlibrary{\idxcode{error_code}!\idxcode{operator"!=}}%
 \indexlibrary{\idxcode{operator"!=}!\idxcode{error_condition}}%
 \indexlibrary{\idxcode{error_condition}!\idxcode{operator"!=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!=(const error_code& lhs, const error_code& rhs) noexcept;
 bool operator!=(const error_code& lhs, const error_condition& rhs) noexcept;
 bool operator!=(const error_condition& lhs, const error_code& rhs) noexcept;
 bool operator!=(const error_condition& lhs, const error_condition& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1541,9 +1541,9 @@ bool operator!=(const error_condition& lhs, const error_condition& rhs) noexcept
 \rSec2[syserr.hash]{System error hash support}
 
 \indexlibrary{\idxcode{hash}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <> struct hash<error_code>;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\requires the template specialization shall meet the requirements of class template
@@ -1566,7 +1566,7 @@ encouraged to throw an exception object of type \tcode{bad_alloc}~\ref{bad.alloc
 than \tcode{system_error}. \exitnote
 
 \indexlibrary{\idxcode{system_error}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class system_error : public runtime_error {
   public:
@@ -1582,15 +1582,15 @@ namespace std {
     const char* what() const noexcept;
   };
 }   // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[syserr.syserr.members]{Class \tcode{system_error} members}
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(error_code ec, const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1604,9 +1604,9 @@ system_error(error_code ec, const string& what_arg);
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(error_code ec, const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1620,9 +1620,9 @@ system_error(error_code ec, const char* what_arg);
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(error_code ec);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1634,10 +1634,10 @@ system_error(error_code ec);
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(int ev, const error_category& ecat,
   const string& what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1651,10 +1651,10 @@ system_error(int ev, const error_category& ecat,
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(int ev, const error_category& ecat,
   const char* what_arg);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1668,9 +1668,9 @@ system_error(int ev, const error_category& ecat,
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 system_error(int ev, const error_category& ecat);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1682,9 +1682,9 @@ system_error(int ev, const error_category& ecat);
 
 \indexlibrary{\idxcode{code}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{code}}
-\begin{itemdecl}
+\begin{lstlisting}
 const error_code& code() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1694,9 +1694,9 @@ as appropriate.
 
 \indexlibrary{\idxcode{what}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{what}}
-\begin{itemdecl}
+\begin{lstlisting}
 const char *what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum

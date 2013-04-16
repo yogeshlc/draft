@@ -152,7 +152,7 @@ library call \textit{b} such that this does not result in a data race, then
 \indexlibrary{\idxcode{wifstream}}%
 \indexlibrary{\idxcode{wofstream}}%
 \indexlibrary{\idxcode{wfstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class charT> class char_traits;
   template<> class char_traits<char>;
@@ -237,7 +237,7 @@ namespace std {
   typedef fpos<char_traits<char>::state_type>    streampos;
   typedef fpos<char_traits<wchar_t>::state_type> wstreampos;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Default template arguments are described as appearing both in
@@ -342,7 +342,7 @@ and
 An implementation can avoid this circularity by substituting equivalent
 types.
 One way to do this might be
-\begin{codeblock}
+\begin{lstlisting}
 template<class stateT> class fpos { ... };      // depends on nothing
 typedef ... _STATE;             // implementation private declaration of \tcode{stateT}
 
@@ -352,7 +352,7 @@ template<> struct char_traits<char> {
   typedef streampos
   pos_type;
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec1[iostream.objects]{Standard iostream objects}
@@ -362,7 +362,7 @@ template<> struct char_traits<char> {
 \synopsis{Header \tcode{<iostream>} synopsis}
 \indexlibrary{\idxhdr{iostream}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <ios>
 #include <streambuf>
 #include <istream>
@@ -379,7 +379,7 @@ namespace std {
   extern wostream wcerr;
   extern wostream wclog;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header
@@ -421,9 +421,9 @@ Concurrent access to a synchronized~(\ref{ios.members.static}) standard iostream
 \rSec2[narrow.stream.objects]{Narrow stream objects}
 
 \indexlibrary{\idxcode{cin}}%
-\begin{itemdecl}
+\begin{lstlisting}
 istream cin;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -448,9 +448,9 @@ Its state is otherwise the same as required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{cout}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ostream cout;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -465,9 +465,9 @@ declared in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{cerr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ostream cerr;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -491,9 +491,9 @@ Its state is otherwise the same as required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{clog}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ostream clog;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -510,9 +510,9 @@ declared in
 \rSec2[wide.stream.objects]{Wide stream objects}
 
 \indexlibrary{\idxcode{wcin}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wistream wcin;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -537,9 +537,9 @@ Its state is otherwise the same as required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wcout}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wostream wcout;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -554,9 +554,9 @@ declared in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wcerr}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wostream wcerr;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -580,9 +580,9 @@ Its state is otherwise the same as required for
 \end{itemdescr}
 
 \indexlibrary{\idxcode{wclog}}%
-\begin{itemdecl}
+\begin{lstlisting}
 wostream wclog;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -603,7 +603,7 @@ declared in
 \synopsis{Header \tcode{<ios>} synopsis}
 \indexlibrary{\idxhdr{ios}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <iosfwd>
 
 namespace std {
@@ -663,7 +663,7 @@ namespace std {
   error_condition make_error_condition(io_errc e);
   const error_category& iostream_category();
 }
-\end{codeblock}
+\end{lstlisting}
 \indexlibrary{\idxcode{ios}}%
 \indexlibrary{\idxcode{basic_ios<char>}}%
 \indexlibrary{\idxcode{wios}}%
@@ -673,9 +673,9 @@ namespace std {
 \rSec2[stream.types]{Types}
 
 \indexlibrary{\idxcode{streamoff}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\impdef@ streamoff;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -684,9 +684,9 @@ sufficient size to represent the maximum possible file size for the operating sy
 \end{itemdescr}
 
 \indexlibrary{\idxcode{streamsize}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\impdef@ streamsize;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -713,7 +713,7 @@ It should probably be the signed type corresponding to
 
 \rSec2[ios.base]{Class \tcode{ios_base}}
 \indexlibrary{\idxcode{ios_base}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ios_base {
   public:
@@ -807,7 +807,7 @@ namespace std {
     void** parray;     // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \tcode{ios_base}
@@ -862,7 +862,7 @@ arbitrary-length pointer array maintained for the private use of the program.
 \rSec4[ios::failure]{Class \tcode{ios_base::failure}}
 
 \indexlibrary{\idxcode{ios_base::failure}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ios_base::failure : public system_error {
   public:
@@ -870,7 +870,7 @@ namespace std {
     explicit failure(const char* msg, const error_code& ec = io_errc::stream);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -890,9 +890,9 @@ typically be reported as \tcode{error_code(io_errc::stream,
 iostream_category())}. \exitnote
 
 \indexlibrary{\idxcode{failure}!\idxcode{ios_base::failure}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit failure(const string& msg, const error_code& ec = io_errc::stream);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -902,9 +902,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{failure}!\idxcode{ios_base::failure}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit failure(const char* msg, const error_code& ec = io_errc::stream);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -916,9 +916,9 @@ Constructs an object of class
 \rSec4[ios::fmtflags]{Type \tcode{ios_base::fmtflags}}
 
 \indexlibrary{\idxcode{fmtflags}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\textit{T1}@ fmtflags;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -980,9 +980,9 @@ also defines the constants indicated in Table~\ref{tab:iostreams.fmtflags.consta
 
 \indexlibrary{\idxcode{iostate}!\idxcode{ios_base}}%
 \indexlibrary{\idxcode{ios_base}!\idxcode{iostate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\textit{T2}@ iostate;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1016,9 +1016,9 @@ the value zero.
 \rSec4[ios::openmode]{Type \tcode{ios_base::openmode}}
 
 \indexlibrary{\idxcode{openmode}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\textit{T3}@ openmode;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1046,9 +1046,9 @@ It contains the elements indicated in Table~\ref{tab:iostreams.openmode.effects}
 \rSec4[ios::seekdir]{Type \tcode{ios_base::seekdir}}
 
 \indexlibrary{\idxcode{seekdir}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\textit{T4}@ seekdir;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1070,7 +1070,7 @@ that contains the elements indicated in Table~\ref{tab:iostreams.seekdir.effects
 \rSec4[ios::Init]{Class \tcode{ios_base::Init}}
 
 \indexlibrary{\idxcode{ios_base::Init}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class ios_base::Init {
   public:
@@ -1080,7 +1080,7 @@ namespace std {
     static int init_cnt; // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -1104,9 +1104,9 @@ initialized to zero.
 \end{itemize}
 
 \indexlibrary{\idxcode{Init}!\idxcode{ios_base::Init}}%
-\begin{itemdecl}
+\begin{lstlisting}
 Init();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1119,9 +1119,9 @@ they have not already been constructed and initialized.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ios_base::Init}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~Init();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1142,9 +1142,9 @@ calls
 \rSec3[fmtflags.state]{\tcode{ios_base} state functions}
 
 \indexlibrary{\idxcode{flags}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 fmtflags flags() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1154,9 +1154,9 @@ The format control information for both input and output.
 
 \indexlibrary{\idxcode{fmtflags}!\idxcode{ios_base}}%
 \indexlibrary{\idxcode{ios_base}!\idxcode{fmtflags}}%
-\begin{itemdecl}
+\begin{lstlisting}
 fmtflags flags(fmtflags fmtfl);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1170,9 +1170,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setf}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 fmtflags setf(fmtflags fmtfl);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1188,9 +1188,9 @@ The previous value of
 
 \indexlibrary{\idxcode{setf}!\idxcode{ios_base}}%
 \indexlibrary{\idxcode{ios_base}!\idxcode{setf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 fmtflags setf(fmtflags fmtfl, fmtflags mask);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1209,9 +1209,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unsetf}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void unsetf(fmtflags mask);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1221,9 +1221,9 @@ Clears \tcode{mask} in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{precision}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize precision() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1234,9 +1234,9 @@ to generate on certain output conversions.
 
 \indexlibrary{\idxcode{precision}!\idxcode{ios_base}}%
 \indexlibrary{\idxcode{ios_base}!\idxcode{precision}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize precision(streamsize prec);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1250,9 +1250,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{width}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize width() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1263,9 +1263,9 @@ conversions.
 
 \indexlibrary{\idxcode{streamsize}!\idxcode{ios_base}}%
 \indexlibrary{\idxcode{ios_base}!\idxcode{streamsize}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize width(streamsize wide);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1281,9 +1281,9 @@ The previous value of
 \rSec3[ios.base.locales]{\tcode{ios_base} functions}
 
 \indexlibrary{\idxcode{imbue}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale imbue(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1310,9 +1310,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{getloc}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale getloc() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1327,9 +1327,9 @@ perform locale-dependent input and output operations.
 \rSec3[ios.members.static]{\tcode{ios_base} static members}
 
 \indexlibrary{\idxcode{sync_with_stdio}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool sync_with_stdio(bool sync = true);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1356,29 +1356,29 @@ operate independently of the standard C streams.
 When a standard iostream object \tcode{str} is
 \textit{synchronized}
 with a standard stdio stream \tcode{f}, the effect of inserting a character \tcode{c} by
-\begin{codeblock}
+\begin{lstlisting}
 fputc(f, c);
-\end{codeblock}
+\end{lstlisting}
 is the same as the effect of
-\begin{codeblock}
+\begin{lstlisting}
 str.rdbuf()->sputc(c);
-\end{codeblock}
+\end{lstlisting}
 for any sequences of characters; the effect of extracting a character \tcode{c} by
-\begin{codeblock}
+\begin{lstlisting}
 c = fgetc(f);
-\end{codeblock}
+\end{lstlisting}
 is the same as the effect of
-\begin{codeblock}
+\begin{lstlisting}
 c = str.rdbuf()->sbumpc(c);
-\end{codeblock}
+\end{lstlisting}
 for any sequences of characters; and the effect of pushing back a character \tcode{c} by
-\begin{codeblock}
+\begin{lstlisting}
 ungetc(c, f);
-\end{codeblock}
+\end{lstlisting}
 is the same as the effect of
-\begin{codeblock}
+\begin{lstlisting}
 str.rdbuf()->sputbackc(c);
-\end{codeblock}
+\end{lstlisting}
 for any sequence of characters.\footnote{This implies that operations on a standard iostream object can be mixed arbitrarily
 with operations on the corresponding stdio stream. In practical terms, synchronization
 usually means that a standard iostream object and a standard stdio object share a
@@ -1389,9 +1389,9 @@ buffer.
 \rSec3[ios.base.storage]{\tcode{ios_base} storage functions}
 
 \indexlibrary{\idxcode{xalloc}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 static int xalloc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1401,9 +1401,9 @@ static int xalloc();
 \end{itemdescr}
 
 \indexlibrary{\idxcode{iword}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 long& iword(int idx);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1447,9 +1447,9 @@ initialized to 0.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pword}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void*& pword(int idx);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1499,9 +1499,9 @@ for the same object, the earlier return value may no longer be valid.
 \rSec3[ios.base.callback]{\tcode{ios_base} callbacks}
 
 \indexlibrary{\idxcode{register_callback}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void register_callback(event_callback fn, int index);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1535,9 +1535,9 @@ A function registered twice will be called twice.
 \rSec3[ios.base.cons]{\tcode{ios_base} constructors/destructor}
 
 \indexlibrary{\idxcode{ios_base}!\idxcode{ios_base}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1552,9 +1552,9 @@ the behavior is undefined.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ios_base}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~ios_base()
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1574,7 +1574,7 @@ has well defined results.
 \rSec2[fpos]{Class template \tcode{fpos}}
 
 \indexlibrary{\idxcode{fpos}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class stateT> class fpos {
   public:
@@ -1585,14 +1585,14 @@ namespace std {
     stateT st; // \exposr
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[fpos.members]{\tcode{fpos} members}
 
 \indexlibrary{\idxcode{state}!\idxcode{fpos}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void state(stateT s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1602,9 +1602,9 @@ Assign \tcode{s} to \tcode{st}.
 
 \indexlibrary{\idxcode{state}!\idxcode{fpos}}%
 \indexlibrary{\idxcode{fpos}!\idxcode{state}}%
-\begin{itemdecl}
+\begin{lstlisting}
 stateT state() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1720,7 +1720,7 @@ then the behavior of that function is undefined.
 \rSec3[ios.overview]{Overview}
 
 \indexlibrary{\idxcode{basic_ios}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_ios : public ios_base {
@@ -1780,14 +1780,14 @@ namespace std {
 
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[basic.ios.cons]{\tcode{basic_ios} constructors}
 
 \indexlibrary{\idxcode{basic_ios}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ios(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1799,9 +1799,9 @@ assigning initial values to its member objects by calling
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ios}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ios();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1816,9 +1816,9 @@ behavior is undefined.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ios}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~basic_ios();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1829,9 +1829,9 @@ The destructor does not destroy
 
 \indexlibrary{\idxcode{init}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{init}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void init(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \postconditions
@@ -1866,9 +1866,9 @@ The postconditions of this function are indicated in Table~\ref{tab:iostreams.ba
 \rSec3[basic.ios.members]{Member functions}
 
 \indexlibrary{\idxcode{tie}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>* tie() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1880,9 +1880,9 @@ to (synchronized with) the sequence controlled by the stream buffer.
 
 \indexlibrary{\idxcode{tie}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{tie}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>* tie(basic_ostream<charT,traits>* tiestr);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1902,9 +1902,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf<charT,traits>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1916,9 +1916,9 @@ associated with the stream.
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{rdbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf<charT,traits>* rdbuf(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1937,9 +1937,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{imbue}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale imbue(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1959,9 +1959,9 @@ The prior value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{narrow}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char narrow(char_type c, char dfault) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1970,9 +1970,9 @@ char narrow(char_type c, char dfault) const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{widen}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type widen(char c) const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1981,9 +1981,9 @@ char_type widen(char c) const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{fill}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type fill() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1994,9 +1994,9 @@ field width.
 
 \indexlibrary{\idxcode{fill}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{fill}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type fill(char_type fillch);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2010,9 +2010,9 @@ The previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{copyfmt}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ios& copyfmt(const basic_ios& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2091,10 +2091,10 @@ The postconditions of this function are indicated in Table~\ref{tab:iostreams.co
 
 \indexlibrary{\idxcode{move}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{move}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void move(basic_ios& rhs);
 void move(basic_ios&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2108,9 +2108,9 @@ same value as it returned before the function call, and
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_ios& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2122,9 +2122,9 @@ shall return the same value as it returned before the function call.
 
 \indexlibrary{\idxcode{set_rdbuf}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{set_rdbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void set_rdbuf(basic_streambuf<charT, traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2145,9 +2145,9 @@ pointed to by \tcode{sb} with this stream without calling
 \rSec3[iostate.flags]{\tcode{basic_ios} flags functions}
 
 \indexlibrary{\idxcode{operator bool}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2155,9 +2155,9 @@ explicit operator bool() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator"!}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2166,9 +2166,9 @@ bool operator!() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{rdstate}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iostate rdstate() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2177,9 +2177,9 @@ The error state of the stream buffer.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{clear}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void clear(iostate state = goodbit);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2204,9 +2204,9 @@ argument values.%
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setstate}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void setstate(iostate state);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2218,9 +2218,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{good}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool good() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2229,9 +2229,9 @@ bool good() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{eof}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool eof() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2244,9 +2244,9 @@ is set in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{fail}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool fail() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2265,9 +2265,9 @@ is historical practice.}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{bad}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool bad() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2280,9 +2280,9 @@ is set in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{exceptions}!\idxcode{basic_ios}}%
-\begin{itemdecl}
+\begin{lstlisting}
 iostate exceptions() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2294,9 +2294,9 @@ cause exceptions to be thrown.
 
 \indexlibrary{\idxcode{exceptions}!\idxcode{basic_ios}}%
 \indexlibrary{\idxcode{basic_ios}!\idxcode{exceptions}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void exceptions(iostate except);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2314,9 +2314,9 @@ Calls
 \rSec3[fmtflags.manip]{\tcode{fmtflags} manipulators}
 
 \indexlibrary{\idxcode{boolalpha}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& boolalpha(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2330,9 +2330,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{noboolalpha}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& noboolalpha(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2346,9 +2346,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{showbase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& showbase(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2362,9 +2362,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{noshowbase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& noshowbase(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2378,9 +2378,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{showpoint}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& showpoint(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2394,9 +2394,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{noshowpoint}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& noshowpoint(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2410,9 +2410,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{showpos}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& showpos(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2426,9 +2426,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{noshowpos}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& noshowpos(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2442,9 +2442,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{skipws}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& skipws(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2458,9 +2458,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{noskipws}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& noskipws(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2474,9 +2474,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{uppercase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& uppercase(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2490,9 +2490,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{nouppercase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& nouppercase(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2506,9 +2506,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unitbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& unitbuf(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2522,9 +2522,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{nounitbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& nounitbuf(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2540,9 +2540,9 @@ Calls
 \rSec3[adjustfield.manip]{\tcode{adjustfield} manipulators}
 
 \indexlibrary{\idxcode{internal}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& internal(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2556,9 +2556,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{left}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& left(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2572,9 +2572,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{right}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& right(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2590,9 +2590,9 @@ Calls
 \rSec3[basefield.manip]{\tcode{basefield} manipulators}
 
 \indexlibrary{\idxcode{dec}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& dec(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2614,9 +2614,9 @@ to change the format flags stored in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{hex}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& hex(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2630,9 +2630,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{oct}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& oct(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2648,9 +2648,9 @@ Calls
 \rSec3[floatfield.manip]{\tcode{floatfield} manipulators}
 
 \indexlibrary{\idxcode{fixed}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& fixed(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2664,9 +2664,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{scientific}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& scientific(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2680,9 +2680,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{hexfloat}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& hexfloat(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum\effects Calls \tcode{str.setf(ios_base::fixed | ios_base::scientific,
@@ -2699,9 +2699,9 @@ gives no meaning to the combination of \tcode{fixed} and
 \tcode{scientific}.\exitnote
 
 \indexlibrary{\idxcode{defaultfloat}}%
-\begin{itemdecl}
+\begin{lstlisting}
 ios_base& defaultfloat(ios_base& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2715,9 +2715,9 @@ Calls \tcode{str.unsetf(ios_base::floatfield)}.
 \rSec3[error.reporting]{Error reporting}
 
 \indexlibrary{\idxcode{make_error_code}}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_code make_error_code(io_errc e);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2725,9 +2725,9 @@ error_code make_error_code(io_errc e);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{make_error_condition}}%
-\begin{itemdecl}
+\begin{lstlisting}
 error_condition make_error_condition(io_errc e);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2735,9 +2735,9 @@ error_condition make_error_condition(io_errc e);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{iostream_category}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const error_category& iostream_category();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2760,14 +2760,14 @@ The object's \tcode{default_error_condition} and \tcode{equivalent} virtual func
 \indexlibrary{\idxcode{basic_streambuf<char>}}%
 \indexlibrary{\idxcode{wstreambuf}}%
 \indexlibrary{\idxcode{basic_streambuf<wchar_t>}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
     class basic_streambuf;
   typedef basic_streambuf<char>     streambuf;
   typedef basic_streambuf<wchar_t> wstreambuf;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header
@@ -2879,7 +2879,7 @@ and is the next element to read
 \rSec2[streambuf]{Class template \tcode{basic_streambuf<charT,traits>}}
 
 \indexlibrary{\idxcode{basic_streambuf}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_streambuf {
@@ -2973,7 +2973,7 @@ namespace std {
     virtual int_type   overflow (int_type c = traits::eof());
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class template
@@ -2994,9 +2994,9 @@ a character
 \rSec3[streambuf.cons]{\tcode{basic_streambuf} constructors}
 
 \indexlibrary{\idxcode{basic_streambuf}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3030,9 +3030,9 @@ is called.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_streambuf}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf(const basic_streambuf& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3053,9 +3053,9 @@ basic_streambuf(const basic_streambuf& rhs);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_streambuf}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~basic_streambuf();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3068,9 +3068,9 @@ None.
 \rSec4[streambuf.locales]{Locales}
 
 \indexlibrary{\idxcode{pubimbue}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale pubimbue(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3089,9 +3089,9 @@ Previous value of
 \end{itemdescr}
 
 \indexlibrary{\idxcode{getloc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 locale getloc() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3114,9 +3114,9 @@ then it returns the previous value.
 \rSec4[streambuf.buffer]{Buffer management and positioning}
 
 \indexlibrary{\idxcode{pubsetbuf}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf<char_type,traits>* pubsetbuf(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3125,10 +3125,10 @@ basic_streambuf<char_type,traits>* pubsetbuf(char_type* s, streamsize n);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pubseekoff}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type pubseekoff(off_type off, ios_base::seekdir way,
                ios_base::openmode which = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3137,10 +3137,10 @@ pos_type pubseekoff(off_type off, ios_base::seekdir way,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pubseekpos}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type pubseekpos(pos_type sp,
                ios_base::openmode which = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3149,9 +3149,9 @@ pos_type pubseekpos(pos_type sp,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pubsync}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int pubsync();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3162,9 +3162,9 @@ int pubsync();
 \rSec4[streambuf.pub.get]{Get area}
 
 \indexlibrary{\idxcode{in_avail}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize in_avail();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3176,9 +3176,9 @@ Otherwise returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{snextc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type snextc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3197,9 +3197,9 @@ Otherwise, returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sbumpc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type sbumpc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3213,9 +3213,9 @@ and increments the next pointer for the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sgetc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type sgetc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3228,9 +3228,9 @@ Otherwise, returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sgetn}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize sgetn(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3241,9 +3241,9 @@ streamsize sgetn(char_type* s, streamsize n);
 \rSec4[streambuf.pub.pback]{Putback}
 
 \indexlibrary{\idxcode{sputbackc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type sputbackc(char_type c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3259,9 +3259,9 @@ returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sungetc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type sungetc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3277,9 +3277,9 @@ returns
 \rSec4[streambuf.pub.put]{Put area}
 
 \indexlibrary{\idxcode{sputc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type sputc(char_type c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3294,9 +3294,9 @@ returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sputn}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize sputn(const char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3310,9 +3310,9 @@ streamsize sputn(const char_type* s, streamsize n);
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_streambuf}}%
 \indexlibrary{\idxcode{basic_streambuf}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf& operator=(const basic_streambuf& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3338,9 +3338,9 @@ to \tcode{*this}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_streambuf}}%
 \indexlibrary{\idxcode{basic_streambuf}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_streambuf& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3351,9 +3351,9 @@ and \tcode{*this}.
 \rSec4[streambuf.get.area]{Get area access}
 
 \indexlibrary{\idxcode{eback}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* eback() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3362,9 +3362,9 @@ The beginning pointer for the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{gptr}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* gptr() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3373,9 +3373,9 @@ The next pointer for the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{egptr}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* egptr() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3384,9 +3384,9 @@ The end pointer for the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{gbump}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void gbump(int n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3395,9 +3395,9 @@ Adds \tcode{n} to the next pointer for the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setg}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void setg(char_type* gbeg, char_type* gnext, char_type* gend);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3411,9 +3411,9 @@ and
 \rSec4[streambuf.put.area]{Put area access}
 
 \indexlibrary{\idxcode{pbase}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* pbase() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3422,9 +3422,9 @@ The beginning pointer for the output sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pptr}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* pptr() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3433,9 +3433,9 @@ The next pointer for the output sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{epptr}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 char_type* epptr() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3444,9 +3444,9 @@ The end pointer for the output sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pbump}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void pbump(int n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3455,9 +3455,9 @@ Adds \tcode{n} to the next pointer for the output sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setp}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void setp(char_type* pbeg, char_type* pend);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3473,9 +3473,9 @@ and
 \rSec4[streambuf.virt.locales]{Locales}
 
 \indexlibrary{\idxcode{imbue}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void imbue(const locale&)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3498,9 +3498,9 @@ Does nothing.
 \rSec4[streambuf.virt.buffer]{Buffer management and positioning}
 
 \indexlibrary{\idxcode{setbuf}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf* setbuf(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3519,11 +3519,11 @@ Returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekoff}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekoff(off_type off, ios_base::seekdir way,
                  ios_base::openmode which
                   = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3542,11 +3542,11 @@ Returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekpos}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekpos(pos_type sp,
                  ios_base::openmode which
                   = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3565,9 +3565,9 @@ Returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sync}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int sync();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3595,10 +3595,10 @@ Returns zero.
 \rSec4[streambuf.virt.get]{Get area}
 
 \indexlibrary{\idxcode{showmanyc}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize showmanyc();@\footnote{\textrm{The morphemes of \tcode{showmanyc}\
 are ``es-how-many-see'', not ``show-manic''.}}@
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3637,9 +3637,9 @@ Uses
 \end{itemdescr}
 
 \indexlibrary{\idxcode{xsgetn}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize xsgetn(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3672,9 +3672,9 @@ Uses
 \end{itemdescr}
 
 \indexlibrary{\idxcode{underflow}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type underflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3804,9 +3804,9 @@ Returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{uflow}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type uflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3840,9 +3840,9 @@ to indicate failure.
 \rSec4[streambuf.virt.pback]{Putback}
 
 \indexlibrary{\idxcode{pbackfail}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type pbackfail(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3911,9 +3911,9 @@ Returns
 \rSec4[streambuf.virt.put]{Put area}
 
 \indexlibrary{\idxcode{xsputn}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize xsputn(const char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3936,9 +3936,9 @@ The number of characters written.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{overflow}!\idxcode{basic_streambuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type overflow(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4057,7 +4057,7 @@ Returns
 \indexlibrary{\idxhdr{istream}}%
 \synopsis{Header \tcode{<istream>} synopsis}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
     class basic_istream;
@@ -4076,7 +4076,7 @@ namespace std {
     basic_istream<charT, traits>&
     operator>>(basic_istream<charT, traits>&& is, T& x);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{istream}}%
 \indexlibrary{\idxcode{basic_istream<char>}}%
@@ -4086,7 +4086,7 @@ namespace std {
 \synopsis{Header \tcode{<ostream>} synopsis}
 \indexlibrary{\idxhdr{ostream}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
     class basic_ostream;
@@ -4104,7 +4104,7 @@ namespace std {
     basic_ostream<charT, traits>&
     operator<<(basic_ostream<charT, traits>&& os, const T& x);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{ostream}}%
 \indexlibrary{\idxcode{basic_ostream<char>}}%
@@ -4114,7 +4114,7 @@ namespace std {
 \synopsis{Header \tcode{<iomanip>} synopsis}
 \indexlibrary{\idxhdr{iomanip}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   // types \tcode{T1}, \tcode{T2}, ... are unspecified implementation types
   @\textit{T1}@ resetiosflags(ios_base::fmtflags mask);
@@ -4128,7 +4128,7 @@ namespace std {
   template <class charT> @\textit{T9}@ get_time(struct tm* tmb, const charT* fmt);
   template <class charT> @\textit{T10}@ put_time(const struct tm* tmb, const charT* fmt);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[input.streams]{Input streams}
 
@@ -4141,7 +4141,7 @@ and a function signature that control input from a stream buffer along with a fu
 \rSec3[istream]{Class template \tcode{basic_istream}}
 
 \indexlibrary{\idxcode{basic_istream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_istream : virtual public basic_ios<charT,traits> {
@@ -4245,7 +4245,7 @@ namespace std {
     basic_istream<char,traits>& operator>>(basic_istream<char,traits>&,
                                            signed char*);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -4302,9 +4302,9 @@ a failure indication.
 \rSec4[istream.cons]{\tcode{basic_istream} constructors}
 
 \indexlibrary{\idxcode{basic_istream}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_istream(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{init}!\idxcode{basic_ios}}%
 \begin{itemdescr}
@@ -4322,9 +4322,9 @@ assigning initial values to the base class by calling
 
 
 \indexlibrary{\idxcode{basic_istream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream(basic_istream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4336,9 +4336,9 @@ class, and setting the \tcode{gcount()} for \tcode{rhs} to 0.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_istream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~basic_istream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4356,9 +4356,9 @@ Does not perform any operations of
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream& operator=(basic_istream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4370,9 +4370,9 @@ basic_istream& operator=(basic_istream&& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_istream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4384,7 +4384,7 @@ Exchanges the values returned by \tcode{gcount()} and
 \rSec4[istream::sentry]{Class \tcode{basic_istream::sentry}}
 
 \indexlibrary{\idxcode{sentry}!\idxcode{basic_istream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT,class traits = char_traits<charT> >
   class basic_istream<charT,traits>::sentry {
@@ -4398,7 +4398,7 @@ namespace std {
     sentry& operator=(const sentry&) = delete;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4409,9 +4409,9 @@ operations.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sentry}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit sentry(basic_istream<charT,traits>& is, bool noskipws = false);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4473,11 +4473,11 @@ whitespace or not.
 \pnum
 To decide if the character \tcode{c} is a whitespace character,
 the constructor performs as if it executes the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 const ctype<charT>& ctype = use_facet<ctype<charT> >(is.getloc());
 if (ctype.is(ctype.space,c)!=0)
   // \tcode{c} is a whitespace character.
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 If, after any preparation is completed,
@@ -4498,9 +4498,9 @@ implementation-dependent operations.}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_istream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~sentry();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4509,9 +4509,9 @@ None.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator bool}!\tcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4559,7 +4559,7 @@ If no exception has been thrown, it returns
 \rSec4[istream.formatted.arithmetic]{Arithmetic extractors}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 operator>>(unsigned short& val);
 operator>>(unsigned int& val);
 operator>>(long& val);
@@ -4571,7 +4571,7 @@ operator>>(double& val);
 operator>>(long double& val);
 operator>>(bool& val);
 operator>>(void*& val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4582,12 +4582,12 @@ stream data.
 These extractors behave as formatted input functions (as described in~\ref{istream.formatted.reqmts}).  After a sentry object is constructed, the
 conversion occurs as if performed by the following code fragment:
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef num_get< charT,istreambuf_iterator<charT,traits> > numget;
 iostate err = iostate::goodbit;
 use_facet< numget >(loc).get(*this, 0, *this, err, val);
 setstate(err);
-\end{codeblock}
+\end{lstlisting}
 
 In the above fragment,
 \tcode{loc}
@@ -4610,15 +4610,15 @@ so that it does not need to depend directly on
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 operator>>(short& val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 The conversion occurs as if performed by the following code fragment
 (using the same notation as for the preceding code fragment):
-\begin{codeblock}
+\begin{lstlisting}
 typedef num_get<charT,istreambuf_iterator<charT,traits> > numget;
 iostate err = ios_base::goodbit;
 long lval;
@@ -4632,19 +4632,19 @@ if (lval < numeric_limits<short>::min()) {
 }  else
   val = static_cast<short>(lval);
 setstate(err);
-\end{codeblock}
+\end{lstlisting}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 operator>>(int& val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 The conversion occurs as if performed by the following code fragment
 (using the same notation as for the preceding code fragment):
-\begin{codeblock}
+\begin{lstlisting}
 typedef num_get<charT,istreambuf_iterator<charT,traits> > numget;
 iostate err = ios_base::goodbit;
 long lval;
@@ -4658,16 +4658,16 @@ if (lval < numeric_limits<int>::min()) {
 }  else
   val = static_cast<int>(lval);
 setstate(err);
-\end{codeblock}
+\end{lstlisting}
 \end{itemdescr}
 
 \rSec4[istream::extractors]{\tcode{basic_istream::operator\shr}}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& operator>>
     (basic_istream<charT,traits>& (*pf)(basic_istream<charT,traits>&))
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4684,10 +4684,10 @@ This extractor does not behave as a formatted input function
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& operator>>
     (basic_ios<charT,traits>& (*pf)(basic_ios<charT,traits>&));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4703,10 +4703,10 @@ This extractor does not behave as a formatted input function
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& operator>>
     (ios_base& (*pf)(ios_base&));
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4723,7 +4723,7 @@ This extractor does not behave as a formatted input function
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits>
   basic_istream<charT,traits>& operator>>(basic_istream<charT,traits>& in,
                                           charT* s);
@@ -4733,7 +4733,7 @@ template<class traits>
 template<class traits>
   basic_istream<char,traits>& operator>>(basic_istream<char,traits>& in,
                                          signed char* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4797,7 +4797,7 @@ which may throw
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits>
   basic_istream<charT,traits>& operator>>(basic_istream<charT,traits>& in,
                                           charT& c);
@@ -4807,7 +4807,7 @@ template<class traits>
 template<class traits>
   basic_istream<char,traits>& operator>>(basic_istream<char,traits>& in,
                                          signed char& c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4827,10 +4827,10 @@ Otherwise, the function calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator\shr}!\idxcode{istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& operator>>
   (basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4925,9 +4925,9 @@ object
 is destroyed before leaving the unformatted input function.
 
 \indexlibrary{\idxcode{gcount}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize gcount() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4943,9 +4943,9 @@ extracted by the last unformatted input member function called for the object.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type get();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4968,9 +4968,9 @@ otherwise
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& get(char_type& c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -4995,10 +4995,10 @@ Otherwise, the function calls
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& get(char_type* s, streamsize n,
                   char_type delim );
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5043,9 +5043,9 @@ into the next successive location of the array.
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& get(char_type* s, streamsize n)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5060,10 +5060,10 @@ Value returned by the call.
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& get(basic_streambuf<char_type,traits>& sb,
                   char_type delim );
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5103,9 +5103,9 @@ which may throw
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& get(basic_streambuf<char_type,traits>& sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5119,10 +5119,10 @@ Value returned by the call.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{getline}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& getline(char_type* s, streamsize n,
                       char_type delim);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5185,7 +5185,7 @@ into the next successive location of the array.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 #include <iostream>
 
 int main() {
@@ -5208,14 +5208,14 @@ int main() {
     cout << " (" << count << " chars): " << buffer << endl;
   }
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{getline}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& getline(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5224,10 +5224,10 @@ basic_istream<charT,traits>& getline(char_type* s, streamsize n);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ignore}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>&
     ignore(streamsize n = 1, int_type delim = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5265,9 +5265,9 @@ The last condition will never occur if
 \end{itemdescr}
 
 \indexlibrary{\idxcode{peek}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type peek();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5289,9 +5289,9 @@ Otherwise, returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{read}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& read(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5328,9 +5328,9 @@ which may throw
 \end{itemdescr}
 
 \indexlibrary{\idxcode{readsome}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize readsome(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5371,9 +5371,9 @@ The number of characters extracted.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{putback}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& putback(char_type c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5414,9 +5414,9 @@ is 0.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{unget}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& unget();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5457,9 +5457,9 @@ is 0.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sync}!\idxcode{basic_istream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int sync();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5486,9 +5486,9 @@ Otherwise, returns zero.
 
 \indexlibrary{\idxcode{tellg}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{tellg}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type tellg();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5511,9 +5511,9 @@ Otherwise, returns
 
 \indexlibrary{\idxcode{seekg}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{seekg}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& seekg(pos_type pos);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5540,9 +5540,9 @@ In case of failure, the function calls
 
 \indexlibrary{\idxcode{get}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{get}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istream<charT,traits>& seekg(off_type off, ios_base::seekdir dir);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5567,12 +5567,12 @@ In case of failure, the function calls \tcode{setstate(\brk{}failbit)} (which ma
 \rSec3[istream.manip]{Standard \tcode{basic_istream} manipulators}
 
 \indexlibrary{\idxcode{ws}}%
-\begin{itemdecl}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits>
     basic_istream<charT,traits>& ws(basic_istream<charT,traits>& is);
 }
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5599,7 +5599,7 @@ but not
 \rSec3[iostreamclass]{Class template \tcode{basic_iostream}}
 
 \indexlibrary{\idxcode{basic_iostream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_iostream :
@@ -5627,7 +5627,7 @@ namespace std {
     void swap(basic_iostream& rhs);
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -5639,9 +5639,9 @@ sequences controlled by a stream buffer.
 \rSec4[iostream.cons]{\tcode{basic_iostream} constructors}
 
 \indexlibrary{\idxcode{basic_iostream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_iostream(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5662,9 +5662,9 @@ and
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_iostream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_iostream(basic_iostream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5676,9 +5676,9 @@ constructing the \tcode{basic_istream} base class with
 \rSec4[iostream.dest]{\tcode{basic_iostream} destructor}
 
 \indexlibrary{\idxcode{basic_iostream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~basic_iostream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5696,9 +5696,9 @@ Does not perform any operations on
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_iostream}}%
 \indexlibrary{\idxcode{basic_iostream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_iostream& operator=(basic_iostream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5707,9 +5707,9 @@ basic_iostream& operator=(basic_iostream&& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_iostream}}%
 \indexlibrary{\idxcode{basic_iostream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_iostream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5720,11 +5720,11 @@ void swap(basic_iostream& rhs);
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_istream}}%
 \indexlibrary{\idxcode{basic_istream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class T>
   basic_istream<charT, traits>&
   operator>>(basic_istream<charT, traits>&& is, T& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5745,7 +5745,7 @@ and several function signatures that control output to a
 stream buffer along with a function template that inserts into stream rvalues.
 
 \rSec3[ostream]{Class template \tcode{basic_ostream}}
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_ostream : virtual public basic_ios<charT,traits> {
@@ -5846,7 +5846,7 @@ namespace std {
     basic_ostream<char,traits>& operator<<(basic_ostream<char,traits>&,
                                            const unsigned char*);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -5895,9 +5895,9 @@ it does not throw anything and treat as an error.
 \rSec3[ostream.cons]{\tcode{basic_ostream} constructors}
 
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ostream(basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \indexlibrary{\idxcode{init}!\idxcode{basic_ios}}%
 \begin{itemdescr}
@@ -5913,9 +5913,9 @@ assigning initial values to the base class by calling
 \tcode{rdbuf() == sb}.
 
 \indexlibrary{\idxcode{basic_ostream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~basic_ostream();
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 \effects
@@ -5929,9 +5929,9 @@ Does not perform any operations on
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ostream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream(basic_ostream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5945,9 +5945,9 @@ base class.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream& operator=(basic_ostream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5959,9 +5959,9 @@ basic_ostream& operator=(basic_ostream&& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_ostream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -5971,7 +5971,7 @@ void swap(basic_ostream& rhs);
 \rSec3[ostream::sentry]{Class \tcode{basic_ostream::sentry}}
 
 \indexlibrary{\idxcode{sentry}!\idxcode{basic_ostream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT,class traits = char_traits<charT> >
   class basic_ostream<charT,traits>::sentry {
@@ -5985,7 +5985,7 @@ namespace std {
     sentry& operator=(const sentry&) = delete;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -5994,9 +5994,9 @@ defines a class that is responsible for doing exception safe prefix and suffix
 operations.
 
 \indexlibrary{\idxcode{sentry}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit sentry(basic_ostream<charT,traits>& os);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6031,9 +6031,9 @@ implementation-dependent operations.}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ostream}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 ~sentry();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6049,9 +6049,9 @@ calls
 
 \indexlibrary{\idxcode{flush}}%
 \indexlibrary{\idxcode{operator bool}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit operator bool() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6068,9 +6068,9 @@ It returns by destroying the \tcode{sentry} object.
 
 \indexlibrary{\idxcode{tellp}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{seekp}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type tellp();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6082,9 +6082,9 @@ returns
 to indicate failure.
 Otherwise, returns
 \tcode{rdbuf()->\brk{}pub\-seek\-off(\brk0, cur, out)}.
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& seekp(pos_type pos);
-\end{itemdecl}
+\end{lstlisting}
 
 \pnum
 \effects
@@ -6104,9 +6104,9 @@ In case of failure, the function calls
 
 \indexlibrary{\idxcode{seekp}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{seekp}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& seekp(off_type off, ios_base::seekdir dir);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6178,7 +6178,7 @@ character sequence.
 \rSec4[ostream.inserters.arithmetic]{Arithmetic inserters}
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 operator<<(bool val);
 operator<<(short val);
 operator<<(unsigned short val);
@@ -6192,7 +6192,7 @@ operator<<(float val);
 operator<<(double val);
 operator<<(long double val);
 operator<<(const void* val);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6217,16 +6217,16 @@ is of type
 or
 \tcode{const void*},
 the formatting conversion occurs as if it performed the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 bool failed = use_facet<
   num_put<charT,ostreambuf_iterator<charT,traits> >
     >(getloc()).put(*this, *this, fill(), val).failed();
-\end{codeblock}
+\end{lstlisting}
 
 When \tcode{val} is of type
 \tcode{short}
 the formatting conversion occurs as if it performed the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 ios_base::fmtflags baseflags = ios_base::flags() & ios_base::basefield;
 bool failed = use_facet<
   num_put<charT,ostreambuf_iterator<charT,traits> >
@@ -6234,12 +6234,12 @@ bool failed = use_facet<
     baseflags == ios_base::oct || baseflags == ios_base::hex
       ? static_cast<long>(static_cast<unsigned short>(val))
       : static_cast<long>(val)).failed();
-\end{codeblock}
+\end{lstlisting}
 
 When \tcode{val} is of type
 \tcode{int}
 the formatting conversion occurs as if it performed the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 ios_base::fmtflags baseflags = ios_base::flags() & ios_base::basefield;
 bool failed = use_facet<
   num_put<charT,ostreambuf_iterator<charT,traits> >
@@ -6247,29 +6247,29 @@ bool failed = use_facet<
     baseflags == ios_base::oct || baseflags == ios_base::hex
       ? static_cast<long>(static_cast<unsigned int>(val))
       : static_cast<long>(val)).failed();
-\end{codeblock}
+\end{lstlisting}
 
 When \tcode{val} is of type
 \tcode{unsigned short}
 or
 \tcode{unsigned int}
 the formatting conversion occurs as if it performed the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 bool failed = use_facet<
   num_put<charT,ostreambuf_iterator<charT,traits> >
     >(getloc()).put(*this, *this, fill(),
       static_cast<unsigned long>(val)).failed();
-\end{codeblock}
+\end{lstlisting}
 
 When \tcode{val} is of type
 \tcode{float}
 the formatting conversion occurs as if it performed the following code fragment:
-\begin{codeblock}
+\begin{lstlisting}
 bool failed = use_facet<
   num_put<charT,ostreambuf_iterator<charT,traits> >
     >(getloc()).put(*this, *this, fill(),
       static_cast<double>(val)).failed();
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The first argument provides an object of the
@@ -6306,10 +6306,10 @@ which may throw an exception, and returns.
 \rSec4[ostream.inserters]{\tcode{basic_ostream::operator\shl}}
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& operator<<
     (basic_ostream<charT,traits>& (*pf)(basic_ostream<charT,traits>&))
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6327,10 +6327,10 @@ in~\ref{ostream.formatted.reqmts}).
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& operator<<
     (basic_ios<charT,traits>& (*pf)(basic_ios<charT,traits>&))
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6349,10 +6349,10 @@ behave as a formatted output function (as described in~\ref{ostream.formatted.re
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& operator<<
     (ios_base& (*pf)(ios_base&))
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6369,10 +6369,10 @@ behave as a formatted output function (as described in~\ref{ostream.formatted.re
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& operator<<
     (basic_streambuf<charT,traits>* sb);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6424,7 +6424,7 @@ the caught exception is rethrown.
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits>
   basic_ostream<charT,traits>& operator<<(basic_ostream<charT,traits>& out,
                                           charT c);
@@ -6442,7 +6442,7 @@ template<class traits>
 template<class traits>
   basic_ostream<char,traits>& operator<<(basic_ostream<char,traits>& out,
                                          unsigned char c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6468,7 +6468,7 @@ in~\ref{ostream.formatted.reqmts}. Inserts \tcode{seq} into
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template<class charT, class traits>
   basic_ostream<charT,traits>& operator<<(basic_ostream<charT,traits>& out,
                                           const charT* s);
@@ -6484,7 +6484,7 @@ template<class traits>
 template<class traits>
   basic_ostream<char,traits>& operator<<(basic_ostream<char,traits>& out,
                                          const unsigned char* s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6558,9 +6558,9 @@ sentry object, then, if no exception was thrown, returning the value
 specified for the unformatted output function.
 
 \indexlibrary{\idxcode{put}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream<charT,traits>& put(char_type c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6585,9 +6585,9 @@ Otherwise, calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{write}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream& write(const char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6618,9 +6618,9 @@ which may throw
 \end{itemdescr}
 
 \indexlibrary{\idxcode{flush}!\idxcode{basic_ostream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostream& flush();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6646,12 +6646,12 @@ Otherwise, if the sentry object returns \tcode{false}, does nothing.
 \rSec3[ostream.manip]{Standard \tcode{basic_ostream} manipulators}
 
 \indexlibrary{\idxcode{endl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits>
     basic_ostream<charT,traits>& endl(basic_ostream<charT,traits>& os);
 }
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6667,12 +6667,12 @@ then
 \end{itemdescr}
 
 \indexlibrary{\idxcode{ends}}%
-\begin{itemdecl}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits>
     basic_ostream<charT,traits>& ends(basic_ostream<charT,traits>& os);
 }
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6687,12 +6687,12 @@ calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{flush}}%
-\begin{itemdecl}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits>
     basic_ostream<charT,traits>& flush(basic_ostream<charT,traits>& os);
 }
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6709,11 +6709,11 @@ Calls
 
 \indexlibrary{\idxcode{operator\shl}!\idxcode{basic_ostream}}%
 \indexlibrary{\idxcode{basic_ostream}!\idxcode{operator\shl}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class T>
   basic_ostream<charT, traits>&
   operator<<(basic_ostream<charT, traits>&& os, const T& x);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6731,9 +6731,9 @@ extractors and inserters that alter information maintained by class
 \tcode{ios_base} and its derived classes.
 
 \indexlibrary{\idxcode{resetiosflags}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ resetiosflags(ios_base::fmtflags mask);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6753,12 +6753,12 @@ resetiosflags(ios_base::showbase)} clears \tcode{ios_base::showbase} in the
 format flags stored in the \tcode{basic_ostream<charT,traits>} object
 \tcode{cout} (the same as \tcode{cout \shl noshowbase}). }
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(ios_base& str, ios_base::fmtflags mask) {
   // reset specified flags
   str.setf(ios_base::fmtflags(0), mask);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression \tcode{out \shl\ resetiosflags(mask)} shall have
 type \tcode{basic_ostream<charT,traits>\&} and value \tcode{out}. The
@@ -6766,9 +6766,9 @@ expression \tcode{in \shr\ resetiosflags(mask)} shall have type
 \tcode{basic_istream<charT, traits>\&} and value \tcode{in}. \end{itemdescr}
 
 \indexlibrary{\idxcode{setiosflags}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ setiosflags(ios_base::fmtflags mask);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6791,12 +6791,12 @@ behaves as if it called
 \tcode{f(in, mask)}, where the function \tcode{f} is defined as:
 \indexlibrary{\idxcode{fmtflags}!\idxcode{ios}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(ios_base& str, ios_base::fmtflags mask) {
   // set specified flags
   str.setf(mask);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression
 \tcode{out \shl\ setiosflags(mask)}
@@ -6813,9 +6813,9 @@ and value
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setbase}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ setbase(int base);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6837,7 +6837,7 @@ then the expression
 behaves as if it called
 \tcode{f(in, base)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(ios_base& str, int base) {
   // set \tcode{basefield}
   str.setf(base ==  8 ? ios_base::oct :
@@ -6845,7 +6845,7 @@ void f(ios_base& str, int base) {
       base == 16 ? ios_base::hex :
       ios_base::fmtflags(0), ios_base::basefield);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression
 \tcode{out \shl\ setbase(base)}
@@ -6862,9 +6862,9 @@ and value
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setfill}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ setfill(char_type c);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6880,13 +6880,13 @@ then the expression
 behaves as if it called
 \tcode{f(out, c)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class charT, class traits>
 void f(basic_ios<charT,traits>& str, charT c) {
   // set fill character
   str.fill(c);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression
 \tcode{out \shl\ setfill(c)}
@@ -6897,9 +6897,9 @@ and value
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setprecision}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ setprecision(int n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6921,12 +6921,12 @@ then the expression
 behaves as if it called
 \tcode{f(in, n)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(ios_base& str, int n) {
   // set precision
   str.precision(n);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression
 \tcode{out \shl\ setprecision(n)}
@@ -6943,9 +6943,9 @@ and value
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setw}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\unspec@ setw(int n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -6967,12 +6967,12 @@ then the expression
 behaves as if it called
 \tcode{f(in, n)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(ios_base& str, int n) {
   // set width
   str.width(n);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression
 \tcode{out \shl\ setw(n)}
@@ -6995,9 +6995,9 @@ The header \tcode{<iomanip>} defines several functions that support extractors a
 parsing and formatting of sequences and values for money and time.
 
 \indexlibrary{\idxcode{get_money}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class moneyT> @\unspec@ get_money(moneyT& mon, bool intl = false);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7014,7 +7014,7 @@ behaves as a formatted input function~(\ref{istream.formatted.reqmts}).
 then the expression \tcode{in \shr\ get_money(mon, intl)} behaves as if it called
 \tcode{f(in, mon, intl)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class charT, class traits, class moneyT>
 void f(basic_ios<charT, traits>& str, moneyT& mon, bool intl) {
   typedef istreambuf_iterator<charT, traits> Iter;
@@ -7028,16 +7028,16 @@ void f(basic_ios<charT, traits>& str, moneyT& mon, bool intl) {
   if (ios_base::goodbit != err)
     str.setstate(err);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression \tcode{in \shr\ get_money(mon, intl)} shall have type
 \tcode{basic_istream<charT, traits>\&} and value \tcode{in}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{put_money}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class moneyT> @\unspec@ put_money(const moneyT& mon, bool intl = false);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7050,7 +7050,7 @@ specialization of the \tcode{basic_string} template (Clause~\ref{strings}).
 then the expression \tcode{out \shl\ put_money(mon, intl)} behaves as a formatted input function that calls
 \tcode{f(out, mon, intl)}, where the function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class charT, class traits, class moneyT>
 void f(basic_ios<charT, traits>& str, const moneyT& mon, bool intl) {
   typedef ostreambuf_iterator<charT, traits> Iter;
@@ -7062,7 +7062,7 @@ void f(basic_ios<charT, traits>& str, const moneyT& mon, bool intl) {
   if (end.failed())
     str.setstate(ios::badbit);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression \tcode{out \shl\ put_money(mon, intl)} shall have type
 \tcode{basic_ostream<charT, traits>\&} and value \tcode{out}.
@@ -7070,9 +7070,9 @@ The expression \tcode{out \shl\ put_money(mon, intl)} shall have type
 \end{itemdescr}
 
 \indexlibrary{\idxcode{get_time}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT> @\unspec@ get_time(struct tm* tmb, const charT* fmt);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7084,7 +7084,7 @@ template <class charT> @\unspec@ get_time(struct tm* tmb, const charT* fmt);
 fmt)} behaves as if it called \tcode{f(in, tmb, fmt)}, where the function \tcode{f} is
 defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class charT, class traits>
 void f(basic_ios<charT, traits>& str, struct tm* tmb, const charT* fmt) {
   typedef istreambuf_iterator<charT, traits> Iter;
@@ -7099,16 +7099,16 @@ void f(basic_ios<charT, traits>& str, struct tm* tmb, const charT* fmt) {
   if (err != ios_base::goodbit)
     str.setstate(err):
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression \tcode{in \shr\ get_time(tmb, fmt)} shall have type
 \tcode{basic_istream<charT, traits>\&} and value \tcode{in}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{put_time}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT> @\unspec@ put_time(const struct tm* tmb, const charT* fmt);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7123,7 +7123,7 @@ type \tcode{basic_ostream<charT, traits>} then the expression \tcode{out \shl\
 put_time(tmb, fmt)} behaves as if it called \tcode{f(out, tmb, fmt)}, where the
 function \tcode{f} is defined as:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class charT, class traits>
 void f(basic_ios<charT, traits>& str, const struct tm* tmb, const charT* fmt) {
   typedef ostreambuf_iterator<charT, traits> Iter;
@@ -7136,7 +7136,7 @@ void f(basic_ios<charT, traits>& str, const struct tm* tmb, const charT* fmt) {
   if (end.failed())
     str.setstate(ios_base::badbit);
 }
-\end{codeblock}
+\end{lstlisting}
 
 The expression \tcode{out \shl\ put_time(tmb, fmt)} shall have type
 \tcode{basic_istream<charT, traits>\&} and value \tcode{out}.
@@ -7171,7 +7171,7 @@ as described in~\ref{string.classes}.
 \indexlibrary{\idxcode{basic_ostringstream<char>}}%
 \indexlibrary{\idxcode{wostringstream}}%
 \indexlibrary{\idxcode{basic_ostringstream<wchar_t>}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT>,
         class Allocator = allocator<charT> >
@@ -7199,11 +7199,11 @@ namespace std {
   typedef basic_stringstream<char>     stringstream;
   typedef basic_stringstream<wchar_t> wstringstream;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[stringbuf]{Class template \tcode{basic_stringbuf}}
 \indexlibrary{\idxcode{basic_stringbuf}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT>,
       class Allocator = allocator<charT> >
@@ -7257,7 +7257,7 @@ namespace std {
   void swap(basic_stringbuf<charT, traits, Allocator>& x,
             basic_stringbuf<charT, traits, Allocator>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -7285,10 +7285,10 @@ set if the output sequence can be written.
 \rSec3[stringbuf.cons]{\tcode{basic_stringbuf}  constructors}
 
 \indexlibrary{\idxcode{basic_stringbuf}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_stringbuf(ios_base::openmode which =
                          ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7306,10 +7306,10 @@ with \tcode{which}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_stringbuf}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_stringbuf(const basic_string<charT,traits,Allocator>& s,
                          ios_base::openmode which = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7324,9 +7324,9 @@ Then calls \tcode{str(s)}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_stringbuf}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringbuf(basic_stringbuf&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7365,9 +7365,9 @@ refer to the state of \tcode{rhs} just after this construction.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_stringbuf}}%
 \indexlibrary{\idxcode{basic_stringbuf}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringbuf& operator=(basic_stringbuf&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7380,9 +7380,9 @@ have had if it had been move constructed from \tcode{rhs} (see~\ref{stringbuf.co
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_stringbuf}}%
 \indexlibrary{\idxcode{basic_stringbuf}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_stringbuf& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7392,11 +7392,11 @@ and \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_stringbuf}}%
 \indexlibrary{\idxcode{basic_stringbuf}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class Allocator>
 void swap(basic_stringbuf<charT, traits, Allocator>& x,
           basic_stringbuf<charT, traits, Allocator>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7406,9 +7406,9 @@ void swap(basic_stringbuf<charT, traits, Allocator>& x,
 \rSec3[stringbuf.members]{Member functions}
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string<charT,traits,Allocator> str() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7435,9 +7435,9 @@ in neither input nor output mode and a zero length \tcode{basic_string} is retur
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_stringbuf}}%
 \indexlibrary{\idxcode{basic_stringbuf}!\idxcode{str}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void str(const basic_string<charT,traits,Allocator>& s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7458,9 +7458,9 @@ true, \tcode{eback()} points to the first underlying character, and both \tcode{
 \rSec3[stringbuf.virtuals]{Overridden virtual functions}
 
 \indexlibrary{\idxcode{underflow}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type underflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7475,9 +7475,9 @@ to be part of the input sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pbackfail}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type pbackfail(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7547,9 +7547,9 @@ unspecified which way is chosen.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{overflow}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type overflow(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7609,11 +7609,11 @@ to point just past the new write position.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekoff}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekoff(off_type off, ios_base::seekdir way,
                  ios_base::openmode which
                    = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7683,10 +7683,10 @@ the return value is
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekpos}!\idxcode{basic_stringbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekpos(pos_type sp, ios_base::openmode which
                    = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7703,9 +7703,9 @@ to indicate failure.
 
 \indexlibrary{\idxcode{setbuf}!\idxcode{basic_streambuf}}%
 \indexlibrary{\idxcode{basic_streambuf}!\idxcode{setbuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf<charT,traits>* setbuf(charT* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7724,7 +7724,7 @@ has no effect.
 \rSec2[istringstream]{Class template \tcode{basic_istringstream}}
 
 \indexlibrary{\idxcode{basic_istringstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT>,
         class Allocator = allocator<charT> >
@@ -7763,7 +7763,7 @@ namespace std {
   void swap(basic_istringstream<charT, traits, Allocator>& x,
             basic_istringstream<charT, traits, Allocator>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -7782,9 +7782,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[istringstream.cons]{\tcode{basic_istringstream} constructors}
 
 \indexlibrary{\idxcode{basic_istringstream}!\idxcode{basic_istringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_istringstream(ios_base::openmode which = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7798,11 +7798,11 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_istringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_istringstream(
                 const basic_string<charT, traits, Allocator>& str,
                 ios_base::openmode which = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7816,9 +7816,9 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_istringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istringstream(basic_istringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7833,9 +7833,9 @@ install the contained \tcode{basic_stringbuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_istringstream}}%
 \indexlibrary{\idxcode{basic_istringstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_istringstream& operator=(basic_istringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7848,9 +7848,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_istringstream}}%
 \indexlibrary{\idxcode{basic_istringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_istringstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7863,11 +7863,11 @@ void swap(basic_istringstream& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_istringstream}}%
 \indexlibrary{\idxcode{basic_istringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class Allocator>
 void swap(basic_istringstream<charT, traits, Allocator>& x,
           basic_istringstream<charT, traits, Allocator>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7877,9 +7877,9 @@ void swap(basic_istringstream<charT, traits, Allocator>& x,
 \rSec3[istringstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_istringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7888,9 +7888,9 @@ basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_istringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string<charT,traits,Allocator> str() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7900,9 +7900,9 @@ basic_string<charT,traits,Allocator> str() const;
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_istringstream}}%
 \indexlibrary{\idxcode{basic_istringstream}!\idxcode{str}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void str(const basic_string<charT,traits,Allocator>& s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7914,7 +7914,7 @@ Calls
 \rSec2[ostringstream]{Class template \tcode{basic_ostringstream}}
 
 \indexlibrary{\idxcode{basic_ostringstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT>,
         class Allocator = allocator<charT> >
@@ -7955,7 +7955,7 @@ namespace std {
   void swap(basic_ostringstream<charT, traits, Allocator>& x,
             basic_ostringstream<charT, traits, Allocator>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -7974,9 +7974,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[ostringstream.cons]{\tcode{basic_ostringstream} constructors}
 
 \indexlibrary{\idxcode{basic_ostringstream}!\idxcode{basic_ostringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ostringstream(ios_base::openmode which = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -7990,11 +7990,11 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ostringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ostringstream(
   const basic_string<charT,traits,Allocator>& str,
   ios_base::openmode which = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8008,9 +8008,9 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ostringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostringstream(basic_ostringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8025,9 +8025,9 @@ install the contained \tcode{basic_stringbuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_ostringstream}}%
 \indexlibrary{\idxcode{basic_ostringstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ostringstream& operator=(basic_ostringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8040,9 +8040,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ostringstream}}%
 \indexlibrary{\idxcode{basic_ostringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_ostringstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8055,11 +8055,11 @@ void swap(basic_ostringstream& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ostringstream}}%
 \indexlibrary{\idxcode{basic_ostringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class Allocator>
 void swap(basic_ostringstream<charT, traits, Allocator>& x,
           basic_ostringstream<charT, traits, Allocator>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8069,9 +8069,9 @@ void swap(basic_ostringstream<charT, traits, Allocator>& x,
 \rSec3[ostringstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_ostringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8080,9 +8080,9 @@ basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_ostringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string<charT,traits,Allocator> str() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8092,9 +8092,9 @@ basic_string<charT,traits,Allocator> str() const;
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_ostringstream}}%
 \indexlibrary{\idxcode{basic_ostringstream}!\idxcode{str}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void str(const basic_string<charT,traits,Allocator>& s);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8106,7 +8106,7 @@ Calls
 \rSec2[stringstream]{Class template \tcode{basic_stringstream}}
 
 \indexlibrary{\idxcode{basic_stringstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT>,
         class Allocator = allocator<charT> >
@@ -8149,7 +8149,7 @@ namespace std {
   void swap(basic_stringstream<charT, traits, Allocator>& x,
             basic_stringstream<charT, traits, Allocator>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -8169,10 +8169,10 @@ For the sake of exposition, the maintained data is presented here as
 \rSec2[stringstream.cons]{basic_stringstream constructors}
 
 \indexlibrary{\idxcode{basic_stringstream}!\idxcode{basic_stringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_stringstream(
     ios_base::openmode which = ios_base::out|ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8188,11 +8188,11 @@ with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_stringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_stringstream(
     const basic_string<charT,traits,Allocator>& str,
     ios_base::openmode which = ios_base::out|ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8208,9 +8208,9 @@ with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_stringstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringstream(basic_stringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8225,9 +8225,9 @@ install the contained \tcode{basic_stringbuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_stringstream}}%
 \indexlibrary{\idxcode{basic_stringstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringstream& operator=(basic_stringstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8240,9 +8240,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_stringstream}}%
 \indexlibrary{\idxcode{basic_stringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_stringstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8255,11 +8255,11 @@ void swap(basic_stringstream& rhs);
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_stringstream}}%
 \indexlibrary{\idxcode{basic_stringstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits, class Allocator>
 void swap(basic_stringstream<charT, traits, Allocator>& x,
           basic_stringstream<charT, traits, Allocator>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8269,9 +8269,9 @@ void swap(basic_stringstream<charT, traits, Allocator>& x,
 \rSec2[stringstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_stringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8280,9 +8280,9 @@ basic_stringbuf<charT,traits,Allocator>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_stringstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_string<charT,traits,Allocator> str() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8292,9 +8292,9 @@ basic_string<charT,traits,Allocator> str() const;
 
 \indexlibrary{\idxcode{str}!\idxcode{basic_stringstream}}%
 \indexlibrary{\idxcode{basic_stringstream}!\idxcode{str}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void str(const basic_string<charT,traits,Allocator>& str);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8328,7 +8328,7 @@ reading and writing files.
 \indexlibrary{\idxcode{basic_ofstream<char>}}%
 \indexlibrary{\idxcode{wofstream}}%
 \indexlibrary{\idxcode{basic_ofstream<wchar_t>}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
     class basic_filebuf;
@@ -8350,7 +8350,7 @@ namespace std {
   typedef basic_fstream<char>     fstream;
   typedef basic_fstream<wchar_t> wfstream;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 In this subclause, the type name \tcode{FILE} refers to
@@ -8371,7 +8371,7 @@ object converts those multibyte sequences into wide character sequences.
 \rSec3[filebuf]{Class template \tcode{basic_filebuf}}
 
 \indexlibrary{\idxcode{basic_filebuf}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_filebuf : public basic_streambuf<charT,traits> {
@@ -8423,7 +8423,7 @@ namespace std {
   void swap(basic_filebuf<charT, traits>& x,
             basic_filebuf<charT, traits>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -8466,17 +8466,17 @@ In order to support file I/O and multibyte/wide character conversion,
 conversions are performed using members of a facet, referred to as
 \tcode{a_codecvt} in following sections, obtained as if by
 
-\begin{codeblock}
+\begin{lstlisting}
 const codecvt<charT,char,typename traits::state_type>& a_codecvt =
   use_facet<codecvt<charT,char,typename traits::state_type> >(getloc());
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[filebuf.cons]{\tcode{basic_filebuf} constructors}
 
 \indexlibrary{\idxcode{basic_filebuf}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8492,9 +8492,9 @@ initializing the base class with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_filebuf}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf(basic_filebuf&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8533,9 +8533,9 @@ refer to the state of \tcode{rhs} just after this construction.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_filebuf}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~basic_filebuf();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8551,9 +8551,9 @@ If an exception occurs during the destruction of the object, including the call 
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_filebuf}}%
 \indexlibrary{\idxcode{basic_filebuf}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf& operator=(basic_filebuf&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8567,9 +8567,9 @@ had been move constructed from \tcode{rhs} (see~\ref{filebuf.cons}).
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_filebuf}}%
 \indexlibrary{\idxcode{basic_filebuf}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_filebuf& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8579,11 +8579,11 @@ and \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_filebuf}}%
 \indexlibrary{\idxcode{basic_filebuf}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits>
 void swap(basic_filebuf<charT, traits>& x,
           basic_filebuf<charT, traits>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8593,9 +8593,9 @@ void swap(basic_filebuf<charT, traits>& x,
 \rSec3[filebuf.members]{Member functions}
 
 \indexlibrary{\idxcode{is_open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool is_open() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8608,10 +8608,10 @@ call to close.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* open(const char* s,
     ios_base::openmode mode);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8689,10 +8689,10 @@ if successful, a null pointer otherwise.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* open(const string& s,
     ios_base::openmode mode);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \returns
@@ -8700,9 +8700,9 @@ basic_filebuf<charT,traits>* open(const string& s,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{close}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* close();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8757,9 +8757,9 @@ on success, a null pointer otherwise.
 \rSec3[filebuf.virtuals]{Overridden virtual functions}
 
 \indexlibrary{\idxcode{showmanyc}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 streamsize showmanyc();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8777,9 +8777,9 @@ sequence.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{underflow}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type underflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8792,7 +8792,7 @@ into an internal buffer (
 \tcode{extern_buf})
 and then as if by doing
 
-\begin{codeblock}
+\begin{lstlisting}
 char   extern_buf[XSIZE];
 char*  extern_end;
 charT  intern_buf[ISIZE];
@@ -8800,7 +8800,7 @@ charT* intern_end;
 codecvt_base::result r =
   a_codecvt.in(state, extern_buf, extern_buf+XSIZE, extern_end,
                intern_buf, intern_buf+ISIZE, intern_end);
-\end{codeblock}
+\end{lstlisting}
 
 This shall be done in such a way that the class can recover the
 position
@@ -8820,9 +8820,9 @@ retry with a larger
 \end{itemdescr}
 
 \indexlibrary{\idxcode{uflow}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type uflow();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8835,9 +8835,9 @@ with the same method as used by
 \end{itemdescr}
 
 \indexlibrary{\idxcode{pbackfail}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type pbackfail(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8911,9 +8911,9 @@ The function can alter the number of putback positions available as a result of 
 \end{itemdescr}
 
 \indexlibrary{\idxcode{overflow}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int_type overflow(int_type c = traits::eof());
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8923,7 +8923,7 @@ Behaves according to the description of
 except that the behavior of ``consuming characters'' is performed by first
 converting as if by:
 
-\begin{codeblock}
+\begin{lstlisting}
 charT* b = pbase();
 charT* p = pptr();
 charT* end;
@@ -8931,7 +8931,7 @@ char   xbuf[XSIZE];
 char*  xbuf_end;
 codecvt_base::result r =
   a_codecvt.out(state, b, p, end, xbuf, xbuf+XSIZE, xbuf_end);
-\end{codeblock}
+\end{lstlisting}
 
 and then
 \begin{itemize}
@@ -8958,9 +8958,9 @@ the function always fails.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{setbuf}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_streambuf* setbuf(char_type* s, streamsize n);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -8980,10 +8980,10 @@ and output to the file should appear as soon as possible.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekoff}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekoff(off_type off, ios_base::seekdir way,
     ios_base::openmode which = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9046,10 +9046,10 @@ returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{seekpos}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 pos_type seekpos(pos_type sp,
     ios_base::openmode which = ios_base::in | ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9094,9 +9094,9 @@ Otherwise returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{sync}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 int sync();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9109,9 +9109,9 @@ If a get area exists, the effect is \impldef{effect of calling
 \end{itemdescr}
 
 \indexlibrary{\idxcode{imbue}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void imbue(const locale& loc);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9139,7 +9139,7 @@ the original contents of the file.
 \rSec3[ifstream]{Class template \tcode{basic_ifstream}}
 
 \indexlibrary{\idxcode{basic_ifstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_ifstream : public basic_istream<charT,traits> {
@@ -9179,7 +9179,7 @@ namespace std {
   void swap(basic_ifstream<charT, traits>& x,
             basic_ifstream<charT, traits>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -9199,9 +9199,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[ifstream.cons]{\tcode{basic_ifstream} constructors}
 
 \indexlibrary{\idxcode{basic_ifstream}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ifstream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9216,10 +9216,10 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ifstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ifstream(const char* s,
     ios_base::openmode mode = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9238,10 +9238,10 @@ If that function returns a null pointer, calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ifstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ifstream(const string& s,
     ios_base::openmode mode = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9249,9 +9249,9 @@ explicit basic_ifstream(const string& s,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ifstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ifstream(basic_ifstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9266,9 +9266,9 @@ the contained \tcode{basic_filebuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_ifstream}}%
 \indexlibrary{\idxcode{basic_ifstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ifstream& operator=(basic_ifstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9281,9 +9281,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ifstream}}%
 \indexlibrary{\idxcode{basic_ifstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_ifstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9295,11 +9295,11 @@ and \tcode{rhs} by calling
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ifstream}}%
 \indexlibrary{\idxcode{basic_ifstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits>
 void swap(basic_ifstream<charT, traits>& x,
           basic_ifstream<charT, traits>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9309,9 +9309,9 @@ void swap(basic_ifstream<charT, traits>& x,
 \rSec3[ifstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9320,9 +9320,9 @@ basic_filebuf<charT,traits>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_open}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool is_open() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9331,9 +9331,9 @@ bool is_open() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const char* s, ios_base::openmode mode = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9349,9 +9349,9 @@ otherwise calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const string& s, ios_base::openmode mode = ios_base::in);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9359,9 +9359,9 @@ void open(const string& s, ios_base::openmode mode = ios_base::in);
 \end{itemdescr}
 
 \indexlibrary{\idxcode{close}!\idxcode{basic_ifstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void close();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9379,7 +9379,7 @@ calls
 \rSec3[ofstream]{Class template \tcode{basic_ofstream}}
 
 \indexlibrary{\idxcode{basic_ofstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits = char_traits<charT> >
   class basic_ofstream : public basic_ostream<charT,traits> {
@@ -9419,7 +9419,7 @@ namespace std {
   void swap(basic_ofstream<charT, traits>& x,
             basic_ofstream<charT, traits>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -9438,9 +9438,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[ofstream.cons]{\tcode{basic_ofstream} constructors}
 
 \indexlibrary{\idxcode{basic_ofstream}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ofstream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9455,10 +9455,10 @@ and initializing \tcode{sb} with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ofstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ofstream(const char* s,
     ios_base::openmode mode = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9477,10 +9477,10 @@ If that function returns a null pointer, calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ofstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_ofstream(const string& s,
     ios_base::openmode mode = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9488,9 +9488,9 @@ explicit basic_ofstream(const string& s,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_ofstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ofstream(basic_ofstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9505,9 +9505,9 @@ the contained \tcode{basic_filebuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_ofstream}}%
 \indexlibrary{\idxcode{basic_ofstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_ofstream& operator=(basic_ofstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9520,9 +9520,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ofstream}}%
 \indexlibrary{\idxcode{basic_ofstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_ofstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9534,11 +9534,11 @@ and \tcode{rhs} by calling
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_ofstream}}%
 \indexlibrary{\idxcode{basic_ofstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits>
 void swap(basic_ofstream<charT, traits>& x,
           basic_ofstream<charT, traits>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9548,9 +9548,9 @@ void swap(basic_ofstream<charT, traits>& x,
 \rSec3[ofstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9559,9 +9559,9 @@ basic_filebuf<charT,traits>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_open}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool is_open() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9570,9 +9570,9 @@ bool is_open() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const char* s, ios_base::openmode mode = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9588,9 +9588,9 @@ otherwise calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{close}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void close();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9604,9 +9604,9 @@ and, if that function fails (returns a null pointer), calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_ofstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const string& s, ios_base::openmode mode = ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9616,7 +9616,7 @@ void open(const string& s, ios_base::openmode mode = ios_base::out);
 \rSec3[fstream]{Class template \tcode{basic_fstream}}
 
 \indexlibrary{\idxcode{basic_fstream}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class charT, class traits=char_traits<charT> >
   class basic_fstream
@@ -9660,7 +9660,7 @@ namespace std {
   void swap(basic_fstream<charT, traits>& x,
             basic_fstream<charT, traits>& y);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The
@@ -9679,9 +9679,9 @@ For the sake of exposition, the maintained data is presented here as:
 \rSec3[fstream.cons]{\tcode{basic_fstream} constructors}
 
 \indexlibrary{\idxcode{basic_fstream}!\idxcode{basic_fstream}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_fstream();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9697,10 +9697,10 @@ with
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_fstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_fstream(const char* s,
     ios_base::openmode mode = ios_base::in|ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9720,10 +9720,10 @@ If that function returns a null pointer, calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_fstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 explicit basic_fstream(const string& s,
     ios_base::openmode mode = ios_base::in|ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9731,9 +9731,9 @@ explicit basic_fstream(const string& s,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{basic_fstream}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_fstream(basic_fstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9748,9 +9748,9 @@ the contained \tcode{basic_filebuf}.
 
 \indexlibrary{\idxcode{operator=}!\idxcode{basic_fstream}}%
 \indexlibrary{\idxcode{basic_fstream}!\idxcode{operator=}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_fstream& operator=(basic_fstream&& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9763,9 +9763,9 @@ members of \tcode{rhs}.
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_fstream}}%
 \indexlibrary{\idxcode{basic_fstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void swap(basic_fstream& rhs);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9777,11 +9777,11 @@ and \tcode{rhs} by calling
 
 \indexlibrary{\idxcode{swap}!\idxcode{basic_fstream}}%
 \indexlibrary{\idxcode{basic_fstream}!\idxcode{swap}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class charT, class traits>
 void swap(basic_fstream<charT, traits>& x,
           basic_fstream<charT, traits>& y);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9791,9 +9791,9 @@ void swap(basic_fstream<charT, traits>& x,
 \rSec3[fstream.members]{Member functions}
 
 \indexlibrary{\idxcode{rdbuf}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 basic_filebuf<charT,traits>* rdbuf() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9802,9 +9802,9 @@ basic_filebuf<charT,traits>* rdbuf() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{is_open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool is_open() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9813,10 +9813,10 @@ bool is_open() const;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const char* s,
     ios_base::openmode mode = ios_base::in|ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9831,10 +9831,10 @@ otherwise calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{open}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void open(const string& s,
     ios_base::openmode mode = ios_base::in|ios_base::out);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9842,9 +9842,9 @@ void open(const string& s,
 \end{itemdescr}
 
 \indexlibrary{\idxcode{close}!\idxcode{basic_filebuf}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void close();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -9988,10 +9988,10 @@ of \tcode{<stdint.h>}, and
 \item
 if and only if the type \tcode{intmax_t} designates an extended integer 
 type~(\ref{basic.fundamental}), the following function signatures are added:
-\begin{codeblock}
+\begin{lstlisting}
 intmax_t abs(intmax_t);
 imaxdiv_t div(intmax_t, intmax_t);
-\end{codeblock}
+\end{lstlisting}
 which shall have the same semantics as the function signatures
 \tcode{intmax_t imaxabs(intmax_t)} and
 \tcode{imaxdiv_t imaxdiv(intmax_t, intmax_t)}, respectively.

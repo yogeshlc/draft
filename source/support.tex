@@ -125,11 +125,11 @@ requirement is supported in every context.
 \indexlibrary{\idxcode{nullptr_t}}%
 \tcode{nullptr_t} is defined as follows:
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   typedef decltype(nullptr) nullptr_t;
 }
-\end{codeblock}
+\end{lstlisting}
 
 The type for which \tcode{nullptr_t} is a synonym has the characteristics
 described in~\ref{basic.fundamental} and~\ref{conv.ptr}. \enternote Although
@@ -196,7 +196,7 @@ Non-arithmetic standard types, such as
 \indexlibrary{\idxcode{float_denorm_style}}%
 \rSec3[limits.syn]{Header \tcode{<limits>} synopsis}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class T> class numeric_limits;
   enum float_round_style;
@@ -224,12 +224,12 @@ namespace std {
   template<> class numeric_limits<double>;
   template<> class numeric_limits<long double>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec3[numeric.limits]{Class template \tcode{numeric_limits}}
 
 \indexlibrary{\idxcode{numeric\_limits}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class T> class numeric_limits {
   public:
@@ -276,7 +276,7 @@ namespace std {
   template<class T> class numeric_limits<volatile T>;
   template<class T> class numeric_limits<const volatile T>;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The default
@@ -295,9 +295,9 @@ the specialization on the unqualified type \tcode{T}.
 
 \indexlibrary{\idxcode{min}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{min}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T min() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -317,9 +317,9 @@ or
 
 \indexlibrary{\idxcode{max}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{max}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T max() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -333,9 +333,9 @@ Meaningful for all specializations in which
 
 \indexlibrary{\idxcode{lowest}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{lowest}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T lowest() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -350,9 +350,9 @@ Meaningful for all specializations in which \tcode{is_bounded != false}.
 
 \indexlibrary{\idxcode{digits}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{digits}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int digits;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -369,9 +369,9 @@ mantissa.\footnote{Equivalent to \tcode{FLT_MANT_DIG}, \tcode{DBL_MANT_DIG},
 
 \indexlibrary{\idxcode{digits10}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{digits10}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int digits10;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -386,9 +386,9 @@ Meaningful for all specializations in which
 
 \indexlibrary{\idxcode{max_digits10}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{max_digits10}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int max_digits10;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -401,9 +401,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{is_signed}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_signed}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_signed;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -415,9 +415,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{is_integer}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_integer}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_integer;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -429,9 +429,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{is_exact}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_exact}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_exact;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -445,9 +445,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{radix}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{radix}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int radix;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -465,9 +465,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{epsilon}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{epsilon}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T epsilon() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -480,9 +480,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{round_error}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{round_error}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T round_error() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -494,9 +494,9 @@ Annex A Rationale Section A.5.2.8 - Rounding constants.}
 
 \indexlibrary{\idxcode{min_exponent}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{min_exponent}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int  min_exponent;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -512,9 +512,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{min_exponent10}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{min_exponent10}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int  min_exponent10;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -528,9 +528,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{max_exponent}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{max_exponent}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int  max_exponent;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -546,9 +546,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{max_exponent10}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{max_exponent10}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr int  max_exponent10;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -562,9 +562,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{has_infinity}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{has_infinity}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool has_infinity;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -582,9 +582,9 @@ for all specializations in which
 
 \indexlibrary{\idxcode{has_quiet_NaN}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{has_quiet_NaN}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool has_quiet_NaN;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -603,9 +603,9 @@ for all specializations in which
 
 \indexlibrary{\idxcode{has_signaling_NaN}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{has_signaling_NaN}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool has_signaling_NaN;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -623,9 +623,9 @@ for all specializations in which
 
 \indexlibrary{\idxcode{float_denorm_style}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{float_denorm_style}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr float_denorm_style has_denorm;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -645,9 +645,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{has_denorm_loss}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{has_denorm_loss}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool has_denorm_loss;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -657,9 +657,9 @@ denormalization loss, rather than as an inexact result.\footnote{See IEC 559.}
 
 \indexlibrary{\idxcode{infinity}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{infinity}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T infinity() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -674,9 +674,9 @@ Required in specializations for which
 
 \indexlibrary{\idxcode{quiet_NaN}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{quiet_NaN}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T quiet_NaN() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -691,9 +691,9 @@ Required in specializations for which
 
 \indexlibrary{\idxcode{signaling_NaN}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{signaling_NaN}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T signaling_NaN() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -708,9 +708,9 @@ Required in specializations for which
 
 \indexlibrary{\idxcode{denorm_min}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{denorm_min}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr T denorm_min() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -727,9 +727,9 @@ returns the minimum positive normalized value.
 
 \indexlibrary{\idxcode{is_iec559}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_iec559}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_iec559;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -743,9 +743,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{is_bounded}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_bounded}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_bounded;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -759,9 +759,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{is_modulo}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{is_modulo}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool is_modulo;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -786,9 +786,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{traps}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{traps}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool traps;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -802,9 +802,9 @@ Meaningful for all specializations.
 
 \indexlibrary{\idxcode{tinyness_before}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{tinyness_before}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr bool tinyness_before;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -818,9 +818,9 @@ Meaningful for all floating point types.
 
 \indexlibrary{\idxcode{round_style}!\idxcode{numeric_limits}}
 \indexlibrary{\idxcode{numeric_limits}!\idxcode{round_style}}
-\begin{itemdecl}
+\begin{lstlisting}
 static constexpr float_round_style round_style;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -836,7 +836,7 @@ Specializations for integer types shall return
 \rSec3[round.style]{Type \tcode{float_round_style}}
 
 \indexlibrary{\idxcode{float_round_style}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   enum float_round_style {
     round_indeterminate       = -1,
@@ -846,7 +846,7 @@ namespace std {
     round_toward_neg_infinity =  3
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The rounding mode for floating point arithmetic is characterized by the
@@ -878,7 +878,7 @@ if the rounding style is toward negative infinity
 \rSec3[denorm.style]{Type \tcode{float_denorm_style}}
 
 \indexlibrary{\idxcode{float_denorm_style}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   enum float_denorm_style {
     denorm_indeterminate = -1,
@@ -886,7 +886,7 @@ namespace std {
     denorm_present = 1
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The presence or absence of denormalization (variable number of exponent bits)
@@ -924,7 +924,7 @@ Any value that is not ``meaningful'' shall be set to 0 or
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<> class numeric_limits<float> {
   public:
@@ -971,7 +971,7 @@ namespace std {
     static constexpr float_round_style round_style = round_to_nearest;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -979,7 +979,7 @@ The specialization for
 \tcode{bool}
 shall be provided as follows:
 \indexlibrary{\idxcode{numeric_limits<bool>}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
    template<> class numeric_limits<bool> {
    public:
@@ -1023,7 +1023,7 @@ namespace std {
      static constexpr float_round_style round_style = round_toward_zero;
    };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec2[c.limits]{C library}
 
@@ -1201,7 +1201,7 @@ The contents are the same as the Standard C library header
 \indexlibrary{\idxcode{uint_least64_t}}%
 \indexlibrary{\idxcode{uintmax_t}}%
 \indexlibrary{\idxcode{uintptr_t}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   typedef @\textit{signed integer type}@ int8_t;   // optional
   typedef @\textit{signed integer type}@ int16_t;  // optional
@@ -1239,25 +1239,25 @@ namespace std {
   typedef @\textit{unsigned integer type}@ uintmax_t;
   typedef @\textit{unsigned integer type}@ uintptr_t;      // optional
 } // namespace std
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header also defines numerous macros of the form:
 
-\begin{codeblock}
+\begin{lstlisting}
   INT_[FAST LEAST]{8 16 32 64}_MIN
   [U]INT_[FAST LEAST]{8 16 32 64}_MAX
   INT{MAX PTR}_MIN
   [U]INT{MAX PTR}_MAX
   {PTRDIFF SIG_ATOMIC WCHAR WINT}{_MAX _MIN}
   SIZE_MAX
-\end{codeblock}
+\end{lstlisting}
 
 plus function macros of the form:
 
-\begin{codeblock}
+\begin{lstlisting}
   [U]INT{8 16 32 64 MAX}_C
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The header defines all functions, types, and macros the same as
@@ -1300,9 +1300,9 @@ The contents are the same as the Standard C library header
 with the following changes:
 
 \indexlibrary{\idxcode{_Exit}}%
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void _Exit(int status) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1318,9 +1318,9 @@ thread, or static storage duration and without calling functions passed to
 \end{itemdescr}
 
 \indexlibrary{\idxcode{abort}}%
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void abort(void) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1340,10 +1340,10 @@ duration and without calling functions passed to
 \end{itemdescr}
 
 \indexlibrary{\idxcode{atexit}}
-\begin{itemdecl}
+\begin{lstlisting}
 extern "C" int atexit(void (*f)(void)) noexcept;
 extern "C++" int atexit(void (*f)(void)) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1370,9 +1370,9 @@ non-zero if it fails.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{exit}}%
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void exit(int status)
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1439,10 +1439,10 @@ are defined in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{at_quick_exit}}
-\begin{itemdecl}
+\begin{lstlisting}
 extern "C" int at_quick_exit(void (*f)(void)) noexcept;
 extern "C++" int at_quick_exit(void (*f)(void)) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1470,9 +1470,9 @@ The implementation shall support the registration of at least 32 functions.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{quick_exit}}
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void quick_exit(int status) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1508,7 +1508,7 @@ It also defines components for reporting storage management errors.
 \indextext{\idxhdr{new}}%
 \indexlibrary{\idxhdr{new}}%
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_alloc;
   class bad_array_new_length;
@@ -1532,7 +1532,7 @@ void* operator new  (std::size_t size, void* ptr) noexcept;
 void* operator new[](std::size_t size, void* ptr) noexcept;
 void  operator delete  (void* ptr, void*) noexcept;
 void  operator delete[](void* ptr, void*) noexcept;
-\end{codeblock}
+\end{lstlisting}
 
 \xref~\ref{intro.memory}, \ref{basic.stc.dynamic},
 \ref{expr.new}, \ref{expr.delete}, \ref{class.free},
@@ -1548,9 +1548,9 @@ delete}.
 \rSec3[new.delete.single]{Single-object forms}
 
 \indexlibrary{\idxcode{new}!\tcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new(std::size_t size);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1608,9 +1608,9 @@ function does not return.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new(std::size_t size, const std::nothrow_t&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1645,17 +1645,17 @@ returns the result of that call. Otherwise, returns a null pointer.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 T* p1 = new T;                  // throws \tcode{bad_alloc} if it fails
 T* p2 = new(nothrow) T;         // returns \tcode{0} if it fails
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{delete}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete(void* ptr) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1710,9 +1710,9 @@ declared in
 \end{itemdescr}
 
 \indexlibrary{\idxcode{delete}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete(void* ptr, const std::nothrow_t&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1743,9 +1743,9 @@ calls \tcode{operator delete(ptr)}.
 \rSec3[new.delete.array]{Array forms}
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new[](std::size_t size);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1790,9 +1790,9 @@ Returns
 \end{itemdescr}
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new[](std::size_t size, const std::nothrow_t&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1823,9 +1823,9 @@ returns the result of that call. Otherwise, returns a null pointer.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{delete}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete[](void* ptr) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1864,9 +1864,9 @@ Calls
 \end{itemdescr}
 
 \indexlibrary{\idxcode{delete}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete[](void* ptr, const std::nothrow_t&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1903,9 +1903,9 @@ The provisions of~(\ref{basic.stc.dynamic}) do not apply to these reserved
 placement forms of \tcode{operator new} and \tcode{operator delete}.
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new(std::size_t size, void* ptr) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1920,17 +1920,17 @@ Intentionally performs no other action.
 \enterexample
 This can be useful for constructing an object at a known address:
 
-\begin{codeblock}
+\begin{lstlisting}
 void* place = operator new(sizeof(Something));
 Something* p = new (place) Something();
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void* operator new[](std::size_t size, void* ptr) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1943,9 +1943,9 @@ Intentionally performs no other action.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{new}!\tcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete(void* ptr, void*) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1966,9 +1966,9 @@ terminates by throwing an exception~(\ref{expr.new}).
 \end{itemdescr}
 
 \indexlibrary{\idxcode{new}!\idxcode{operator}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void operator delete[](void* ptr, void*) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2010,7 +2010,7 @@ shall happen before the next allocation (if any) in this order.
 \indexlibrary{\idxcode{bad_alloc}}%
 \rSec3[bad.alloc]{Class \tcode{bad_alloc}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_alloc : public exception {
   public:
@@ -2020,7 +2020,7 @@ namespace std {
     virtual const char* what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2029,9 +2029,9 @@ defines the type of objects thrown as
 exceptions by the implementation to report a failure to allocate storage.
 
 \indexlibrary{\idxcode{bad_alloc}!\idxcode{bad_alloc}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bad_alloc() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2049,10 +2049,10 @@ on the newly constructed object is implementation-defined.
 \indextext{implementation-defined}%
 \indexlibrary{\idxcode{bad_alloc}!\idxcode{bad_alloc}}%
 \indexlibrary{\idxcode{operator=}!\tcode{bad_alloc}}%
-\begin{itemdecl}
+\begin{lstlisting}
     bad_alloc(const bad_alloc&) noexcept;
     bad_alloc& operator=(const bad_alloc&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2062,9 +2062,9 @@ Copies an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{what}!\tcode{bad_alloc}}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2076,14 +2076,14 @@ An \impldef{return value of \tcode{bad_alloc::what}} \ntbs.
 \indexlibrary{\idxcode{bad_array_new_length}}%
 \rSec3[new.badlength]{Class \tcode{bad_array_new_length}}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_array_new_length : public bad_alloc {
   public:
     bad_array_new_length() noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{bad_array_new_length} defines the type of objects thrown as
@@ -2092,9 +2092,9 @@ less than zero or
 greater than an implementation-defined limit~(\ref{expr.new}).
 
 \indexlibrary{\idxcode{bad_array_new_length}!\idxcode{bad_array_new_length}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bad_array_new_length() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2108,9 +2108,9 @@ implementation-defined.
 \rSec3[new.handler]{Type \tcode{new_handler}}
 
 \indexlibrary{\idxcode{new_handler}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef void (*new_handler)();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2144,9 +2144,9 @@ terminate execution of the program without returning to the caller;
 \rSec3[set.new.handler]{\tcode{set_new_handler}}
 
 \indexlibrary{\idxcode{set_new_handler}}%
-\begin{itemdecl}
+\begin{lstlisting}
 new_handler set_new_handler(new_handler new_p) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2165,9 +2165,9 @@ The initial \tcode{new_handler} is a null pointer.
 
 \rSec3[get.new.handler]{\tcode{get_new_handler}}
 
-\begin{itemdecl}
+\begin{lstlisting}
 new_handler get_new_handler() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2191,20 +2191,20 @@ It also defines two types for reporting dynamic type identification errors.
 \indexlibrary{\idxcode{type_info}}%
 \indexlibrary{\idxcode{bad_cast}}%
 \indexlibrary{\idxcode{bad_typeid}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class type_info;
   class bad_cast;
   class bad_typeid;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \xref~\ref{expr.dynamic.cast}, \ref{expr.typeid}.
 
 \rSec2[type.info]{Class \tcode{type_info}}
 
 \indexlibrary{\idxcode{type_info}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class type_info {
   public:
@@ -2219,7 +2219,7 @@ namespace std {
     type_info& operator=(const type_info& rhs) = delete; // cannot be copied
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2232,9 +2232,9 @@ The names, encoding rule, and collating sequence for types are all unspecified
 and may differ between programs.
 
 \indexlibrary{\idxcode{operator==}!\tcode{type_info}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator==(const type_info& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2248,9 +2248,9 @@ if the two values describe the same type.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator"!=}!\tcode{type_info}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool operator!=(const type_info& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2259,9 +2259,9 @@ bool operator!=(const type_info& rhs) const noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{before}!\tcode{type_info}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool before(const type_info& rhs) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2277,9 +2277,9 @@ precedes \tcode{rhs} in the implementation's collation order.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{hash_code}!\tcode{type_info}}%
-\begin{itemdecl}
+\begin{lstlisting}
 size_t hash_code() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2294,9 +2294,9 @@ objects which compare equal.
 
 
 \indexlibrary{\idxcode{name}!\tcode{type_info}}%
-\begin{itemdecl}
+\begin{lstlisting}
 const char* name() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2314,7 +2314,7 @@ suitable for conversion and display as a
 \rSec2[bad.cast]{Class \tcode{bad_cast}}
 
 \indexlibrary{\idxcode{bad_cast}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_cast : public exception {
   public:
@@ -2324,7 +2324,7 @@ namespace std {
     virtual const char* what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2336,9 +2336,9 @@ expression~(\ref{expr.dynamic.cast}).
 
 \indextext{cast!dynamic}%
 \indexlibrary{\idxcode{bad_cast}!\tcode{bad_cast}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bad_cast() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2356,10 +2356,10 @@ on the newly constructed object is implementation-defined.%
 
 \indexlibrary{\idxcode{bad_cast}!\tcode{bad_cast}}%
 \indexlibrary{\idxcode{operator=}!\tcode{bad_cast}}%
-\begin{itemdecl}
+\begin{lstlisting}
     bad_cast(const bad_cast&) noexcept;
     bad_cast& operator=(const bad_cast&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2369,9 +2369,9 @@ Copies an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{what}!\tcode{bad_cast}}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2389,7 +2389,7 @@ suitable for conversion and display as a
 \rSec2[bad.typeid]{Class \tcode{bad_typeid}}
 
 \indexlibrary{\idxcode{bad_typeid}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_typeid : public exception {
   public:
@@ -2399,7 +2399,7 @@ namespace std {
     virtual const char* what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2411,9 +2411,9 @@ in a
 expression~(\ref{expr.typeid}).
 
 \indexlibrary{\idxcode{bad_typeid}!\tcode{bad_typeid}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bad_typeid() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2431,10 +2431,10 @@ on the newly constructed object is implementation-defined.%
 
 \indexlibrary{\idxcode{bad_typeid}!\tcode{bad_typeid}}%
 \indexlibrary{\idxcode{operator=}!\tcode{bad_typeid}}%
-\begin{itemdecl}
+\begin{lstlisting}
     bad_typeid(const bad_typeid&) noexcept;
     bad_typeid& operator=(const bad_typeid&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2444,9 +2444,9 @@ Copies an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{what}!\tcode{bad_typeid}}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2472,7 +2472,7 @@ defines several types and functions related to the handling of exceptions in a \
 
 \indextext{\idxhdr{exception}}%
 \indexlibrary{\idxhdr{exception}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class exception;
   class bad_exception;
@@ -2499,14 +2499,14 @@ namespace std {
   [[noreturn]] template <class T> void throw_with_nested(T&& t);
   template <class E> void rethrow_if_nested(const E& e);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \xref~\ref{except.special}.
 
 \rSec2[exception]{Class \tcode{exception}}
 
 \indexlibrary{\idxcode{exception}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class exception {
   public:
@@ -2517,7 +2517,7 @@ namespace std {
     virtual const char* what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2536,9 +2536,9 @@ dynamic type \tcode{T} and \tcode{lhs} is a copy of \tcode{rhs}, then
 \tcode{strcmp(lhs.what(), rhs.what())} shall equal 0.
 
 \indexlibrary{\idxcode{exception}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 exception() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2552,10 +2552,10 @@ Does not throw any exceptions.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
 exception(const exception& rhs) noexcept;
 exception& operator=(const exception& rhs) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2571,9 +2571,9 @@ then \tcode{strcmp(what(), rhs.what())} shall equal 0.
 
 \indextext{implementation-defined}%
 \indexlibrary{\idxcode{exception}!destructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual ~exception();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2587,9 +2587,9 @@ Does not throw any exceptions.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{what}!\tcode{exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2610,7 +2610,7 @@ member function of the exception object is called.
 \rSec2[bad.exception]{Class \tcode{bad_exception}}
 
 \indexlibrary{\idxcode{bad_exception}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class bad_exception : public exception {
   public:
@@ -2620,7 +2620,7 @@ namespace std {
     virtual const char* what() const noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class
@@ -2629,9 +2629,9 @@ defines the type of objects thrown as
 described in~(\ref{except.unexpected}).
 
 \indexlibrary{\idxcode{bad_exception}!\tcode{bad_exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bad_exception() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2649,10 +2649,10 @@ on the newly constructed object is implementation-defined.%
 
 \indexlibrary{\idxcode{bad_exception}!\tcode{bad_exception}}%
 \indexlibrary{\idxcode{operator=}!\tcode{bad_exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
     bad_exception(const bad_exception&) noexcept;
     bad_exception& operator=(const bad_exception&) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2662,9 +2662,9 @@ Copies an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{what}!\tcode{bad_exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
 virtual const char* what() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2684,9 +2684,9 @@ suitable for conversion and display as a
 \rSec3[terminate.handler]{Type \tcode{terminate_handler}}
 
 \indexlibrary{\idxcode{terminate_handler}}%
-\begin{itemdecl}
+\begin{lstlisting}
 typedef void (*terminate_handler)();
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2712,9 +2712,9 @@ The implementation's default \tcode{terminate_handler} calls
 \rSec3[set.terminate]{\tcode{set_terminate}}
 
 \indexlibrary{\idxcode{set_terminate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 terminate_handler set_terminate(terminate_handler f) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2733,9 +2733,9 @@ The previous \tcode{terminate_handler}.
 
 \rSec3[get.terminate]{\tcode{get_terminate}}
 
-\begin{itemdecl}
+\begin{lstlisting}
 terminate_handler get_terminate() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2746,9 +2746,9 @@ terminate_handler get_terminate() noexcept;
 \rSec3[terminate]{\tcode{terminate}}
 
 \indexlibrary{\idxcode{terminate}}%
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void terminate() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2768,9 +2768,9 @@ this context. \exitnote
 \rSec2[uncaught]{\tcode{uncaught_exception}}
 
 \indexlibrary{\idxcode{uncaught_exception}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool uncaught_exception() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2798,9 +2798,9 @@ throwing an exception can result in a call of
 \rSec2[propagation]{Exception propagation}
 
 \indexlibrary{\idxcode{exception_ptr}}
-\begin{itemdecl}
+\begin{lstlisting}
 typedef @\unspec@ exception_ptr;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2839,9 +2839,9 @@ particular exception do not introduce a data race. \exitnote
 \end{itemdescr}
 
 \indexlibrary{\idxcode{current_exception}}
-\begin{itemdecl}
+\begin{lstlisting}
 exception_ptr current_exception() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2865,9 +2865,9 @@ recursion.\exitnote
 \end{itemdescr}
 
 \indexlibrary{\idxcode{rethrow_exception}}
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void rethrow_exception(exception_ptr p);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2878,20 +2878,20 @@ recursion.\exitnote
 \end{itemdescr}
 
 \indexlibrary{\idxcode{make_exception_ptr}}
-\begin{itemdecl}
+\begin{lstlisting}
 template<class E> exception_ptr make_exception_ptr(E e) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \effects Creates an \tcode{exception_ptr} object that refers to a copy of \tcode{e}, as if
-\begin{codeblock}
+\begin{lstlisting}
 try {
   throw e;
 } catch(...) {
   return current_exception();
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 \enternote This function is provided for convenience and
@@ -2901,7 +2901,7 @@ efficiency reasons. \exitnote
 \rSec2[except.nested]{\tcode{nested_exception}}
 
 \indexlibrary{\idxcode{nested_exception}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   class nested_exception {
   public:
@@ -2918,7 +2918,7 @@ namespace std {
   [[noreturn]] template<class T> void throw_with_nested(T&& t);
   template <class E> void rethrow_if_nested(const E& e);
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The class \tcode{nested_exception} is designed for use as a mixin through
@@ -2932,9 +2932,9 @@ polymorphic class. Its presence can be tested for with \tcode{dynamic_cast}.
 
 \indexlibrary{\idxcode{nested_exception}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{nested_exception}}
-\begin{itemdecl}
+\begin{lstlisting}
 nested_exception() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2943,9 +2943,9 @@ nested_exception() noexcept;
 
 \indexlibrary{\idxcode{rethrow_nested}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{rethrow_nested}}
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] void rethrow_nested() const;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2955,9 +2955,9 @@ Otherwise, it throws the stored exception captured by \tcode{*this}.
 
 \indexlibrary{\idxcode{nested_ptr}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{nested_ptr}}
-\begin{itemdecl}
+\begin{lstlisting}
 exception_ptr nested_ptr() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -2966,9 +2966,9 @@ exception_ptr nested_ptr() const noexcept;
 
 \indexlibrary{\idxcode{throw_with_nested}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{throw_with_nested}}
-\begin{itemdecl}
+\begin{lstlisting}
 [[noreturn]] template <class T> void throw_with_nested(T&& t);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 Let \tcode{U} be \tcode{remove_reference<T>::type}.
@@ -2987,9 +2987,9 @@ and constructed from \tcode{std::forward<T>(t)}, otherwise
 
 \indexlibrary{\idxcode{rethrow_if_nested}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{rethrow_if_nested}}
-\begin{itemdecl}
+\begin{lstlisting}
 template <class E> void rethrow_if_nested(const E& e);
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3012,7 +3012,7 @@ The header \tcode{<initializer_list>} defines one type.
 \indexlibrary{\idxcode{initializer_list}}%
 \indexlibrary{\idxcode{begin}}%
 \indexlibrary{\idxcode{end}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template<class E> class initializer_list {
   public:
@@ -3035,7 +3035,7 @@ namespace std {
   template<class E> constexpr const E* begin(initializer_list<E> il) noexcept;
   template<class E> constexpr const E* end(initializer_list<E> il) noexcept;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An object of type \tcode{initializer_list<E>} provides access to an array of
@@ -3049,9 +3049,9 @@ elements. \exitnote
 
 \indexlibrary{\idxcode{initializer_list}!\idxcode{initializer_list}}
 \indexlibrary{\idxcode{initializer_list}!\idxcode{initializer_list}}
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr initializer_list() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3065,9 +3065,9 @@ constexpr initializer_list() noexcept;
 
 \indexlibrary{\idxcode{begin}!\idxcode{initializer_list}}
 \indexlibrary{\idxcode{initializer_list}!\idxcode{begin}}
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr const E* begin() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3078,9 +3078,9 @@ identical.
 
 \indexlibrary{\idxcode{end}!\idxcode{initializer_list}}
 \indexlibrary{\idxcode{initializer_list}!\idxcode{end}}
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr const E* end() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3089,9 +3089,9 @@ constexpr const E* end() const noexcept;
 
 \indexlibrary{\idxcode{size}!\idxcode{initializer_list}}
 \indexlibrary{\idxcode{initializer_list}!\idxcode{size}}
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr size_t size() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3104,9 +3104,9 @@ constexpr size_t size() const noexcept;
 \rSec2[support.initlist.range]{Initializer list range access}
 
 \indexlibrary{\idxcode{begin(initializer_list<E>)}}
-\begin{itemdecl}
+\begin{lstlisting}
 template<class E> constexpr const E* begin(initializer_list<E> il) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -3114,9 +3114,9 @@ template<class E> constexpr const E* begin(initializer_list<E> il) noexcept;
 \end{itemdescr}
 
 \indexlibrary{\idxcode{end(initializer_list<E>)}}
-\begin{itemdecl}
+\begin{lstlisting}
 template<class E> constexpr const E* end(initializer_list<E> il) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum

@@ -28,7 +28,7 @@ and operations, as summarized below.
 \rSec1[atomics.syn]{Header \tcode{<atomic>} synopsis}
 
 \indexlibrary{\idxhdr{atomic}}%
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   // \ref{atomics.order}, order and consistency
   enum memory_order;
@@ -195,18 +195,18 @@ namespace std {
   extern "C" void atomic_thread_fence(memory_order) noexcept;
   extern "C" void atomic_signal_fence(memory_order) noexcept;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \rSec1[atomics.order]{Order and consistency}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   typedef enum memory_order {
     memory_order_relaxed, memory_order_consume, memory_order_acquire, 
     memory_order_release, memory_order_acq_rel, memory_order_seq_cst
   } memory_order;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The enumeration \tcode{memory_order} specifies the detailed regular
@@ -321,40 +321,40 @@ included.
 \pnum
 \enternote The second requirement disallows ``out-of-thin-air'' or ``speculative'' stores of atomics when relaxed atomics are used. Since unordered operations are involved, evaluations may appear in this sequence out of thread order. For example, with \tcode{x} and \tcode{y} initially zero,
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 1:
 r1 = y.load(memory_order_relaxed);
 x.store(r1, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 2:
 r2 = x.load(memory_order_relaxed);
 y.store(42, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
 is allowed to produce \tcode{r1 = r2 = 42}. The sequence of evaluations justifying this consists of:
 
-\begin{codeblock}
+\begin{lstlisting}
 y.store(42, memory_order_relaxed);
 r1 = y.load(memory_order_relaxed);
 x.store(r1, memory_order_relaxed);
 r2 = x.load(memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
 On the other hand,
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 1:
 r1 = y.load(memory_order_relaxed);
 x.store(r1, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 2:
 r2 = x.load(memory_order_relaxed);
 y.store(r2, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
 may not produce \tcode{r1 = r2 = 42}, since there is no sequence of evaluations that
 results in the computation of 42. In the absence of ``relaxed'' operations and
@@ -365,17 +365,17 @@ second requirement has no impact.\exitnote
 \enternote The requirements do allow \tcode{r1 == r2 == 42} in the following example,
 with \tcode{x} and \tcode{y} initially zero:
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 1:
 r1 = x.load(memory_order_relaxed);
 if (r1 == 42) y.store(r1, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 // Thread 2:
 r2 = y.load(memory_order_relaxed);
 if (r2 == 42) x.store(42, memory_order_relaxed);
-\end{codeblock}
+\end{lstlisting}
 
 However, implementations should not allow such behavior.\exitnote
 
@@ -389,10 +389,10 @@ Implementations should make atomic stores visible to atomic loads within a reaso
 amount of time.
 
 \indexlibrary{\idxcode{kill_dependency}}%
-\begin{itemdecl}
+\begin{lstlisting}
 template <class T>
   T kill_dependency(T y) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -407,7 +407,7 @@ value~(\ref{intro.multithread}).
 \rSec1[atomics.lockfree]{Lock-free property}
 
 \indeximpldef{values of various \tcode{ATOMIC_..._LOCK_FREE} macros}
-\begin{codeblock}
+\begin{lstlisting}
 #define ATOMIC_BOOL_LOCK_FREE @\unspec@
 #define ATOMIC_CHAR_LOCK_FREE @\unspec@
 #define ATOMIC_CHAR16_T_LOCK_FREE @\unspec@
@@ -418,7 +418,7 @@ value~(\ref{intro.multithread}).
 #define ATOMIC_LONG_LOCK_FREE @\unspec@
 #define ATOMIC_LLONG_LOCK_FREE @\unspec@
 #define ATOMIC_POINTER_LOCK_FREE @\unspec@
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The \tcode{ATOMIC_..._LOCK_FREE} macros indicate the lock-free property of the
@@ -444,7 +444,7 @@ processes. \exitnote
 
 \rSec1[atomics.types.generic]{Atomic types}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   template <class T> struct atomic {
     bool is_lock_free() const volatile noexcept;
@@ -579,7 +579,7 @@ namespace std {
     T* operator-=(ptrdiff_t) noexcept;
   };
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 There is a generic class template \tcode{atomic<T>}. The type of the template argument
@@ -764,9 +764,9 @@ operations on non-volatile objects become volatile. Thus, volatile qualified ope
 on non-volatile objects may be merged under some conditions. \exitnote
 
 \indexlibrary{\idxcode{atomic type}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{A}@::@\textit{A}@() noexcept = default;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -778,9 +778,9 @@ These semantics ensure compatibility with C.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{atomic type}!constructor}%
-\begin{itemdecl}
+\begin{lstlisting}
 constexpr @\textit{A}@::@\textit{A}@(@\textit{C}@ desired) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -794,9 +794,9 @@ variable, and then immediately accessing \tcode{A} in the receiving thread.
 This results in undefined behavior. \exitnote
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 #define ATOMIC_VAR_INIT(value) @\seebelow@
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -807,30 +807,30 @@ initialization-compatible with \textit{value}.
 \enternote This operation may need to initialize locks. \exitnote
 Concurrent access to the variable being initialized, even via an atomic operation,
 constitutes a data race. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 atomic<int> v = ATOMIC_VAR_INIT(5);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemdescr}
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{atomic_is_lock_free}}%
 \indexlibrary{\idxcode{atomic_is_lock_free}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool atomic_is_lock_free(const volatile @\textit{A}@ *object) noexcept;
 bool atomic_is_lock_free(const @\textit{A}@ *object) noexcept;
 bool @\textit{A}@::is_lock_free() const volatile noexcept;
 bool @\textit{A}@::is_lock_free() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
 \returns True if the object's operations are lock-free, false otherwise.
 \end{itemdescr}
 
-\begin{itemdecl}
+\begin{lstlisting}
 void atomic_init(volatile @\textit{A}@ *object, @\textit{C}@ desired) noexcept;
 void atomic_init(@\textit{A}@ *object, @\textit{C}@ desired) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -853,14 +853,14 @@ a data race.
 \indexlibrary{\idxcode{atomic_store_explicit}!\idxcode{atomic type}}%
 \indexlibrary{\idxcode{atomic type}!\idxcode{store}}%
 \indexlibrary{\idxcode{store}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void atomic_store(volatile @\textit{A}@* object, @\textit{C}@ desired) noexcept;
 void atomic_store(@\textit{A}@* object, @\textit{C}@ desired) noexcept;
 void atomic_store_explicit(volatile @\textit{A}@ *object, @\textit{C}@ desired, memory_order order) noexcept;
 void atomic_store_explicit(@\textit{A}@* object, @\textit{C}@ desired, memory_order order) noexcept;
 void @\textit{A}@::store(@\textit{C}@ desired, memory_order order = memory_order_seq_cst) volatile noexcept;
 void @\textit{A}@::store(@\textit{C}@ desired, memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -875,10 +875,10 @@ with the value of \tcode{desired}. Memory is affected according to the value of
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator=}}%
 \indexlibrary{\idxcode{operator=}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C} \textit{A}@::operator=(@\textit{C}@ desired) volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator=(@\textit{C}@ desired) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -894,14 +894,14 @@ with the value of \tcode{desired}. Memory is affected according to the value of
 \indexlibrary{\idxcode{atomic_load_explicit}!\idxcode{atomic type}}%
 \indexlibrary{\idxcode{atomic type}!\idxcode{load}}%
 \indexlibrary{\idxcode{load}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ atomic_load(const volatile @\textit{A}@* object) noexcept;
 @\textit{C}@ atomic_load(const @\textit{A}@* object) noexcept;
 @\textit{C}@ atomic_load_explicit(const volatile @\textit{A}@* object, memory_order) noexcept;
 @\textit{C}@ atomic_load_explicit(const @\textit{A}@* object, memory_order) noexcept;
 @\textit{C}@ @\textit{A}@::load(memory_order order = memory_order_seq_cst) const volatile noexcept;
 @\textit{C}@ @\textit{A}@::load(memory_order order = memory_order_seq_cst) const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -916,10 +916,10 @@ with the value of \tcode{desired}. Memory is affected according to the value of
 
 \indexlibrary{\idxcode{atomic type}!operator C@\tcode{operator \textit{C}}}%
 \indexlibrary{operator C@\tcode{operator \textit{C}}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{A}@::operator @\textit{C}@() const volatile noexcept;
 @\textit{A}@::operator @\textit{C}@() const noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -936,14 +936,14 @@ with the value of \tcode{desired}. Memory is affected according to the value of
 \indexlibrary{\idxcode{atomic_exchange_explicit}!\idxcode{atomic type}}%
 \indexlibrary{\idxcode{atomic type}!\idxcode{exchange}}%
 \indexlibrary{\idxcode{exchange}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ atomic_exchange(volatile @\textit{A}@* object, @\textit{C}@ desired) noexcept;
 @\textit{C}@ atomic_exchange(@\textit{A}@* object, @\textit{C}@ desired) noexcept;
 @\textit{C}@ atomic_exchange_explicit(volatile @\textit{A}@* object, @\textit{C}@ desired, memory_order) noexcept;
 @\textit{C}@ atomic_exchange_explicit(@\textit{A}@* object, @\textit{C}@ desired, memory_order) noexcept;
 @\textit{C}@ @\textit{A}@::exchange(@\textit{C}@ desired, memory_order order = memory_order_seq_cst) volatile noexcept;
 @\textit{C}@ @\textit{A}@::exchange(@\textit{C}@ desired, memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -972,7 +972,7 @@ These operations are atomic read-modify-write operations~(\ref{intro.multithread
 \indexlibrary{\idxcode{compare_exchange_weak_explicit}!\idxcode{atomic type}}%
 \indexlibrary{\idxcode{atomic type}!\idxcode{compare_exchange_strong_explicit}}%
 \indexlibrary{\idxcode{compare_exchange_strong_explicit}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool atomic_compare_exchange_weak(volatile @\textit{A}@* object, @\textit{C}@* expected, @\textit{C}@ desired) noexcept;
 bool atomic_compare_exchange_weak(@\textit{A}@* object, @\textit{C}@* expected, @\textit{C}@ desired) noexcept;
 bool atomic_compare_exchange_strong(volatile @\textit{A}@* object, @\textit{C}@* expected, @\textit{C}@ desired) noexcept;
@@ -1001,7 +1001,7 @@ bool @\textit{A}@::compare_exchange_strong(@\textit{C}@& expected, @\textit{C}@ 
     memory_order order = memory_order_seq_cst) volatile noexcept;
 bool @\textit{A}@::compare_exchange_strong(@\textit{C}@& expected, @\textit{C}@ desired,
     memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1031,22 +1031,22 @@ operations~(\ref{intro.multithread}). Otherwise, these operations are atomic loa
 \pnum
 \enternote For example, the effect of
 \tcode{atomic_compare_exchange_strong} is
-\begin{codeblock}
+\begin{lstlisting}
 if (memcmp(object, expected, sizeof(*object)) == 0)
   memcpy(object, &desired, sizeof(*object));
 else
   memcpy(expected, object, sizeof(*object));
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 \enterexample the expected use of the compare-and-exchange operations is as follows. The
 compare-and-exchange operations will update \tcode{expected} when another iteration of
 the loop is needed.
-\begin{codeblock}
+\begin{lstlisting}
 expected = current.load();
 do {
   desired = function(expected);
 } while (!current.compare_exchange_weak(expected, desired));
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1114,14 +1114,14 @@ The following operations perform arithmetic computations. The key, operator, and
 \indexlibrary{\idxcode{atomic_fetch_}!\idxcode{atomic type}}%
 \indexlibrary{\idxcode{atomic type}!\idxcode{fetch_}}%
 \indexlibrary{\idxcode{fetch_}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ atomic_fetch_@\textit{key}@(volatile @\textit{A}@ *object, @\textit{M}@ operand) noexcept;
 @\textit{C}@ atomic_fetch_@\textit{key}@(@\textit{A}@* object, @\textit{M}@ operand) noexcept;
 @\textit{C}@ atomic_fetch_@\textit{key}@_explicit(volatile @\textit{A}@ *object, @\textit{M}@ operand, memory_order order) noexcept;
 @\textit{C}@ atomic_fetch_@\textit{key}@_explicit(@\textit{A}@* object, @\textit{M}@ operand, memory_order order) noexcept;
 @\textit{C}@ @\textit{A}@::fetch_@\textit{key}@(@\textit{M}@ operand, memory_order order = memory_order_seq_cst) volatile noexcept;
 @\textit{C}@ @\textit{A}@::fetch_@\textit{key}@(@\textit{M}@ operand, memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1142,10 +1142,10 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator "@=}}%
 \indexlibrary{\idxcode{operator "@=}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ @\textit{A}@::operator @\textit{op}@=(@\textit{M}@ operand) volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator @\textit{op}@=(@\textit{M}@ operand) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1157,10 +1157,10 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator++}}%
 \indexlibrary{\idxcode{operator++}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ @\textit{A}@::operator++(int) volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator++(int) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1169,10 +1169,10 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator\dcr}}%
 \indexlibrary{\idxcode{operator\dcr}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ @\textit{A}@::operator--(int) volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator--(int) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1181,10 +1181,10 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator++}}%
 \indexlibrary{\idxcode{operator++}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ @\textit{A}@::operator++() volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator++() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1196,10 +1196,10 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \indexlibrary{\idxcode{atomic type}!\idxcode{operator\dcr}}%
 \indexlibrary{\idxcode{operator\dcr}!\idxcode{atomic type}}%
-\begin{itemdecl}
+\begin{lstlisting}
 @\textit{C}@ @\textit{A}@::operator--() volatile noexcept;
 @\textit{C}@ @\textit{A}@::operator--() noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1211,7 +1211,7 @@ undefined address, but the operations otherwise have no undefined behavior.
 
 \rSec1[atomics.flag]{Flag type and operations}
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace std {
   typedef struct atomic_flag {
     bool test_and_set(memory_order = memory_order_seq_cst) volatile noexcept;
@@ -1236,7 +1236,7 @@ namespace std {
 
   #define ATOMIC_FLAG_INIT @\seebelow@
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The \tcode{atomic_flag} type provides the classic test-and-set functionality. It has two states, set and clear.
@@ -1256,21 +1256,21 @@ The macro \tcode{ATOMIC_FLAG_INIT} shall be defined in such a way that it can be
 clear state. For a static-duration object, that initialization shall be static. It is unspecified whether an
 uninitialized \tcode{atomic_flag} object has an initial state of set or clear.\enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 atomic_flag guard = ATOMIC_FLAG_INIT;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \indexlibrary{\idxcode{atomic_flag_test_and_set}}%
 \indexlibrary{\idxcode{atomic_flag_test_and_set_explicit}}%
-\begin{itemdecl}
+\begin{lstlisting}
 bool atomic_flag_test_and_set(volatile atomic_flag *object) noexcept;
 bool atomic_flag_test_and_set(atomic_flag *object) noexcept;
 bool atomic_flag_test_and_set_explicit(volatile atomic_flag *object, memory_order order) noexcept;
 bool atomic_flag_test_and_set_explicit(atomic_flag *object, memory_order order) noexcept;
 bool atomic_flag::test_and_set(memory_order order = memory_order_seq_cst) volatile noexcept;
 bool atomic_flag::test_and_set(memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1284,14 +1284,14 @@ bool atomic_flag::test_and_set(memory_order order = memory_order_seq_cst) noexce
 \indexlibrary{\idxcode{atomic_flag_clear_explicit}}%
 \indexlibrary{\idxcode{atomic_flag}!\idxcode{clear}}%
 \indexlibrary{\idxcode{clear}!\idxcode{atomic_flag}}%
-\begin{itemdecl}
+\begin{lstlisting}
 void atomic_flag_clear(volatile atomic_flag *object) noexcept;
 void atomic_flag_clear(atomic_flag *object) noexcept;
 void atomic_flag_clear_explicit(volatile atomic_flag *object, memory_order order) noexcept;
 void atomic_flag_clear_explicit(atomic_flag *object, memory_order order) noexcept;
 void atomic_flag::clear(memory_order order = memory_order_seq_cst) volatile noexcept;
 void atomic_flag::clear(memory_order order = memory_order_seq_cst) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1335,9 +1335,9 @@ and reads the value written by \textit{A} or a value written by any side effect 
 release sequence headed by \textit{A}.
 
 \indexlibrary{\idxcode{atomic_thread_fence}}%
-\begin{itemdecl}
+\begin{lstlisting}
 extern "C" void atomic_thread_fence(memory_order order) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum
@@ -1359,9 +1359,9 @@ memory_order_acq_rel};
 \end{itemdescr}
 
 \indexlibrary{\idxcode{atomic_signal_fence}}%
-\begin{itemdecl}
+\begin{lstlisting}
 extern "C" void atomic_signal_fence(memory_order order) noexcept;
-\end{itemdecl}
+\end{lstlisting}
 
 \begin{itemdescr}
 \pnum

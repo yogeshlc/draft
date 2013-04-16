@@ -590,7 +590,7 @@ values~(\ref{basic.fundamental}).}
 \pnum
 The enumerated type \term{enumerated} can be written:
 
-\begin{codeblock}
+\begin{lstlisting}
 enum @\term{enumerated}@ { @\term{V0}@, @\term{V1}@, @\term{V2}@, @\term{V3}@, ..... };
 
 static const @\term{enumerated C0}@ (@\term{V0}@);
@@ -598,7 +598,7 @@ static const @\term{enumerated C1}@ (@\term{V1}@);
 static const @\term{enumerated C2}@ (@\term{V2}@);
 static const @\term{enumerated C3}@ (@\term{V3}@);
   .....
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Here, the names \term{C0}, \term{C1}, etc. represent
@@ -623,7 +623,7 @@ or as a
 \pnum
 The bitmask type \term{bitmask} can be written:
 
-\begin{codeblock}
+\begin{lstlisting}
 // For exposition only.
 // \tcode{int_type} is an integral type capable of
 // representing all values of the bitmask type.
@@ -661,7 +661,7 @@ constexpr @\term{bitmask}{}@ operator~(@\term{bitmask}{}@ X){
 @\term{bitmask}{}@& operator^=(@\term{bitmask}{}@& X, @\term{bitmask}{}@ Y) {
   X = X ^ Y; return X;
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Here, the names \term{C0}, \term{C1}, etc. represent
@@ -865,9 +865,9 @@ private member objects of classes that meet the external specifications of the c
 The declarations for such member objects and the definitions of related member types are
 followed by a comment that ends with \expos, as in:
 
-\begin{codeblock}
+\begin{lstlisting}
 streambuf* sb;  // \expos
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 An implementation may use any technique that provides equivalent external behavior.
@@ -1422,7 +1422,7 @@ for any dereferenceable object
 
 \enterexample User code can ensure that the evaluation of \tcode{swap} calls
 is performed in an appropriate context under the various conditions as follows:
-\begin{codeblock}
+\begin{lstlisting}
 #include <utility>
 
 // Requires: \tcode{std::forward<T>(t)} shall be swappable with \tcode{std::forward<U>(u)}.
@@ -1461,7 +1461,7 @@ int main() {
   value_swap(a1, proxy(a2));
   assert(a1.m == -5 && a2.m == 5);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[nullablepointer.requirements]{\tcode{NullablePointer} requirements}
@@ -1872,7 +1872,7 @@ cannot be used with a particular allocator, the allocator class or the call to
 interface that satisfies the requirements of
 Table~\ref{tab:utilities.allocator.requirements}:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class Tp>
 struct SimpleAllocator {
   typedef Tp value_type;
@@ -1888,7 +1888,7 @@ template <class T, class U>
 bool operator==(const SimpleAllocator<T>&, const SimpleAllocator<U>&);
 template <class T, class U>
 bool operator!=(const SimpleAllocator<T>&, const SimpleAllocator<U>&);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2456,12 +2456,12 @@ argument-dependent lookup
 in cases like that of
 \tcode{ostream_iterator}s:
 \effects
-\begin{codeblock}
+\begin{lstlisting}
 *out_stream << value;
 if (delim != 0)
   *out_stream << delim;
 return (*this);
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec3[member.functions]{Member functions}

@@ -180,7 +180,7 @@ declaration.
 A template parameter may be a class template.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class myarray { /* ... */ };
 
 template<class K, class V, template<class T> class C = myarray>
@@ -188,7 +188,7 @@ class Map {
   C<K> key;
   C<V> value;
 };
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -221,7 +221,7 @@ is the name of an already existing class) is taken as a
 \grammarterm{type-parameter}.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 class T { /* ... */ };
 int i;
 
@@ -229,7 +229,7 @@ template<class T, T i> void f(T t) {
   T t1 = i;         // template-parameters \tcode{T} and \tcode{i}
   ::T t2 = ::i;     // global namespace members \tcode{T} and \tcode{i}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here, the template
 \tcode{f}
@@ -287,7 +287,7 @@ When a non-type non-reference
 is used as an initializer for a reference, a temporary is always used.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<const X& x, int i> void f() {
   i++;                          // error: change of template-parameter value
 
@@ -297,7 +297,7 @@ template<const X& x, int i> void f() {
   int& ri = i;                  // error: non-const reference bound to temporary
   const int& cri = i;           // OK: const reference bound to temporary
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -306,11 +306,11 @@ A non-type
 shall not be declared to have floating point, class, or void type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<double d> class X;     // error
 template<double* pd> class Y;   // OK
 template<double& rd> class Z;   // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -328,7 +328,7 @@ or ``pointer to function returning
 respectively.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int *a>   struct R { /* ... */ };
 template<int b[5]> struct S { /* ... */ };
 int p;
@@ -337,7 +337,7 @@ S<&p> x;                        // OK due to parameter adjustment
 int v[5];
 R<v> y;                         // OK due to implicit argument conversion
 S<v> z;                         // OK due to both adjustment and conversion
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -381,16 +381,16 @@ from the definition (if in scope) and all declarations in scope in the
 same way default function arguments are~(\ref{dcl.fct.default}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class T2 = int> class A;
 template<class T1 = int, class T2> class A;
-\end{codeblock}
+\end{lstlisting}
 
 is equivalent to
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1 = int, class T2 = int> class A;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -413,13 +413,13 @@ template parameter unless that template parameter can be deduced from the
 default argument~(\ref{temp.deduct}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1 = int, class T2> class B;   // error
 
 // \tcode{U} can be neither deduced from the \grammarterm{parameter-type-list} nor specified
 template<class... T, class... U> void f() { } // error
 template<class... T, class U> void g() { }    // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -429,10 +429,10 @@ shall
 not be given default arguments by two different declarations in the same scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T = int> class X;
 template<class T = int> class X { /*... */ }; // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \indextext{\idxcode{<}!template~and}%
@@ -449,13 +449,13 @@ is taken as the end of the
 rather than a greater-than operator.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int i = 3 > 4 >        // syntax error
 class X { /* ... */ };
 
 template<int i = (3 > 4) >      // OK
 class Y { /* ... */ };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -470,7 +470,7 @@ When such default arguments are specified, they apply to the template
 in the scope of the template
 \grammarterm{template-parameter}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T = float> struct B {};
 template <template <class TT = float> class T> struct A {
   inline void f();
@@ -482,7 +482,7 @@ template <template <class TT> class T> void A<T>::f() {
 template <template <class TT = char> class T> void A<T>::g() {
     T<> t;          // OK - \tcode{T<char>}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -500,7 +500,7 @@ parameter packs is a pack expansion. A template parameter pack that is a pack
 expansion shall not expand a parameter pack declared in the same
 \grammarterm{template-parameter-list}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class... Types> class Tuple;                // \tcode{Types} is a template type parameter pack
                                                       // but not a pack expansion
 template <class T, int... Dims> struct multi_array;   // \tcode{Dims} is a non-type template parameter pack
@@ -511,7 +511,7 @@ template<class... T> struct value_holder {
 };
 template<class... T, T... Values> struct static_array;// error: \tcode{Values} expands template type parameter
                                                       // pack \tcode{T} within the same template parameter list
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[temp.names]{Names of template specializations}
@@ -595,7 +595,7 @@ token produced by this replacement rule may terminate an enclosing
 construct (e.g. a cast).\exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int i> class X @\tcode{\{ /* ... */ \};}@
 
 X< 1>2 > x1;                        // syntax error
@@ -605,7 +605,7 @@ template<class T> class Y @\tcode{\{ /* ... */ \};}@
 Y<X<1>> x3;                         // OK, same as \tcode{Y<X<1> > x3;}
 Y<X<6>>1>> x4;                      // syntax error
 Y<X<(6>>1)>> x5;                    // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -633,7 +633,7 @@ the member template name must be prefixed by the keyword
 Otherwise the name is assumed to name a non-template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct X {
   template<std::size_t> X* alloc();
   template<std::size_t> static X* adjust();
@@ -644,7 +644,7 @@ template<class T> void f(T* p) {
   T::adjust<100>();                 // ill-formed: \tcode{<} means less than
   T::template adjust<100>();        // OK: \tcode{<} starts template argument list
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -673,7 +673,7 @@ is not dependent on a
 scope of a template.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct A {
   void f(int);
   template <class U> void f(U);
@@ -692,7 +692,7 @@ template <class T> struct B {
 // OK: \tcode{T::template C} names a class template:
 template <class T, template <class X> class TT = T::template C> struct D { };
 D<b<int> > db;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -728,7 +728,7 @@ parameter pack~(\ref{temp.variadic}), it will correspond to zero or more
 \grammarterm{template-argument}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array {
   T* v;
   int sz;
@@ -748,7 +748,7 @@ void bar() {
   v1[3] = 7;
   v2[3] = v3.elem(4) = dcomplex(7,8);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -767,14 +767,14 @@ determines the allowable forms of the
 \grammarterm{template-argument}.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f();
 template<int I> void f();
 
 void g() {
   f<int()>();       // \tcode{int()} is a type-id: call the first \tcode{f()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -794,7 +794,7 @@ name is used.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X {
   static T t;
 };
@@ -808,7 +808,7 @@ private:
 };
 
 X<Y::S> y;          // error: \tcode{S} not accessible
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 For a
 \grammarterm{template-argument}
@@ -816,7 +816,7 @@ that is a class type or a class template, the template
 definition has no special access rights to the
 members of the \grammarterm{template-argument}. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <template <class TT> class T> class A {
   typename T<int>::S s;
 };
@@ -827,7 +827,7 @@ private:
 };
 
 A<B> b;             // ill-formed: \tcode{A} has no access to \tcode{B::S}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -842,14 +842,14 @@ brackets shall still be used as the
 \grammarterm{template-argument-list.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T = char> class String;
 String<>* p;                    // OK: \tcode{String<char>}
 String* q;                      // syntax error
 template<class ... Elements> class Tuple;
 Tuple<>* t;                     // OK: \tcode{Elements} is empty
 Tuple* u;                       // syntax error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -858,7 +858,7 @@ that is a class template specialization may explicitly specify the
 \grammarterm{template-argument}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   ~A();
 };
@@ -866,7 +866,7 @@ void f(A<int>* p, A<int>* q) {
   p->A<int>::~A();              // OK: destructor call
   q->A<int>::~A<int>();         // OK: destructor call
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -906,7 +906,7 @@ shall be a
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> class X { };
 template <class T> void f(T t) { }
 struct { } unnamed_obj;
@@ -923,7 +923,7 @@ void f() {
   f(unnamed_obj);   // OK
   f(b);             // OK
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 A template type argument may be an incomplete type~(\ref{basic.types}).
@@ -937,14 +937,14 @@ syntactic form of a function declarator to have function type,
 the program is ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   static T t;
 };
 typedef int function();
 A<function> a;                  // ill-formed: would declare \tcode{A<function>::t}
                                 // as a static member function
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.arg.nontype]{Template non-type arguments}
@@ -1006,7 +1006,7 @@ categories and thus is not an acceptable
 \grammarterm{template-argument}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, const char* p> class X {
   /* ... */
 };
@@ -1015,7 +1015,7 @@ X<int, "Studebaker"> x1;        // error: string literal as template-argument
 
 const char p[] = "Vivisectionist";
 X<int,p> x2;                    // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -1026,7 +1026,7 @@ members are not acceptable
 \grammarterm{template-argument}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int* p> class X { };
 
 int a[10];
@@ -1036,7 +1036,7 @@ X<&a[2]> x3;                    // error: address of array element
 X<&s.m> x4;                     // error: address of non-static member
 X<&s.s> x5;                     // error: \tcode{\&S::s} must be used
 X<&S::s> x6;                    // OK: address of static member
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -1051,14 +1051,14 @@ when the corresponding
 has reference type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<const int& CRI> struct B { /* ... */ };
 
 B<1> b2;                        // error: temporary would be required for template argument
 
 int c = 1;
 B<c> b1;                        // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -1157,7 +1157,7 @@ applied.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<const int* pci> struct X { /* ... */ };
 int ai[10];
 X<ai> xi;                       // array to pointer and qualification conversions
@@ -1177,7 +1177,7 @@ void f(int);
 template<void (*pf)(int)> struct A { /* ... */ };
 
 A<&f> a;                        // selects \tcode{f(int)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.arg.template]{Template template arguments}
@@ -1206,7 +1206,7 @@ and it would have been selected had it been visible, the program is ill-formed;
 no diagnostic is required.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class A {     // primary template
   int x;
 };
@@ -1221,11 +1221,11 @@ C<A> c;                         // \tcode{V<int>} within \tcode{C<A>} uses the p
                                 // so \tcode{c.y.x} has type \tcode{int}
                                 // \tcode{V<int*>} within \tcode{C<A>} uses the partial specialization,
                                 // so \tcode{c.z.x} has type \tcode{long}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class A { /* ... */ };
 template<class T, class U = T> class B { /* ... */ };
 template <class ... Types> class C { /* ... */ };
@@ -1240,7 +1240,7 @@ X<C> xc;            // ill-formed: a template parameter pack does not match a te
 Y<A> ya;            // OK
 Y<B> yb;            // OK
 Y<C> yc;            // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum A \grammarterm{template-argument} matches a template
@@ -1255,7 +1255,7 @@ parameters or template parameter packs in the \grammarterm{template-parameter-li
 \tcode{A} with the same type and form as the template parameter pack in \tcode{P}
 (ignoring whether those template parameters are template parameter packs) \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct eval;
 
 template <template <class, class...> class TT, class T1, class... Rest>
@@ -1272,7 +1272,7 @@ eval<B<int, float>> eB;         // OK: matches partial specialization of \tcode{
 eval<C<17>> eC;                 // error: \tcode{C} does not match \tcode{TT} in partial specialization
 eval<D<int, 17>> eD;            // error: \tcode{D} does not match \tcode{TT} in partial specialization
 eval<E<int, float>> eE;         // error: \tcode{E} does not match \tcode{TT} in partial specialization
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[temp.type]{Type equivalence}
@@ -1303,11 +1303,11 @@ to the same template.}
 \end{itemize}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class E, int size> class buffer { /* ... */ };
 buffer<char,2*512> x;
 buffer<char,1024> y;
-\end{codeblock}
+\end{lstlisting}
 
 declares
 \tcode{x}
@@ -1315,13 +1315,13 @@ and
 \tcode{y}
 to be of the same type, and
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, void(*err_fct)()> class list { /* ... */ };
 list<int,&error_handler1> x1;
 list<int,&error_handler2> x2;
 list<int,&error_handler2> x3;
 list<char,&error_handler2> x4;
-\end{codeblock}
+\end{lstlisting}
 
 declares
 \tcode{x2}
@@ -1333,13 +1333,13 @@ Their type differs from the types of
 and
 \tcode{x4}.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct X { };
 template<class> struct Y { };
 template<class T> using Z = Y<T>;
 X<Y<int> > y;
 X<Z<int> > z;
-\end{codeblock}
+\end{lstlisting}
 
 declares \tcode{y} and \tcode{z} to be of the same type.
 \exitexample
@@ -1363,10 +1363,10 @@ followed by a
 shall not be specified in the declaration of a primary template declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class T2, int I> class A<T1, T2, I> { };     // error
 template<class T1, int I> void sort<T1, I>(T1 data[I]);         // error
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 However, this syntax is allowed in class template partial specializations~(\ref{temp.class.spec}).
@@ -1406,7 +1406,7 @@ and list of pointers to
 \enterexample
 An array class template might be declared like this:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array {
   T* v;
   int sz;
@@ -1415,7 +1415,7 @@ public:
   T& operator[](int);
   T& elem(int i) { return v[i]; }
 };
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The prefix
@@ -1450,7 +1450,7 @@ parameter pack shall be expanded with an ellipsis in the template
 argument list.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class T2> struct A {
   void f1();
   void f2();
@@ -1458,9 +1458,9 @@ template<class T1, class T2> struct A {
 
 template<class T2, class T1> void A<T2,T1>::f1() { }    // OK
 template<class T2, class T1> void A<T1,T2>::f2() { }    // error
-\end{codeblock}
+\end{lstlisting}
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> struct B {
   void f3();
   void f4();
@@ -1468,7 +1468,7 @@ template<class ... Types> struct B {
 
 template<class ... Types> void B<Types ...>::f3() { }    // OK
 template<class ... Types> void B<Types>::f4() { }        // error
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1490,7 +1490,7 @@ may be defined outside of the class
 template definition in which it is declared.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array {
   T* v;
   int sz;
@@ -1499,17 +1499,17 @@ public:
   T& operator[](int);
   T& elem(int i) { return v[i]; }
 };
-\end{codeblock}
+\end{lstlisting}
 
 declares three function templates.
 The subscript function might be defined like this:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> T& Array<T>::operator[](int i) {
   if (i<0 || sz<=i) error("Array: range error");
   return v[i];
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1527,13 +1527,13 @@ will be determined by the
 \tcode{Array}
 to which the subscripting operation is applied.
 
-\begin{codeblock}
+\begin{lstlisting}
 Array<int> v1(20);
 Array<dcomplex> v2(30);
 
 v1[3] = 7;                      // \tcode{Array<int>::operator[]()}
 v2[3] = dcomplex(7,8);          // \tcode{Array<dcomplex>::operator[]()}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[temp.mem.class]{Member classes of class templates}
@@ -1546,14 +1546,14 @@ The class member must be defined before its first use that requires
 an instantiation~(\ref{temp.inst}).
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   class B;
 };
 A<int>::B* b1;                  // OK: requires \tcode{A} to be defined but not \tcode{A::B}
 template<class T> class A<T>::B { };
 A<int>::B  b2;                  // OK: requires \tcode{A::B} to be defined
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec3[temp.static]{Static data members of class templates}
@@ -1564,25 +1564,25 @@ A definition for a static data member may be provided in a
 namespace scope enclosing the definition of the static member's class template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X {
   static T s;
 };
 template<class T> T X<T>::s = 0;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 An explicit specialization of a static data member declared as an array of unknown
 bound can have a different bound from its definition, if any. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct A {
   static int i[];
 };
 template <class T> int A<T>::i[4];    // 4 elements
 template <> int A<int>::i[] = { 1 };  // OK: 1 element
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[temp.mem.enum]{Enumeration members of class templates}
@@ -1590,14 +1590,14 @@ template <> int A<int>::i[] = { 1 };  // OK: 1 element
 \pnum
 An enumeration member of a class template may be defined outside the class
 template definition. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   enum E : T;
 };
 A<int> a;
 template<class T> enum A<T>::E : T { e1, e2 };
 A<int>::E e = A<int>::e1;
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.mem]{Member templates}
@@ -1615,7 +1615,7 @@ of the class template followed by the
 of the member template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct string {
   template<class T2> int compare(const T2&);
   template<class T2> string(const string<T2>& s) { /* ... */ }
@@ -1623,7 +1623,7 @@ template<class T> struct string {
 
 template<class T> template<class T2> int string<T>::compare(const T2& s) {
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1640,7 +1640,7 @@ When both exist, a use of that name and type refers to the
 non-template member unless an explicit template argument list is supplied.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct A {
   void f(int);
   template <class T2> void f(T2);
@@ -1655,19 +1655,19 @@ int main() {
   ac.f('c');        // template
   ac.f<>(1);        // template
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 A member function template shall not be virtual.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct AA {
   template <class C> virtual void g(C);   // error
   virtual void f();                       // OK
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1676,7 +1676,7 @@ a member function template does not override a virtual function from a
 base class.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class B {
   virtual void f(int);
 };
@@ -1686,7 +1686,7 @@ class D : public B {
   void f(int i) { f<>(i); }     // overriding function that calls
                                 // the template instantiation
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1697,7 +1697,7 @@ the same way as a non-template conversion function that converts to
 the same type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   template <class T> operator T*();
 };
@@ -1711,7 +1711,7 @@ int main() {
   ip = a.operator int*();       // explicit call to template operator
                                 // \tcode{A::operator int*()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 Because the explicit template argument list follows the function template
@@ -1754,14 +1754,14 @@ conversion functions.
 A \term{template parameter pack} is a template parameter
 that accepts zero or more template arguments. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> struct Tuple { };
 
 Tuple<> t0;                     // \tcode{Types} contains no arguments
 Tuple<int> t1;                  // \tcode{Types} contains one argument: \tcode{int}
 Tuple<int, float> t2;           // \tcode{Types} contains two arguments: \tcode{int} and \tcode{float}
 Tuple<0> error;                 // error: 0 is not a type
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1769,13 +1769,13 @@ Tuple<0> error;                 // error: 0 is not a type
 A \term{function parameter pack} is a function parameter
 that accepts zero or more function arguments. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> void f(Types ... args);
 
 f();                // OK: \tcode{args} contains no arguments
 f(1);               // OK: \tcode{args} contains one argument: \tcode{int}
 f(2, 1.0);          // OK: \tcode{args} contains two arguments: \tcode{int} and \tcode{double}
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1836,12 +1836,12 @@ a \grammarterm{capture}.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> void f(Types ... rest);
 template<class ... Types> void g(Types ... rest) {
   f(&rest ...);     // ``\tcode{\&rest ...}'' is a pack expansion; ``\tcode{\&rest}'' is its pattern
 }
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1856,7 +1856,7 @@ by a pack expansion shall have the same number of arguments specified. An
 appearance of a name of a parameter pack that is not expanded is
 ill-formed. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<typename...> struct Tuple {};
 template<typename T1, typename T2> struct Pair {};
 
@@ -1879,7 +1879,7 @@ template<class ... Args>
     f(h(args ...) + args ...);            // OK: first ``\tcode{args}'' expanded within \tcode{h}, second
                                           // ``\tcode{args}'' expanded within \tcode{f}
   }
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -1903,7 +1903,7 @@ Such an instantiation does not alter the syntactic interpretation of the
 enclosing construct, even in cases where omitting the list entirely would
 otherwise be ill-formed or would result in an ambiguity in the grammar.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class... T> struct X : T... { };
 template<class... T> void f(T... values) {
   X<T...> x(values...);
@@ -1911,7 +1911,7 @@ template<class... T> void f(T... values) {
 
 template void f<>();  // OK: \tcode{X<>} has no base classes
                       // \tcode{x} is a variable of type \tcode{X<>} that is value-initialized
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -1949,7 +1949,7 @@ ordinary (non-template) function.
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class task;
 template<class T> task<T>* preempt(task<T>*);
 
@@ -1962,7 +1962,7 @@ template<class T> class task {
   friend class task<int>;
   template<class P> friend class frd;
 };
-\end{codeblock}
+\end{lstlisting}
 
 Here,
 each specialization of the
@@ -2014,12 +2014,12 @@ In these cases, all specializations of the friend class or friend function
 template are friends of the class or class template granting friendship.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class A {
   template<class T> friend class B;                 // OK
   template<class T> friend void f(T)@\tcode{\{ /* ... */ \}}@  // OK
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2029,7 +2029,7 @@ specialized~(\ref{temp.class.spec}) or explicitly specialized~(\ref{temp.expl.sp
 are friends of the class containing the template friend declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class X {
   template<class T> friend struct A;
   class Y { };
@@ -2037,7 +2037,7 @@ class X {
 
 template<class T> struct A { X::Y ab; };            // OK
 template<class T> struct A<T*> { X::Y ab; };        // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2058,7 +2058,7 @@ template), template parameters, and signature as the member of the class
 template instantiation that would otherwise have been generated.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   struct B { };
   void f();
@@ -2082,7 +2082,7 @@ class C {
   template<class T> friend void A<T>::D::g(); // does not grant friendship to \tcode{A<int>::D::g()}
                                               // because \tcode{A<int>::D} is not a specialization of \tcode{A<T>::D}
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2097,12 +2097,12 @@ A friend template shall not be declared in a local class.
 Friend declarations shall not declare partial specializations.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class A { };
 class X {
   template<class T> friend class A<T*>; // error
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2144,13 +2144,13 @@ specialization~(\ref{temp.class.spec.mfunc}).
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class T2, int I> class A             { };    // \#1
 template<class T, int I>            class A<T, T*, I>   { };    // \#2
 template<class T1, class T2, int I> class A<T1*, T2, I> { };    // \#3
 template<class T>                   class A<int, T*, 5> { };    // \#4
 template<class T1, class T2, int I> class A<T1, T2*, I> { };    // \#5
-\end{codeblock}
+\end{lstlisting}
 
 The first declaration declares the primary (unspecialized) class template.
 The second and subsequent declarations declare partial specializations of
@@ -2179,9 +2179,9 @@ The template argument list shall not be specified in the primary template
 declaration.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class T2, int I> class A<T1, T2, I>  { };    // error
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -2189,7 +2189,7 @@ A class template partial specialization may be declared or redeclared in any
 namespace scope in which its definition may be defined~(\ref{temp.class} and~\ref{temp.mem}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   struct C {
     template<class T2> struct B { };
@@ -2201,7 +2201,7 @@ template<class T> template<class T2>
   struct A<T>::C::B<T2*> { };
 
 A<short>::C::B<int*> absip;     // uses partial specialization
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2216,7 +2216,7 @@ which may be found through the
 \grammarterm{using-declaration}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace N {
   template<class T1, class T2> class A { };         // primary template
 }
@@ -2229,7 +2229,7 @@ namespace N {
 
 A<int,int*> a;                  // uses the partial specialization, which is found through
                                 // the using declaration which refers to the primary template
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2248,27 +2248,27 @@ a template parameter of the partial specialization except when the argument
 expression is a simple
 \grammarterm{identifier}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <int I, int J> struct A {};
 template <int I> struct A<I+5, I*2> {}; // error
 
 template <int I, int J> struct B {};
 template <int I> struct B<I, I> {};     // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item
 The type of a template parameter corresponding to a specialized non-type argument
 shall not be dependent on a parameter of the specialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, T t> struct C {};
 template <class T> struct C<T, 1>;                  // error
 
 template< int X, int (*array_ptr)[X] > class A {};
 int array[5];
 template< int X > class A<X,&array> { };            // error
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 \item
@@ -2318,13 +2318,13 @@ list if the template arguments of the partial specialization can be
 deduced from the actual template argument list~(\ref{temp.deduct}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 A<int, int, 1>   a1;            // uses \#1
 A<int, int*, 1>  a2;            // uses \#2, \tcode{T} is \tcode{int}, \tcode{I} is \tcode{1}
 A<int, char*, 5> a3;            // uses \#4, \tcode{T} is \tcode{char}
 A<int, char*, 1> a4;            // uses \#5, \tcode{T1} is \tcode{int}, \tcode{T2} is \tcode{char}, \tcode{I} is \tcode{1}
 A<int*, int*, 2> a5;            // ambiguous: matches \#3 and \#5
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2368,14 +2368,14 @@ the second partial specialization.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<int I, int J, class T> class X { };
 template<int I, int J>          class X<I, J, int> { }; // \#1
 template<int I>                 class X<I, I, int> { }; // \#2
 
 template<int I, int J> void f(X<I, J, int>);            // A
 template<int I>        void f(X<I, I, int>);            // B
-\end{codeblock}
+\end{lstlisting}
 
 The partial specialization
 \tcode{\#2}
@@ -2409,7 +2409,7 @@ specialization is declared in the same way as an explicit specialization of
 the primary template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 // primary template
 template<class T, int I> struct A {
   void f();
@@ -2441,7 +2441,7 @@ int main() {
   a2.f();                       // ill-formed, no definition of \tcode{f} for \tcode{A<T,2>}
                                 // the primary template is not used here
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2462,7 +2462,7 @@ the primary member template and its other partial specializations are
 still considered for this specialization of the enclosing class template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   template<class T2> struct B {};                     // \#1
   template<class T2> struct B<T2*> {};                // \#2
@@ -2473,7 +2473,7 @@ template<> template<class T2> struct A<short>::B {};  // \#3
 A<char>::B<int*>  abcip;  // uses \#2
 A<short>::B<int*> absip;  // uses \#3
 A<char>::B<int>  abci;    // uses \#1
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.fct]{Function templates}
@@ -2483,10 +2483,10 @@ A function template defines an unbounded set of related functions.
 \enterexample
 a family of sort functions might be declared like this:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array { };
 template<class T> void sort(Array<T>&);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2513,24 +2513,24 @@ function template specializations have the same type.
 \enterexample
 
 \begin{minipage}{.45\hsize}
-\begin{codeblock}
+\begin{lstlisting}
 // file1.c
 template<class T>
   void f(T*);
 void g(int* p) {
   f(p); // calls \tcode{f<int>(int*)}
 }
-\end{codeblock}
+\end{lstlisting}
 \end{minipage}
 \begin{minipage}{.45\hsize}
-\begin{codeblock}
+\begin{lstlisting}
 // file2.c
 template<class T>
   void f(T);
 void h(int* p) {
   f(p); // calls \tcode{f<int*>(int*)}
 }
-\end{codeblock}
+\end{lstlisting}
 \end{minipage}
 
 \exitexample
@@ -2550,11 +2550,11 @@ Two distinct function templates may have identical function return types and
 function parameter lists, even if overload resolution alone cannot distinguish
 them.
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f();
 template<int I> void f();       // OK: overloads the first template
                                 // distinguishable with an explicit template argument list
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -2570,11 +2570,11 @@ function templates that are intended to be distinct are not linked
 with one another.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <int I, int J> A<I+J> f(A<I>, A<J>);   // \#1
 template <int K, int L> A<K+L> f(A<K>, A<L>);   // same as \#1
 template <int I, int J> A<I-J> f(A<I>, A<J>);   // different from \#1
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \enternote
 Most expressions that use template parameters use non-type template
@@ -2599,7 +2599,7 @@ same function template differ in the result of this name lookup, the
 result for the first declaration is used.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <int I, int J> void f(A<I+J>);         // \#1
 template <int K, int L> void f(A<K+L>);         // same as \#1
 
@@ -2609,7 +2609,7 @@ template <class T> decltype(g(T())) h()         // redeclaration of \tcode{h()} 
   { return g(T()); }                            // ...although the lookup here does find \tcode{g(int)}
 int i = h<int>();                               // template argument substitution fails; \tcode{g(int)}
                                                 // was not in scope at the first declaration of \tcode{h()}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 Two expressions involving template parameters that are not equivalent are
 \term{functionally equivalent}
@@ -2645,7 +2645,7 @@ as distinct.
 For example, the last two declarations are functionally
 equivalent and would cause a program to be ill-formed:
 
-\begin{codeblock}
+\begin{lstlisting}
 // Guaranteed to be the same
 template <int I> void f(A<I>, A<I+10>);
 template <int I> void f(A<I>, A<I+10>);
@@ -2657,7 +2657,7 @@ template <int I> void f(A<I>, A<I+11>);
 // Ill-formed, no diagnostic required
 template <int I> void f(A<I>, A<I+10>);
 template <int I> void f(A<I>, A<I+1+2+3+4>);
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \rSec3[temp.func.order]{Partial ordering of function templates}
@@ -2717,7 +2717,7 @@ function template is \tcode{\&\&}, or of type ``lvalue reference to
 member to be ordered with respect to a nonmember function and for the results
 to be equivalent to the ordering of two equivalent nonmembers. \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A { };
 template<class T> struct B {
   template<class R> int operator*(R&);              // \#1
@@ -2733,7 +2733,7 @@ int main() {
   B<A> b;
   b * a;                                            // calls \#1a
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2742,7 +2742,7 @@ perform type deduction against the other template as described in~\ref{temp.dedu
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A { A(); };
 
 template<class T> void f(T);
@@ -2765,7 +2765,7 @@ void m() {
   const A<int> z2;
   h(z2);            // \tcode{h(const T\&)} is called because \tcode{h(A<T>\&)} is not callable
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2775,22 +2775,22 @@ function parameter packs, parameters with default arguments, and ellipsis
 parameters).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T);            // \#1
 template<class T> void f(T*, int=1);    // \#2
 template<class T> void g(T);            // \#3
 template<class T> void g(T*, ...);      // \#4
 
-\end{codeblock}
-\begin{codeblock}
+\end{lstlisting}
+\begin{lstlisting}
 int main() {
   int* ip;
   f(ip);            // calls \#2
   g(ip);            // calls \#4
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample\enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, class U> struct A { };
 
 template<class T, class U> void f(U, A<U, T>* p = 0); // \#1
@@ -2803,9 +2803,9 @@ void h() {
   f<int>(42);                                         // error: ambiguous
   g(42);                                              // error: ambiguous
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample\enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, class... U> void f(T, U...);        // \#1
 template<class T            > void f(T);              // \#2
 template<class T, class... U> void g(T*, U...);       // \#3
@@ -2815,7 +2815,7 @@ void h(int i) {
   f(&i);                                              // error: ambiguous
   g(&i);                                              // OK: calls \#3
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample\exitnote
 
 \rSec2[temp.alias]{Alias templates}
@@ -2836,7 +2836,7 @@ the alias template.
 \enternote An alias template name is never deduced.\exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct Alloc { /* ... */ };
 template<class T> using Vec = vector<T, Alloc<T>>;
 Vec<int> v;         // same as \tcode{vector<int, Alloc<int>{>} v;}
@@ -2857,7 +2857,7 @@ f(v);               // error: \tcode{Vec} not deduced
 template<template<class,class> class TT>
   void g(TT<int, Alloc<int>>);
 g(v);               // OK: \tcode{TT} = \tcode{vector}
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -2867,14 +2867,14 @@ the alias template being declared. The type produced by an alias template
 specialization shall not directly or indirectly make use of that specialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct A;
 template <class T> using B = typename A<T>::U;
 template <class T> struct A {
   typedef B<T> U;
 };
 B<short> b;         // error: instantiation of \tcode{B<short>} uses own type via \tcode{A<short>::U}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[temp.res]{Name resolution}
@@ -2905,7 +2905,7 @@ is qualified by the keyword
 \tcode{typename}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 // no \tcode{B} declared here
 
 class X;
@@ -2929,7 +2929,7 @@ template<class T> class Y {
                                 // no visible declarations of \tcode{B} and \tcode{a8}
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -2963,7 +2963,7 @@ even in the presence of
 \tcode{typename}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   struct X { };
   int X;
@@ -2980,7 +2980,7 @@ void foo() {
   f(b);             // OK: \tcode{T::X} refers to \tcode{B::X}
   f(a);             // error: \tcode{T::X} refers to the data member \tcode{A::X} not the struct \tcode{A::X}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3011,7 +3011,7 @@ the \grammarterm{qualified-id} shall either be
 prefixed by \tcode{typename} or shall be used in a context in which it
 implicitly names a type as described above. \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> void f(int i) {
   T::x * i;         // \tcode{T::x} must not be a type
 }
@@ -3028,7 +3028,7 @@ int main() {
   f<Bar>(1);        // OK
   f<Foo>(1);        // error: \tcode{Foo::x} is a type
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3044,12 +3044,12 @@ type of the object expression is the current instantiation~(\ref{temp.dep.expr})
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   typedef int B;
   B b;              // OK, no typename required
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3079,7 +3079,7 @@ Exactly when these errors are diagnosed is a quality of implementation issue.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 int j;
 template<class T> class X {
   void f(T t, int i, char* p) {
@@ -3101,7 +3101,7 @@ template<class... T> struct A {
 };
 template<class... T> union X : T... { };        // error: union with base class
 template<class... T> struct A : T...,  T... { };// error: duplicate base class
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3112,7 +3112,7 @@ The lookup of names dependent on the template parameters
 is postponed until the actual template argument is known~(\ref{temp.dep}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 #include <iostream>
 using namespace std;
 
@@ -3127,7 +3127,7 @@ public:
       cout << p[i] << '@\textbackslash@n';
   }
 };
-\end{codeblock}
+\end{lstlisting}
 
 in the example,
 \tcode{i}
@@ -3174,7 +3174,7 @@ at that point and this binding is not affected by declarations that are
 visible at the point of instantiation.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(char);
 
 template<class T> void g(T t) {
@@ -3194,7 +3194,7 @@ void h() {
                     // by two calls of \tcode{f(E)}
   g('a');           // will cause three calls of \tcode{f(char)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3232,7 +3232,7 @@ of the class template specialization or partial
 specialization enclosed in
 \tcode{<>}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<template<class> class T> class A { };
 template<class T> class Y;
 template<> class Y<int> {
@@ -3243,7 +3243,7 @@ template<> class Y<int> {
     template<class> friend class Y;   // meaning \tcode{::Y}
   };
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3253,7 +3253,7 @@ as a \grammarterm{template-name} or a \grammarterm{type-name}
 wherever it is in scope.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct Base {
   Base* p;
 };
@@ -3264,7 +3264,7 @@ template <class T> struct Derived: public Base<T> {
 
 template<class T, template<class> class U = T::template Base> struct Third { };
 Third<Base<int> > t;            // OK: default argument uses injected-class-name as a template
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3279,13 +3279,13 @@ the reference refers to the class template itself and not a
 specialization thereof, and is not ambiguous.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct Base { };
 template <class T> struct Derived: Base<int>, Base<char> {
   typename Derived::Base b;             // error: ambiguous
   typename Derived::Base<double> d;     // OK
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3296,7 +3296,7 @@ it always refers to the class template itself and not a
 specialization of the template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X {
   X* p;             // meaning \tcode{X<T>}
   X<T>* p2;
@@ -3304,7 +3304,7 @@ template<class T> class X {
   ::X* p4;          // error: missing template argument list
                     // \tcode{::X} does not refer to the injected-class-name
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3316,7 +3316,7 @@ A
 shall not have the same name as the template name.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, int i> class Y {
   int T;            // error: template-parameter redeclared
   void f() {
@@ -3325,7 +3325,7 @@ template<class T, int i> class Y {
 };
 
 template<class X> class X;      // error: template-parameter redeclared
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3337,7 +3337,7 @@ of any enclosing class templates (but not a \grammarterm{template-parameter} of 
 member if the member is a class or function template).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   struct B @\texttt{\{ /* ... */ \};}@
   typedef void C;
@@ -3353,7 +3353,7 @@ template<class B> template<class C> void A<B>::g(C) {
   B b;              // \tcode{A}'s \tcode{B}, not the template parameter
   C c;              // the template parameter \tcode{C}, not \tcode{A}'s \tcode{C}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3364,7 +3364,7 @@ the name of a
 hides the name of a member of this namespace.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace N {
   class C { };
   template<class T> class B {
@@ -3374,7 +3374,7 @@ namespace N {
 template<class C> void N::B<C>::f(C) {
   C b;              // \tcode{C} is the template parameter, not \tcode{N::C}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3390,7 +3390,7 @@ the base class name or member name hides the
 name~(\ref{basic.scope.hiding}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   struct B { /* ... */ };
   int a;
@@ -3401,7 +3401,7 @@ template<class B, class a> struct X : A {
   B b;              // \tcode{A}'s \tcode{B}
   a b;              // error: \tcode{A}'s \tcode{a} isn't a type name
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.dep]{Dependent names}
@@ -3465,7 +3465,7 @@ context of the point of instantiation.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct X : B<T> {
   typename T::A* pa;
   void f(B<T>* pb) {
@@ -3473,7 +3473,7 @@ template<class T> struct X : B<T> {
     pb->j++;
   }
 };
-\end{codeblock}
+\end{lstlisting}
 
 the base class name
 \tcode{B<T>},
@@ -3497,7 +3497,7 @@ class template or member or during an instantiation of
 the class template or member.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 typedef double A;
 template<class T> class B {
   typedef int A;
@@ -3505,7 +3505,7 @@ template<class T> class B {
 template<class T> struct X : B<T> {
   A a;              // \tcode{a} has type \tcode{double}
 };
-\end{codeblock}
+\end{lstlisting}
 
 The type name
 \tcode{A}
@@ -3518,7 +3518,7 @@ defined in the base class
 \exitexample
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   struct B { /* ... */ };
   int a;
@@ -3535,7 +3535,7 @@ template<class T> struct Y : T {
 };
 
 Y<A> ya;
-\end{codeblock}
+\end{lstlisting}
 
 The members
 \tcode{A::B},
@@ -3604,7 +3604,7 @@ the argument must have been given the value of the
 template parameter and not an expression in which the
 template parameter appears as a subexpression.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> class A {
   A* p1;                        // \tcode{A} is the current instantiation
   A<T>* p2;                     // \tcode{A<T>} is the current instantiation
@@ -3634,7 +3634,7 @@ template <class T1, class T2, int I> struct B {
   B<my_T1, T2, my_I2>* b4;      // not the current instantiation
   B<my_T1, T2, my_I3>* b5;      // refers to the current instantiation
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3676,7 +3676,7 @@ see below. \exitnote
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> class A {
   static const int i = 5;
   int n1[i];        // \tcode{i} refers to a member of the current instantiation
@@ -3688,7 +3688,7 @@ template <class T> class A {
 template <class T> int A<T>::f() {
   return i;         // \tcode{i} refers to a member of the current instantiation
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -3733,7 +3733,7 @@ current instantiation does not refer to a member of the current instantiation
 or a member of an unknown specialization, the program is ill-formed even if the
 template containing the member access expression is not instantiated; no diagnostic
 required. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class A {
   typedef int type;
   void f() {
@@ -3742,7 +3742,7 @@ template<class T> class A {
                             // a member of an unknown specialization
   }
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4015,7 +4015,7 @@ Non-dependent names used in a template definition are found using the
 usual name lookup and bound at the point they are used.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void g(double);
 void h();
 
@@ -4031,7 +4031,7 @@ public:
 
 void g(int);        // not in scope at the point of the template
                     // definition, not considered for the call \tcode{g(1)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.dep.res]{Dependent name resolution}
@@ -4163,7 +4163,7 @@ classes~(\ref{basic.lookup.argdep}).\footnote{Friend declarations do not
 introduce new names into any scope, either
 when the template is declared or when it is instantiated.}
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<typename T> struct number {
   number(int);
   friend number gcd(number x, number y) { return 0; };
@@ -4176,7 +4176,7 @@ void g() {
                     // in its namespace (global scope)
   b = gcd(3,4);     // ill-formed; \tcode{gcd} is not visible
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec1[temp.spec]{Template instantiation and specialization}
@@ -4215,7 +4215,7 @@ the name of the function or member function explicitly specialized may be a
 \grammarterm{template-id}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T = int> struct A {
   static int x;
 };
@@ -4232,7 +4232,7 @@ template<class T = int> struct B {
   static int x;
 };
 template<> int B<>::x = 1;              // specialize for \tcode{T == int}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4264,14 +4264,14 @@ Each class template specialization instantiated from a template has its own
 copy of any static members.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X {
   static T s;
 };
 template<class T> T X<T>::s = 0;
 X<int> aa;
 X<char*> bb;
-\end{codeblock}
+\end{lstlisting}
 
 \tcode{X<int>}
 has a static member
@@ -4307,7 +4307,7 @@ of a member is valid according to~\ref{class.mem}, a declaration that
 corresponds to a definition in the template is considered to be a
 definition.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, class U>
 struct Outer {
   template<class X, class Y> struct Inner;
@@ -4317,7 +4317,7 @@ struct Outer {
 };
 
 Outer<int, int> outer;                          // error at \#2
-\end{codeblock}
+\end{lstlisting}
 
 \tcode{Outer<int, int>::Inner<int, Y>} is redeclared at \#1b. (It is not defined
 but noted as being associated with a definition in \tcode{Outer<T, U>}.) \#2
@@ -4349,7 +4349,7 @@ called in a context that requires the value of the default argument.
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct Z {
   void f();
   void g();
@@ -4364,7 +4364,7 @@ void h() {
   p->g();           // instantiation of class \tcode{Z<char>} required, and
                     // instantiation of \tcode{Z<char>::g()} required
 }
-\end{codeblock}
+\end{lstlisting}
 
 Nothing in this example requires
 \tcode{class}
@@ -4391,7 +4391,7 @@ involved.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class B { /* ... */ };
 template<class T> class D : public B<T> { /* ... */ };
 
@@ -4404,7 +4404,7 @@ void g(D<int>* p, D<char>* pp, D<double>* ppp) {
                     // convert \tcode{D<char>*} to \tcode{B<char>*}
   delete ppp;       // instantiation of \tcode{D<double>} required
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4413,7 +4413,7 @@ call without instantiating a class template definition, it is unspecified
 whether that instantiation actually takes place.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct S {
   operator int();
 };
@@ -4426,7 +4426,7 @@ void g(S<int>& sr) {
   f(sr);            // instantiation of \tcode{S<int>} allowed but not required
                     // instantiation of \tcode{S<float>} allowed but not required
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4434,11 +4434,11 @@ If an implicit instantiation of a class template specialization is required and
 the template is declared but not defined, the program is ill-formed.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X;
 
 X<char> ch;         // error: definition of \tcode{X} required
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4474,7 +4474,7 @@ Implicitly instantiated member templates are placed in the namespace where the
 enclosing class or class template is defined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace N {
   template<class T> class List {
   public:
@@ -4491,7 +4491,7 @@ public:
 void g(Map<const char*,int>& m) {
   int i = m.get("Nicholas");
 }
-\end{codeblock}
+\end{lstlisting}
 
 a call of
 \tcode{lt.get()}
@@ -4524,7 +4524,7 @@ The instantiated default argument is then used as the argument of
 Each default argument is instantiated independently.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T x, T y = ydef(T()), T z = zdef(T()));
 
 class  A { };
@@ -4536,7 +4536,7 @@ void g(A a, A b, A c) {
   f(a, b);          // default argument \tcode{z = zdef(T())} instantiated
   f(a);             // ill-formed; \tcode{ydef} is not declared
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4551,14 +4551,14 @@ template.
 The result of an infinite recursion in instantiation is undefined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X {
   X<T>* p;          // OK
   X<T*> a;          // implicit generation of \tcode{X<T>} requires
                     // the implicit instantiation of \tcode{X<T*>} which requires
                     // the implicit instantiation of \tcode{X<T**>} which ...
 };
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.explicit]{Explicit instantiation}
@@ -4625,7 +4625,7 @@ Regarding qualified names in declarators, see~\ref{dcl.meaning}.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array { void mf(); };
 template class Array<char>;
 template void Array<int>::mf();
@@ -4637,7 +4637,7 @@ namespace N {
   template<class T> void f(T&) { }
 }
 template void N::f<int>(int&);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4673,7 +4673,7 @@ An explicit instantiation for a member template is placed in the namespace
 where the enclosing class or class template is defined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace N {
   template<class T> class Y { void mf() { } };
 }
@@ -4688,7 +4688,7 @@ template class Y<int>;                  // error: explicit instantiation outside
 template class N::Y<char*>;             // OK: explicit instantiation in namespace \tcode{N}
 template void N::Y<double>::mf();       // OK: explicit instantiation
                                         // in namespace \tcode{N}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4699,13 +4699,13 @@ specialization or of a member function template specialization provided
 it can be deduced from the type of a function parameter~(\ref{temp.deduct}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array { /* ... */ };
 template<class T> void sort(Array<T>& v) { /* ... */ }
 
 // instantiate \tcode{sort(Array<int>\&)} - template-argument deduced
 template void sort<>(Array<int>&);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4771,11 +4771,11 @@ An explicit instantiation does not constitute a use of a default argument,
 so default argument instantiation is not done.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 char* p = 0;
 template<class T> T g(T x = &p) { return x; }
 template int g<int>(int);       // OK even though \tcode{\&p} isn't an \tcode{int}.
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.expl.spec]{Explicit specialization}
@@ -4814,7 +4814,7 @@ that is:
 \end{bnf}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class stream;
 
 template<> class stream<char> { /* ... */ };
@@ -4823,7 +4823,7 @@ template<class T> class Array { /* ... */ };
 template<class T> void sort(Array<T>& v) { /* ... */ }
 
 template<> void sort<char*>(Array<char*>&) ;
-\end{codeblock}
+\end{lstlisting}
 
 Given these declarations,
 \tcode{stream<char>}
@@ -4864,13 +4864,13 @@ declaration of an explicit specialization for a member template of the class
 or class template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<> class X<int> { /* ... */ };          // error: \tcode{X} not a template
 
 template<class T> class X;
 
 template<> class X<char*> { /* ... */ };        // OK: \tcode{X} is a template
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4907,7 +4907,7 @@ class. However, \tcode{template<>} is used in defining a member of an explicitly
 specialized member class template that is specialized as a class template.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   struct B { };
   template<class U> struct C { };
@@ -4950,7 +4950,7 @@ template<> template<class U> struct A<short>::C {
   void f();
 };
 template<class U> void A<short>::C<U>::f() { /* ... */ }  // error: \tcode{template<>} required
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -4967,7 +4967,7 @@ An implicit instantiation is never generated for an explicit specialization
 that is declared but not defined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 class String { };
 template<class T> class Array { /* ... */ };
 template<class T> void sort(Array<T>& v) { /* ... */ }
@@ -4991,7 +4991,7 @@ template<class T> enum class A<T>::S : T { sT };
 template<> enum A<char>::E : int { echar };       // ill-formed, \tcode{A<char>::E} was instantiated
                                                   // when \tcode{A<char>} was instantiated
 template<> enum class A<char>::S : int { schar }; // OK
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5017,7 +5017,7 @@ A template explicit specialization is in the scope of the namespace in which
 the template was defined.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 namespace N {
   template<class T> class X { /* ... */ };
   template<class T> class Y { /* ... */ };
@@ -5030,7 +5030,7 @@ namespace N {
 
 template<> class N::Y<double> { /* ... */ };      // OK: specialization
                                                 // in same namespace
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5041,13 +5041,13 @@ not defined can be used exactly like the names of other incompletely-defined
 classes~(\ref{basic.types}).
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class X;      // \tcode{X} is a class template
 template<> class X<int>;
 
 X<int>* p;                      // OK: pointer to declared class \tcode{X<int>}
 X<int> x;                       // error: object of incomplete class \tcode{X<int>}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5059,14 +5059,14 @@ naming an explicit function template specialization
 provided it can be deduced from the function argument type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> class Array { /* ... */ };
 template<class T> void sort(Array<T>& v);
 
 // explicit specialization for \tcode{sort(Array<int>\&)}
 // with deduced template-argument of type \tcode{int}
 template<> void sort(Array<int>&);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5080,13 +5080,13 @@ specifier or defined as deleted, and independently of whether its
 function template is inline.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T) { /* ... */ }
 template<class T> inline T g(T) { /* ... */ }
 
 template<> inline void f<>(int) { /* ... */ }   // OK: inline
 template<> int g<>(int) { /* ... */ }           // OK: not inline
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5097,11 +5097,11 @@ otherwise, it is a declaration.
 The definition of a static data member of a template
 that requires default initialization must use a \grammarterm{braced-init-list}:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<> X Q<int>::x;         // declaration
 template<> X Q<int>::x ();      // error: declares a function
 template<> X Q<int>::x { };     // definition
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -5112,7 +5112,7 @@ An explicit specialization of a member or member template is specified using the
 syntax for explicit specialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct A {
   void f(T);
   template<class X1> void g1(T, X1);
@@ -5137,7 +5137,7 @@ template<> template<>
 
 // member specialization even if defined in class definition
 template<> void A<int>::h(int) { }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5149,7 +5149,7 @@ the member declaration shall be preceded by a
 for each enclosing class template that is explicitly specialized.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1> class A {
   template<class T2> class B {
     void mf();
@@ -5157,7 +5157,7 @@ template<class T1> class A {
 };
 template<> template<> class A<int>::B<double>;
 template<> template<> void A<char>::B<char>::mf();
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5182,7 +5182,7 @@ in the
 shall be the same as those specified in the primary template definition.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T1> class A {
   template<class T2> class B {
     template<class T3> void mf1(T3);
@@ -5198,7 +5198,7 @@ template <> template <> template<class T>
 template <class Y> template <>
   void A<Y>::B<double>::mf2() { }       // ill-formed; \tcode{B<double>} is specialized but
                                         // its enclosing class template \tcode{A} is not
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5244,7 +5244,7 @@ Each function template specialization instantiated from a template
 has its own copy of any static variable.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T* p) {
   static T s;
 };
@@ -5253,7 +5253,7 @@ void g(int a, char* b) {
   f(&a);            // calls \tcode{f<int>(int*)}
   f(&b);            // calls \tcode{f<char*>(char**)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here
 \tcode{f<int>(int*)}
@@ -5282,24 +5282,24 @@ in the same way as
 are specified in uses of a class template specialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void sort(Array<T>& v);
 void f(Array<dcomplex>& cv, Array<int>& ci) {
   sort<dcomplex>(cv);           // \tcode{sort(Array<dcomplex>\&)}
   sort<int>(ci);                // \tcode{sort(Array<int>\&)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 and
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class U, class V> U convert(V v);
 
 void g(double d) {
   int i = convert<int,double>(d);       // \tcode{int convert(double)}
   char c = convert<char,double>(d);     // \tcode{char convert(double)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5340,7 +5340,7 @@ template specialization, then the
 is an lvalue for the function template specialization.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class X, class Y> X f(Y);
 template<class X, class Y, class ... Z> X g(Y);
 void h() {
@@ -5354,7 +5354,7 @@ void h() {
   f<void>(g<int, bool>);        // \tcode{Y} for outer \tcode{f} is deduced to be
                                 // \tcode{int (*)(bool)}, \tcode{Z} is deduced to an empty sequence
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5364,12 +5364,12 @@ use refers to a specialization of a function template even when a
 normal (i.e., non-template) function is visible that would otherwise be used.
 For example:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> int f(T);    // \#1
 int f(int);                     // \#2
 int k = f(1);                   // uses \#2
 int l = f<>(1);                 // uses \#1
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -5384,7 +5384,7 @@ unless one of the \grammarterm{template-parameter}{s} is a template
 parameter pack.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class X, class Y, class Z> X f(Y,Z);
 template<class ... Args> void f2();
 void g() {
@@ -5395,7 +5395,7 @@ void g() {
   f("aa",3.0);                  // error: \tcode{X} cannot be deduced
   f2<char, short, int, long>(); // OK
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5409,7 +5409,7 @@ Template parameters do not participate in template argument deduction if
 they are explicitly specified.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T);
 
 class Complex {
@@ -5419,7 +5419,7 @@ class Complex {
 void g() {
   f<Complex>(1);                // OK, means \tcode{f<Complex>(Complex(1))}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -5451,7 +5451,7 @@ may be found in other namespaces.
 \enterexample
 
 % Argument added to f per Usenet posting from martin von Loewis, 6 Sep 1998
-\begin{codeblock}
+\begin{lstlisting}
 namespace A {
   struct B { };
   template<int X> void f(B);
@@ -5468,7 +5468,7 @@ void g(A::B b) {
   f<3>(b);                      // well-formed because \tcode{C::f} is visible; then
                                 // \tcode{A::f} is found by argument dependent lookup
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 
@@ -5477,13 +5477,13 @@ Template argument deduction can extend the sequence of template
 arguments corresponding to a template parameter pack, even when the
 sequence contains explicitly specified template arguments.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> void f(Types ... values);
 
 void g() {
   f<int*, float*>(0, 0, 0);     // \tcode{Types} is deduced to the sequence \tcode{int*}, \tcode{float*}, \tcode{int}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec2[temp.deduct]{Template argument deduction}
@@ -5499,21 +5499,21 @@ or obtained from default
 \grammarterm{template-argument}{s}.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 void f(Array<dcomplex>& cv, Array<int>& ci) {
   sort(cv);                     // calls \tcode{sort(Array<dcomplex>\&)}
   sort(ci);                     // calls \tcode{sort(Array<int>\&)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 and
 
-\begin{codeblock}
+\begin{lstlisting}
 void g(double d) {
   int i = convert<int>(d);      // calls \tcode{convert<int,double>(double)}
   int c = convert<char>(d);     // calls \tcode{convert<char,double>(double)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5554,7 +5554,7 @@ variable within the function.
 \exitnote
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> void f(T t);
 template <class X> void g(const X x);
 template <class Z> void h(Z, Z*);
@@ -5575,7 +5575,7 @@ int main() {
   // \#5: function type is \tcode{h(int, const int*)}
   h<const int>(1,0);
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5594,7 +5594,7 @@ arguments determined for preceding template parameters into the
 default argument. If the substitution results in an invalid type,
 as described above, type deduction fails.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, class U = double>
 void f(T t = 0, U u = 0);
 
@@ -5605,7 +5605,7 @@ void g() {
   f<int>();         // \tcode{f<int,double>(0,0)}
   f<int,char>();    // \tcode{f<int,char>(0,0)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 When all template arguments have been deduced or obtained from
@@ -5636,7 +5636,7 @@ done only when the function is instantiated, at which point a program is ill-for
 if the substitution results in an invalid type or
 expression. \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct A { using X = typename T::X; };
 template <class T> typename T::X f(typename A<T>::X);
 template <class T> void f(...) { }
@@ -5647,7 +5647,7 @@ void h() {
   f<int>(0); // OK, substituting return type causes deduction to fail
   g<int>(0); // error, substituting parameter type instantiates \tcode{A<int>}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -5664,7 +5664,7 @@ etc. Such side effects are not in the ``immediate context'' and can result in th
 program being ill-formed.\exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct X { };
 struct Y {
   Y(X){}
@@ -5674,7 +5674,7 @@ template <class T> auto f(T t1, T t2) -> decltype(t1 + t2); // \#1
 X f(Y, Y);  // \#2
 
 X x1, x2;
-X x3 = f(x1, x2);  // deduction fails on \#1 (cannot add \tcode{X+X}), calls \#2\end{codeblock}
+X x3 = f(x1, x2);  // deduction fails on \#1 (cannot add \tcode{X+X}), calls \#2\end{lstlisting}
 \exitexample
 
 \enternote Type deduction may fail for
@@ -5688,20 +5688,20 @@ function type, a reference type, or an abstract class type, or attempting
 to create an array with a size that is zero or negative.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> int f(T[5]);
 int I = f<int>(0);
 int j = f<void>(0);             // invalid array
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item
 Attempting to use a type that is not a class or enumeration type in a qualified name.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> int f(typename T::B*);
 int i = f<int>(0);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item
 Attempting to use a type in a \grammarterm{nested-name-specifier} of a
@@ -5717,7 +5717,7 @@ the specified member is not a non-type where a non-type is required.
 \end{itemize}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <int I> struct X { };
 template <template <class T> class> struct Z { };
 template <class T> void f(typename T::Y*){}
@@ -5739,7 +5739,7 @@ int main() {
   g<C>(0);  // The \tcode{N} member of \tcode{C} is not a non-type
   h<D>(0);  // The \tcode{TT} member of \tcode{D} is not a template
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item
 Attempting to create a pointer to reference type.
@@ -5750,20 +5750,20 @@ Attempting to create ``pointer to member of \tcode{T}'' when \tcode{T} is not a
 class type.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> int f(int T::*);
 int i = f<int>(0);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item
 Attempting to give an invalid type to a non-type template parameter.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, T> struct S {};
 template <class T> int f(S<T, T()>*);
 struct X {};
 int i0 = f<X>(0);
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -5772,10 +5772,10 @@ argument expression, or an expression used in the function
 declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, T*> int f(int);
 int i2 = f<int,1>(0);           // can't conv \tcode{1} to \tcode{int*}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \item
@@ -5799,12 +5799,12 @@ In other words, both templates are considered even though 1000,
 when converted to \tcode{signed char}, results in an implementation-defined
 value.
 
-\begin{codeblock}
+\begin{lstlisting}
 template <int> int f(int);
 template <signed char> int f(int);
 int i1 = f<1>(0);               // ambiguous
 int i2 = f<1000>(0);            // ambiguous
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[temp.deduct.call]{Deducing template arguments from a function call}
@@ -5824,14 +5824,14 @@ performed instead for each element of the initializer list, taking
 element as its argument. Otherwise, an initializer list argument causes the
 parameter to be considered a non-deduced context~(\ref{temp.deduct.type}).
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(std::initializer_list<T>);
 f({1,2,3});                 // \tcode{T} deduced to \tcode{int}
 f({1,"asdf"});              // error: \tcode{T} deduced to both \tcode{int} and \tcode{const char*}
 
 template<class T> void g(T);
 g({1,2,3});                 // error: no argument deduced for \tcode{T}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 For a function parameter pack that occurs at the end of the \grammarterm{parameter-declaration-list},
 the type \tcode{A} of each
@@ -5844,7 +5844,7 @@ context~(\ref{temp.deduct.type}), the type of that parameter pack is
 never deduced.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ... Types> void f(Types& ...);
 template<class T1, class ... Types> void g(T1, Types ...);
 template<class T1, class ... Types> void g1(Types ..., T1);
@@ -5857,7 +5857,7 @@ void h(int x, float& y) {
   g1<int, int, int>(x, y, z);  // OK, no deduction occurs
 
 }
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -5907,7 +5907,7 @@ is used for type deduction.
 If \tcode{P} is an rvalue reference to a cv-unqualified template parameter and the argument is an
 lvalue, the type ``lvalue reference to \tcode{A}'' is used in place of \tcode{A} for type
 deduction. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> int f(T&&);
 template <class T> int g(const T&&);
 int i;
@@ -5915,7 +5915,7 @@ int n1 = f(i);                  // calls \tcode{f<int\&>(int\&)}
 int n2 = f(0);                  // calls \tcode{f<int>(int\&\&)}
 int n3 = g(i);                  // error: would call \tcode{g<int>(const int\&\&)}, which
                                 // would bind an rvalue reference to an lvalue
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6008,38 +6008,38 @@ one member of the overload set the parameter is treated as a non-deduced context
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 // Only one function of an overload set matches the call so the function
 // parameter is a deduced context.
 template <class T> int f(T (*p)(T));
 int g(int);
 int g(char);
 int i = f(g);       // calls \tcode{f(int (*)(int))}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 // Ambiguous deduction causes the second function parameter to be a
 // non-deduced context.
 template <class T> int f(T, T (*p)(T));
 int g(int);
 char g(char);
 int i = f(1, g);    // calls \tcode{f(int, int (*)(int))}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 // The overload set contains a template, causing the second function
 // parameter to be a non-deduced context.
 template <class T> int f(T, T (*p)(T));
 char g(char);
 template <class T> T g(T);
 int i = f(1, g);    // calls \tcode{f(int, int (*)(int))}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \end{itemize}
 
@@ -6181,13 +6181,13 @@ and
 \tcode{P}
 respectively for type deduction.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   template <class T> operator T***();
 };
 A a;
 const int * const * const * p1 = a;     // \tcode{T} is deduced as \tcode{int}, not \tcode{const int}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \rSec3[temp.deduct.partial]{Deducing template arguments during partial ordering}
@@ -6302,7 +6302,7 @@ If deduction succeeds for a given type,
 the type from the argument template is considered to be at least as specialized
 as the type from the parameter template.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class... Args>           void f(Args... args);           // \#1
 template<class T1, class... Args> void f(T1 a1, Args... args);    // \#2
 template<class T1, class T2>      void f(T1 a1, T2 a2);           // \#3
@@ -6311,7 +6311,7 @@ f();                  // calls \#1
 f(1, 2, 3);           // calls \#2
 f(1, 2);              // calls \#3; non-variadic template \#3 is more
                       // specialized than the variadic templates \#1 and \#2
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6350,13 +6350,13 @@ types being used for partial ordering.
 A template parameter used in a non-deduced context is considered used.
 \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> T f(int);        // \#1
 template <class T, class U> T f(U); // \#2
 void g() {
   f<int>(1);        // calls \#1
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6364,7 +6364,7 @@ void g() {
 template parameter packs is independent of the number of deduced arguments
 for those template parameter packs. \exitnote \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class ...> struct Tuple { };
 template<class ... Types> void g(Tuple<Types ...>);                 // \#1
 template<class T1, class ... Types> void g(Tuple<T1, Types ...>);   // \#2
@@ -6374,7 +6374,7 @@ g(Tuple<>());                   // calls \#1
 g(Tuple<int, float>());         // calls \#2
 g(Tuple<int, float&>());        // calls \#3
 g(Tuple<int>());                // calls \#3
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -6492,10 +6492,10 @@ the set of functions supplied as an argument contains one or more function templ
 list~(\ref{dcl.init.list}) but the parameter does not have
 \tcode{std::initializer_list} or reference to possibly cv-qualified
 \tcode{std::initializer_list} type. \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void g(T);
 g({1,2,3});                 // error: no argument deduced for \tcode{T}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \item A function parameter pack that does not occur at the end of the 
 \grammarterm{parameter-declaration-clause}.
@@ -6543,7 +6543,7 @@ is deduced.
 Here is an example in which different parameter/argument pairs produce
 inconsistent template argument deductions:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T x, T y) { /* ... */ }
 struct A { /* ... */ };
 struct B : A { /* ... */ };
@@ -6553,14 +6553,14 @@ void g(A a, B b) {
   f(a,a);           // OK: \tcode{T} is \tcode{A}
   f(b,b);           // OK: \tcode{T} is \tcode{B}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here is an example where two template arguments are deduced from a
 single function parameter/argument pair.
 This can lead to conflicts
 that cause type deduction to fail:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T, class U> void f(  T (*)( T, U, U )  );
 
 int g1( int, float, float);
@@ -6572,23 +6572,23 @@ void r() {
   f(g2);            // error: \tcode{T} could be \tcode{char} or \tcode{int}
   f(g3);            // error: \tcode{U} could be \tcode{char} or \tcode{float}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here is an example where a qualification conversion applies between the
 argument type on the function call and the deduced template argument type:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(const T*) { }
 int *p;
 void s() {
   f(p);             // \tcode{f(const int*)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 Here is an example where the template argument is used to instantiate
 a derived class type of the corresponding function parameter type:
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> struct B { };
 template <class T> struct D : public B<T> {};
 struct D2 : public B<int> {};
@@ -6599,7 +6599,7 @@ void t() {
   f(d);             // calls \tcode{f(B<int>\&)}
   f(d2);            // calls \tcode{f(B<int>\&)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6615,7 +6615,7 @@ and
 \tcode{A}
 have one of the following forms:
 
-\begin{codeblock}
+\begin{lstlisting}
 T
 @\grammarterm{cv-list}@ T
 T*
@@ -6641,7 +6641,7 @@ T (T::*)(T)
 TT<T>
 TT<i>
 TT<>
-\end{codeblock}
+\end{lstlisting}
 
 where
 \tcode{(T)}
@@ -6693,7 +6693,7 @@ $\texttt{A}_i$ then $\texttt{A}_i$ is ignored;
 deduction fails.
 \end{itemize}
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T1, class... Z> class S;                               // \#1
 template<class T1, class... Z> class S<T1, const Z&...> { };          // \#2
 template<class T1, class T2>   class S<T1, const T2&> { };            // \#3
@@ -6703,7 +6703,7 @@ template<class T, class... U>            struct A { };                // \#1
 template<class T1, class T2, class... U> struct A<T1, T2*, U...> { }; // \#2
 template<class T1, class T2>             struct A<T1, T2> { };        // \#3
 template struct A<int, int*>; // selects \#2
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6725,7 +6725,7 @@ changed to simply \tcode{T}). \enternote As a result, when $\texttt{P}_i$ is \tc
 and $\texttt{A}_i$ is \tcode{X\&}, the adjusted $\texttt{P}_i$ will be \tcode{T},
 causing \tcode{T} to be deduced as \tcode{X\&}. \exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> void f(T&&);
 template <> void f(int&) { }  // \#1
 template <> void f(int&&) { } // \#2
@@ -6733,7 +6733,7 @@ void g(int i) {
   f(i);                       // calls \tcode{f<int\&>(int\&)}, i.e., \#1
   f(0);                       // calls \tcode{f<int>(int\&\&)}, i.e., \#2
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 If the \grammarterm{parameter-declaration}
@@ -6754,11 +6754,11 @@ $\texttt{A}_i$ then $\texttt{A}_i$ is ignored;
 argument deduction fails.
 \end{itemize}
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, class... U> void f(T*, U...) { }    // \#1
 template<class T>             void f(T) { }           // \#2
 template void f(int*);      // selects \#1
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6767,21 +6767,21 @@ These forms can be used in the same way as
 is for further composition of types.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 X<int> (*)(char[6])
-\end{codeblock}
+\end{lstlisting}
 
 is of the form
 
-\begin{codeblock}
+\begin{lstlisting}
 @\grammarterm{template-name}@<T> (*)(@\term{type}@[i])
-\end{codeblock}
+\end{lstlisting}
 
 which is a variant of
 
-\begin{codeblock}
+\begin{lstlisting}
 @\term{type}@ (*)(T)
-\end{codeblock}
+\end{lstlisting}
 
 where type is
 \tcode{X<int>}
@@ -6801,11 +6801,11 @@ A template type argument cannot be deduced from the type of a non-type
 
 \pnum
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T, T i> void f(double a[10][i]);
 int v[10][20];
 f(v);               // error: argument for template-parameter \tcode{T} cannot be deduced
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6813,7 +6813,7 @@ f(v);               // error: argument for template-parameter \tcode{T} cannot b
 Except for reference and pointer types, a major array bound is not part of a
 function parameter type and cannot be deduced from an argument:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int i> void f1(int a[10][i]);
 template<int i> void f2(int a[i][20]);
 template<int i> void f3(int (&a)[i][20]);
@@ -6826,7 +6826,7 @@ void g() {
   f2<10>(v);        // OK
   f3(v);            // OK: \tcode{i} deduced to be \tcode{10}
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 If, in the declaration of a function template with a non-type
@@ -6834,7 +6834,7 @@ template parameter, the non-type template parameter
 is used in a subexpression in the function parameter list,
 the expression is a non-deduced context as specified above.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template <int i> class A { /* ... */ };
 template <int i> void g(A<i+1>);
 template <int i> void f(A<i>, A<i+1>);
@@ -6845,7 +6845,7 @@ void k() {
   g<0>(a1);         // OK
   f(a1, a2);        // OK
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \exitnote
 \enternote
@@ -6853,7 +6853,7 @@ Template parameters do not participate in template argument deduction if
 they are used only in non-deduced contexts.
 For example,
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int i, typename T>
 T deduce(typename A<T>::X x,    // \tcode{T} is not deduced here
   T t,                          // but \tcode{T} is deduced here
@@ -6866,7 +6866,7 @@ int    x = deduce<77>(a.xm, 62, b.ym);
 // \tcode{A<int>::X}
 // \tcode{i} is explicitly specified to be \tcode{77}, \tcode{b.ym} must be convertible
 // to \tcode{B<77>::Y}
-\end{codeblock}
+\end{lstlisting}
 \exitnote
 
 \pnum
@@ -6894,7 +6894,7 @@ may be deduced from an array bound, the resulting value will always be
 because the array bound will be non-zero.}
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<int i> class A { /* ... */ };
 template<short s> void f(A<s>);
 void k1() {
@@ -6909,7 +6909,7 @@ void k2() {
   B<1> b;
   g(b);             // OK: cv-qualifiers are ignored on template parameter types
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6920,7 +6920,7 @@ member function type.
 
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(void(*)(T,int));
 template<class T> void foo(T,int);
 void g(int,int);
@@ -6933,7 +6933,7 @@ int m() {
   f(&h);            // OK: void \tcode{h(char,int)} is a unique match
   f(&foo);          // error: type deduction fails because \tcode{foo} is a template
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6942,14 +6942,14 @@ A template
 cannot be deduced from the type of a function default argument.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <class T> void f(T = 5, T = 7);
 void g() {
   f(1);             // OK: call \tcode{f<int>(1,7)}
   f();              // error: cannot deduce \tcode{T}
   f<int>();         // OK: call \tcode{f<int>(5,7)}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6962,13 +6962,13 @@ is deduced from the type of the
 of a class template specialization used in the argument list of a function call.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template <template <class T> class X> struct A { };
 template <template <class T> class X> void f(A<X>) { }
 template<class T> struct B { };
 A<B> ab;
 f(ab);              // calls \tcode{f(A<B>)}
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -6976,7 +6976,7 @@ f(ab);              // calls \tcode{f(A<B>)}
 packs~(\ref{temp.variadic}) can deduce zero or more arguments for
 each parameter pack. \exitnote\enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class> struct X { };
 template<class R, class ... ArgTypes> struct X<R(int, ArgTypes ...)> { };
 template<class ... Types> struct Y { };
@@ -6992,7 +6992,7 @@ Y<> y1;                         // use primary template; \tcode{Types} is empty
 Y<int&, float&, double&> y2;    // uses partial specialization; \tcode{T} is \tcode{int\&}, \tcode{Types} contains \tcode{float}, \tcode{double}
 Y<int, float, double> y3;       // uses primary template; \tcode{Types} contains \tcode{int}, \tcode{float}, \tcode{double}
 int fv = f(g);                  // OK; \tcode{Types} contains \tcode{int}, \tcode{float}
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -7059,7 +7059,7 @@ be given preference over a template specialization if the two functions
 are otherwise equally good candidates for an overload match.}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> T max(T a, T b) { return a>b?a:b; }
 
 void f(int a, int b, char c, char d) {
@@ -7067,14 +7067,14 @@ void f(int a, int b, char c, char d) {
   char m2 = max(c,d);           // \tcode{max(char a, char b)}
   int m3 = max(a,c);            // error: cannot generate \tcode{max(int,char)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Adding the non-template function
 
-\begin{codeblock}
+\begin{lstlisting}
 int max(int,int);
-\end{codeblock}
+\end{lstlisting}
 
 to the example above would resolve the third call, by providing a function that
 could be called for
@@ -7091,7 +7091,7 @@ Here is an example involving conversions on a function argument involved in
 \grammarterm{template-argument}
 deduction:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> struct B { /* ... */ };
 template<class T> struct D : public B<T> { /* ... */ };
 template<class T> void f(B<T>&);
@@ -7100,14 +7100,14 @@ void g(B<int>& bi, D<int>& di) {
   f(bi);            // \tcode{f(bi)}
   f(di);            // \tcode{f((B<int>\&)di)}
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 Here is an example involving conversions on a function argument not involved in
 \grammarterm{template-parameter}
 deduction:
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T*,int);       // \#1
 template<class T> void f(T,char);       // \#2
 
@@ -7118,7 +7118,7 @@ void h(int* pi, int i, char c) {
   f(i,c);           // \#2: \tcode{f<int>(i,c);}
   f(i,i);           // \#2: \tcode{f<int>(i,char(i))}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -7128,13 +7128,13 @@ Therefore only the function template declaration is needed to resolve a call
 for which a template specialization is a candidate.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 template<class T> void f(T);    // declaration
 
 void g() {
   f("Annemarie");               // call of \tcode{f<const char*>}
 }
-\end{codeblock}
+\end{lstlisting}
 
 \pnum
 The call of

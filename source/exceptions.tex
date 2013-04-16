@@ -78,7 +78,7 @@ A \grammarterm{throw-expression} is of type \tcode{void}. \enternote Within this
 A \tcode{goto} or \tcode{switch} statement shall not be used to transfer control
 into a try block or into a handler.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f() {
   goto l1;          // Ill-formed
   goto l2;          // Ill-formed
@@ -93,7 +93,7 @@ void f() {
   }
 }
 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 \indextext{\idxcode{goto}!and try block}%
 \indextext{\idxcode{switch}!and try block}%
@@ -116,7 +116,7 @@ will be destroyed in the context that
 directly contains its declaration.
 \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 lab:  try {
   T1 t1;
   try {
@@ -125,7 +125,7 @@ lab:  try {
       goto lab;
     } catch(...) { /* @\textit{handler 2}@ */ }
   } catch(...) { /* @\textit{handler 1}@ */ }
-\end{codeblock}
+\end{lstlisting}
 
 Here, executing
 \tcode{goto lab;}
@@ -168,7 +168,7 @@ in the same way as an exception thrown during the execution of a
 \grammarterm{try-block}
 transfers control to other handlers.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 int f(int);
 class C {
   int i;
@@ -186,7 +186,7 @@ catch (...) {
     // and from the constructor statements
 }
 
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 
@@ -208,25 +208,25 @@ functions~(\ref{structure.specifications}).
 An object is passed and the type of that object determines which handlers
 can catch it.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 throw "Help!";
-\end{codeblock}
+\end{lstlisting}
 can be caught by a
 \term{handler}
 of
 \tcode{const}
 \tcode{char*}
 type:
-\begin{codeblock}
+\begin{lstlisting}
 try {
     // ...
 }
 catch(const char* p) {
     // handle character string exceptions here
 }
-\end{codeblock}
+\end{lstlisting}
 and
-\begin{codeblock}
+\begin{lstlisting}
 class Overflow {
 public:
     Overflow(char,double,double);
@@ -235,16 +235,16 @@ public:
 void f(double x) {
     throw Overflow('+',x,3.45e107);
 }
-\end{codeblock}
+\end{lstlisting}
 can be caught by a handler for exceptions of type
 \tcode{Overflow}
-\begin{codeblock}
+\begin{lstlisting}
 try {
     f(1.2);
 } catch(Overflow& oo) {
     // handle exceptions of type \tcode{Overflow} here
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -329,7 +329,7 @@ If the exception handling mechanism, after completing evaluation of the expressi
 to be thrown but before the exception is caught, calls a function that exits via an
 exception, \tcode{std::terminate} is called~(\ref{except.terminate}). \enterexample
 
-\begin{codeblock}
+\begin{lstlisting}
 struct C {
   C() { }
   C(const C&) { throw 0; }
@@ -340,7 +340,7 @@ int main() {
     throw C();      // calls \tcode{std::terminate()}
   } catch(C) { }
 }
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -360,7 +360,7 @@ will again be
 \enterexample
 code that must be executed because of an exception yet cannot
 completely handle the exception can be written like this:
-\begin{codeblock}
+\begin{lstlisting}
 try {
     // ...
 } catch (...) {     // catch all exceptions
@@ -368,7 +368,7 @@ try {
   throw;            // pass the exception to some
                     // other handler
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -548,7 +548,7 @@ that evaluates to zero does not match a handler of pointer or pointer to member 
 \exitnote
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class Matherr { /* ... */ virtual void vf(); };
 class Overflow: public Matherr { /* ... */ };
 class Underflow: public Matherr { /* ... */ };
@@ -563,7 +563,7 @@ void f() {
         // ...
   }
 }
-\end{codeblock}
+\end{lstlisting}
 Here, the
 \tcode{Overflow}
 handler will catch exceptions of type
@@ -760,12 +760,12 @@ An
 \grammarterm{exception-specification}
 shall not appear in a typedef declaration or \grammarterm{alias-declaration}.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 void f() throw(int);                    // OK
 void (*fp)() throw (int);               // OK
 void g(void pfa() throw(int));          // OK
 typedef int (*pf)() throw(int);         // ill-formed
-\end{codeblock}
+\end{lstlisting}
 
 \exitexample
 
@@ -831,7 +831,7 @@ shall only allow exceptions that are allowed by the
 \grammarterm{exception-specification}
 of the base class virtual function.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct B {
   virtual void f() throw (int, double);
   virtual void g();
@@ -841,7 +841,7 @@ struct D: B {
   void f();                     // ill-formed
   void g() throw (int);         // OK
 };
-\end{codeblock}
+\end{lstlisting}
 
 The declaration of
 \tcode{D::f}
@@ -859,7 +859,7 @@ the target entity shall allow at least the exceptions
 allowed by the source value in the assignment or
 initialization.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class A { /* ... */ };
 void (*pf1)();      // no exception specification
 void (*pf2)() throw(A);
@@ -868,7 +868,7 @@ void f() {
   pf1 = pf2;        // OK: \tcode{pf1} is less restrictive
   pf2 = pf1;        // error: \tcode{pf2} is more restrictive
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \pnum
@@ -928,7 +928,7 @@ encounters the outermost block of a function with an
 \end{itemize}
 
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 class X { };
 class Y { };
 class Z: public X { };
@@ -940,7 +940,7 @@ void f() throw (X, Y) {
   if (n) throw Z();             // also OK
   throw W();                    // will call \tcode{std::unexpected()}
 }
-\end{codeblock}
+\end{lstlisting}
 \exitexample
 
 \enternote A function can have multiple declarations with different non-throwing
@@ -964,14 +964,14 @@ An implementation shall not reject an expression merely because when
 executed it throws or might
 throw an exception that the containing function does not allow.
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 extern void f() throw(X, Y);
 
 void g() throw(X) {
   f();                          // OK
 }
 
-\end{codeblock}
+\end{lstlisting}
 the call to
 \tcode{f}
 is well-formed even though when called,
@@ -1040,7 +1040,7 @@ invokes no other functions.
 an implied \grammarterm{exception-specification} as if it were a non-template
 inheriting constructor.\exitnote
 \enterexample
-\begin{codeblock}
+\begin{lstlisting}
 struct A {
   A();
   A(const A&) throw();
@@ -1059,7 +1059,7 @@ struct D : public A, public B {
     // Implicit declaration of \tcode{D::D(D\&\&) throw(Y);}
     // Implicit declaration of \tcode{D::$\sim$D() throw(X, Y);}
 };
-\end{codeblock}
+\end{lstlisting}
 
 Furthermore, if
 \tcode{A::\~{}A()}
