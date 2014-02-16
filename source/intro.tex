@@ -55,7 +55,7 @@ of this document. For dated references, only the edition cited applies.
 For undated references, the latest edition of the referenced document
 (including any amendments) applies.
 
-\begin{itemize}
+\begin{compactitem}
 \item Ecma International, \doccite{ECMAScript Language Specification},
 Standard Ecma-262, third edition, 1999.
 \item ISO/IEC 2382 (all parts), \doccite{Information technology ---
@@ -76,7 +76,7 @@ Architecture and Basic Multilingual Plane}
 Programming languages, their environments and system software interfaces
 --- Extensions for the programming language C to support new character
 data types}
-\end{itemize}
+\end{compactitem}
 
 \pnum
 The library described in Clause 7 of ISO/IEC 9899:1999 and Clause 7 of
@@ -318,7 +318,7 @@ Although this International Standard states only requirements on \Cpp
 implementations, those requirements are often easier to understand if
 they are phrased as requirements on programs, parts of programs, or
 execution of programs. Such requirements have the following meaning:
-\begin{itemize}
+\begin{compactitem}
 
 \item
 If a program contains no violations of the rules in this
@@ -340,7 +340,7 @@ If a program contains a violation of a rule for which no diagnostic
 is required, this International Standard places no requirement on
 implementations with respect to that program.
 
-\end{itemize}
+\end{compactitem}
 
 \pnum
 \indextext{conformance requirements!library|(}%
@@ -448,7 +448,7 @@ indicates an optional expression enclosed in braces.%
 \pnum
 Names for syntactic categories have generally been chosen according to
 the following rules:
-\begin{itemize}
+\begin{compactitem}
 \item \grammarterm{X-name} is a use of an identifier in a context that
 determines its meaning (e.g., \grammarterm{class-name},
 \grammarterm{typedef-name}).
@@ -460,7 +460,7 @@ declarations).
 \item \grammarterm{X-list} is one or more \grammarterm{X}'s separated by
 intervening commas (e.g., \grammarterm{expression-list} is a sequence of
 expressions separated by commas).
-\end{itemize}%
+\end{compactitem}%
 \indextext{notation!syntax|)}
 
 \rSec1[intro.memory]{The \Cpp memory model}
@@ -565,7 +565,7 @@ object}.
 For every object \tcode{x}, there is some object called the
 \defn{complete object of} \tcode{x}, determined as follows:
 
-\begin{itemize}
+\begin{compactitem}
 
 \item
 If \tcode{x} is a complete object, then \tcode{x} is the complete
@@ -575,7 +575,7 @@ object of \tcode{x}.
 Otherwise, the complete object of \tcode{x} is the complete object
 of the (unique) object that contains \tcode{x}.
 
-\end{itemize}
+\end{compactitem}
 
 \pnum
 If a complete object, a data member~(\ref{class.mem}), or an array element is of
@@ -694,11 +694,11 @@ operation).
 When the processing of the abstract machine is interrupted by receipt of
 a signal, the values of objects which are neither
 
-\begin{itemize}
+\begin{compactitem}
 \item of type \tcode{volatile std::sig_atomic_t} nor
 \item lock-free atomic objects~(\ref{atomics.lockfree})
-\end{itemize}
-
+\end{compactitem}
+%
 are unspecified during the execution of the signal handler, and the value of any
 object not in either of these two categories that is modified by the handler
 becomes undefined.%
@@ -715,7 +715,7 @@ of a function or receipt of a signal).
 \pnum
 The least requirements on a conforming implementation are:
 
-\begin{itemize}
+\begin{compactitem}
 
 \item
 Access to volatile objects are evaluated strictly according to the
@@ -731,8 +731,8 @@ The input and output dynamics of interactive devices shall take
 place in such a fashion that prompting output is actually delivered before a program waits for input. What constitutes an interactive device is
 \impldef{interactive device}.
 
-\end{itemize}
-
+\end{compactitem}
+%
 These collectively are referred to as the
 \defnx{observable behavior}{behavior!observable} of the program.
 \enternote More stringent correspondences between abstract and actual
@@ -1027,10 +1027,10 @@ side effects in the
 modification order of \term{M}, where the first operation is \tcode{A}, and
 every subsequent operation
 
-\begin{itemize}
+\begin{compactitem}
 \item is performed by the same thread that performed \tcode{A}, or
 \item is an atomic read-modify-write operation.
-\end{itemize}
+\end{compactitem}
 
 \pnum
 Certain library calls \defn{synchronize with} other library calls performed by
@@ -1047,11 +1047,11 @@ the value written'' by the last mutex release. \exitnote
 \pnum
 An evaluation \term{A} \defn{carries a dependency} to an evaluation \term{B} if
 
-\begin{itemize}
+\begin{compactitem}
 
 \item
 the value of \term{A} is used as an operand of \term{B}, unless:
-\begin{itemize}
+\begin{compactitem}[$\bullet$]
 
 \item
 \term{B} is an invocation of any specialization of
@@ -1068,7 +1068,7 @@ operator, or
 
 \item
 \term{A} is the left operand of the built-in comma (\tcode{,})
-operator~(\ref{expr.comma}); \end{itemize} or
+operator~(\ref{expr.comma}); \end{compactitem} or
 
 \item
 \term{A} writes a scalar object or bit-field \term{M}, \term{B} reads the value
@@ -1078,15 +1078,15 @@ written by \term{A} from \term{M}, and \term{A} is sequenced before \term{B}, or
 for some evaluation \term{X}, \term{A} carries a dependency to \term{X}, and 
 \term{X} carries a dependency to \term{B}.
 
-\end{itemize}
-
+\end{compactitem}
+%
 \enternote ``Carries a dependency to'' is a subset of ``is sequenced before'',
 and is similarly strictly intra-thread. \exitnote
 
 \pnum
 An evaluation \term{A} is \defn{dependency-ordered before} an evaluation
 \term{B} if
-\begin{itemize}
+\begin{compactitem}
 
 \item
 \term{A} performs a release operation on an atomic object \term{M}, and, in
@@ -1099,16 +1099,17 @@ side effect in the release sequence headed by \term{A}, or
 for some evaluation \term{X}, \term{A} is dependency-ordered before \term{X} and
 \term{X} carries a dependency to \term{B}.
 
-\end{itemize}
+\end{compactitem}
+%
 \enternote The relation ``is dependency-ordered before'' is analogous to
-``synchronizes with'', but uses release/consume in place of release/acquire.
+``synchronizes with,'' but uses release/consume in place of release/acquire.
 \exitnote
 
 \pnum
 An evaluation \term{A} \defn{inter-thread happens before} an evaluation \term{B}
 if
 
-\begin{itemize}
+\begin{compactitem}
 
 \item
 \term{A} synchronizes with \term{B}, or
@@ -1119,7 +1120,7 @@ if
 \item
 for some evaluation \term{X}
 
-\begin{itemize}
+\begin{compactitem}[$\bullet$]
 \item
 \term{A} synchronizes with \term{X} and \term{X} is sequenced before \term{B},
 or
@@ -1131,9 +1132,9 @@ or
 \item
 \term{A} inter-thread happens before \term{X} and \term{X} inter-thread happens
 before \term{B}.
-\end{itemize}
-\end{itemize}
-
+\end{compactitem}
+\end{compactitem}
+%
 \enternote The ``inter-thread happens before'' relation describes arbitrary
 concatenations of ``sequenced before'', ``synchronizes with'' and
 ``dependency-ordered before'' relationships, with two exceptions. The first
@@ -1153,11 +1154,11 @@ relationships consisting entirely of ``sequenced before''. \exitnote
 \pnum
 An evaluation \term{A} \defn{happens before} an evaluation \term{B} if:
 
-\begin{itemize}
+\begin{compactitem}
 \item \term{A} is sequenced before \term{B}, or
 \item \term{A} inter-thread happens before \term{B}.
-\end{itemize}
-
+\end{compactitem}
+%
 The implementation shall ensure that no program execution demonstrates a cycle
 in the ``happens before'' relation. \enternote This cycle would otherwise be
 possible only through the use of consume operations. \exitnote
@@ -1167,14 +1168,14 @@ A \defnx{visible side effect}{side effects!visible} \term{A} on a scalar object 
 with respect to a value computation \term{B} of \term{M} satisfies the
 conditions:
 
-\begin{itemize}
+\begin{compactitem}
 \item \term{A} happens before \term{B} and
 \item there is no other
 \indextext{side effects}%
 side effect \term{X} to \term{M} such that \term{A}
 happens before \term{X} and \term{X} happens before \term{B}.
-\end{itemize}
-
+\end{compactitem}
+%
 The value of a non-atomic scalar object or bit-field \term{M}, as determined by
 evaluation \term{B}, shall be the value stored by the
 \indextext{side effects!visible}%
@@ -1307,7 +1308,7 @@ hardware race detection. \exitnote
 The implementation may assume that any thread will eventually do one of the 
 following:
 
-\begin{itemize}
+\begin{compactitem}
 \item 
 terminate,
 
@@ -1319,8 +1320,8 @@ access or modify a volatile object, or
 
 \item
 perform a synchronization operation or an atomic operation.
-\end{itemize}
-
+\end{compactitem}
+%
 \enternote This is intended to allow compiler transformations such as removal of
 empty loops, even when termination cannot be proven. \exitnote
 
