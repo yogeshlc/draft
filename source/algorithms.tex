@@ -3551,9 +3551,7 @@ template<class T, class Compare>
 \begin{itemdescr}
 \pnum
 \requires
-Type
-\tcode{T}
-is
+For the first form, type \tcode{T} shall be
 \tcode{LessThanComparable} (Table~\ref{lessthancomparable}).
 
 \pnum
@@ -3563,6 +3561,10 @@ The smaller value.
 \pnum
 \notes
 Returns the first argument when the arguments are equivalent.
+
+\pnum
+\complexity
+Exactly one comparison.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{min}}%
@@ -3575,14 +3577,18 @@ template<class T, class Compare>
 
 \begin{itemdescr}
 \pnum
-\requires \tcode{T} is \tcode{LessThanComparable} and \tcode{CopyConstructible} and
-\tcode{t.size() > 0}.
+\requires \tcode{T} shall be \tcode{CopyConstructible} and \tcode{t.size() > 0}.
+For the first form, type \tcode{T} shall be \tcode{LessThanComparable}.
 
 \pnum
 \returns The smallest value in the initializer_list.
 
 \pnum
 \remarks Returns a copy of the leftmost argument when several arguments are equivalent to the smallest.\
+
+\pnum
+\complexity
+Exactly \tcode{t.size() - 1} comparisons.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max}}%
@@ -3595,9 +3601,7 @@ template<class T, class Compare>
 \begin{itemdescr}
 \pnum
 \requires
-Type
-\tcode{T}
-is
+For the first form, type \tcode{T} shall be
 \tcode{LessThanComparable} (Table~\ref{lessthancomparable}).
 
 \pnum
@@ -3607,6 +3611,10 @@ The larger value.
 \pnum
 \notes
 Returns the first argument when the arguments are equivalent.
+
+\pnum
+\complexity
+Exactly one comparison.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{max}}%
@@ -3619,13 +3627,18 @@ template<class T, class Compare>
 
 \begin{itemdescr}
 \pnum
-\requires \tcode{T} is \tcode{LessThanComparable} and \tcode{CopyConstructible} and \tcode{t.size() > 0}.
+\requires \tcode{T} shall be \tcode{CopyConstructible} and \tcode{t.size() > 0}.
+For the first form, type \tcode{T} shall be \tcode{LessThanComparable}.
 
 \pnum
 \returns The largest value in the initializer_list.
 
 \pnum
 \remarks Returns a copy of the leftmost argument when several arguments are equivalent to the largest.
+
+\pnum
+\complexity
+Exactly \tcode{t.size() - 1} comparisons.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{minmax}}%
@@ -3639,9 +3652,7 @@ template<class T, class Compare>
 \begin{itemdescr}
 \pnum
 \requires
-Type
-\tcode{T}
-shall be
+For the first form, type \tcode{T} shall be
 \tcode{LessThanComparable} (Table~\ref{lessthancomparable}).
 
 \pnum
@@ -3669,7 +3680,8 @@ template<class T, class Compare>
 
 \begin{itemdescr}
 \pnum
-\requires \tcode{T} is \tcode{LessThanComparable} and \tcode{CopyConstructible} and \tcode{t.size() > 0}.
+\requires \tcode{T} shall be \tcode{CopyConstructible} and \tcode{t.size() > 0}.
+For the first form, type \tcode{T} shall be \tcode{LessThanComparable}.
 
 \pnum
 \returns \tcode{pair<T, T>(x, y)}, where \tcode{x} has the smallest and \tcode{y} has the
