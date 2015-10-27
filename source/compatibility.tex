@@ -1418,6 +1418,7 @@ source file characters to the basic source character set.
 
 \rSec2[diff.cpp14.depr]{Annex~\ref{depr}: compatibility features}
 
+\ref{lex.phases}
 \change
 The class templates
 \tcode{auto_ptr},
@@ -1436,6 +1437,13 @@ are not defined.
 \effect Valid \CppXIV code that uses these class templates
 and function templates may fail to compile in this International Standard.
 
+\change
+Remove increment operator with \tcode{bool} operand.
+\rationale Obsolete feature with occasionally surprising semantics.
+\effect A valid \CppXIV expression utilizing the increment operator on
+a \tcode{bool} lvalue is ill-formed in this International Standard.
+Note that this might occur when the lvalue has a type given by a template
+parameter.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \rSec1[diff.library]{C standard library}
