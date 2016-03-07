@@ -1515,6 +1515,27 @@ template<class T> int f(T *, T *);
 int x = f(g1, g2);    // ill-formed; previously well-formed
 \end{codeblock}
 
+\ref{dcl.init.aggr}
+\change Definition of an aggregate is extended
+to apply to user-defined types with base classes.
+\rationale To increase convenience of aggregate initialization.
+\effect
+Valid \CppXIV code may fail to compile in this International Standard;
+it is now necessary to explicitly initialize the base class
+as per the following example:
+\begin{codeblock}
+struct derived;
+struct base {
+  friend struct derived;
+private:
+  base();
+};
+struct derived : base {};
+
+derived d1{};       // Error. The code was well-formed before.
+derived d2;         // still OK
+\end{codeblock}
+
 \rSec2[diff.cpp14.depr]{Annex~\ref{depr}: compatibility features}
 
 \change
