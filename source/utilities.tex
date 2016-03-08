@@ -5928,6 +5928,7 @@ unless \tcode{unique_ptr<Y, D>::pointer} is convertible to \tcode{T*}.
 Otherwise, if \tcode{D} is not a reference type,
 equivalent to \tcode{shared_ptr(r.release(), r.get_deleter())}.
 Otherwise, equivalent to \tcode{shared_ptr(r.release(), ref(r.get_deleter()))}.
+Enables \tcode{shared_from_this} with the value that was returned by \tcode{r.release()}.
 If an exception is thrown, the constructor has no effect.
 \end{itemdescr}
 
@@ -6826,9 +6827,10 @@ enable_shared_from_this<T>& operator=(const enable_shared_from_this<T>&) noexcep
 
 \begin{itemdescr}
 \pnum\returns  \tcode{*this}.
+
+\pnum \enternote \tcode{weak_this} is not changed. \exitnote
 \end{itemdescr}
 
-\enternote \tcode{weak_this} is not changed. \exitnote
 
 \indexlibrary{\idxcode{shared_ptr}}%
 \indexlibrary{\idxcode{enable_shared_from_this}!\idxcode{shared_from_this}}%
