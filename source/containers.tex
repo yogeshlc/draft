@@ -2641,7 +2641,7 @@ namespace std {
     // no explicit construct/copy/destroy for aggregate type
 
     void fill(const T& u);
-    void swap(array&) noexcept(noexcept(swap(declval<T&>(), declval<T&>())));
+    void swap(array&) noexcept(is_nothrow_swappable<T>::value);
 
     // iterators:
     iterator               begin() noexcept;
@@ -2709,6 +2709,10 @@ template <class T, size_t N>
 \end{itemdecl}
 
 \begin{itemdescr}
+\pnum\remarks
+This function shall not participate in overload resolution
+unless \tcode{N == 0} or \tcode{is_swappable<T>::value} is \tcode{true}.
+
 \pnum\effects
 \begin{codeblock}
 x.swap(y);
@@ -2760,7 +2764,7 @@ void fill(const T& u);
 \indexlibrary{\idxcode{array}!\idxcode{swap}}%
 \indexlibrary{\idxcode{swap}!\idxcode{array}}%
 \begin{itemdecl}
-void swap(array& y) noexcept(noexcept(swap(declval<T&>(), declval<T&>())));
+void swap(array& y) noexcept(is_nothrow_swappable<T>::value);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -5634,7 +5638,7 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(map&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Compare&>(), declval<Compare&>())));
+               is_nothrow_swappable<Compare>::value);
     void      clear() noexcept;
 
     // observers:
@@ -6132,7 +6136,7 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(multimap&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Compare&>(), declval<Compare&>())));
+               is_nothrow_swappable<Compare>::value);
     void      clear() noexcept;
 
     // observers:
@@ -6416,7 +6420,7 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(set&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Compare&>(), declval<Compare&>())));
+               is_nothrow_swappable<Compare>::value);
     void      clear() noexcept;
 
     // observers:
@@ -6673,7 +6677,7 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(multiset&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Compare&>(), declval<Compare&>())));
+               is_nothrow_swappable<Compare>::value);
     void      clear() noexcept;
 
     // observers:
@@ -7053,8 +7057,8 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(unordered_map&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Hash&>(), declval<Hash&>())) &&
-               noexcept(swap(declval<Pred&>(), declval<Pred&>())));
+               is_nothrow_swappable<Hash>::value &&
+               is_nothrow_swappable<Pred>::value);
     void      clear() noexcept;
 
     // observers:
@@ -7538,8 +7542,8 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(unordered_multimap&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Hash&>(), declval<Hash&>())) &&
-               noexcept(swap(declval<Pred&>(), declval<Pred&>())));
+               is_nothrow_swappable<Hash>::value &&
+               is_nothrow_swappable<Pred>::value);
     void      clear() noexcept;
 
     // observers:
@@ -7821,8 +7825,8 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(unordered_set&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Hash&>(), declval<Hash&>())) &&
-               noexcept(swap(declval<Pred&>(), declval<Pred&>())));
+               is_nothrow_swappable<Hash>::value &&
+               is_nothrow_swappable<Pred>::value);
     void      clear() noexcept;
 
     // observers:
@@ -8073,8 +8077,8 @@ namespace std {
     iterator  erase(const_iterator first, const_iterator last);
     void      swap(unordered_multiset&)
       noexcept(allocator_traits<Allocator>::is_always_equal::value &&
-               noexcept(swap(declval<Hash&>(), declval<Hash&>())) &&
-               noexcept(swap(declval<Pred&>(), declval<Pred&>())));
+               is_nothrow_swappable<Hash>::value &&
+               is_nothrow_swappable<Pred>::value);
     void      clear() noexcept;
 
     // observers:
@@ -8326,7 +8330,7 @@ namespace std {
     template <class... Args>
       void emplace(Args&&... args)      { c.emplace_back(std::forward<Args>(args)...); }
     void pop()                          { c.pop_front(); }
-    void swap(queue& q) noexcept(noexcept(swap(c, q.c)))
+    void swap(queue& q) noexcept(is_nothrow_swappable<Container>::value)
       { using std::swap; swap(c, q.c); }
   };
 
@@ -8513,6 +8517,11 @@ template <class T, class Container>
 
 \begin{itemdescr}
 \pnum
+\remarks
+This function shall not participate in overload resolution
+unless \tcode{is_swappable<Container>::value} is \tcode{true}.
+
+\pnum
 \effects \tcode{x.swap(y)}.
 \end{itemdescr}
 
@@ -8577,8 +8586,8 @@ namespace std {
     void push(value_type&& x);
     template <class... Args> void emplace(Args&&... args);
     void pop();
-    void swap(priority_queue& q) noexcept(noexcept(swap(c, q.c)) &&
-                                          noexcept(swap(comp, q.comp)))
+    void swap(priority_queue& q) noexcept(is_nothrow_swappable<Container>::value &&
+                                          is_nothrow_swappable<Compare>::value)
       { using std::swap; swap(c, q.c); swap(comp, q.comp); }
   };
 
@@ -8786,6 +8795,12 @@ template <class T, class Container, class Compare>
 
 \begin{itemdescr}
 \pnum
+\remarks
+This function shall not participate in overload resolution
+unless \tcode{is_swappable<Container>::value} is \tcode{true} and
+\tcode{is_swappable<Compare>::value} is \tcode{true}.
+
+\pnum
 \effects \tcode{x.swap(y)}.
 \end{itemdescr}
 
@@ -8841,7 +8856,7 @@ namespace std {
     template <class... Args>
       void emplace(Args&&... args)      { c.emplace_back(std::forward<Args>(args)...); }
     void pop()                          { c.pop_back(); }
-    void swap(stack& s) noexcept(noexcept(swap(c, s.c)))
+    void swap(stack& s) noexcept(is_nothrow_swappable<Container>::value)
       { using std::swap; swap(c, s.c); }
   };
 
@@ -9025,6 +9040,11 @@ template <class T, class Container>
 \end{itemdecl}
 
 \begin{itemdescr}
+\pnum
+\remarks
+This function shall not participate in overload resolution
+unless \tcode{is_swappable<Container>::value} is \tcode{true}.
+
 \pnum
 \effects \tcode{x.swap(y)}.
 \end{itemdescr}
