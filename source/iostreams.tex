@@ -12802,6 +12802,7 @@ namespace std::filesystem {
     recursive_directory_iterator& increment(error_code& ec) noexcept;
 
     void pop();
+    void pop(error_code& ec);
     void disable_recursion_pending();
 
     // other members as required by \ref{input.iterators}, input iterators
@@ -13035,6 +13036,7 @@ treated as an empty directory and no error is reported.
 
 \begin{itemdecl}
 void pop();
+void pop(error_code& ec);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -13045,6 +13047,9 @@ void pop();
 \effects If \tcode{depth() == 0}, set \tcode{*this} to \tcode{recursive_directory_iterator()}.
   Otherwise, cease iteration of the directory currently being
   iterated over, and continue iteration over the parent directory.
+
+\pnum
+\throws As specified in Error reporting~(\ref{fs.err.report}).
 \end{itemdescr}
 
 \begin{itemdecl}
