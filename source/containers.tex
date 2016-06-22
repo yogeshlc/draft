@@ -2659,9 +2659,6 @@ namespace std {
     using reverse_iterator       = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
-
-    T       elems[N];           // \expos
-
     // no explicit construct/copy/destroy for aggregate type
 
     void fill(const T& u);
@@ -2703,11 +2700,6 @@ namespace std {
   };
 }
 \end{codeblock}
-
-\pnum
-\begin{note} The member variable \tcode{elems} is shown for exposition only,
-to emphasize that \tcode{array} is a class aggregate.  The name \tcode{elems}
-is not part of \tcode{array}'s interface. \end{note}
 
 \rSec3[array.cons]{\tcode{array} constructors, copy, and assignment}
 
@@ -2766,6 +2758,8 @@ constexpr const T* data() const noexcept;
 
 \begin{itemdescr}
 \pnum \returns \tcode{elems}.
+A pointer such that \range{data()}{data() + size()} is a valid range, and
+\tcode{data() == addressof(front())}.
 \end{itemdescr}
 
 \rSec3[array.fill]{\tcode{array::fill}}
