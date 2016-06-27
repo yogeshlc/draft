@@ -2813,8 +2813,7 @@ pack expansion~(\ref{temp.variadic}).
 An \defn{aggregate} is an array or a class (Clause~\ref{class}) with
 \begin{itemize}
 \item
-no user-provided constructors~(\ref{class.ctor})
-(including those inherited~(\ref{namespace.udecl}) from a base class),
+no user-provided, \tcode{explicit}, or inherited constructors~(\ref{class.ctor}),
 \item
 no private or protected non-static data members (Clause~\ref{class.access}),
 \item
