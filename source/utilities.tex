@@ -454,6 +454,16 @@ template <class T> constexpr add_const_t<T>& as_const(T& t) noexcept;
 \pnum
 The library provides the function template \tcode{declval} to simplify the definition of
 expressions which occur as unevaluated operands (Clause~\ref{expr}).
+\begin{example}
+\begin{codeblock}
+template <class To, class From>
+  decltype(static_cast<To>(declval<From>())) convert(From&&);
+\end{codeblock}
+
+declares a function template \tcode{convert} which only participates in overloading if the
+type \tcode{From} can be explicitly converted to type \tcode{To}. For another example see class
+template \tcode{common_type}~(\ref{meta.trans.other}).
+\end{example}
 
 \indexlibrary{\idxcode{declval}}%
 \begin{itemdecl}
@@ -467,17 +477,6 @@ template <class T>
 
 \pnum
 \remarks The template parameter \tcode{T} of \tcode{declval} may be an incomplete type.
-
-\begin{example}
-\begin{codeblock}
-template <class To, class From>
-  decltype(static_cast<To>(declval<From>())) convert(From&&);
-\end{codeblock}
-
-declares a function template \tcode{convert} which only participates in overloading if the
-type \tcode{From} can be explicitly converted to type \tcode{To}. For another example see class
-template \tcode{common_type}~(\ref{meta.trans.other}).
-\end{example}
 \end{itemdescr}
 
 \rSec2[utility.inplace]{In-place construction}
