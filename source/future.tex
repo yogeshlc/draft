@@ -2170,3 +2170,43 @@ class MyIterator :
 };
 \end{codeblock}
 \end{example}
+
+\rSec1[depr.util.smartptr.shared.obs]{Deprecated \tcode{shared_ptr} observers}
+
+\pnum
+The following member is defined in addition to those specified in \ref{util.smartptr.shared}:
+
+\indexlibrary{\idxcode{shared_ptr}}%
+\begin{codeblock}
+namespace std {
+  template<class T> class shared_ptr {
+  public:
+    bool unique() const noexcept;
+  };
+}
+\end{codeblock}
+
+\indexlibrarymember{use_count}{shared_ptr}%
+\begin{itemdecl}
+long use_count() const noexcept;
+\end{itemdecl}
+
+\begin{itemdescr}
+\pnum\returns  The number of \tcode{shared_ptr} objects, \tcode{*this} included,
+that \textit{share ownership} with \tcode{*this}, or \tcode{0} when \tcode{*this} is
+\textit{empty}.
+
+\pnum\sync None.
+
+\pnum \begin{note} \tcode{get() == nullptr}
+does not imply a specific return value of \tcode{use_count()}. \end{note}
+
+\pnum \begin{note} \tcode{weak_ptr<T>::lock()}
+can affect the return value of \tcode{use_count()}. \end{note}
+
+\pnum \begin{note} When multiple threads
+can affect the return value of \tcode{use_count()},
+the result should be treated as approximate.
+In particular, \tcode{use_count() == 1} does not imply that accesses through
+a previously destroyed \tcode{shared_ptr} have in any sense completed. \end{note}
+\end{itemdescr}
